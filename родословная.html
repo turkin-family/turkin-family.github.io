@@ -689,7 +689,8 @@ main {
   .doc-nav-btn { width: 38px; height: 38px; font-size: 1.1rem; }
   .doc-nav-btn.prev { left: 0.5rem; }
   .doc-nav-btn.next { right: 0.5rem; }
-  .doc-viewer-header { padding: 0.55rem 0.75rem; }
+  .doc-viewer-header { padding: 0.55rem 0.75rem; gap: 0.5rem; }
+  .doc-close-btn { padding: 0.35rem 0.6rem !important; font-size: 0.76rem !important; }
   .doc-viewer-footer { padding: 0.55rem 0.75rem; flex-direction: column; align-items: flex-start; gap: 0.4rem; }
   .doc-viewer-footer-counter { align-self: flex-end; }
 
@@ -717,6 +718,28 @@ main {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 0.85rem;
+}
+
+/* VETERAN CARDS */
+.veteran-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+.veteran-card {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  flex-wrap: nowrap !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+}
+.veteran-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.6rem;
+  gap: 0.5rem;
 }
 
 .table-container {
@@ -1081,37 +1104,43 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {
   gap: 0.4rem;
   flex-shrink: 0;
 }
-.doc-btn {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  color: var(--text-main);
-  padding: 0.35rem 0.65rem;
+.doc-close-btn {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1.5px solid rgba(239, 68, 68, 0.35);
+  color: #ef4444;
+  padding: 0.4rem 0.85rem;
   border-radius: 6px;
-  font-size: 0.8rem;
-  font-weight: 600;
+  font-size: 0.82rem;
+  font-weight: 700;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
-  text-decoration: none;
+  gap: 0.4rem;
   transition: all 0.15s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
-.doc-btn:hover {
-  background: var(--accent-light);
-  border-color: var(--accent);
-  color: var(--accent);
+.doc-close-btn:hover {
+  background: #ef4444;
+  color: #ffffff;
+  border-color: #ef4444;
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.35);
 }
-.doc-close {
-  background: transparent;
-  border: none;
-  font-size: 1.6rem;
-  color: var(--text-muted);
-  cursor: pointer;
-  line-height: 1;
-  padding: 0 0.35rem;
-}
-.doc-close:hover {
-  color: #ef4444;
+.doc-img-hint-badge {
+  position: absolute;
+  bottom: 0.65rem;
+  right: 0.65rem;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(4px);
+  color: #f1f5f9;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.3rem 0.65rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  pointer-events: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
 }
 .doc-viewer-viewport {
   flex: 1;
@@ -1329,7 +1358,8 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {
   .doc-nav-btn { width: 38px; height: 38px; font-size: 1.1rem; }
   .doc-nav-btn.prev { left: 0.5rem; }
   .doc-nav-btn.next { right: 0.5rem; }
-  .doc-viewer-header { padding: 0.55rem 0.75rem; }
+  .doc-viewer-header { padding: 0.55rem 0.75rem; gap: 0.5rem; }
+  .doc-close-btn { padding: 0.35rem 0.6rem !important; font-size: 0.76rem !important; }
   .doc-viewer-footer { padding: 0.55rem 0.75rem; flex-direction: column; align-items: flex-start; gap: 0.4rem; }
   .doc-viewer-footer-counter { align-self: flex-end; }
 
@@ -1393,11 +1423,38 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {
   .stat-label { font-size: 0.74rem !important; }
 
   /* FLEX CONTAINERS INSIDE CARDS: Auto-wrap to prevent bursting */
-  .info-card div[style*="display:flex"],
+  .info-card div[style*="display:flex"]:not(.veteran-card),
   .archive-header-card div[style*="display:flex"] {
     flex-wrap: wrap !important;
     gap: 0.4rem !important;
     max-width: 100% !important;
+  }
+
+  /* VETERAN CARDS MOBILE ADAPTATION */
+  .veteran-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .veteran-card {
+    padding: 0.85rem 0.75rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+  }
+  .veteran-card-header {
+    flex-wrap: wrap !important;
+    gap: 0.35rem !important;
+  }
+  .veteran-card .pill-btn {
+    white-space: normal !important;
+    word-break: break-word !important;
+    text-align: left !important;
+    line-height: 1.35 !important;
   }
 
   /* CHURCH & BOOK PHOTOS ON MOBILE: Full-width banner style */
@@ -1715,16 +1772,16 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {
         Документально подтвержденные боевые биографии дедов по архивным материалам Центрального архива Министерства обороны РФ (ЦАМО РФ), Российского государственного военно-исторического архива (РГВИА), музейным фондам и наградным приказам:
       </p>
 
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1.25rem;">
+      <div class="veteran-cards-grid">
         <!-- ТУРКИН МИХАИЛ НИКОЛАЕВИЧ -->
-        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #2563eb33; padding:1.25rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
+        <div class="veteran-card" style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #2563eb33; padding:1.25rem; box-shadow:var(--shadow);">
           <div>
-            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.6rem;">
+            <div class="veteran-card-header">
               <div>
                 <h3 style="margin:0; font-size:1.15rem; color:#2563eb;">Туркин Михаил Николаевич</h3>
                 <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.2rem;">03.11.1906 – 02.09.1993 • с. Коквицы, Коми АССР</div>
               </div>
-              <span style="background:#eff6ff; color:#2563eb; font-weight:700; font-size:0.75rem; padding:0.2rem 0.55rem; border-radius:6px; border:1px solid #bfdbfe;">Поколение V • Прапрадед</span>
+              <span style="background:#eff6ff; color:#2563eb; font-weight:700; font-size:0.75rem; padding:0.2rem 0.55rem; border-radius:6px; border:1px solid #bfdbfe; white-space:nowrap;">Поколение V • Прапрадед</span>
             </div>
 
             <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.85rem;">
@@ -1758,7 +1815,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {
 
             <div style="background:var(--bg-surface); border:1px solid var(--border-color); border-radius:8px; padding:0.65rem 0.85rem; margin-top:0.75rem; font-size:0.8rem;">
               <div style="font-weight:700; color:var(--accent); margin-bottom:0.35rem;">📁 Сохраненные первоисточники и сканы ЦАМО РФ:</div>
-              <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.5rem;">
+              <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
                 <a href="pdf_документы/Туркин Михаил Николаевич 1906.pdf" target="_blank" class="pill-btn" style="font-size:0.74rem;">📥 Полный альбом ЦАМО (19 стр. PDF)</a>
                 <button class="pill-btn active" onclick="openDocViewerById('turkin_slava_3')" style="font-size:0.74rem;">🔍 Скан: Орден Славы</button>
                 <button class="pill-btn active" onclick="openDocViewerById('turkin_medal_zaslugi')" style="font-size:0.74rem;">🔍 Скан: Боевые заслуги</button>
@@ -1775,14 +1832,14 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {
         </div>
 
         <!-- ТУРКИН ИВАН НИКОЛАЕВИЧ -->
-        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #2563eb33; padding:1.25rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
+        <div class="veteran-card" style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #2563eb33; padding:1.25rem; box-shadow:var(--shadow);">
           <div>
-            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.6rem;">
+            <div class="veteran-card-header">
               <div>
                 <h3 style="margin:0; font-size:1.15rem; color:#2563eb;">Туркин Иван Николаевич</h3>
                 <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.2rem;">род. 1918 • д. Сюлатуй (Коквицы), Коми АССР</div>
               </div>
-              <span style="background:#eff6ff; color:#2563eb; font-weight:700; font-size:0.75rem; padding:0.2rem 0.55rem; border-radius:6px; border:1px solid #bfdbfe;">Поколение V • Брат Михаила</span>
+              <span style="background:#eff6ff; color:#2563eb; font-weight:700; font-size:0.75rem; padding:0.2rem 0.55rem; border-radius:6px; border:1px solid #bfdbfe; white-space:nowrap;">Поколение V • Брат Михаила</span>
             </div>
 
             <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.85rem;">
@@ -1815,14 +1872,14 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {
         </div>
 
         <!-- ЗИНОВЬЕВ ВЛАДИМИР СЕМЕНОВИЧ -->
-        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #ec489933; padding:1.25rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
+        <div class="veteran-card" style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #ec489933; padding:1.25rem; box-shadow:var(--shadow);">
           <div>
-            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.6rem;">
+            <div class="veteran-card-header">
               <div>
                 <h3 style="margin:0; font-size:1.15rem; color:#db2777;">Зиновьев Владимир Семенович</h3>
                 <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.2rem;">род. 1925 • д. Горелый Ыб (с. Горесоит), Коми АССР</div>
               </div>
-              <span style="background:#fff1f2; color:#db2777; font-weight:700; font-size:0.75rem; padding:0.2rem 0.55rem; border-radius:6px; border:1px solid #fecdd3;">Поколение IV • Брат Альбины</span>
+              <span style="background:#fff1f2; color:#db2777; font-weight:700; font-size:0.75rem; padding:0.2rem 0.55rem; border-radius:6px; border:1px solid #fecdd3; white-space:nowrap;">Поколение IV • Брат Альбины</span>
             </div>
 
             <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.85rem;">
@@ -1854,7 +1911,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {
 
             <div style="background:var(--bg-surface); border:1px solid var(--border-color); border-radius:8px; padding:0.65rem 0.85rem; margin-top:0.75rem; font-size:0.8rem;">
               <div style="font-weight:700; color:var(--accent); margin-bottom:0.35rem;">📁 Сохраненные первоисточники и сканы ЦАМО РФ:</div>
-              <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.5rem;">
+              <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
                 <a href="pdf_документы/Зиновьев Владимир Семенович 1925.pdf" target="_blank" class="pill-btn" style="font-size:0.74rem;">📥 Полный альбом ЦАМО (19 стр. PDF)</a>
                 <button class="pill-btn active" onclick="openDocViewerById('zinoviev_v_red_star')" style="font-size:0.74rem;">🔍 Скан: Красная Звезда</button>
                 <button class="pill-btn active" onclick="openDocViewerById('zinoviev_v_slava_3')" style="font-size:0.74rem;">🔍 Скан: Орден Славы</button>
@@ -1869,14 +1926,14 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {
         </div>
 
         <!-- ЗИНОВЬЕВ СЕМЕН ГРИГОРЬЕВИЧ -->
-        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #ec489933; padding:1.25rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
+        <div class="veteran-card" style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #ec489933; padding:1.25rem; box-shadow:var(--shadow);">
           <div>
-            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.6rem;">
+            <div class="veteran-card-header">
               <div>
                 <h3 style="margin:0; font-size:1.15rem; color:#db2777;">Зиновьев Семён Григорьевич</h3>
                 <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.2rem;">27.01.1890 – ? • д. Горелый Ыб (Ибская), Коми АССР</div>
               </div>
-              <span style="background:#fff1f2; color:#db2777; font-weight:700; font-size:0.75rem; padding:0.2rem 0.55rem; border-radius:6px; border:1px solid #fecdd3;">Поколение V • Прапрадед</span>
+              <span style="background:#fff1f2; color:#db2777; font-weight:700; font-size:0.75rem; padding:0.2rem 0.55rem; border-radius:6px; border:1px solid #fecdd3; white-space:nowrap;">Поколение V • Прапрадед</span>
             </div>
 
             <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.85rem;">
@@ -1912,7 +1969,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {
 
             <div style="background:var(--bg-surface); border:1px solid var(--border-color); border-radius:8px; padding:0.65rem 0.85rem; margin-top:0.75rem; font-size:0.8rem;">
               <div style="font-weight:700; color:var(--accent); margin-bottom:0.35rem;">📁 Сохраненные первоисточники и архивные дела:</div>
-              <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.5rem;">
+              <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
                 <button class="pill-btn active" onclick="openDocViewerById('zinoviev_s_krasnoarm_knizhka')" style="font-size:0.74rem;">🔍 Скан: Красноармейская книжка 1943 г.</button>
                 <button class="pill-btn" onclick="openDocViewerById('zinoviev_s_plen_card_front')" style="font-size:0.74rem;">🛡️ Скан: Карточка военнопленного (1915 г.)</button>
                 <button class="pill-btn" onclick="openDocViewerById('zinoviev_s_plen_card_back')" style="font-size:0.74rem;">📄 Оборот карточки военнопленного</button>
@@ -1927,14 +1984,14 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {
         </div>
 
         <!-- ШУКТОМОВ АЛЕКСАНДР МИХАЙЛОВИЧ -->
-        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #d9770633; padding:1.25rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
+        <div class="veteran-card" style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #d9770633; padding:1.25rem; box-shadow:var(--shadow);">
           <div>
-            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.6rem;">
+            <div class="veteran-card-header">
               <div>
                 <h3 style="margin:0; font-size:1.15rem; color:#b45309;">Шуктомов Александр Михайлович</h3>
                 <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.2rem;">1911 – сентябрь 1970 • д. Ероздино, Коми АССР</div>
               </div>
-              <span style="background:#fef3c7; color:#b45309; font-weight:700; font-size:0.75rem; padding:0.2rem 0.55rem; border-radius:6px; border:1px solid #fde68a;">Поколение V • Прапрадед</span>
+              <span style="background:#fef3c7; color:#b45309; font-weight:700; font-size:0.75rem; padding:0.2rem 0.55rem; border-radius:6px; border:1px solid #fde68a; white-space:nowrap;">Поколение V • Прапрадед</span>
             </div>
 
             <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.85rem;">
@@ -1969,7 +2026,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {
 
             <div style="background:var(--bg-surface); border:1px solid var(--border-color); border-radius:8px; padding:0.65rem 0.85rem; margin-top:0.75rem; font-size:0.8rem;">
               <div style="font-weight:700; color:var(--accent); margin-bottom:0.35rem;">📁 Сохраненные первоисточники и архивные дела:</div>
-              <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.5rem;">
+              <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
                 <button class="pill-btn active" onclick="openDocViewerById('shuktomov_vpp_1942')" style="font-size:0.74rem;">🔍 Скан: Список 34 зсп (18.01.1942 г.)</button>
                 <button class="pill-btn active" onclick="openDocViewerById('shuktomov_kniga_pamyati_komi')" style="font-size:0.74rem;">📖 Скан: Книга Памяти РК (том 6)</button>
                 <button class="pill-btn" onclick="filterArchiveCategory('shuktomov'); switchTab('archive');" style="font-size:0.74rem;">📁 Все 2 документа в архиве</button>
@@ -1982,14 +2039,14 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {
         </div>
 
         <!-- ШЕХОНИН МИХАИЛ АФАНАСЬЕВИЧ -->
-        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #8b5cf633; padding:1.25rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
+        <div class="veteran-card" style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #8b5cf633; padding:1.25rem; box-shadow:var(--shadow);">
           <div>
-            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.6rem;">
+            <div class="veteran-card-header">
               <div>
                 <h3 style="margin:0; font-size:1.15rem; color:#7c3aed;">Шехонин Михаил Афанасьевич</h3>
                 <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.2rem;">1909 – ноябрь 1988 • с. Лойма, Коми АССР</div>
               </div>
-              <span style="background:#f5f3ff; color:#7c3aed; font-weight:700; font-size:0.75rem; padding:0.2rem 0.55rem; border-radius:6px; border:1px solid #ddd6fe;">Поколение V • Прапрадед</span>
+              <span style="background:#f5f3ff; color:#7c3aed; font-weight:700; font-size:0.75rem; padding:0.2rem 0.55rem; border-radius:6px; border:1px solid #ddd6fe; white-space:nowrap;">Поколение V • Прапрадед</span>
             </div>
 
             <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.85rem;">
@@ -2029,7 +2086,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {
 
             <div style="background:var(--bg-surface); border:1px solid var(--border-color); border-radius:8px; padding:0.65rem 0.85rem; margin-top:0.75rem; font-size:0.8rem;">
               <div style="font-weight:700; color:var(--accent); margin-bottom:0.35rem;">📁 Сохраненные первоисточники и архивные дела:</div>
-              <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.5rem;">
+              <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
                 <button class="pill-btn active" onclick="openDocViewerById('shekhonin_kniga_pamyati_komi_full')" style="font-size:0.74rem;">📖 Скан: Книга Памяти (том 5, стр. 612)</button>
                 <button class="pill-btn active" onclick="openDocViewerById('shekhonin_kniga_pamyati_komi_crop')" style="font-size:0.74rem;">🔍 Скан: Именная статья (фрагмент)</button>
                 <button class="pill-btn active" onclick="openDocViewerById('shekhonin_card_ranenie_vmd')" style="font-size:0.74rem;">🏥 Карточка: Ранения и госпитали (ЦАМО ВМД)</button>
@@ -2616,6 +2673,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {
         </div>
       </div>
     </div>
+  </div>
 
   <!-- TAB 6: SOURCES AND BIBLIOGRAPHY VIEW -->
   <div id="view-sources" class="view-section">
@@ -3242,28 +3300,27 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {
   <div class="doc-viewer-container" onclick="event.stopPropagation()">
     <!-- VIEWER HEADER -->
     <div class="doc-viewer-header">
-      <div class="doc-viewer-title-group">
+      <div class="doc-viewer-title-group" style="min-width:0; flex:1;">
         <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.2rem;">
           <span class="doc-viewer-badge" id="docViewerBadge">ЦАМО РФ</span>
-          <span id="docViewerPerson" style="font-size:0.8rem; font-weight:600; color:var(--text-muted);"></span>
+          <span id="docViewerPerson" style="font-size:0.8rem; font-weight:600; color:var(--text-muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"></span>
         </div>
-        <h3 id="docViewerTitle" style="margin:0; font-size:1.05rem; line-height:1.3;">Название документа</h3>
-        <div id="docViewerArchive" style="font-size:0.76rem; color:var(--text-muted); margin-top:0.2rem;">Архивные реквизиты</div>
+        <h3 id="docViewerTitle" style="margin:0; font-size:1.02rem; line-height:1.3; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">Название документа</h3>
+        <div id="docViewerArchive" style="font-size:0.75rem; color:var(--text-muted); margin-top:0.2rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">Архивные реквизиты</div>
       </div>
       <div class="doc-viewer-actions">
-        <button class="doc-btn" onclick="docZoomOut()" title="Уменьшить">−</button>
-        <button class="doc-btn" onclick="docZoomIn()" title="Увеличить">+</button>
-        <button class="doc-btn" onclick="docResetZoom()" title="Сбросить масштаб">1:1</button>
-        <a id="docViewerDownloadBtn" href="#" target="_blank" class="doc-btn" title="Открыть в новой вкладке">↗ Открыть скан</a>
-        <button class="doc-close" onclick="closeDocViewer()" title="Закрыть (Esc)">&times;</button>
+        <button class="doc-close-btn" onclick="closeDocViewer()" title="Закрыть документ и вернуться в карточку (Esc)">
+          <span style="font-size:1.05rem; line-height:1;">✕</span> <span>Назад к карточке</span>
+        </button>
       </div>
     </div>
 
     <!-- VIEWER VIEWPORT WITH ZOOM AND PAN -->
     <div class="doc-viewer-viewport" id="docViewerViewport">
       <button class="doc-nav-btn prev" id="docNavPrev" onclick="docPrev()" title="Предыдущий документ (←)">❮</button>
-      <div class="doc-img-wrapper" id="docImgWrapper">
+      <div class="doc-img-wrapper" id="docImgWrapper" onclick="openCurrentDocInNewTab()" title="Нажмите на скан, чтобы открыть оригинал в новой вкладке ↗" style="cursor:pointer; position:relative;">
         <img id="docViewerImg" src="" alt="Архивный документ" draggable="false" />
+        <div class="doc-img-hint-badge">↗ Открыть оригинал скана</div>
       </div>
       <button class="doc-nav-btn next" id="docNavNext" onclick="docNext()" title="Следующий документ (→)">❯</button>
     </div>
@@ -3273,8 +3330,11 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {
       <div class="doc-viewer-footer-text">
         <div id="docViewerDesc" style="font-size:0.82rem; line-height:1.45; color:var(--text-main);"></div>
       </div>
-      <div class="doc-viewer-footer-counter" id="docViewerCounter">
-        1 / 19
+      <div style="display:flex; align-items:center; gap:0.6rem; flex-shrink:0;">
+        <button class="pill-btn" onclick="closeDocViewer()" style="font-size:0.75rem; background:var(--bg-primary); border-color:var(--border-color); color:var(--text-main); cursor:pointer;">← Назад в карточку</button>
+        <div class="doc-viewer-footer-counter" id="docViewerCounter">
+          1 / 19
+        </div>
       </div>
     </div>
   </div>
@@ -3956,13 +4016,20 @@ function openDocViewer(index, customList) {
   img.src = doc.file;
   
   const dlBtn = document.getElementById('docViewerDownloadBtn');
-  dlBtn.href = doc.file;
+  if (dlBtn) dlBtn.href = doc.file;
 
   docResetZoom();
   document.getElementById('docViewerModal').classList.add('open');
   
   document.getElementById('docNavPrev').style.display = currentDocIndex > 0 ? 'flex' : 'none';
   document.getElementById('docNavNext').style.display = currentDocIndex < currentDocList.length - 1 ? 'flex' : 'none';
+}
+
+function openCurrentDocInNewTab() {
+  const doc = currentDocList[currentDocIndex];
+  if (doc && doc.file) {
+    window.open(doc.file, '_blank');
+  }
 }
 
 function openDocViewerById(docId) {
@@ -4021,6 +4088,10 @@ function updateDocTransform() {
   img.style.transform = `translate(${docPanX}px, ${docPanY}px) scale(${docZoom})`;
 }
 
+let docDidDrag = false;
+let docClickStartX = 0;
+let docClickStartY = 0;
+
 function setupDocViewerEvents() {
   const vp = document.getElementById('docViewerViewport');
   if (!vp) return;
@@ -4028,6 +4099,9 @@ function setupDocViewerEvents() {
   vp.addEventListener('mousedown', (e) => {
     if (e.target.tagName === 'BUTTON' || e.target.closest('button')) return;
     isDocDragging = true;
+    docDidDrag = false;
+    docClickStartX = e.clientX;
+    docClickStartY = e.clientY;
     docStartX = e.clientX - docPanX;
     docStartY = e.clientY - docPanY;
     document.getElementById('docImgWrapper').classList.add('dragging');
@@ -4035,16 +4109,31 @@ function setupDocViewerEvents() {
 
   window.addEventListener('mousemove', (e) => {
     if (!isDocDragging) return;
+    if (Math.abs(e.clientX - docClickStartX) > 6 || Math.abs(e.clientY - docClickStartY) > 6) {
+      docDidDrag = true;
+    }
     docPanX = e.clientX - docStartX;
     docPanY = e.clientY - docStartY;
     updateDocTransform();
   });
 
   window.addEventListener('mouseup', () => {
-    isDocDragging = false;
-    const wr = document.getElementById('docImgWrapper');
-    if (wr) wr.classList.remove('dragging');
+    if (isDocDragging) {
+      isDocDragging = false;
+      const wr = document.getElementById('docImgWrapper');
+      if (wr) wr.classList.remove('dragging');
+    }
   });
+
+  const wr = document.getElementById('docImgWrapper');
+  if (wr) {
+    wr.addEventListener('click', (e) => {
+      if (e.target.tagName === 'BUTTON' || e.target.closest('button')) return;
+      if (!docDidDrag) {
+        openCurrentDocInNewTab();
+      }
+    });
+  }
 
   vp.addEventListener('wheel', (e) => {
     e.preventDefault();
@@ -4440,8 +4529,12 @@ function escapeHtml(str) {
 
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
+    const viewer = document.getElementById('docViewerModal');
+    if (viewer && viewer.classList.contains('open')) {
+      closeDocViewer();
+      return;
+    }
     closeModal();
-    closeDocViewer();
   }
   const isViewerOpen = document.getElementById('docViewerModal') && document.getElementById('docViewerModal').classList.contains('open');
   if (isViewerOpen) {
