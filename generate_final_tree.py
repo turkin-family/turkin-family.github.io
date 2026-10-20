@@ -1574,31 +1574,175 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
   .doc-viewer-footer {{ padding: 0.55rem 0.75rem; flex-direction: column; align-items: flex-start; gap: 0.4rem; }}
   .doc-viewer-footer-counter {{ align-self: flex-end; }}
 
+  /* COMPACT MOBILE VIEWS & CONTAINMENT */
   #view-list, #view-table, #view-archive, #view-info, #view-sources, #view-stats {{
-    padding: 0.85rem 0.65rem;
+    padding: 0.75rem 0.5rem !important;
+    overflow-x: hidden !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }}
+
+  /* INFO CARDS: Prevent horizontal overflow */
+  .info-card, .archive-header-card {{
+    padding: 0.85rem 0.75rem !important;
+    margin-bottom: 0.75rem !important;
+    border-radius: 8px !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    overflow: hidden !important;
+  }}
+  .info-card h2 {{
+    font-size: 1.08rem !important;
+    line-height: 1.3 !important;
+  }}
+  .info-card h3 {{
+    font-size: 0.95rem !important;
+    line-height: 1.35 !important;
+  }}
+  .info-card p, .info-card li {{
+    font-size: 0.84rem !important;
+    line-height: 1.5 !important;
+  }}
+  .info-card ul {{
+    padding-left: 1.15rem !important;
+  }}
+
+  /* FORCE ALL MULTI-COLUMN GRIDS TO SINGLE COLUMN ON MOBILE (Zero overflow) */
+  .archive-grid,
+  .cards-grid,
+  div[style*="grid-template-columns:repeat(auto-fit"],
+  div[style*="grid-template-columns: repeat(auto-fit"],
+  div[style*="grid-template-columns:repeat(auto-fill"],
+  div[style*="grid-template-columns: repeat(auto-fill"] {{
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }}
+
+  /* STATS BANNER: 2 neat columns */
+  .stats-grid,
+  div[style*="minmax(180px, 1fr)"],
+  div[style*="minmax(210px, 1fr)"] {{
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.5rem !important;
+  }}
+  .stat-card {{
+    padding: 0.65rem 0.45rem !important;
+  }}
+  .stat-number {{ font-size: 1.45rem !important; }}
+  .stat-label {{ font-size: 0.74rem !important; }}
+
+  /* FLEX CONTAINERS INSIDE CARDS: Auto-wrap to prevent bursting */
+  .info-card div[style*="display:flex"],
+  .archive-header-card div[style*="display:flex"] {{
+    flex-wrap: wrap !important;
+    gap: 0.4rem !important;
+    max-width: 100% !important;
+  }}
+
+  /* CHURCH & BOOK PHOTOS ON MOBILE: Full-width banner style */
+  div[style*="gap:0.85rem"][style*="margin-bottom:0.75rem"],
+  div[style*="gap:1rem"][style*="margin-bottom:1rem"] {{
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }}
+  div[style*="gap:0.85rem"] img,
+  div[style*="gap:1rem"] img {{
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 165px !important;
+    max-height: 180px !important;
+    object-fit: cover !important;
+    margin-bottom: 0.35rem !important;
+    border-radius: 6px !important;
+  }}
+
+  /* ARCHIVE TOOLBAR & SEARCH ON MOBILE */
+  .archive-toolbar {{
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.6rem !important;
+  }}
+  .archive-search-box {{
+    width: 100% !important;
+    min-width: 0 !important;
+  }}
+  .archive-filter-pills {{
+    width: 100% !important;
+    overflow-x: auto !important;
+    flex-wrap: nowrap !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-bottom: 0.35rem !important;
+    scrollbar-width: none;
+  }}
+  .archive-filter-pills::-webkit-scrollbar {{ display: none; }}
+  .archive-filter-pills .pill-btn {{
+    flex-shrink: 0 !important;
+  }}
+
+  /* TABLE VIEW: Smooth contained scroll without page blowout */
   .table-container {{
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    border-radius: 8px !important;
   }}
   table {{
-    min-width: 650px;
+    min-width: 580px !important;
+    font-size: 0.8rem !important;
   }}
-  .cards-grid {{
-    grid-template-columns: 1fr;
+  th, td {{
+    padding: 0.45rem 0.5rem !important;
   }}
-  .stats-grid {{
-    grid-template-columns: 1fr 1fr;
-    gap: 0.65rem;
+
+  /* PERSON MODAL THUMBNAILS ON MOBILE */
+  .person-docs-mini-grid {{
+    grid-template-columns: repeat(auto-fill, minmax(78px, 1fr)) !important;
+    gap: 0.4rem !important;
   }}
-  .stat-number {{ font-size: 1.6rem; }}
+  .thumb-label {{
+    font-size: 0.6rem !important;
+    padding: 0.1rem 0.2rem !important;
+  }}
+
+  /* PILL BUTTONS & LINKS: Accessible tap targets */
+  .pill-btn {{
+    padding: 0.28rem 0.55rem !important;
+    font-size: 0.74rem !important;
+  }}
+  .link-badge {{
+    padding: 0.35rem 0.65rem !important;
+    font-size: 0.78rem !important;
+    display: inline-block !important;
+    margin: 0.15rem 0 !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+  }}
+
+  /* WORD BREAK & TEXT OVERFLOW SAFETY */
+  .info-card div, .info-card p, .info-card li, .modal-body div {{
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }}
 }}
 
 @media (max-width: 480px) {{
-  .brand-text h1 {{ font-size: 0.88rem; }}
-  .search-box input {{ width: 95px; }}
-  .search-box input:focus {{ width: 130px; }}
-  .nav-tab {{ padding: 0.28rem 0.45rem; font-size: 0.72rem; }}
+  header {{
+    padding: 0.35rem 0.5rem 0.25rem !important;
+  }}
+  .brand-text h1 {{ font-size: 0.88rem !important; }}
+  .brand-badge {{ display: none !important; }}
+  .search-box input {{
+    width: 90px !important;
+    font-size: 0.72rem !important;
+    padding: 0.25rem 0.4rem 0.25rem 1.3rem !important;
+  }}
+  .search-box input:focus {{ width: 125px !important; }}
+  .nav-tab {{ padding: 0.28rem 0.45rem !important; font-size: 0.72rem !important; }}
+  .info-card {{ padding: 0.75rem 0.6rem !important; }}
+  .stat-number {{ font-size: 1.35rem !important; }}
 }}
 </style>
 </head>
@@ -2142,25 +2286,25 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
       </div>
     </div>
 
-    <!-- ORTHODOX CLERGY SECTION -->
+    <!-- ORTHODOX CLERGY & PARISH CHURCHES SECTION -->
     <div class="info-card">
       <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.5rem;">
         <span style="font-size:1.6rem;">⛪</span>
-        <h2 style="margin:0;">Православное духовенство рода Туркиных: почти 300 лет церковного служения на Севере (XVII–XX вв., 1646–1937 гг.)</h2>
+        <h2 style="margin:0;">Православное духовенство и приходские храмы предков (XVII–XX вв., 1646–1937 гг.)</h2>
       </div>
       <p style="color:var(--text-muted); font-size:0.88rem; margin-bottom:1.2rem; line-height:1.55;">
-        На протяжении почти трёх столетий — от переписной книги 1646 года до трагических репрессий 1937 года — род Туркиных являлся одной из виднейших священнических, причетнических и монашеских династий Вологодской и Великоустюжской епархий. Документально подтверждено фондами РГИА (Синод), ГАВО, НА РК, ВУЦА, РГАДА, архивом УФСБ по Республике Коми и мартирологом «Покаяние» / базой ПСТГУ:
+        На протяжении более трёх столетий — от переписных книг XVII века до XX века — духовная и повседневная жизнь всех поколений предков была неразрывно связана с православными обителями и приходскими церквями Яренского, Усть-Вымского и Усть-Сысольского уездов Вологодской губернии (ныне Республика Коми и Кировская область). Род Туркиных дал Северу уникальную династию священнослужителей, соборных диаконов, причетников и монашествующих, а все родственные семьи (Шуктомовы, Зиновьевы, Сюткины, Полещиковы, Пасынковы, Кызъюровы, Летовы, Ярановы) на протяжении веков принимали в этих храмах таинства крещения, браковенчания и погребения.
       </p>
 
       <!-- STATS BANNER -->
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:0.75rem; margin-bottom:1.25rem;">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:0.75rem; margin-bottom:1.35rem;">
         <div style="background:var(--bg-primary); border:1px solid var(--border-color); border-radius:8px; padding:0.75rem 1rem; text-align:center;">
           <div style="font-size:1.35rem; font-weight:800; color:#2563eb;">Почти 300 лет</div>
           <div style="font-size:0.76rem; color:var(--text-muted); margin-top:0.2rem;">служения и исповедничества (1646–1937 гг.)</div>
         </div>
         <div style="background:var(--bg-primary); border:1px solid var(--border-color); border-radius:8px; padding:0.75rem 1rem; text-align:center;">
-          <div style="font-size:1.35rem; font-weight:800; color:#7c3aed;">9 обителей и храмов</div>
-          <div style="font-size:0.76rem; color:var(--text-muted); margin-top:0.2rem;">Ульяновский мон., Коквицы, Оквад, Усть-Вымь, Палевицы, Лальск, Ляли, Серёгово, Яренск</div>
+          <div style="font-size:1.35rem; font-weight:800; color:#7c3aed;">10 обителей и храмов</div>
+          <div style="font-size:0.76rem; color:var(--text-muted); margin-top:0.2rem;">Коквицы, Усть-Вымь, Лальск, Ульяново, Ыб, Лойма, Ляли, Оквад, Палевицы, Яренск</div>
         </div>
         <div style="background:var(--bg-primary); border:1px solid var(--border-color); border-radius:8px; padding:0.75rem 1rem; text-align:center;">
           <div style="font-size:1.35rem; font-weight:800; color:#0284c7;">30+ служителей</div>
@@ -2168,17 +2312,29 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </div>
       </div>
 
-      <!-- CHURCHES SUMMARY GRID -->
+      <!-- CHURCHES SUMMARY GRID WITH PHOTOS -->
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:1.15rem;">
+        
         <!-- КОКВИЦЫ -->
         <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #2563eb33; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
               <h3 style="margin:0; font-size:1.05rem; color:#2563eb;">🏛️ с. Коквицы — Христорождественская церковь</h3>
-              <span style="background:#eff6ff; color:#2563eb; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #bfdbfe;">Главный оплот (150+ лет)</span>
+              <span style="background:#eff6ff; color:#2563eb; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #bfdbfe;">Главный оплот рода (150+ лет)</span>
             </div>
-            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">Коквицкая гора, Яренский уезд • 1710–1860-е гг.</div>
-            <p style="font-size:0.83rem; line-height:1.5; margin-bottom:0.65rem;">Родовое гнездо нескольких поколений клира Туркиных. Здесь непрерывно служили священники, диаконы и причетники рода:</p>
+            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">Коквицкая гора, Яренский уезд • Приход родов: Туркины, Летовы, Ярановы, Сизевы</div>
+            
+            <div style="display:flex; gap:0.85rem; margin-bottom:0.75rem; align-items:flex-start;">
+              <a href="архив_сканы_первоисточников/1773_Коквицы_двор_167_crop.png" target="_blank" title="Исповедная роспись 1773 г., двор 167 священника о. Степана Туркина (нажмите для открытия)">
+                <img src="архив_сканы_первоисточников/1773_Коквицы_двор_167_crop.png" alt="Исповедная роспись 1773 г., Коквицы" style="width:115px; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 6px rgba(0,0,0,0.1); cursor:pointer; transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+              </a>
+              <div style="font-size:0.82rem; line-height:1.45; color:var(--text-main);">
+                <div>📜 Каменная двухэтажная церковь построена в 1820–1837 гг. (ранее деревянный храм XVII–XVIII вв.).</div>
+                <div style="margin-top:0.35rem;">👶 В метрической книге прихода зафиксировано рождение прапрадеда <strong>Николая Алексеевича Туркина</strong> 3 ноября 1876 г. (д. Сюлатуй, запись на с. 267).</div>
+              </div>
+            </div>
+
+            <p style="font-size:0.83rem; line-height:1.5; margin-bottom:0.65rem;">Родовое гнездо и непрерывное служение нескольких поколений клира Туркиных:</p>
             <ul style="font-size:0.82rem; line-height:1.5; margin:0 0 0.75rem 0; padding-left:1.15rem;">
               <li><strong>Священники (иереи):</strong> о. Степан Иванович Туркин (служил в 1734–1773 гг., разбор 1736 г., в 1773 г. 62-летний вдовый священник по исповедной росписи ВЦА двор 167); о. Иван Петрович Туркин (пономарь в 1710 г., священник в 1747 г.).</li>
               <li><strong>Диаконы:</strong> о. Алексей Елисеевич Туркин (пономарь с 1818 г., рукоположен в диакона в 1822 г., служил до 1844+ гг.).</li>
@@ -2190,6 +2346,156 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             <button class="pill-btn" onclick="focusPerson('I78'); switchTab('tree');" style="font-size:0.74rem;">🎯 о. Степан</button>
             <button class="pill-btn" onclick="focusPerson('I234'); switchTab('tree');" style="font-size:0.74rem;">🎯 о. Алексей</button>
             <button class="pill-btn" onclick="focusPerson('I232'); switchTab('tree');" style="font-size:0.74rem;">🎯 Елисей</button>
+          </div>
+        </div>
+
+        <!-- ЛАЛЬСК -->
+        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #8b5cf633; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
+              <h3 style="margin:0; font-size:1.05rem; color:#7c3aed;">⛪ г. Лальск — Воскресенский собор</h3>
+              <span style="background:#f5f3ff; color:#7c3aed; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #ddd6fe;">Соборный диакон (1870–1904)</span>
+            </div>
+            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">г. Лальск, Вологодская епархия (ныне Кировская область) • Шедевр барокко 1698–1715 гг.</div>
+
+            <div style="display:flex; gap:0.85rem; margin-bottom:0.75rem; align-items:flex-start;">
+              <a href="фото_храмов/Лальск_Воскресенский_собор.jpg" target="_blank" title="Воскресенский собор в Лальске (архивное фото С. Лобовикова конца XIX в., нажмите для увеличения)">
+                <img src="фото_храмов/Лальск_Воскресенский_собор.jpg" alt="Воскресенский собор г. Лальска" style="width:115px; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 6px rgba(0,0,0,0.1); cursor:pointer; transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+              </a>
+              <div style="font-size:0.82rem; line-height:1.45; color:var(--text-main);">
+                <div>🏛️ Величественный пятиглавый соборный ансамбль с шатровой колокольней.</div>
+                <div style="margin-top:0.35rem;">📜 Снимок сделан выдающимся русским фотографом С. Лобовиковым именно в годы соборного служения о. Михаила Туркина.</div>
+              </div>
+            </div>
+
+            <ul style="font-size:0.82rem; line-height:1.5; margin:0 0 0.75rem 0; padding-left:1.15rem;">
+              <li><strong>Соборный диакон о. Михаил Алексеевич Туркин</strong> (ок. 1839 – 14.06.1904) — сын диакона о. Алексея Коквицкого. Выпускник Вологодской духовной семинарии (1862 г.). С 1868 г. дьячок, 20.07.1870 г. рукоположен во диакона, с 1871 г. — штатный соборный диакон (34 года беспорочного служения, фонд ГАКО № 1310). Супруга София Прокопьевна Брызгалова.</li>
+            </ul>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:0.35rem; border-top:1px dashed var(--border-color); padding-top:0.5rem;">
+            <button class="pill-btn" onclick="focusPerson('I236'); switchTab('tree');" style="font-size:0.74rem;">🎯 о. Михаил Лальский</button>
+          </div>
+        </div>
+
+        <!-- УЛЬЯНОВСКИЙ МОНАСТЫРЬ И С. КУЖБА -->
+        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #6366f133; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
+              <h3 style="margin:0; font-size:1.05rem; color:#4f46e5;">⛪ с. Ульяново и с. Кужба — Троице-Стефановский монастырь</h3>
+              <span style="background:#eef2ff; color:#4f46e5; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #c7d2fe;">Исповедники XX века</span>
+            </div>
+            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">Усть-Сысольский и Усть-Куломский уезды • Верхняя Вычегда • 1865–1937 гг.</div>
+
+            <div style="display:flex; gap:0.85rem; margin-bottom:0.75rem; align-items:flex-start;">
+              <a href="фото_храмов/Ульяново_Троице_Стефановский_монастырь.jpg" target="_blank" title="Троице-Стефано-Ульяновский мужской монастырь (нажмите для увеличения)">
+                <img src="фото_храмов/Ульяново_Троице_Стефановский_монастырь.jpg" alt="Троице-Стефано-Ульяновский монастырь" style="width:115px; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 6px rgba(0,0,0,0.1); cursor:pointer; transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+              </a>
+              <div style="font-size:0.82rem; line-height:1.45; color:var(--text-main);">
+                <div>🌲 Знаменитая северная обитель, основанная святителем Стефаном Пермским в конце XIV в. и возрожденная в XIX в.</div>
+                <div style="margin-top:0.35rem;">⚖️ Архивно-следственное дело УНКВД Коми АССР 1937 г. (Архив УФСБ по РК, № КП-7444).</div>
+              </div>
+            </div>
+
+            <ul style="font-size:0.82rem; line-height:1.5; margin:0 0 0.75rem 0; padding-left:1.15rem;">
+              <li><strong>Монах Виталий (Виталий Иванович Туркин)</strong> (1865, с. Коквицы – 06.11.1937) — родной брат прапрапрадеда Алексея Ивановича Туркина и дядя Николая Алексеевича Туркина. Монах Троице-Стефано-Ульяновского мужского монастыря. После закрытия обители в 1923 г. проживал в с. Кужба вместе с казначеем обители священномучеником иеромонахом Мелетием (Федюнёвым), тайно совершая требы для верующих. Арестован в сентябре 1937 г., приговорён «тройкой» к 10 годам ИТЛ, мученически погиб в Вогваздинском лагпункте Ухтпечлага. Реабилитирован.</li>
+            </ul>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:0.35rem; border-top:1px dashed var(--border-color); padding-top:0.5rem;">
+            <button class="pill-btn" onclick="focusPerson('I307'); switchTab('tree');" style="font-size:0.74rem;">🎯 монах Виталий</button>
+          </div>
+        </div>
+
+        <!-- ЫБ -->
+        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #05966933; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
+              <h3 style="margin:0; font-size:1.05rem; color:#059669;">⛪ с. Ыб — Свято-Вознесенский храм</h3>
+              <span style="background:#ecfdf5; color:#059669; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #a7f3d0;">Приход предков (1827–1835)</span>
+            </div>
+            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">Село Ыб (Ыбский приход) • Сыктывдинский район • Памятник зодчества XIX века</div>
+
+            <div style="display:flex; gap:0.85rem; margin-bottom:0.75rem; align-items:flex-start;">
+              <a href="фото_храмов/Ыб_Вознесенская_церковь.jpg" target="_blank" title="Свято-Вознесенская церковь в селе Ыб (нажмите для увеличения)">
+                <img src="фото_храмов/Ыб_Вознесенская_церковь.jpg" alt="Вознесенский храм в с. Ыб" style="width:115px; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 6px rgba(0,0,0,0.1); cursor:pointer; transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+              </a>
+              <div style="font-size:0.82rem; line-height:1.45; color:var(--text-main);">
+                <div>🏛️ Монументальный каменный храм с высокой колокольней, воздвигнутый в 1827–1835 гг.</div>
+                <div style="margin-top:0.35rem;">💍 Родовой духовный центр предков по линии бабушки Риммы Александровны Туркиной: родов <strong>Зиновьевых, Пасынковых, Кызъюровых, Айбабиных</strong>.</div>
+              </div>
+            </div>
+
+            <ul style="font-size:0.82rem; line-height:1.5; margin:0 0 0.75rem 0; padding-left:1.15rem;">
+              <li><strong>Метрики таинств (НАРК ф. 130):</strong> здесь венчались Харлампий Яковлевич Пасынков и Параскева Круглякова (24.04.1846 г.); Иван Григорьевич Кызъюров и Александра Шилина (18.01.1859 г.); Платон Харлампиевич Пасынков и Анастасия Каракчиева (10.11.1874 г.).</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ЛОЙМА -->
+        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #d9770633; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
+              <h3 style="margin:0; font-size:1.05rem; color:#d97706;">⛪ с. Лойма — Церковь Успения Богородицы</h3>
+              <span style="background:#fffbeb; color:#d97706; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #fde68a;">Приход рода Сюткиных</span>
+            </div>
+            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">Прилузский район • Река Луза • Построена в 1802–1804 гг. • Росписи 1916 г.</div>
+
+            <div style="display:flex; gap:0.85rem; margin-bottom:0.75rem; align-items:flex-start;">
+              <a href="фото_храмов/Лойма_Успенская_церковь.jpg" target="_blank" title="Церковь Успения Богородицы в с. Лойма (нажмите для увеличения)">
+                <img src="фото_храмов/Лойма_Успенская_церковь.jpg" alt="Успенская церковь в с. Лойма" style="width:115px; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 6px rgba(0,0,0,0.1); cursor:pointer; transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+              </a>
+              <div style="font-size:0.82rem; line-height:1.45; color:var(--text-main);">
+                <div>🎨 Каменный храм с тёплым и холодным приделами Афанасия и Кирилла Александрийских. Сохранил росписи васнецовской школы 1916 г.</div>
+                <div style="margin-top:0.35rem;">🌾 Приходской храм прапрабабушки <strong>Марии Степановны Сюткиной</strong> (1911–1981), её отца Степана Петровича Сюткина (1880–1933) и деда Петра Сюткина.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- УСТЬ-ВЫМЬ -->
+        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #10b98133; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
+              <h3 style="margin:0; font-size:1.05rem; color:#059669;">⛪ с. Усть-Вымь — Михайло-Архангельский монастырь и храмы</h3>
+              <span style="background:#ecfdf5; color:#059669; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #a7f3d0;">Прямой предок (1731 г.)</span>
+            </div>
+            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">Усть-Вымская волость • Кафедральный духовный центр св. Стефана Пермского</div>
+
+            <div style="display:flex; gap:0.85rem; margin-bottom:0.75rem; align-items:flex-start;">
+              <a href="фото_храмов/Усть_Вымь_Михайло_Архангельский_храм.jpg" target="_blank" title="Усть-Вымский ансамбль (нажмите для увеличения)">
+                <img src="фото_храмов/Усть_Вымь_Михайло_Архангельский_храм.jpg" alt="Усть-Вымский Михайло-Архангельский ансамбль" style="width:115px; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 6px rgba(0,0,0,0.1); cursor:pointer; transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+              </a>
+              <div style="font-size:0.82rem; line-height:1.45; color:var(--text-main);">
+                <div>🏛️ Исторический кафедральный центр Пермской епархии на слиянии рек Выми и Вычегды.</div>
+                <div style="margin-top:0.35rem;">📜 Здесь в Благовещенской церкви в 1731 г. служил священник <strong>о. Пётр Исаакович Туркин</strong> (прямой 8-й прадедушка, МК ГААО ф. 29, оп. 27, д. 1, л. 40).</div>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:0.35rem; border-top:1px dashed var(--border-color); padding-top:0.5rem;">
+            <button class="pill-btn" onclick="focusPerson('I72'); switchTab('tree');" style="font-size:0.74rem;">🎯 о. Пётр Исаакович</button>
+          </div>
+        </div>
+
+        <!-- ЛЯЛИ -->
+        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #ec489933; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
+              <h3 style="margin:0; font-size:1.05rem; color:#db2777;">⛪ с. Ляли — Богоявленская церковь</h3>
+              <span style="background:#fdf2f8; color:#db2777; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #fbcfe8;">Клир и приход предков</span>
+            </div>
+            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">Княжпогостский район • Река Вымь • Памятник зодчества 1852–1856 гг.</div>
+
+            <div style="display:flex; gap:0.85rem; margin-bottom:0.75rem; align-items:flex-start;">
+              <a href="фото_храмов/Ляли_Богоявленская_церковь.jpg" target="_blank" title="Богоявленская церковь в с. Ляли (нажмите для увеличения)">
+                <img src="фото_храмов/Ляли_Богоявленская_церковь.jpg" alt="Богоявленская церковь в с. Ляли" style="width:115px; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 6px rgba(0,0,0,0.1); cursor:pointer; transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+              </a>
+              <div style="font-size:0.82rem; line-height:1.45; color:var(--text-main);">
+                <div>🏰 Каменный храм на древнем торговом пути по реке Вымь.</div>
+                <div style="margin-top:0.35rem;">🔔 Здесь служил дьячком <strong>Симеон Алексеевич Туркин</strong> (1822–1847 гг.). Также являлся родовым приходом семей <strong>Каракчиевых</strong> и <strong>Шилиных</strong>.</div>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:0.35rem; border-top:1px dashed var(--border-color); padding-top:0.5rem;">
+            <button class="pill-btn" onclick="focusPerson('I235'); switchTab('tree');" style="font-size:0.74rem;">🎯 Симеон Ляльский</button>
           </div>
         </div>
 
@@ -2215,60 +2521,6 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
           </div>
         </div>
 
-        <!-- УСТЬ-ВЫМЬ -->
-        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #10b98133; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
-          <div>
-            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
-              <h3 style="margin:0; font-size:1.05rem; color:#059669;">⛪ с. Усть-Вымь — Благовещенская церковь</h3>
-              <span style="background:#ecfdf5; color:#059669; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #a7f3d0;">Прямой предок (1731 г.)</span>
-            </div>
-            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">Усть-Вымская волость • Духовный центр св. Стефана Пермского</div>
-            <p style="font-size:0.83rem; line-height:1.5; margin-bottom:0.65rem;">Кафедральный и исторический центр Пермской епархии на слиянии рек Выми и Вычегды:</p>
-            <ul style="font-size:0.82rem; line-height:1.5; margin:0 0 0.75rem 0; padding-left:1.15rem;">
-              <li><strong>Священник о. Пётр Исаакович Туркин</strong> (род. ок. 1655–1661 гг. — прямой 8-й прадедушка) — сын церковного дьячка Исаака. Служил в Коквицкой Рождественской церкви (1696–1710 гг.) и Усть-Вымской Благовещенской церкви (Метрические книги 1731 г., ГААО ф. 29, оп. 27, д. 1, л. 40). Супруга Епистимия, дочери Дарья и Епистимия.</li>
-            </ul>
-          </div>
-          <div style="display:flex; flex-wrap:wrap; gap:0.35rem; border-top:1px dashed var(--border-color); padding-top:0.5rem;">
-            <button class="pill-btn" onclick="focusPerson('I72'); switchTab('tree');" style="font-size:0.74rem;">🎯 о. Пётр Исаакович</button>
-          </div>
-        </div>
-
-        <!-- ЛАЛЬСК -->
-        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #8b5cf633; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
-          <div>
-            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
-              <h3 style="margin:0; font-size:1.05rem; color:#7c3aed;">⛪ г. Лальск — Воскресенский собор</h3>
-              <span style="background:#f5f3ff; color:#7c3aed; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #ddd6fe;">Соборный диакон (1870–1904)</span>
-            </div>
-            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">г. Лальск, Вологодская епархия (ныне Кировская область)</div>
-            <p style="font-size:0.83rem; line-height:1.5; margin-bottom:0.65rem;">Величественный пятиглавый Воскресенский собор Лальска:</p>
-            <ul style="font-size:0.82rem; line-height:1.5; margin:0 0 0.75rem 0; padding-left:1.15rem;">
-              <li><strong>Соборный диакон о. Михаил Алексеевич Туркин</strong> (ок. 1839 – 14.06.1904) — сын диакона о. Алексея Коквицкого. Окончил Вологодскую духовную семинарию (1862 г.). С 1868 г. дьячок Лальского собора, 20.07.1870 г. рукоположен во диакона, с 1871 г. — штатный диакон собора (34 года беспорочного соборного служения). Супруга София Прокопьевна Брызгалова.</li>
-            </ul>
-          </div>
-          <div style="display:flex; flex-wrap:wrap; gap:0.35rem; border-top:1px dashed var(--border-color); padding-top:0.5rem;">
-            <button class="pill-btn" onclick="focusPerson('I236'); switchTab('tree');" style="font-size:0.74rem;">🎯 о. Михаил Лальский</button>
-          </div>
-        </div>
-
-        <!-- ЛЯЛИ -->
-        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #ec489933; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
-          <div>
-            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
-              <h3 style="margin:0; font-size:1.05rem; color:#db2777;">⛪ с. Ляли — Богоявленская церковь</h3>
-              <span style="background:#fdf2f8; color:#db2777; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #fbcfe8;">Дьячок (1840-е гг.)</span>
-            </div>
-            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">Княжпогостский район • Река Вымь</div>
-            <p style="font-size:0.83rem; line-height:1.5; margin-bottom:0.65rem;">Старинный приход на берегу реки Выми:</p>
-            <ul style="font-size:0.82rem; line-height:1.5; margin:0 0 0.75rem 0; padding-left:1.15rem;">
-              <li><strong>Дьячок Симеон Алексеевич Туркин</strong> (ок. 1822 – 14.02.1847) — сын диакона о. Алексея Коквицкого и брат о. Михаила Лальского. В 1840 г. посвящен в стихарь епископом Стефаном, служил дьячком Богоявленской церкви до безвременной кончины в возрасте 25 лет (НА РК, Клировые ведомости).</li>
-            </ul>
-          </div>
-          <div style="display:flex; flex-wrap:wrap; gap:0.35rem; border-top:1px dashed var(--border-color); padding-top:0.5rem;">
-            <button class="pill-btn" onclick="focusPerson('I235'); switchTab('tree');" style="font-size:0.74rem;">🎯 Симеон Ляльский</button>
-          </div>
-        </div>
-
         <!-- ПАЛЕВИЦЫ И ДР. -->
         <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #f59e0b33; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
@@ -2290,24 +2542,44 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
           </div>
         </div>
 
-        <!-- УЛЬЯНОВСКИЙ МОНАСТЫРЬ И С. КУЖБА -->
-        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #6366f133; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
-          <div>
-            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
-              <h3 style="margin:0; font-size:1.05rem; color:#4f46e5;">⛪ с. Ульяново и с. Кужба — Троице-Стефановский монастырь</h3>
-              <span style="background:#eef2ff; color:#4f46e5; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #c7d2fe;">Исповедники XX века</span>
-            </div>
-            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">Усть-Сысольский и Усть-Куломский уезды • Верхняя Вычегда • 1865–1937 гг.</div>
-            <p style="font-size:0.83rem; line-height:1.5; margin-bottom:0.65rem;">Монашеское служение и исповеднический подвиг за веру в годы гонений:</p>
-            <ul style="font-size:0.82rem; line-height:1.5; margin:0 0 0.75rem 0; padding-left:1.15rem;">
-              <li><strong>Монах Виталий (Виталий Иванович Туркин)</strong> (1865, с. Коквицы – 06.11.1937) — родной брат прапрапрадеда Алексея Ивановича Туркина и дядя Николая Алексеевича Туркина. Монах знаменитого Троице-Стефано-Ульяновского мужского монастыря. После закрытия обители в 1923 г. проживал в с. Кужба вместе с казначеем обители священномучеником иеромонахом Мелетием (Федюнёвым), совершая требы для верующих. Арестован в сентябре 1937 г., приговорён тройкой УНКВД к 10 годам ИТЛ, умер от тягот заключения на Вогваздинском лагпункте Ухтпечлага. Реабилитирован.</li>
+      </div>
+
+      <!-- CONSOLIDATED ARCHIVE FUNDS & SACRAMENTS BLOCK -->
+      <div style="background:var(--bg-surface); border-radius:10px; border:1.5px solid var(--border-color); padding:1.25rem; margin-top:1.25rem; box-shadow:var(--shadow);">
+        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+          <span style="font-size:1.35rem;">📜</span>
+          <h3 style="margin:0; font-size:1.1rem; color:var(--text-main);">Сводные архивные фонды и метрические свидетельства таинств предков</h3>
+        </div>
+        <p style="font-size:0.85rem; line-height:1.6; color:var(--text-muted); margin-bottom:1rem;">
+          Все поколения предков были прихожанами старинных северных церквей Усть-Сысольского, Усть-Вымского и Яренского уездов Вологодской губернии. Их метрические книги, исповедные ведомости и ревизские сказки сосредоточены в государственных архивах:
+        </p>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:1rem;">
+          <div style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color); font-size:0.83rem; line-height:1.55;">
+            <div style="font-weight:700; color:#2563eb; margin-bottom:0.45rem; font-size:0.88rem;">💍 Документально подтвержденные браковенчания предков:</div>
+            <ul style="margin:0; padding-left:1.15rem;">
+              <li><strong>24 апреля 1846 г.:</strong> Харлампий Яковлевич Пасынков (19 лет) обвенчался с девицей Параскевой Ивановной Кругляковой (18 лет) в Вознесенском приходе с. Ыб.</li>
+              <li><strong>24 января 1858 г.:</strong> Иван Иванович Поздеев (23 года) обвенчался с девицей Синклитикией Ионичной Каракчиевой (17 лет) в приходе д. Ероздино / с. Ыб.</li>
+              <li><strong>18 января 1859 г.:</strong> Иван Григорьевич Кызъюров (23 года) обвенчался с девицей Александрой Николаевной Шилиной (20 лет) в приходе с. Малый Ыб.</li>
+              <li><strong>10 ноября 1874 г.:</strong> Платон Харлампиевич Пасынков обвенчался с девицей Анастасией Андреевной Каракчиевой («венец 10.11.1874») в приходе с. Ыб.</li>
             </ul>
           </div>
-          <div style="display:flex; flex-wrap:wrap; gap:0.35rem; border-top:1px dashed var(--border-color); padding-top:0.5rem;">
-            <button class="pill-btn" onclick="focusPerson('I307'); switchTab('tree');" style="font-size:0.74rem;">🎯 монах Виталий</button>
+
+          <div style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color); font-size:0.83rem; line-height:1.55;">
+            <div style="font-weight:700; color:#059669; margin-bottom:0.45rem; font-size:0.88rem;">🏛️ Государственные архивные фонды:</div>
+            <ul style="margin:0; padding-left:1.15rem;">
+              <li><strong>НАРК (Сыктывкар):</strong> Ф. 231 (ревизские сказки 1816, 1834, 1850 гг.), Ф. 254 (МК Коквицкой церкви), Ф. 130 (МК Вознесенского собора с. Ыб).</li>
+              <li><strong>ГАВО (Вологда):</strong> Ф. 388 (8-я ревизия 1834 г. Усть-Вымской волости, семья № 43 Туркиных; клировые ведомости).</li>
+              <li><strong>ВЦА (Великий Устюг):</strong> Ф. 363 (Исповедная роспись 1773 г., двор 167 священника о. Степана Туркина).</li>
+              <li><strong>РГАДА (Москва):</strong> Ф. 1209 (переписи 1646 и 1678 гг. Оквада и Коквиц), Ф. 350 (2-я ревизия 1748 г. по д. Палтыдор рода Летовых).</li>
+              <li><strong>ГААО (Архангельск):</strong> Ф. 29, оп. 27, д. 1 (МК Усть-Вымской Благовещенской церкви 1731 г. священника о. Петра Туркина).</li>
+              <li><strong>ГАКО (Киров):</strong> Ф. 1310 (послужные списки соборного диакона о. Михаила Туркина).</li>
+              <li><strong>Архив УФСБ по РК:</strong> Дело № КП-7444 (1937 г., монах Виталий Туркин, Ульяновский монастырь).</li>
+            </ul>
           </div>
         </div>
       </div>
+
     </div>
 
     <!-- GEOGRAPHY SECTION -->
@@ -2585,30 +2857,6 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </div>
       </div>
     </div>
-
-    <!-- CHURCHES AND ARCHIVES SECTION -->
-    <div class="info-card">
-      <h2>📜 Приходские храмы предков и архивные фонды НАРК</h2>
-      <p style="line-height:1.6; font-size:0.88rem; margin-bottom:0.75rem;">Все поколения предков были прихожанами старинных северных церквей Усть-Сысольского, Усть-Вымского и Яренского уездов Вологодской губернии (ныне Республика Коми). Метрические книги, исповедные ведомости и ревизские сказки сосредоточены в Национальном архиве Республики Коми (НАРК):</p>
-      <ul style="font-size:0.86rem; line-height:1.6;">
-        <li><strong>Коквицкая Христорождественская церковь (XVII–XIX вв.)</strong> — фонды НАРК № 231, № 254, ГАВО ф. 388, ВЦА ф. 363 (родовые метрики Туркиных, Летовых, Ярановых, послужные списки священнослужителей Туркиных).</li>
-        <li><strong>Введенская церковь погоста Оквад (XVII–XVIII вв.)</strong> — РГАДА ф. 1209, ВУЦА ф. 363 (служение приказного Афанасия Семёновича, дьячка Исаакия и о. Автонома Туркиных).</li>
-        <li><strong>Благовещенская церковь с. Усть-Вымь (1731 г.)</strong> — фонд ГААО № 29 (служение священника о. Петра Исааковича Туркина).</li>
-        <li><strong>Покровская церковь с. Палевицы (1734–1758 гг.)</strong> — фонды ВУЦА, РГИА и ГААО (служение священника о. Алексея Тимофеевича Туркина).</li>
-        <li><strong>Воскресенский собор г. Лальска (1868–1904 гг.)</strong> — фонд ГАКО № 1310 (34 года штатного соборного диаконского служения о. Михаила Алексеевича Туркина).</li>
-        <li><strong>Троице-Стефано-Ульяновский мужской монастырь (1865–1937 гг.)</strong> — монастырское служение монаха Виталия (Виталия Ивановича Туркина); архивно-следственное дело УНКВД Коми АССР 1937 г. (Архив УФСБ РФ по РК, № КП-7444).</li>
-        <li><strong>Лоемская Успенская церковь (1802–1804 гг.)</strong> — приход рода Сюткиных.</li>
-        <li><strong>Свято-Вознесенский собор с. Ыб (1827–1835 гг.)</strong> — фонд НАРК № 130 (метрики Зиновьевых, Пасынковых, Кызъюровых, Айбабиных).</li>
-        <li><strong>Никольская церковь в д. Ероздино / Вёздино (1901 г.)</strong> — приход Шуктомовых, Полещиковых, Поздеевых.</li>
-        <li><strong>Богоявленский храм в д. Ляли (1852–1856 гг.)</strong> — приход Каракчиевых и Шилиных.</li>
-        <li><strong>Венчание 24 апреля 1846 года:</strong> Харлампий Яковлевич Пасынков (19 лет) обвенчался с девицей Параскевой Ивановной (Кругляковой) (18 лет) в приходе села Ыб.</li>
-        <li><strong>Венчание 24 января 1858 года:</strong> Иван Иванович Поздеев (23 года) обвенчался с девицей Синклитикией Ионичной (Каракчиевой) (17 лет) в приходе деревни Ероздино / села Ыб.</li>
-        <li><strong>Венчание 18 января 1859 года:</strong> Иван Григорьевич Кызъюров (23 года) обвенчался с девицей Александрой Николаевной (Шилиной) (20 лет) в приходе села Малый Ыб.</li>
-        <li><strong>Венчание 10 ноября 1874 года:</strong> Платон Харлампиевич Пасынков обвенчался с Анастасией Андреевной (Каракчиевой) («венец 10.11.1874»).</li>
-        <li><strong>Рождение 3 ноября 1876 года:</strong> Николай Алексеевич Туркин родился в д. Сюлатуйской (архивная ссылка на метрическую книгу «с. 267»).</li>
-      </ul>
-    </div>
-  </div>
 
   <!-- TAB 6: SOURCES AND BIBLIOGRAPHY VIEW -->
   <div id="view-sources" class="view-section">
