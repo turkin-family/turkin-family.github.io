@@ -604,6 +604,22 @@ main {{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}}
+.pinned-gen-title:hover {{
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+}}
+.pinned-gen-title.active-gen {{
+  background: var(--accent) !important;
+  color: #fff !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.75) !important;
 }}
 
 /* CANVAS & LAYERS */
@@ -925,17 +941,7 @@ main {{
 
 /* OTHER VIEWS */
 
-  .doc-viewer-modal {{ padding: 0; }}
-  .doc-viewer-container {{ max-width: 100%; height: 100vh; border-radius: 0; border: none; }}
-  .doc-nav-btn {{ width: 38px; height: 38px; font-size: 1.1rem; }}
-  .doc-nav-btn.prev {{ left: 0.5rem; }}
-  .doc-nav-btn.next {{ right: 0.5rem; }}
-  .doc-viewer-header {{ padding: 0.55rem 0.75rem; gap: 0.5rem; }}
-  .doc-close-btn {{ padding: 0.35rem 0.6rem !important; font-size: 0.76rem !important; }}
-  .doc-viewer-footer {{ padding: 0.55rem 0.75rem; flex-direction: column; align-items: flex-start; gap: 0.4rem; }}
-  .doc-viewer-footer-counter {{ align-self: flex-end; }}
-
-  #view-list, #view-table, #view-archive, #view-info, #view-sources, #view-stats {{
+#view-list, #view-table, #view-archive, #view-info, #view-sources, #view-stats {{
   max-width: 1200px;
   margin: 0 auto;
   padding: 1.5rem;
@@ -1078,18 +1084,21 @@ tr:hover td {{
 .modal-overlay {{
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(2px);
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
   z-index: 2000;
   display: none;
   align-items: center;
   justify-content: center;
+  padding: 1rem;
+  box-sizing: border-box;
 }}
 .modal-overlay.open {{ display: flex; }}
 .modal-card {{
-  width: 90%;
+  width: 92%;
   max-width: 580px;
-  max-height: 85vh;
+  max-height: calc(100vh - 2rem);
+  max-height: calc(100dvh - 2rem);
   background: var(--bg-surface);
   border-radius: var(--radius);
   box-shadow: var(--shadow-lg);
@@ -1097,6 +1106,8 @@ tr:hover td {{
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  box-sizing: border-box;
+  margin: auto;
   animation: modalIn 0.18s ease-out;
 }}
 @keyframes modalIn {{
@@ -1295,17 +1306,16 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
 /* LIGHTBOX DOC VIEWER */
 .doc-viewer-modal {{
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background: rgba(10, 15, 29, 0.92);
   backdrop-filter: blur(8px);
   z-index: 99999;
   display: none;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 1.25rem;
+  box-sizing: border-box;
+  overflow: hidden;
 }}
 .doc-viewer-modal.open {{
   display: flex;
@@ -1315,13 +1325,19 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
   border: 1px solid var(--border-color);
   border-radius: 12px;
   width: 100%;
-  max-width: 1150px;
-  height: 94vh;
+  max-width: 1100px;
+  height: auto;
+  max-height: calc(100vh - 2.5rem);
+  max-height: calc(100dvh - 2.5rem);
   display: flex;
   flex-direction: column;
   box-shadow: 0 25px 60px rgba(0,0,0,0.6);
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
   position: relative;
+  box-sizing: border-box;
+  margin: auto;
 }}
 .doc-viewer-header {{
   padding: 0.75rem 1.25rem;
@@ -1331,6 +1347,10 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
   align-items: center;
   background: var(--bg-primary);
   gap: 0.75rem;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  flex-shrink: 0;
 }}
 .doc-viewer-badge {{
   font-size: 0.72rem;
@@ -1384,15 +1404,17 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
   transition: all 0.2s ease;
 }}
 .doc-viewer-viewport {{
-  flex: 1;
+  flex: 1 0 auto;
+  min-height: 48vh;
   position: relative;
   background: #080d1a;
-  overflow: hidden;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
   display: flex;
   align-items: center;
   justify-content: center;
-  user-select: none;
-  touch-action: none;
+  padding: 0.85rem;
+  box-sizing: border-box;
 }}
 .doc-nav-btn {{
   position: absolute;
@@ -1422,20 +1444,17 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
 .doc-nav-btn.next {{ right: 1rem; }}
 .doc-img-wrapper {{
   width: 100%;
-  height: 100%;
+  max-width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: grab;
-}}
-.doc-img-wrapper.dragging {{
-  cursor: grabbing;
+  position: relative;
 }}
 #docViewerImg {{
-  max-width: 96%;
-  max-height: 96%;
+  max-width: 100%;
+  height: auto;
+  max-height: 72vh;
   object-fit: contain;
-  transition: transform 0.08s ease-out;
   box-shadow: 0 6px 30px rgba(0,0,0,0.7);
   border-radius: 4px;
 }}
@@ -1447,6 +1466,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
   align-items: center;
   background: var(--bg-primary);
   gap: 1rem;
+  flex-shrink: 0;
 }}
 .doc-viewer-footer-counter {{
   font-size: 0.82rem;
@@ -1504,15 +1524,540 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
   font-weight: 600;
 }}
 
+/* FULLSCREEN SCAN LIGHTBOX MODAL WITH ZOOM & PAN */
+.fs-scan-modal {{
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  background: rgba(4, 7, 16, 0.96);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 100000;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+  animation: fsIn 0.2s ease-out;
+}}
+@keyframes fsIn {{
+  from {{ opacity: 0; transform: scale(0.98); }}
+  to {{ opacity: 1; transform: scale(1); }}
+}}
+.fs-scan-modal.open {{
+  display: flex;
+}}
+
+.fs-scan-header {{
+  height: 52px;
+  min-height: 52px;
+  padding: 0 1rem;
+  background: rgba(11, 15, 25, 0.92);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  z-index: 10;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}}
+.fs-scan-info {{
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}}
+.fs-scan-title {{
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}}
+.fs-scan-meta {{
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}}
+
+.fs-scan-tools {{
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}}
+.fs-tool-btn {{
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  border-radius: 6px;
+  padding: 0.32rem 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}}
+.fs-tool-btn:hover {{
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}}
+.fs-close-btn {{
+  background: #dc2626;
+  border: 1px solid #b91c1c;
+  color: #fff;
+  border-radius: 6px;
+  padding: 0.35rem 0.8rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}}
+.fs-close-btn:hover {{
+  background: #ef4444;
+}}
+
+.fs-scan-viewport {{
+  flex: 1 1 0;
+  min-height: 0;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  background: #03060f;
+  box-sizing: border-box;
+}}
+.fs-scan-viewport:active, .fs-scan-viewport.dragging {{
+  cursor: grabbing;
+}}
+
+.fs-scan-img-container {{
+  position: absolute;
+  transform-origin: center center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.05s linear;
+  will-change: transform;
+}}
+#fsScanImg {{
+  max-width: 95vw;
+  max-height: 86vh;
+  object-fit: contain;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.85);
+  border-radius: 4px;
+  pointer-events: none;
+}}
+
+/* FLOATING ZOOM CONTROLS AT BOTTOM FOR MOBILE & DESKTOP */
+.fs-floating-tools {{
+  position: absolute;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(17, 24, 39, 0.9);
+  border: 1px solid var(--border-color);
+  padding: 0.35rem 0.55rem;
+  border-radius: 30px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 20;
+}}
+.fs-float-btn {{
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  border-radius: 20px;
+  padding: 0.32rem 0.7rem;
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}}
+.fs-float-btn:hover {{
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}}
+.fs-float-close {{
+  background: #dc2626;
+  border-color: #b91c1c;
+  color: #fff;
+  font-weight: 700;
+}}
+.fs-float-close:hover {{
+  background: #ef4444;
+}}
+
+@media (max-width: 600px) {{
+  .fs-scan-tools .fs-tool-btn {{
+    display: none;
+  }}
+  .fs-floating-tools {{
+    bottom: 0.85rem;
+    padding: 0.3rem 0.45rem;
+    gap: 0.35rem;
+  }}
+  .fs-float-btn {{
+    padding: 0.28rem 0.55rem;
+    font-size: 0.72rem;
+  }}
+}}
+
+.card-gen {{
+  cursor: pointer;
+  transition: color 0.15s ease;
+}}
+.card-gen:hover {{
+  color: var(--accent) !important;
+  text-decoration: underline;
+}}
+.person-card.is-hidden-branch {{
+  display: none !important;
+}}
+.tree-link.is-hidden-branch {{
+  display: none !important;
+}}
+
+.gen-select-dropdown {{
+  padding: 0.22rem 0.45rem;
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  color: var(--text-main);
+  font-size: 0.74rem;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  max-width: 145px;
+  transition: border-color 0.15s ease;
+}}
+.gen-select-dropdown:hover, .gen-select-dropdown:focus {{
+  border-color: var(--accent);
+}}
+
+.branch-select-dropdown {{
+  display: none;
+}}
+.branch-pill-buttons {{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}}
+
+/* MOBILE MENU DRAWER & BUTTON */
+.mobile-menu-btn {{
+  display: none;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--bg-primary);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}}
+.mobile-menu-btn:hover, .mobile-menu-btn:active {{
+  background: var(--accent-light);
+  border-color: var(--accent);
+  color: var(--accent);
+}}
+
+.mobile-drawer-backdrop {{
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 2999;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}}
+.mobile-drawer-backdrop.open {{
+  display: block;
+  opacity: 1;
+}}
+
+.mobile-drawer {{
+  position: fixed;
+  top: 0;
+  right: -340px;
+  width: min(320px, 86vw);
+  height: 100vh;
+  height: 100dvh;
+  background: var(--bg-surface);
+  border-left: 1px solid var(--border-color);
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+  z-index: 3000;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.26s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}}
+.mobile-drawer.open {{
+  right: 0;
+}}
+.mobile-drawer-header {{
+  padding: 0.85rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  flex-shrink: 0;
+}}
+.mobile-drawer-brand {{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}}
+.mobile-drawer-close {{
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}}
+.mobile-drawer-close:hover {{
+  color: var(--text-main);
+  border-color: var(--accent);
+}}
+.mobile-drawer-body {{
+  padding: 0.9rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}}
+.drawer-search-container {{
+  position: relative;
+  width: 100%;
+}}
+.drawer-search-container .search-box {{
+  width: 100%;
+}}
+.drawer-search-container .search-box input {{
+  width: 100% !important;
+  box-sizing: border-box !important;
+}}
+.drawer-search-results {{
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: var(--shadow-lg);
+  max-height: 220px;
+  overflow-y: auto;
+  z-index: 100;
+  display: none;
+  margin-top: 4px;
+}}
+.drawer-search-results.open {{
+  display: block;
+}}
+.drawer-theme-box {{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.3rem 0.2rem;
+}}
+.drawer-divider {{
+  height: 1px;
+  background: var(--border-color);
+  margin: 0.2rem 0;
+}}
+.drawer-nav-title {{
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.2rem;
+}}
+.drawer-nav-list {{
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}}
+.drawer-nav-item {{
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: var(--bg-primary);
+  color: var(--text-main);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  width: 100%;
+  box-sizing: border-box;
+}}
+.drawer-nav-item:hover, .drawer-nav-item.active {{
+  background: var(--accent-light);
+  border-color: var(--accent);
+  color: var(--accent);
+}}
+.drawer-nav-icon {{
+  font-size: 1.15rem;
+  line-height: 1;
+}}
+.drawer-nav-badge {{
+  margin-left: auto;
+  font-size: 0.72rem;
+  padding: 0.12rem 0.45rem;
+  border-radius: 10px;
+  background: rgba(37, 99, 235, 0.15);
+  color: var(--accent);
+  font-weight: 700;
+}}
+.mobile-drawer-footer {{
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  flex-shrink: 0;
+}}
+
+/* BOTTOM ANCHOR NAVIGATION BAR */
+.info-bottom-bar {{
+  position: sticky;
+  bottom: 0.65rem;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 640px;
+  margin: 1.5rem auto 0.35rem auto;
+  z-index: 80;
+  pointer-events: auto;
+  box-sizing: border-box;
+  padding: 0 0.25rem;
+}}
+.info-bottom-scroll {{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.3rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+  padding: 0.28rem 0.35rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}}
+.info-bottom-pill {{
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 0.35rem 0.35rem;
+  border-radius: 20px;
+  background: var(--bg-primary);
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 0.74rem;
+  font-weight: 600;
+  border: 1px solid var(--border-color);
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  white-space: nowrap;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}}
+.info-bottom-pill:hover, .info-bottom-pill.active {{
+  background: var(--accent);
+  color: #fff !important;
+  border-color: var(--accent);
+  box-shadow: 0 2px 8px rgba(37,99,235,0.3);
+}}
+
+.pill-lbl-short {{ display: none; }}
+.pill-lbl-full {{ display: inline; }}
+
+@media (max-width: 680px) {{
+  .info-bottom-bar {{
+    bottom: 0.45rem !important;
+    padding: 0 0.15rem !important;
+    margin: 1rem auto 0.2rem auto !important;
+    max-width: 100% !important;
+  }}
+  .info-bottom-scroll {{
+    padding: 0.22rem 0.25rem !important;
+    gap: 0.2rem !important;
+    border-radius: 24px !important;
+  }}
+  .info-bottom-pill {{
+    padding: 0.3rem 0.15rem !important;
+    font-size: 0.69rem !important;
+    gap: 0.15rem !important;
+    border-radius: 16px !important;
+  }}
+  .pill-lbl-short {{ display: inline !important; }}
+  .pill-lbl-full {{ display: none !important; }}
+}}
+
+@media (max-width: 380px) {{
+  .info-bottom-pill {{
+    font-size: 0.64rem !important;
+    padding: 0.26rem 0.1rem !important;
+  }}
+}}
+
 @media (max-width: 820px) {{
   header {{
-    height: auto !important;
-    min-height: auto !important;
-    max-height: none !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    padding: 0.45rem 0.65rem 0.35rem !important;
-    gap: 0.35rem !important;
+    height: 52px !important;
+    min-height: 52px !important;
+    max-height: 52px !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0 0.75rem !important;
+    gap: 0.5rem !important;
   }}
   .header-top {{
     display: flex;
@@ -1522,29 +2067,17 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
   }}
   .brand-text h1 {{ font-size: 0.95rem; margin: 0; padding: 0; line-height: 1.15; }}
   .brand-badge {{ display: block; font-size: 0.64rem; line-height: 1.1; margin-top: 1px; }}
-  .search-box input {{
-    width: 110px;
-    padding: 0.3rem 0.45rem 0.3rem 1.5rem;
-    font-size: 0.75rem;
-  }}
-  .search-box input:focus {{
-    width: 150px;
+  .header-right {{
+    display: none !important;
   }}
   .nav-tabs {{
-    width: 100%;
-    overflow-x: auto;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding: 0.2rem;
-    gap: 0.25rem;
-    justify-content: flex-start;
+    display: none !important;
   }}
-  .nav-tabs::-webkit-scrollbar {{ display: none; }}
-  .nav-tab {{
-    padding: 0.32rem 0.55rem;
-    font-size: 0.76rem;
-    flex-shrink: 0;
+  .mobile-menu-btn {{
+    display: inline-flex !important;
+  }}
+  #view-info, #view-sources {{
+    padding-bottom: 4.8rem !important;
   }}
   .tree-subbar {{
     top: 0.35rem;
@@ -1556,6 +2089,9 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
     pointer-events: none;
   }}
   .tree-subbar-left {{
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.35rem !important;
     overflow-x: auto;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
@@ -1566,6 +2102,16 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
     pointer-events: auto;
   }}
   .tree-subbar-left::-webkit-scrollbar {{ display: none; }}
+  .branch-select-dropdown {{
+    display: inline-block !important;
+    max-width: 105px !important;
+  }}
+  .branch-pill-buttons {{
+    display: none !important;
+  }}
+  .gen-select-dropdown {{
+    max-width: 105px !important;
+  }}
   .tree-subbar-right {{ display: none; }}
   .pinned-gen-bar {{ top: 46px; }}
   .tree-legend {{ display: none; }}
@@ -1584,7 +2130,8 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
   .modal-card {{
     width: 95% !important;
     max-width: 95% !important;
-    max-height: 90vh !important;
+    max-height: calc(100vh - 1.5rem) !important;
+    max-height: calc(100dvh - 1.5rem) !important;
     border-radius: 12px;
   }}
   .modal-header {{
@@ -1594,13 +2141,44 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
     padding: 0.85rem 1rem;
   }}
   
-  .doc-viewer-modal {{ padding: 0; }}
-  .doc-viewer-container {{ max-width: 100%; height: 100vh; border-radius: 0; border: none; }}
+  .doc-viewer-modal {{
+    padding: 0.6rem !important;
+    padding-top: max(0.6rem, env(safe-area-inset-top)) !important;
+    padding-bottom: max(0.6rem, env(safe-area-inset-bottom)) !important;
+    padding-left: max(0.6rem, env(safe-area-inset-left)) !important;
+    padding-right: max(0.6rem, env(safe-area-inset-right)) !important;
+    box-sizing: border-box !important;
+  }}
+  .doc-viewer-container {{
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: calc(100vh - 1.2rem) !important;
+    max-height: calc(100dvh - 1.2rem) !important;
+    border-radius: 10px !important;
+    border: 1px solid var(--border-color) !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    margin: auto 0 !important;
+  }}
   .doc-nav-btn {{ width: 38px; height: 38px; font-size: 1.1rem; }}
-  .doc-nav-btn.prev {{ left: 0.5rem; }}
-  .doc-nav-btn.next {{ right: 0.5rem; }}
-  .doc-viewer-header {{ padding: 0.55rem 0.75rem; gap: 0.5rem; }}
-  .doc-close-btn {{ padding: 0.35rem 0.6rem !important; font-size: 0.76rem !important; }}
+  .doc-nav-btn.prev {{ left: 0.4rem; }}
+  .doc-nav-btn.next {{ right: 0.4rem; }}
+  .doc-viewer-header {{
+    padding: 0.55rem 0.75rem !important;
+    gap: 0.5rem !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 30 !important;
+  }}
+  .doc-close-btn {{ padding: 0.35rem 0.65rem !important; font-size: 0.78rem !important; }}
+  .doc-viewer-viewport {{
+    min-height: 280px !important;
+    padding: 0.5rem !important;
+  }}
+  #docViewerImg {{
+    max-height: 55vh !important;
+  }}
   .doc-viewer-footer {{ padding: 0.55rem 0.75rem; flex-direction: column; align-items: flex-start; gap: 0.4rem; }}
   .doc-viewer-footer-counter {{ align-self: flex-end; }}
 
@@ -1787,17 +2365,11 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
 
 @media (max-width: 480px) {{
   header {{
-    padding: 0.35rem 0.5rem 0.25rem !important;
+    padding: 0 0.55rem !important;
   }}
   .brand-text h1 {{ font-size: 0.88rem !important; }}
   .brand-badge {{ display: none !important; }}
-  .search-box input {{
-    width: 90px !important;
-    font-size: 0.72rem !important;
-    padding: 0.25rem 0.4rem 0.25rem 1.3rem !important;
-  }}
-  .search-box input:focus {{ width: 125px !important; }}
-  .nav-tab {{ padding: 0.28rem 0.45rem !important; font-size: 0.72rem !important; }}
+  .mobile-menu-btn {{ padding: 0.3rem 0.55rem !important; font-size: 0.8rem !important; }}
   .info-card {{ padding: 0.75rem 0.6rem !important; }}
   .stat-number {{ font-size: 1.35rem !important; }}
 }}
@@ -1805,7 +2377,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
 </head>
 <body>
 
-<!-- RESPONSIVE HEADER (SINGLE ROW ON DESKTOP, TWO ROWS ON MOBILE) -->
+<!-- RESPONSIVE HEADER -->
 <header>
   <div class="header-top">
     <div class="brand">
@@ -1823,6 +2395,10 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
       </div>
       <button class="btn-icon" onclick="toggleTheme()" title="Сменить тему оформления">🌓</button>
     </div>
+
+    <button class="mobile-menu-btn" onclick="openMobileMenu()" aria-label="Открыть меню">
+      <span>☰</span> <span>Меню</span>
+    </button>
   </div>
 
   <nav class="nav-tabs">
@@ -1836,19 +2412,124 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
   </nav>
 </header>
 
+<!-- MOBILE DRAWER MENU & BACKDROP -->
+<div id="mobileDrawerBackdrop" class="mobile-drawer-backdrop" onclick="closeMobileMenu()"></div>
+<aside id="mobileDrawer" class="mobile-drawer" aria-label="Мобильное меню навигации">
+  <div class="mobile-drawer-header">
+    <div class="mobile-drawer-brand">
+      <span style="font-size:1.35rem;">🌳</span>
+      <div style="font-weight:700; font-size:0.92rem; line-height:1.2;">Родословная Туркиных</div>
+    </div>
+    <button class="mobile-drawer-close" onclick="closeMobileMenu()" title="Закрыть меню">✕</button>
+  </div>
+
+  <div class="mobile-drawer-body">
+    <!-- SEARCH IN DRAWER -->
+    <div class="drawer-search-container">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="drawerSearchInput" placeholder="Поиск персоны..." oninput="handleDrawerSearch(this.value)">
+      </div>
+      <div id="drawerSearchResults" class="drawer-search-results"></div>
+    </div>
+
+    <!-- THEME TOGGLE -->
+    <div class="drawer-theme-box">
+      <span style="font-size:0.82rem; font-weight:600; color:var(--text-muted);">Тема оформления:</span>
+      <button class="pill-btn" onclick="toggleTheme()" id="drawerThemeBtn" style="font-size:0.78rem; padding:0.3rem 0.7rem;">
+        <span id="drawerThemeIcon">🌓</span> <span id="drawerThemeText">Тема</span>
+      </button>
+    </div>
+
+    <div class="drawer-divider"></div>
+
+    <!-- VERTICAL NAVIGATION ITEMS -->
+    <div class="drawer-nav-title">Разделы:</div>
+    <nav class="drawer-nav-list">
+      <button class="drawer-nav-item active" data-tab="tree" onclick="handleDrawerNav('tree')">
+        <span class="drawer-nav-icon">🌿</span>
+        <span>Интерактивное древо</span>
+      </button>
+      <button class="drawer-nav-item" data-tab="list" onclick="handleDrawerNav('list')">
+        <span class="drawer-nav-icon">📜</span>
+        <span>Поколения (роспись)</span>
+      </button>
+      <button class="drawer-nav-item" data-tab="table" onclick="handleDrawerNav('table')">
+        <span class="drawer-nav-icon">📋</span>
+        <span>Таблица всех персон</span>
+      </button>
+      <button class="drawer-nav-item" data-tab="archive" onclick="handleDrawerNav('archive')">
+        <span class="drawer-nav-icon">🏛️</span>
+        <span>Архив документов</span>
+        <span class="drawer-nav-badge">{len(archive_catalog.DOCS_CATALOG)}</span>
+      </button>
+      <button class="drawer-nav-item" data-tab="info" onclick="handleDrawerNav('info')">
+        <span class="drawer-nav-icon">🗺️</span>
+        <span>Места и роды</span>
+      </button>
+      <button class="drawer-nav-item" data-tab="sources" onclick="handleDrawerNav('sources')">
+        <span class="drawer-nav-icon">📚</span>
+        <span>Источники и литература</span>
+      </button>
+      <button class="drawer-nav-item" data-tab="stats" onclick="handleDrawerNav('stats')">
+        <span class="drawer-nav-icon">📊</span>
+        <span>Статистика древа</span>
+      </button>
+    </nav>
+  </div>
+
+  <div class="mobile-drawer-footer">
+    <div style="font-size:0.72rem; color:var(--text-muted); text-align:center;">
+      {max_gen} поколений • {total_persons} персон • 1490–2024 гг.
+    </div>
+  </div>
+</aside>
+
 <main>
   <!-- TAB 1: VISUAL TREE VIEW WITH SVG CONNECTORS & ARROWS -->
   <div id="view-tree" class="view-section active">
     <!-- SUB-TOOLBAR FOR TREE VIEW -->
     <div class="tree-subbar">
       <div class="tree-subbar-left">
-        <span class="subbar-label">Ветви:</span>
-        <button class="pill-btn" onclick="focusPerson('I1')">👑 Николай</button>
-        <button class="pill-btn" onclick="focusPerson('I2')">🏛️ Туркины</button>
-        <button class="pill-btn" onclick="focusPerson('I14')">🌾 Шехонины</button>
-        <button class="pill-btn" onclick="focusPerson('I10')">🌲 Шуктомовы</button>
-        <button class="pill-btn" onclick="focusPerson('I16')">📜 Зиновьевы</button>
-        <button class="pill-btn" onclick="focusPerson('I3')">🌴 Таиланд</button>
+        <button class="pill-btn" id="btnToggleDirectLine" onclick="toggleDirectLine()" title="Показать только прямую линию предков Николая">🎯 Прямая линия</button>
+        <select class="gen-select-dropdown" id="genSelectDropdown" onchange="if(this.value) focusGeneration(parseInt(this.value));" title="Перейти к поколению">
+          <option value="">Поколения ▾</option>
+          <option value="1">I: Николай (2024)</option>
+          <option value="2">II: Родители (1991)</option>
+          <option value="3">III: Дедушки (1961–1970)</option>
+          <option value="4">IV: Прадедушки (1906–1935)</option>
+          <option value="5">V: Михаил Туркин (1906)</option>
+          <option value="6">VI: Николай Алексеевич (1876)</option>
+          <option value="7">VII: Алексей Иванович (1852)</option>
+          <option value="8">VIII: Иван Алексеевич (1825)</option>
+          <option value="9">IX: Алексей Григорьевич (1778)</option>
+          <option value="10">X: Григорий Степанович (1751)</option>
+          <option value="11">XI: Степан Иванович (1720)</option>
+          <option value="12">XII: Иван Петрович (1710)</option>
+          <option value="13">XIII: Священник Пётр (1678)</option>
+          <option value="14">XIV: Дьячок Исаак (1678)</option>
+          <option value="15">XV: Приказной Афанасий (1646)</option>
+          <option value="16">XVI: Патриарх Семён (~1608)</option>
+          <option value="20">XX: Турка малой (1490)</option>
+        </select>
+        <select class="gen-select-dropdown branch-select-dropdown" id="branchSelectDropdown" onchange="if(this.value) focusPerson(this.value);" title="Перейти к ветви рода">
+          <option value="">Ветви ▾</option>
+          <option value="I1">👑 Николай</option>
+          <option value="I2">🏛️ Туркины</option>
+          <option value="I14">🌾 Шехонины</option>
+          <option value="I10">🌲 Шуктомовы</option>
+          <option value="I16">📜 Зиновьевы</option>
+          <option value="I3">🌴 Таиланд</option>
+        </select>
+        <div class="branch-pill-buttons">
+          <span class="subbar-label" style="margin-left:0.25rem;">Ветви:</span>
+          <button class="pill-btn" onclick="focusPerson('I1')">👑 Николай</button>
+          <button class="pill-btn" onclick="focusPerson('I2')">🏛️ Туркины</button>
+          <button class="pill-btn" onclick="focusPerson('I14')">🌾 Шехонины</button>
+          <button class="pill-btn" onclick="focusPerson('I10')">🌲 Шуктомовы</button>
+          <button class="pill-btn" onclick="focusPerson('I16')">📜 Зиновьевы</button>
+          <button class="pill-btn" onclick="focusPerson('I3')">🌴 Таиланд</button>
+        </div>
       </div>
 
       <div class="tree-subbar-right">
@@ -1920,11 +2601,16 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
 
   <!-- TAB 2: GENERATIONS VIEW -->
   <div id="view-list" class="view-section">
-    <div style="background:var(--bg-surface); border:1px solid var(--border-color); border-radius:10px; padding:0.85rem 1.25rem; margin-bottom:1.25rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem; box-shadow:var(--shadow);">
-      <div style="font-size:0.88rem; color:var(--text-main); line-height:1.5;">
-        📖 <strong>Краеведческая основа:</strong> Поколения и даты верифицированы по книгам <em>«Усть-Вымское родословие»</em> <strong>Л. В. Ванеевой</strong> (Том 3) и <strong>Л. А. Молодцовой</strong> (Том 1).
+    <div style="background:var(--bg-surface); border:1px solid var(--border-color); border-radius:10px; padding:0.75rem 1.25rem; margin-bottom:1.25rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem; box-shadow:var(--shadow);">
+      <div style="display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap;">
+        <span style="font-size:0.88rem; font-weight:700; color:var(--text-main);">Линия предков:</span>
+        <button id="btnToggleDirectLineGen" class="pill-btn" onclick="toggleDirectLine()" title="Переключить: все родственники или только прямая линия предков" style="font-size:0.82rem; font-weight:600; cursor:pointer;">
+          🌳 Все родственники (197)
+        </button>
       </div>
-      <button class="pill-btn" onclick="switchTab('sources')" style="font-size:0.8rem; background:rgba(37,99,235,0.08); border-color:var(--accent);">📚 Об авторах и книгах →</button>
+      <div id="genCountBadge" style="font-size:0.8rem; color:var(--text-muted); font-weight:600;">
+        Показано: 197 родственников (20 поколений)
+      </div>
     </div>
     <div id="generationsContainer"></div>
   </div>
@@ -1993,9 +2679,9 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
   <!-- TAB 5: GEOGRAPHY & HISTORY VIEW -->
   <div id="view-info" class="view-section">
     <!-- OVERVIEW -->
-    <div class="info-card">
+    <div class="info-card" id="info-overview">
       <h2>🌳 О семье и структуре родословного древа</h2>
-      <p>Родословное древо составлено на основе уникальных семейных архивных рукописных схем, метрических книг, ревизских сказок и переписей населения XVII–XX веков. Пробандом (исходной точкой древа) является <strong>Николай Вячеславович Туркин</strong> (род. 16.02.2024 в г. Чумпхон, Таиланд).</p>
+      <p>Родословное древо составлено на основе уникальных семейных архивных рукописных схем, метрических книг, ревизских сказок и переписей населения XVII–XX веков. Пробандом (исходной точкой древа) является <strong>Николай Вячеславович Туркин</strong> (род. 2024 в г. Чумпхон, Таиланд).</p>
       <p>Родословная объединяет два масштабных географических и культурных пласта, разделенных тысячами километров, но соединенных в одной семье:</p>
       <ul>
         <li><strong>Линия матери (Таиланд, побережье Сиамского залива)</strong>: древние тайские роды <strong>Питак (Pithak, พิทักษ์)</strong>, <strong>Памайтонг (Pamaitong, ป่าไม้ทอง)</strong> и <strong>Чамнианкан (Chamniankan, ชำนาญการ)</strong>. Прабабушка Сай Памайтонг родилась в 1919 году в Таиланде, бабушка Дуангдюан Памайтонг — в 1961 году, мать Парита (Питак) Туркина — в 1997 году.</li>
@@ -2004,7 +2690,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
     </div>
 
     <!-- WWII HEROES SECTION -->
-    <div class="info-card">
+    <div class="info-card" id="info-heroes">
       <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.5rem;">
         <span style="font-size:1.6rem;">🎖️</span>
         <h2 style="margin:0;">Защитники Отечества: Герои Великой Отечественной и Первой мировой войн</h2>
@@ -2344,7 +3030,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
     </div>
 
     <!-- ORTHODOX CLERGY & PARISH CHURCHES SECTION -->
-    <div class="info-card">
+    <div class="info-card" id="info-clergy">
       <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.5rem;">
         <span style="font-size:1.6rem;">⛪</span>
         <h2 style="margin:0;">Православное духовенство и приходские храмы предков (XVII–XX вв., 1646–1937 гг.)</h2>
@@ -2640,7 +3326,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
     </div>
 
     <!-- GEOGRAPHY SECTION -->
-    <div class="info-card">
+    <div class="info-card" id="info-geography">
       <h2>🗺️ Историческая география селений и городов рода</h2>
       <p style="color:var(--text-muted); margin-bottom:1.25rem;">Селения расположены в бассейнах великих рек Русского Севера (Сысолы, Вычегды, Выми, Лузы) и на юге Сиама:</p>
 
@@ -2740,13 +3426,13 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         <div style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="font-weight:700; font-size:1.05rem; color:#10b981; margin-bottom:0.35rem;">🌴 Город Чумпхон (ชุมพร / Chumphon)</div>
           <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.5rem;">Королевство Таиланд • Побережье Сиамского залива • Перешеек Кра</div>
-          <p style="font-size:0.86rem; line-height:1.5;">Древний приморский город и провинция на юге Таиланда, исторически известный как «Ворота Южного Таиланда» (Gateway to the South). В средние века город служил важным военным форпостом защиты столицы Сиама Аюттхаи (название связывают с «Chumnumphon» — место благословения и сбора рати). <strong>Место рождения пробанда рода Николая Вячеславовича Туркина</strong> (16.02.2024 г.).</p>
+          <p style="font-size:0.86rem; line-height:1.5;">Древний приморский город и провинция на юге Таиланда, исторически известный как «Ворота Южного Таиланда» (Gateway to the South). В средние века город служил важным военным форпостом защиты столицы Сиама Аюттхаи (название связывают с «Chumnumphon» — место благословения и сбора рати). <strong>Место рождения пробанда рода Николая Вячеславовича Туркина</strong> (2024 г.).</p>
         </div>
       </div>
     </div>
 
     <!-- ONOMASTICS AND SURNAMES SECTION -->
-    <div class="info-card">
+    <div class="info-card" id="info-surnames">
       <h2>🧬 Происхождение фамилий и история родов</h2>
       <p style="color:var(--text-muted); margin-bottom:1.25rem;">Ономастическое исследование коми и тайских родовых имен, вошедших в родословную:</p>
 
@@ -2914,6 +3600,27 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </div>
       </div>
     </div>
+
+    <!-- BOTTOM ANCHOR NAVIGATION BAR FOR PLACES & ROOTS -->
+    <nav class="info-bottom-bar" id="infoBottomBar">
+      <div class="info-bottom-scroll">
+        <a href="#info-overview" class="info-bottom-pill active" onclick="scrollToAnchor(event, 'info-overview')">
+          <span>🌳</span> <span class="pill-lbl-full">О семье</span><span class="pill-lbl-short">Семья</span>
+        </a>
+        <a href="#info-heroes" class="info-bottom-pill" onclick="scrollToAnchor(event, 'info-heroes')">
+          <span>🎖️</span> <span class="pill-lbl-full">Защитники</span><span class="pill-lbl-short">Герои</span>
+        </a>
+        <a href="#info-clergy" class="info-bottom-pill" onclick="scrollToAnchor(event, 'info-clergy')">
+          <span>⛪</span> <span class="pill-lbl-full">Духовенство</span><span class="pill-lbl-short">Храмы</span>
+        </a>
+        <a href="#info-geography" class="info-bottom-pill" onclick="scrollToAnchor(event, 'info-geography')">
+          <span>🗺️</span> <span class="pill-lbl-full">География</span><span class="pill-lbl-short">Места</span>
+        </a>
+        <a href="#info-surnames" class="info-bottom-pill" onclick="scrollToAnchor(event, 'info-surnames')">
+          <span>🧬</span> <span class="pill-lbl-full">Фамилии</span><span class="pill-lbl-short">Роды</span>
+        </a>
+      </div>
+    </nav>
   </div>
 
   <!-- TAB 6: SOURCES AND BIBLIOGRAPHY VIEW -->
@@ -3336,6 +4043,26 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
       </div>
     </div>
 
+    <!-- BOTTOM ANCHOR NAVIGATION BAR FOR SOURCES -->
+    <nav class="info-bottom-bar" id="sourcesBottomBar">
+      <div class="info-bottom-scroll">
+        <a href="#books-series" class="info-bottom-pill active" onclick="scrollToAnchor(event, 'books-series')">
+          <span>📖</span> <span class="pill-lbl-full">Книги</span><span class="pill-lbl-short">Книги</span>
+        </a>
+        <a href="#ancient-chronicles" class="info-bottom-pill" onclick="scrollToAnchor(event, 'ancient-chronicles')">
+          <span>📜</span> <span class="pill-lbl-full">Летописи</span><span class="pill-lbl-short">Акты</span>
+        </a>
+        <a href="#state-archives" class="info-bottom-pill" onclick="scrollToAnchor(event, 'state-archives')">
+          <span>🏛️</span> <span class="pill-lbl-full">Гос. архивы</span><span class="pill-lbl-short">Архивы</span>
+        </a>
+        <a href="#ww2-archives" class="info-bottom-pill" onclick="scrollToAnchor(event, 'ww2-archives')">
+          <span>🎖️</span> <span class="pill-lbl-full">Архивы ВОВ</span><span class="pill-lbl-short">ВОВ</span>
+        </a>
+        <a href="#online-databases" class="info-bottom-pill" onclick="scrollToAnchor(event, 'online-databases')">
+          <span>🌐</span> <span class="pill-lbl-full">Базы данных</span><span class="pill-lbl-short">Базы</span>
+        </a>
+      </div>
+    </nav>
   </div>
 
   <!-- TAB 5: STATS VIEW -->
@@ -3392,7 +4119,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             <tr style="background:rgba(37,99,235,0.04);">
               <td><strong>I</strong></td>
               <td><strong>Николай Вячеславович Туркин</strong></td>
-              <td>род. 16.02.2024 • Пробанд рода</td>
+              <td>род. 2024 • Пробанд рода</td>
               <td>Свидетельство о рождении, г. Чумпхон (Таиланд)</td>
               <td style="text-align:center;"><button class="pill-btn" onclick="focusPerson('I1'); switchTab('tree');" style="font-size:0.72rem;">🎯</button></td>
             </tr>
@@ -3413,7 +4140,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             <tr>
               <td><strong>IV</strong></td>
               <td><strong>Аркадий Михайлович Туркин</strong></td>
-              <td>1935–2010 • Прадедушка</td>
+              <td>03.09.1935 – 17.01.2000 • Прадедушка</td>
               <td>Семейный архив, с. Коквицы</td>
               <td style="text-align:center;"><button class="pill-btn" onclick="focusPerson('I13'); switchTab('tree');" style="font-size:0.72rem;">🎯</button></td>
             </tr>
@@ -3551,7 +4278,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
       </div>
       <div class="doc-viewer-actions">
         <button class="doc-close-btn" onclick="closeDocViewer()" title="Закрыть документ и вернуться в карточку (Esc)">
-          <span style="font-size:1.05rem; line-height:1;">✕</span> <span>Назад к карточке</span>
+          <span style="font-size:1.05rem; line-height:1;">✕</span> <span>Назад</span>
         </button>
       </div>
     </div>
@@ -3559,9 +4286,9 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
     <!-- VIEWER VIEWPORT WITH ZOOM AND PAN -->
     <div class="doc-viewer-viewport" id="docViewerViewport">
       <button class="doc-nav-btn prev" id="docNavPrev" onclick="docPrev()" title="Предыдущий документ (←)">❮</button>
-      <div class="doc-img-wrapper" id="docImgWrapper" onclick="openCurrentDocInNewTab()" title="Нажмите на скан, чтобы открыть оригинал в новой вкладке ↗" style="cursor:pointer; position:relative;">
+      <div class="doc-img-wrapper" id="docImgWrapper" title="Нажмите на скан, чтобы открыть на весь экран с возможностью зума" style="cursor:pointer; position:relative;">
         <img id="docViewerImg" src="" alt="Архивный документ" draggable="false" />
-        <div class="doc-img-hint-badge">↗ Открыть оригинал скана</div>
+        <div class="doc-img-hint-badge">🔍 Открыть скан на весь экран (зум)</div>
       </div>
       <button class="doc-nav-btn next" id="docNavNext" onclick="docNext()" title="Следующий документ (→)">❯</button>
     </div>
@@ -3572,12 +4299,41 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         <div id="docViewerDesc" style="font-size:0.82rem; line-height:1.45; color:var(--text-main);"></div>
       </div>
       <div style="display:flex; align-items:center; gap:0.6rem; flex-shrink:0;">
-        <button class="pill-btn" onclick="closeDocViewer()" style="font-size:0.75rem; background:var(--bg-primary); border-color:var(--border-color); color:var(--text-main); cursor:pointer;">← Назад в карточку</button>
+        <button class="pill-btn" onclick="closeDocViewer()" style="font-size:0.75rem; background:var(--bg-primary); border-color:var(--border-color); color:var(--text-main); cursor:pointer;">✕ Назад</button>
         <div class="doc-viewer-footer-counter" id="docViewerCounter">
           1 / 19
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- FULLSCREEN SCAN LIGHTBOX MODAL WITH ZOOM & PAN -->
+<div id="fsScanModal" class="fs-scan-modal" role="dialog" aria-modal="true" aria-labelledby="fsScanTitle" onclick="closeFsScanOnOverlay(event)">
+  <div class="fs-scan-header" onclick="event.stopPropagation()">
+    <div class="fs-scan-info">
+      <div class="fs-scan-title" id="fsScanTitle">Оригинал документа</div>
+      <div class="fs-scan-meta" id="fsScanMeta"></div>
+    </div>
+    <div class="fs-scan-tools">
+      <button class="fs-tool-btn" onclick="fsZoomOut()" title="Уменьшить (−)">🔍−</button>
+      <button class="fs-tool-btn" onclick="fsResetZoom()" id="fsZoomLabel" title="Сбросить масштаб (1:1 / 100%)">100%</button>
+      <button class="fs-tool-btn" onclick="fsZoomIn()" title="Увеличить (+)">🔍+</button>
+      <button class="fs-close-btn" onclick="closeFsScan()" title="Закрыть скан (Esc)">
+        <span>✕</span> <span>Закрыть</span>
+      </button>
+    </div>
+  </div>
+  <div class="fs-scan-viewport" id="fsScanViewport">
+    <div class="fs-scan-img-container" id="fsScanImgContainer">
+      <img id="fsScanImg" src="" alt="Оригинал скана" draggable="false" />
+    </div>
+  </div>
+  <div class="fs-floating-tools" onclick="event.stopPropagation()">
+    <button class="fs-float-btn" onclick="fsZoomOut()" title="Уменьшить (−)">🔍−</button>
+    <button class="fs-float-btn" onclick="fsResetZoom()" title="Сбросить масштаб (1:1)">↺ 1:1</button>
+    <button class="fs-float-btn" onclick="fsZoomIn()" title="Увеличить (+)">🔍+</button>
+    <button class="fs-float-btn fs-float-close" onclick="closeFsScan()" title="Закрыть скан (Esc)">✕ Закрыть</button>
   </div>
 </div>
 
@@ -3609,6 +4365,20 @@ let startX, startY;
 let showArrows = true; // or 'parent_to_child'
 let showSpouses = true;
 let hoveredPersonId = null;
+let onlyDirectLine = false;
+const directAncestorIds = new Set();
+
+function computeDirectAncestorIds() {{
+  directAncestorIds.clear();
+  function traverse(id) {{
+    if (!id || !INDIS[id] || directAncestorIds.has(id)) return;
+    directAncestorIds.add(id);
+    const p = INDIS[id];
+    if (p.father_id) traverse(p.father_id);
+    if (p.mother_id) traverse(p.mother_id);
+  }}
+  traverse('I1');
+}}
 
 const genTitles = [
   "",
@@ -3635,6 +4405,7 @@ const genTitles = [
 ];
 
 function init() {{
+  computeDirectAncestorIds();
   renderPinnedGenHeaders();
   renderTreeCards();
   renderSvgLinks();
@@ -3643,7 +4414,9 @@ function init() {{
   renderArchiveGrid();
   setupCanvasDrag();
   setupDocViewerEvents();
+  setupFsScanEvents();
   centerOnRoot();
+  setupHashRouting();
 }}
 
 function switchTab(tabId) {{
@@ -3651,6 +4424,9 @@ function switchTab(tabId) {{
   document.querySelectorAll('.nav-tab').forEach((b) => {{
     const onclickAttr = b.getAttribute('onclick') || '';
     b.classList.toggle('active', onclickAttr.includes(`switchTab('${{tabId}}')`));
+  }});
+  document.querySelectorAll('.drawer-nav-item').forEach((b) => {{
+    b.classList.toggle('active', b.getAttribute('data-tab') === tabId);
   }});
   document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active'));
   const targetView = document.getElementById(`view-${{tabId}}`);
@@ -3673,13 +4449,57 @@ function renderPinnedGenHeaders() {{
   for (let g = 1; g <= 20; g++) {{
     const div = document.createElement('div');
     div.className = 'pinned-gen-title';
+    div.setAttribute('data-gen', g);
     div.style.left = `${{genXMap[g]}}px`;
     div.textContent = genTitles[g];
+    div.title = `Нажмите, чтобы центрировать древо по поколению ${{g}}`;
+    div.onclick = (e) => {{
+      e.stopPropagation();
+      focusGeneration(g);
+    }};
     track.appendChild(div);
   }}
 }}
 
+function getPersonSourceInfo(p) {{
+  if (!p) return null;
+  const gen = p.gen || 1;
+  if (gen <= 4) {{
+    // С 1 по 4 поколения: никаких документов и источников
+    return null;
+  }}
+
+  let birthYear = null;
+  const bStr = (p.birt_date || '') + ' ' + (p.display_birt || '');
+  const m = bStr.match(/(1\\d{{3}}|2\\d{{3}})/);
+  if (m) birthYear = parseInt(m[1]);
+
+  const isKruglyakova = p.id === 'I66' || p.id === 'I64' || (p.name && p.name.includes('Кругляков')) || (p.clean_name && p.clean_name.includes('Кругляков'));
+
+  const isFromGen5UpTo1852 = (gen === 5 || gen === 6) ||
+    isKruglyakova ||
+    (birthYear !== null && birthYear >= 1852) ||
+    (gen === 7 && (birthYear === null || birthYear >= 1852));
+
+  if (isFromGen5UpTo1852) {{
+    return {{
+      type: 'text',
+      text: 'Заполнено по информации из личных семейных архивов и при помощи «Усть-Вымского Родословия» (тома 1–3, авторы: Людмила Владимировна Ванеева, Валентина Александровна Гусева, Лидия Афанасьевна Молодцова).'
+    }};
+  }}
+
+  return {{
+    type: 'archive'
+  }};
+}}
+
 function getPersonDocs(pid) {{
+  const p = INDIS[pid];
+  if (!p) return [];
+  const srcInfo = getPersonSourceInfo(p);
+  if (!srcInfo || srcInfo.type !== 'archive') {{
+    return [];
+  }}
   return DOCS.filter(d => d.personId === pid || (d.personIds && d.personIds.includes(pid)));
 }}
 
@@ -3692,8 +4512,10 @@ function renderTreeCards() {{
     const personDocs = getPersonDocs(p.id);
     const hasDocs = personDocs.length > 0;
     const isReconstructed = !!p.is_reconstructed;
+    const isDirect = directAncestorIds.has(p.id);
+    const isHidden = onlyDirectLine && !isDirect;
     const card = document.createElement('div');
-    card.className = `person-card sex-${{p.sex}} ${{p.id === 'I1' ? 'is-proband' : ''}} ${{hasDocs ? 'has-archival-docs' : ''}} ${{isReconstructed ? 'is-reconstructed' : ''}}`;
+    card.className = `person-card sex-${{p.sex}} ${{p.id === 'I1' ? 'is-proband' : ''}} ${{hasDocs ? 'has-archival-docs' : ''}} ${{isReconstructed ? 'is-reconstructed' : ''}} ${{isHidden ? 'is-hidden-branch' : ''}}`;
     card.id = `card-${{p.id}}`;
     card.style.left = `${{p.x}}px`;
     card.style.top = `${{p.y}}px`;
@@ -3747,7 +4569,7 @@ function renderTreeCards() {{
       <div class="card-anchor left"></div>
       <div class="card-anchor right"></div>
       <div class="card-top">
-        <span class="card-gen">Пок. ${{p.gen}}</span>
+        <span class="card-gen" onclick="event.stopPropagation(); focusGeneration(${{p.gen}});" title="Центрировать древо по поколению ${{p.gen}}">Пок. ${{p.gen}}</span>
         <div style="display:flex; align-items:center; gap:0.25rem;">
           ${{reconBadge}}
           ${{docBadge}}
@@ -3779,23 +4601,28 @@ function renderSvgLinks() {{
 
   // 1. Parent - Child Connections
   Object.values(INDIS).forEach(child => {{
+    if (onlyDirectLine && !directAncestorIds.has(child.id)) return;
     const cx = child.x + CARD_W;
     const cy = child.y + CARD_H / 2;
 
     // Father link
     if (child.father_id && INDIS[child.father_id]) {{
-      const father = INDIS[child.father_id];
-      const fx = father.x;
-      const fy = father.y + CARD_H / 2;
-      linksG.appendChild(createBezierLink(child.id, father.id, cx, cy, fx, fy, 'father'));
+      if (!onlyDirectLine || directAncestorIds.has(child.father_id)) {{
+        const father = INDIS[child.father_id];
+        const fx = father.x;
+        const fy = father.y + CARD_H / 2;
+        linksG.appendChild(createBezierLink(child.id, father.id, cx, cy, fx, fy, 'father'));
+      }}
     }}
 
     // Mother link
     if (child.mother_id && INDIS[child.mother_id]) {{
-      const mother = INDIS[child.mother_id];
-      const mx = mother.x;
-      const my = mother.y + CARD_H / 2;
-      linksG.appendChild(createBezierLink(child.id, mother.id, cx, cy, mx, my, 'mother'));
+      if (!onlyDirectLine || directAncestorIds.has(child.mother_id)) {{
+        const mother = INDIS[child.mother_id];
+        const mx = mother.x;
+        const my = mother.y + CARD_H / 2;
+        linksG.appendChild(createBezierLink(child.id, mother.id, cx, cy, mx, my, 'mother'));
+      }}
     }}
   }});
 
@@ -3806,6 +4633,7 @@ function renderSvgLinks() {{
       const hId = f.husb;
       const wId = f.wife;
       if (hId && wId && INDIS[hId] && INDIS[wId]) {{
+        if (onlyDirectLine && (!directAncestorIds.has(hId) || !directAncestorIds.has(wId))) return;
         const pairKey = [hId, wId].sort().join('-');
         if (!drawnCouples.has(pairKey)) {{
           drawnCouples.add(pairKey);
@@ -4000,6 +4828,10 @@ function focusPerson(pid) {{
   if (!p) return;
   if (currentTab !== 'tree') switchTab('tree');
 
+  if (onlyDirectLine && !directAncestorIds.has(pid)) {{
+    toggleDirectLine();
+  }}
+
   const viewport = document.getElementById('view-tree');
   const vw = viewport.clientWidth;
   const vh = viewport.clientHeight;
@@ -4009,6 +4841,11 @@ function focusPerson(pid) {{
   panY = vh / 2 - (p.y + 37);
   updateTransform();
 
+  const branchDropdown = document.getElementById('branchSelectDropdown');
+  if (branchDropdown) {{
+    branchDropdown.value = ['I1', 'I2', 'I14', 'I10', 'I16', 'I3'].includes(pid) ? pid : '';
+  }}
+
   highlightLineage(pid);
   setTimeout(() => {{
     const card = document.getElementById(`card-${{pid}}`);
@@ -4017,6 +4854,213 @@ function focusPerson(pid) {{
     }}
   }}, 100);
 }}
+
+function toggleDirectLine() {{
+  onlyDirectLine = !onlyDirectLine;
+  const label = onlyDirectLine ? '🎯 Прямая линия (78)' : '🌳 Все родственники (197)';
+
+  const btn = document.getElementById('btnToggleDirectLine');
+  if (btn) {{
+    btn.classList.toggle('active', onlyDirectLine);
+    btn.innerHTML = label;
+  }}
+  const btnGen = document.getElementById('btnToggleDirectLineGen');
+  if (btnGen) {{
+    btnGen.classList.toggle('active', onlyDirectLine);
+    btnGen.innerHTML = label;
+  }}
+  const genCount = document.getElementById('genCountBadge');
+  if (genCount) {{
+    genCount.textContent = onlyDirectLine ? 'Показано: 78 прямых предков (20 поколений)' : 'Показано: 197 родственников (20 поколений)';
+  }}
+
+  Object.values(INDIS).forEach(p => {{
+    const card = document.getElementById(`card-${{p.id}}`);
+    if (card) {{
+      if (onlyDirectLine && !directAncestorIds.has(p.id)) {{
+        card.classList.add('is-hidden-branch');
+      }} else {{
+        card.classList.remove('is-hidden-branch');
+      }}
+    }}
+  }});
+
+  renderSvgLinks();
+  renderGenerations();
+}}
+
+function focusGeneration(gen) {{
+  gen = parseInt(gen);
+  if (!gen || isNaN(gen)) return;
+
+  if (currentTab !== 'tree') switchTab('tree');
+
+  let cards = Object.values(INDIS).filter(p => p.gen === gen);
+  if (onlyDirectLine) {{
+    const directCards = cards.filter(p => directAncestorIds.has(p.id));
+    if (directCards.length > 0) cards = directCards;
+  }}
+  if (cards.length === 0) return;
+
+  let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+  cards.forEach(p => {{
+    minX = Math.min(minX, p.x);
+    maxX = Math.max(maxX, p.x + 246);
+    minY = Math.min(minY, p.y);
+    maxY = Math.max(maxY, p.y + 78);
+  }});
+
+  const centerX = (minX + maxX) / 2;
+  const centerY = (minY + maxY) / 2;
+
+  const viewport = document.getElementById('view-tree');
+  const vw = viewport.clientWidth;
+  const vh = viewport.clientHeight;
+
+  const spanY = Math.max(200, maxY - minY + 140);
+  let targetZoom = Math.min(1.0, Math.max(0.55, (vh - 120) / spanY));
+  if (vw < 820) {{
+    targetZoom = Math.min(0.85, Math.max(0.48, vw / 360));
+  }}
+
+  panX = vw / 2 - centerX * targetZoom;
+  panY = vh / 2 - centerY * targetZoom;
+  zoom = targetZoom;
+  updateTransform();
+
+  document.querySelectorAll('.pinned-gen-title').forEach(el => {{
+    if (parseInt(el.getAttribute('data-gen')) === gen) {{
+      el.classList.add('active-gen');
+      setTimeout(() => el.classList.remove('active-gen'), 1800);
+    }}
+  }});
+
+  const dropdown = document.getElementById('genSelectDropdown');
+  if (dropdown) dropdown.value = gen;
+}}
+
+/* MOBILE MENU DRAWER & ANCHOR NAVIGATION */
+function openMobileMenu() {{
+  const drawer = document.getElementById('mobileDrawer');
+  const backdrop = document.getElementById('mobileDrawerBackdrop');
+  if (drawer) drawer.classList.add('open');
+  if (backdrop) backdrop.classList.add('open');
+  updateDrawerThemeLabel();
+}}
+
+function closeMobileMenu() {{
+  const drawer = document.getElementById('mobileDrawer');
+  const backdrop = document.getElementById('mobileDrawerBackdrop');
+  if (drawer) drawer.classList.remove('open');
+  if (backdrop) backdrop.classList.remove('open');
+  const results = document.getElementById('drawerSearchResults');
+  if (results) results.classList.remove('open');
+}}
+
+function toggleMobileMenu() {{
+  const drawer = document.getElementById('mobileDrawer');
+  if (drawer && drawer.classList.contains('open')) {{
+    closeMobileMenu();
+  }} else {{
+    openMobileMenu();
+  }}
+}}
+
+function handleDrawerNav(tabId) {{
+  switchTab(tabId);
+  closeMobileMenu();
+}}
+
+function updateDrawerThemeLabel() {{
+  const isDark = document.body.getAttribute('data-theme') === 'dark';
+  const icon = document.getElementById('drawerThemeIcon');
+  const text = document.getElementById('drawerThemeText');
+  if (icon) icon.textContent = isDark ? '☀️' : '🌙';
+  if (text) text.textContent = isDark ? 'Светлая тема' : 'Темная тема';
+}}
+
+function handleDrawerSearch(q) {{
+  handleSearch(q);
+  const container = document.getElementById('drawerSearchResults');
+  if (!container) return;
+  q = (q || '').trim().toLowerCase();
+  if (q.length < 2) {{
+    container.classList.remove('open');
+    container.innerHTML = '';
+    return;
+  }}
+  const matches = Object.values(INDIS).filter(p =>
+    p.clean_name.toLowerCase().includes(q) ||
+    (p.birt_plac && p.birt_plac.toLowerCase().includes(q))
+  ).slice(0, 8);
+
+  if (matches.length === 0) {{
+    container.innerHTML = '<div style="padding:0.6rem; font-size:0.8rem; color:var(--text-muted); text-align:center;">Никого не найдено</div>';
+    container.classList.add('open');
+    return;
+  }}
+
+  container.innerHTML = matches.map(p => `
+    <div onclick="selectDrawerPerson('${{p.id}}')" style="padding:0.55rem 0.75rem; border-bottom:1px solid var(--border-color); cursor:pointer; font-size:0.82rem; display:flex; justify-content:space-between; align-items:center;">
+      <div>
+        <div style="font-weight:600; color:var(--text-main);">${{escapeHtml(p.clean_name)}}</div>
+        <div style="font-size:0.72rem; color:var(--text-muted);">Пок. ${{p.gen}} • ${{p.display_birt || '—'}}</div>
+      </div>
+      <span class="pill-btn" style="font-size:0.7rem; padding:0.15rem 0.4rem;">🎯</span>
+    </div>
+  `).join('');
+  container.classList.add('open');
+}}
+
+function selectDrawerPerson(id) {{
+  closeMobileMenu();
+  switchTab('tree');
+  focusPerson(id);
+  openModal(id);
+}}
+
+function scrollToAnchor(e, targetId) {{
+  if (e) e.preventDefault();
+  const el = document.getElementById(targetId);
+  if (!el) return;
+  el.scrollIntoView({{ behavior: 'smooth', block: 'start' }});
+  if (history.pushState) {{
+    history.pushState(null, null, '#' + targetId);
+  }} else {{
+    location.hash = '#' + targetId;
+  }}
+  const section = el.closest('.view-section');
+  if (section) {{
+    section.querySelectorAll('.info-bottom-pill').forEach(pill => {{
+      pill.classList.toggle('active', pill.getAttribute('href') === '#' + targetId);
+    }});
+  }}
+}}
+
+function setupHashRouting() {{
+  const hash = window.location.hash.replace('#', '');
+  if (hash) {{
+    if (hash.startsWith('info-')) {{
+      switchTab('info');
+      setTimeout(() => scrollToAnchor(null, hash), 350);
+    }} else if (hash === 'books-series' || hash === 'ancient-chronicles' || hash === 'state-archives' || hash === 'ww2-archives' || hash === 'online-databases') {{
+      switchTab('sources');
+      setTimeout(() => scrollToAnchor(null, hash), 350);
+    }}
+  }}
+}}
+window.addEventListener('hashchange', () => {{
+  const hash = window.location.hash.replace('#', '');
+  if (hash) {{
+    if (hash.startsWith('info-')) {{
+      switchTab('info');
+      scrollToAnchor(null, hash);
+    }} else if (hash === 'books-series' || hash === 'ancient-chronicles' || hash === 'state-archives' || hash === 'ww2-archives' || hash === 'online-databases') {{
+      switchTab('sources');
+      scrollToAnchor(null, hash);
+    }}
+  }}
+}});
 
 function setupCanvasDrag() {{
   const viewport = document.getElementById('view-tree');
@@ -4205,7 +5249,7 @@ function renderArchiveGrid() {{
         </div>
         <div class="doc-card-actions" onclick="event.stopPropagation()">
           <button class="pill-btn active" onclick="openDocViewer(DOCS.indexOf(doc), DOCS)" style="flex:1; font-size:0.76rem; justify-content:center;">🔍 Смотреть скан</button>
-          <a href="${{escapeHtml(doc.file)}}" target="_blank" class="pill-btn" style="font-size:0.76rem;" title="Открыть оригинальный скан в высоком разрешении в новой вкладке">↗</a>
+          <button class="pill-btn" onclick="openFullscreenScan(DOCS[${{DOCS.indexOf(doc)}}])" style="font-size:0.76rem;" title="Открыть скан на весь экран с возможностью зума">🔍 ↗</button>
           ${{doc.personId ? `<button class="pill-btn" onclick="focusPerson('${{doc.personId}}'); switchTab('tree');" style="font-size:0.76rem;" title="Найти персону на древе">🎯</button>` : ''}}
         </div>
       </div>
@@ -4268,9 +5312,199 @@ function openDocViewer(index, customList) {{
 
 function openCurrentDocInNewTab() {{
   const doc = currentDocList[currentDocIndex];
-  if (doc && doc.file) {{
-    window.open(doc.file, '_blank');
+  if (doc) {{
+    openFullscreenScan(doc);
   }}
+}}
+
+// ============================================================================
+// FULLSCREEN SCAN LIGHTBOX CONTROLLER
+// ============================================================================
+let fsZoom = 1.0;
+let fsPanX = 0;
+let fsPanY = 0;
+let isFsDragging = false;
+let fsStartX = 0;
+let fsStartY = 0;
+let fsPinchDistStart = 0;
+let fsPinchZoomStart = 1.0;
+
+function openFullscreenScan(docOrFile, title, meta) {{
+  let file = '';
+  let titleText = 'Оригинал документа';
+  let metaText = '';
+
+  if (typeof docOrFile === 'object' && docOrFile !== null) {{
+    file = docOrFile.file || '';
+    titleText = docOrFile.title || 'Оригинал документа';
+    const parts = [];
+    if (docOrFile.personName) parts.push(docOrFile.personName);
+    if (docOrFile.date) parts.push(docOrFile.date);
+    if (docOrFile.archive) parts.push(`🏛️ ${{docOrFile.archive}}`);
+    metaText = parts.join(' • ');
+  }} else if (typeof docOrFile === 'string' && docOrFile.length > 0) {{
+    file = docOrFile;
+    if (title) titleText = title;
+    if (meta) metaText = meta;
+  }} else {{
+    const cur = currentDocList[currentDocIndex];
+    if (cur) {{
+      file = cur.file;
+      titleText = cur.title;
+      const parts = [];
+      if (cur.personName) parts.push(cur.personName);
+      if (cur.date) parts.push(cur.date);
+      if (cur.archive) parts.push(`🏛️ ${{cur.archive}}`);
+      metaText = parts.join(' • ');
+    }}
+  }}
+
+  if (!file) return;
+
+  const img = document.getElementById('fsScanImg');
+  if (img) img.src = file;
+
+  const titleEl = document.getElementById('fsScanTitle');
+  if (titleEl) titleEl.textContent = titleText;
+
+  const metaEl = document.getElementById('fsScanMeta');
+  if (metaEl) metaEl.textContent = metaText;
+
+  fsResetZoom();
+  const modal = document.getElementById('fsScanModal');
+  if (modal) modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}}
+
+function closeFsScan() {{
+  const modal = document.getElementById('fsScanModal');
+  if (modal) modal.classList.remove('open');
+  const isDocOpen = document.getElementById('docViewerModal') && document.getElementById('docViewerModal').classList.contains('open');
+  const isPersonOpen = document.getElementById('personModal') && document.getElementById('personModal').classList.contains('open');
+  if (!isDocOpen && !isPersonOpen) {{
+    document.body.style.overflow = '';
+  }}
+}}
+
+function closeFsScanOnOverlay(e) {{
+  if (e.target.id === 'fsScanModal' || e.target.id === 'fsScanViewport') {{
+    closeFsScan();
+  }}
+}}
+
+function fsZoomIn() {{
+  fsZoom = Math.min(fsZoom * 1.35, 6.0);
+  updateFsTransform();
+}}
+
+function fsZoomOut() {{
+  fsZoom = Math.max(fsZoom / 1.35, 0.4);
+  updateFsTransform();
+}}
+
+function fsResetZoom() {{
+  fsZoom = 1.0;
+  fsPanX = 0;
+  fsPanY = 0;
+  updateFsTransform();
+}}
+
+function updateFsTransform() {{
+  const cont = document.getElementById('fsScanImgContainer');
+  if (cont) {{
+    cont.style.transform = `translate(${{fsPanX}}px, ${{fsPanY}}px) scale(${{fsZoom}})`;
+  }}
+  const lbl = document.getElementById('fsZoomLabel');
+  if (lbl) {{
+    lbl.textContent = `${{Math.round(fsZoom * 100)}}%`;
+  }}
+}}
+
+function setupFsScanEvents() {{
+  const vp = document.getElementById('fsScanViewport');
+  if (!vp) return;
+
+  vp.addEventListener('mousedown', (e) => {{
+    if (e.target.tagName === 'BUTTON' || e.target.closest('button')) return;
+    isFsDragging = true;
+    fsStartX = e.clientX - fsPanX;
+    fsStartY = e.clientY - fsPanY;
+    vp.classList.add('dragging');
+  }});
+
+  window.addEventListener('mousemove', (e) => {{
+    if (!isFsDragging) return;
+    fsPanX = e.clientX - fsStartX;
+    fsPanY = e.clientY - fsStartY;
+    updateFsTransform();
+  }});
+
+  window.addEventListener('mouseup', () => {{
+    if (isFsDragging) {{
+      isFsDragging = false;
+      vp.classList.remove('dragging');
+    }}
+  }});
+
+  vp.addEventListener('wheel', (e) => {{
+    e.preventDefault();
+    if (e.deltaY < 0) {{
+      fsZoomIn();
+    }} else {{
+      fsZoomOut();
+    }}
+  }}, {{ passive: false }});
+
+  vp.addEventListener('dblclick', (e) => {{
+    if (e.target.tagName === 'BUTTON' || e.target.closest('button')) return;
+    if (fsZoom > 1.2) {{
+      fsResetZoom();
+    }} else {{
+      fsZoom = 2.4;
+      updateFsTransform();
+    }}
+  }});
+
+  vp.addEventListener('touchstart', (e) => {{
+    if (e.touches.length === 1) {{
+      isFsDragging = true;
+      fsStartX = e.touches[0].clientX - fsPanX;
+      fsStartY = e.touches[0].clientY - fsPanY;
+    }} else if (e.touches.length === 2) {{
+      isFsDragging = false;
+      const t1 = e.touches[0];
+      const t2 = e.touches[1];
+      fsPinchDistStart = Math.hypot(t1.clientX - t2.clientX, t1.clientY - t2.clientY);
+      fsPinchZoomStart = fsZoom;
+    }}
+  }}, {{ passive: true }});
+
+  vp.addEventListener('touchmove', (e) => {{
+    if (e.touches.length === 1 && isFsDragging) {{
+      fsPanX = e.touches[0].clientX - fsStartX;
+      fsPanY = e.touches[0].clientY - fsStartY;
+      updateFsTransform();
+    }} else if (e.touches.length === 2 && fsPinchDistStart > 0) {{
+      const t1 = e.touches[0];
+      const t2 = e.touches[1];
+      const dist = Math.hypot(t1.clientX - t2.clientX, t1.clientY - t2.clientY);
+      const factor = dist / fsPinchDistStart;
+      fsZoom = Math.max(0.4, Math.min(6.0, fsPinchZoomStart * factor));
+      updateFsTransform();
+    }}
+  }}, {{ passive: true }});
+
+  vp.addEventListener('touchend', (e) => {{
+    if (e.touches.length === 0) {{
+      isFsDragging = false;
+      fsPinchDistStart = 0;
+    }} else if (e.touches.length === 1) {{
+      isFsDragging = true;
+      fsStartX = e.touches[0].clientX - fsPanX;
+      fsStartY = e.touches[0].clientY - fsPanY;
+      fsPinchDistStart = 0;
+    }}
+  }}, {{ passive: true }});
 }}
 
 function openDocViewerById(docId) {{
@@ -4389,6 +5623,7 @@ function openModal(pid) {{
   if (!p) return;
 
   const personDocs = getPersonDocs(pid);
+  const srcInfo = getPersonSourceInfo(p);
   let docBtn = '';
   if (personDocs.length > 0) {{
     const firstDocIdx = DOCS.indexOf(personDocs[0]);
@@ -4415,6 +5650,17 @@ function openModal(pid) {{
       <div class="detail-item"><strong>Ветвь:</strong> <span style="color:${{p.branch_color}}; font-weight:700;">${{p.branch}}</span></div>
     </div>
   `;
+
+  if (srcInfo && srcInfo.type === 'text') {{
+    html += `
+      <div class="detail-group" style="background:var(--bg-primary); border-left:3px solid var(--accent); border-radius:6px; padding:0.65rem 0.85rem;">
+        <div style="font-weight:700; font-size:0.82rem; color:var(--text-main); margin-bottom:0.25rem;">📚 Источник сведений:</div>
+        <div style="font-size:0.8rem; line-height:1.45; color:var(--text-muted);">
+          ${{escapeHtml(srcInfo.text)}}
+        </div>
+      </div>
+    `;
+  }}
 
   if (p.id === 'I19' || p.id === 'I67' || p.id === 'I68' || p.id === 'I25' || p.id === 'I23' || p.id === 'I21') {{
     html += `
@@ -4624,6 +5870,7 @@ function renderGenerations() {{
   const genMap = {{}};
   for (let i = 1; i <= 20; i++) genMap[i] = [];
   Object.values(INDIS).forEach(p => {{
+    if (onlyDirectLine && !directAncestorIds.has(p.id)) return;
     const g = p.gen || 1;
     if (genMap[g]) genMap[g].push(p);
   }});
@@ -4634,9 +5881,12 @@ function renderGenerations() {{
     const section = document.createElement('div');
     section.className = 'gen-section';
 
+    const count = genMap[g].length;
+    const countLabel = onlyDirectLine ? (count === 1 ? '1 прямой предок' : `${{count}} прямых предка`) : (count === 1 ? '1 персона' : `${{count}} персон`);
+
     const title = document.createElement('div');
     title.className = 'gen-title';
-    title.innerHTML = `<span>${{genTitles[g]}}</span> <span style="font-size:0.85rem; color:var(--text-muted); font-weight:normal;">${{genMap[g].length}} персон</span>`;
+    title.innerHTML = `<span>${{genTitles[g]}}</span> <span style="font-size:0.85rem; color:var(--text-muted); font-weight:normal;">${{countLabel}}</span> <button class="pill-btn" onclick="focusGeneration(${{g}});" style="font-size:0.75rem; margin-left:auto; display:inline-flex; align-items:center; gap:0.25rem;">🎯 На древо</button>`;
     section.appendChild(title);
 
     const grid = document.createElement('div');
@@ -4761,6 +6011,7 @@ function handleSearch(q) {{
 function toggleTheme() {{
   const isDark = document.body.getAttribute('data-theme') === 'dark';
   document.body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  updateDrawerThemeLabel();
 }}
 
 function escapeHtml(str) {{
@@ -4770,12 +6021,24 @@ function escapeHtml(str) {{
 
 document.addEventListener('keydown', e => {{
   if (e.key === 'Escape') {{
+    const fsScan = document.getElementById('fsScanModal');
+    if (fsScan && fsScan.classList.contains('open')) {{
+      closeFsScan();
+      return;
+    }}
     const viewer = document.getElementById('docViewerModal');
     if (viewer && viewer.classList.contains('open')) {{
       closeDocViewer();
       return;
     }}
     closeModal();
+  }}
+  const isFsOpen = document.getElementById('fsScanModal') && document.getElementById('fsScanModal').classList.contains('open');
+  if (isFsOpen) {{
+    if (e.key === '+' || e.key === '=') fsZoomIn();
+    if (e.key === '-' || e.key === '_') fsZoomOut();
+    if (e.key === '0') fsResetZoom();
+    return;
   }}
   const isViewerOpen = document.getElementById('docViewerModal') && document.getElementById('docViewerModal').classList.contains('open');
   if (isViewerOpen) {{
