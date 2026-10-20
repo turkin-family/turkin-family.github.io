@@ -257,6 +257,7 @@ html_content = f'''<!DOCTYPE html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Родословное древо семьи Туркиных</title>
+{yandex_metrika_code}
 <style>
 :root {{
   --bg-primary: #f8fafc;
@@ -1600,7 +1601,6 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
   .nav-tab {{ padding: 0.28rem 0.45rem; font-size: 0.72rem; }}
 }}
 </style>
-{yandex_metrika_code}
 </head>
 <body>
 
