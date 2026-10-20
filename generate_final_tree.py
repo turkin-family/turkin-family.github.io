@@ -2514,7 +2514,6 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </select>
         <select class="gen-select-dropdown branch-select-dropdown" id="branchSelectDropdown" onchange="if(this.value) focusPerson(this.value);" title="Перейти к ветви рода">
           <option value="">Ветви ▾</option>
-          <option value="I1">👑 Николай</option>
           <option value="I2">🏛️ Туркины</option>
           <option value="I14">🌾 Шехонины</option>
           <option value="I10">🌲 Шуктомовы</option>
@@ -2523,7 +2522,6 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </select>
         <div class="branch-pill-buttons">
           <span class="subbar-label" style="margin-left:0.25rem;">Ветви:</span>
-          <button class="pill-btn" onclick="focusPerson('I1')">👑 Николай</button>
           <button class="pill-btn" onclick="focusPerson('I2')">🏛️ Туркины</button>
           <button class="pill-btn" onclick="focusPerson('I14')">🌾 Шехонины</button>
           <button class="pill-btn" onclick="focusPerson('I10')">🌲 Шуктомовы</button>
@@ -2604,12 +2602,12 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
     <div style="background:var(--bg-surface); border:1px solid var(--border-color); border-radius:10px; padding:0.75rem 1.25rem; margin-bottom:1.25rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem; box-shadow:var(--shadow);">
       <div style="display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap;">
         <span style="font-size:0.88rem; font-weight:700; color:var(--text-main);">Линия предков:</span>
-        <button id="btnToggleDirectLineGen" class="pill-btn" onclick="toggleDirectLine()" title="Переключить: все родственники или только прямая линия предков" style="font-size:0.82rem; font-weight:600; cursor:pointer;">
-          🌳 Все родственники (197)
+        <button id="btnToggleDirectLineGen" class="pill-btn" onclick="toggleDirectLine()" title="Показать только прямую линию предков" style="font-size:0.82rem; font-weight:600; cursor:pointer;">
+          🎯 Прямая линия
         </button>
       </div>
       <div id="genCountBadge" style="font-size:0.8rem; color:var(--text-muted); font-weight:600;">
-        Показано: 197 родственников (20 поколений)
+        Все родственники (197 персон • 20 поколений)
       </div>
     </div>
     <div id="generationsContainer"></div>
@@ -4809,7 +4807,7 @@ function resetZoom() {{
   updateTransform();
 }}
 function centerOnRoot() {{
-  focusPerson('I1');
+  focusGeneration(1);
 }}
 function fitToScreen() {{
   const viewport = document.getElementById('view-tree');
@@ -4843,7 +4841,7 @@ function focusPerson(pid) {{
 
   const branchDropdown = document.getElementById('branchSelectDropdown');
   if (branchDropdown) {{
-    branchDropdown.value = ['I1', 'I2', 'I14', 'I10', 'I16', 'I3'].includes(pid) ? pid : '';
+    branchDropdown.value = ['I2', 'I14', 'I10', 'I16', 'I3'].includes(pid) ? pid : '';
   }}
 
   highlightLineage(pid);
@@ -4857,7 +4855,7 @@ function focusPerson(pid) {{
 
 function toggleDirectLine() {{
   onlyDirectLine = !onlyDirectLine;
-  const label = onlyDirectLine ? '🎯 Прямая линия (78)' : '🌳 Все родственники (197)';
+  const label = onlyDirectLine ? '🎯 Прямая линия (78)' : '🎯 Прямая линия';
 
   const btn = document.getElementById('btnToggleDirectLine');
   if (btn) {{
@@ -4871,7 +4869,7 @@ function toggleDirectLine() {{
   }}
   const genCount = document.getElementById('genCountBadge');
   if (genCount) {{
-    genCount.textContent = onlyDirectLine ? 'Показано: 78 прямых предков (20 поколений)' : 'Показано: 197 родственников (20 поколений)';
+    genCount.textContent = onlyDirectLine ? 'Прямая линия: 78 предков (20 поколений)' : 'Все родственники (197 персон • 20 поколений)';
   }}
 
   Object.values(INDIS).forEach(p => {{
