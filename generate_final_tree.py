@@ -1719,7 +1719,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
       <table>
         <thead>
           <tr>
-            <th>ID</th>
+            <th>№</th>
             <th>ФИО</th>
             <th>Пол</th>
             <th>Поколение</th>
@@ -1852,7 +1852,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             </div>
           </div>
           <div style="margin-top:0.85rem; padding-top:0.6rem; border-top:1px solid var(--border-color);">
-            <button class="pill-btn" onclick="focusPerson('I19'); switchTab('tree');" style="font-size:0.78rem;">🎯 Найти на древе [I19]</button>
+            <button class="pill-btn" onclick="focusPerson('I19'); switchTab('tree');" style="font-size:0.78rem;">🎯 Найти на древе</button>
           </div>
         </div>
 
@@ -1873,7 +1873,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             </div>
 
             <div style="font-size:0.85rem; line-height:1.55; margin-bottom:0.85rem;">
-              <div><strong>Родство:</strong> Младший сын Николая Алексеевича Туркина [I27] и Павлы Ивановны Сизевой [I28], родной брат Михаила Николаевича Туркина [I19]. Двоюродный прадедушка.</div>
+              <div><strong>Родство:</strong> Младший сын Николая Алексеевича Туркина и Павлы Ивановны Сизевой, родной брат Михаила Николаевича Туркина. Двоюродный прадедушка.</div>
               <div><strong>Место рождения:</strong> Коми АССР, Усть-Вымский район, Коквицкий сельсовет, деревня Сюлатуй (Сюлатуйская).</div>
               <div><strong>Призыв:</strong> Призван по мобилизации в июне 1941 года Сыктывкарским ГВК Коми АССР.</div>
               <div><strong>Значение для родословной:</strong> Документально подтверждает неразрывность связи селений Сюлатуй и Коквицы в роду Туркиных.</div>
@@ -1892,7 +1892,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             </div>
           </div>
           <div style="margin-top:0.85rem; padding-top:0.6rem; border-top:1px solid var(--border-color);">
-            <button class="pill-btn" onclick="focusPerson('I68'); switchTab('tree');" style="font-size:0.78rem;">🎯 Найти на древе [I68]</button>
+            <button class="pill-btn" onclick="focusPerson('I68'); switchTab('tree');" style="font-size:0.78rem;">🎯 Найти на древе</button>
           </div>
         </div>
 
@@ -1946,7 +1946,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             </div>
           </div>
           <div style="margin-top:0.85rem; padding-top:0.6rem; border-top:1px solid var(--border-color);">
-            <button class="pill-btn" onclick="focusPerson('I67'); switchTab('tree');" style="font-size:0.78rem;">🎯 Найти на древе [I67]</button>
+            <button class="pill-btn" onclick="focusPerson('I67'); switchTab('tree');" style="font-size:0.78rem;">🎯 Найти на древе</button>
           </div>
         </div>
 
@@ -2004,7 +2004,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             </div>
           </div>
           <div style="margin-top:0.85rem; padding-top:0.6rem; border-top:1px solid var(--border-color);">
-            <button class="pill-btn" onclick="focusPerson('I25'); switchTab('tree');" style="font-size:0.78rem;">🎯 Найти на древе [I25]</button>
+            <button class="pill-btn" onclick="focusPerson('I25'); switchTab('tree');" style="font-size:0.78rem;">🎯 Найти на древе</button>
           </div>
         </div>
 
@@ -2026,14 +2026,14 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             </div>
 
             <div style="font-size:0.85rem; line-height:1.55; margin-bottom:0.85rem;">
-              <div><strong>Родство:</strong> Муж Агнии Ивановны Шуктомовой (Пасынковой) [I24], отец Риммы Александровны Туркиной (Шуктомовой) [I10]. Прапрадедушка Николая.</div>
+              <div><strong>Родство:</strong> Муж Агнии Ивановны Шуктомовой (Пасынковой), отец Риммы Александровны Туркиной (Шуктомовой). Прапрадедушка Николая.</div>
               <div style="margin-top:0.35rem; padding-top:0.35rem; border-top:1px dashed var(--border-color);">
                 <strong>🛡️ Великая Отечественная война (1941–1945):</strong>
                 Призван по мобилизации Усть-Вымским РВК Коми АССР в декабре 1941 г. Проходил подготовку рядовым стрелком в 5-й стрелковой роте 2-го батальона 34-го запасного стрелкового полка (34 зсп 29 зсд). 18 января 1942 г. с маршевой командой № 43 направлен на фронт в действующую армию. Демобилизован в июле 1942 г. Умер в сентябре 1970 г. в возрасте 59 лет.
               </div>
               <div style="margin-top:0.35rem; padding-top:0.35rem; border-top:1px dashed var(--border-color);">
                 <strong>🤝 Историческая перекличка:</strong>
-                Проходил службу в том же 34-м запасном стрелковом полку (34 зсп 29 зсд), где служил старшим артиллеристом другой предок — Семён Григорьевич Зиновьев [I25].
+                Проходил службу в том же 34-м запасном стрелковом полку (34 зсп 29 зсд), где служил старшим артиллеристом другой предок — Семён Григорьевич Зиновьев.
               </div>
             </div>
 
@@ -2059,7 +2059,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             </div>
           </div>
           <div style="margin-top:0.85rem; padding-top:0.6rem; border-top:1px solid var(--border-color);">
-            <button class="pill-btn" onclick="focusPerson('I23'); switchTab('tree');" style="font-size:0.78rem;">🎯 Найти на древе [I23]</button>
+            <button class="pill-btn" onclick="focusPerson('I23'); switchTab('tree');" style="font-size:0.78rem;">🎯 Найти на древе</button>
           </div>
         </div>
 
@@ -2081,7 +2081,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             </div>
 
             <div style="font-size:0.85rem; line-height:1.55; margin-bottom:0.85rem;">
-              <div><strong>Родство:</strong> Муж Марии Степановны Сюткиной [I22], отец Зинаиды Михайловны Туркиной (Шехониной) [I14], дедушка Аркадия Туркина [I4]. Прапрадедушка Николая по линии матери дедушки.</div>
+              <div><strong>Родство:</strong> Муж Марии Степановны Сюткиной, отец Зинаиды Михайловны Туркиной (Шехониной), дедушка Аркадия Туркина. Прапрадедушка Николая по линии матери дедушки.</div>
               <div style="margin-top:0.35rem; padding-top:0.35rem; border-top:1px dashed var(--border-color);">
                 <strong>🛡️ Великая Отечественная война (1941–1945):</strong>
                 Призван по мобилизации Прилузским РВК Коми АССР в июле 1941 г. Офицер Красной армии (воинское звание — младший лейтенант). Проходил службу в 995-м стрелковом полку 263-й стрелковой дивизии на Карельском фронте. В кровопролитных боях получил тяжелое боевое ранение.
@@ -2121,7 +2121,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             </div>
           </div>
           <div style="margin-top:0.85rem; padding-top:0.6rem; border-top:1px solid var(--border-color);">
-            <button class="pill-btn" onclick="focusPerson('I21'); switchTab('tree');" style="font-size:0.78rem;">🎯 Найти на древе [I21]</button>
+            <button class="pill-btn" onclick="focusPerson('I21'); switchTab('tree');" style="font-size:0.78rem;">🎯 Найти на древе</button>
           </div>
         </div>
       </div>
@@ -2165,16 +2165,16 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">Коквицкая гора, Яренский уезд • 1710–1860-е гг.</div>
             <p style="font-size:0.83rem; line-height:1.5; margin-bottom:0.65rem;">Родовое гнездо нескольких поколений клира Туркиных. Здесь непрерывно служили священники, диаконы и причетники рода:</p>
             <ul style="font-size:0.82rem; line-height:1.5; margin:0 0 0.75rem 0; padding-left:1.15rem;">
-              <li><strong>Священники (иереи):</strong> о. Степан Иванович Туркин [I78] (служил в 1734–1773 гг., разбор 1736 г., в 1773 г. 62-летний вдовый священник по исповедной росписи ВЦА двор 167); о. Иван Петрович Туркин [I71] (пономарь в 1710 г., священник в 1747 г.).</li>
-              <li><strong>Диаконы:</strong> о. Алексей Елисеевич Туркин [I234] (пономарь с 1818 г., рукоположен в диакона в 1822 г., служил до 1844+ гг.).</li>
-              <li><strong>Пономари:</strong> Леонтий Петрович [I230] (1732–1783 гг.); Елисей Леонтьевич [I232] (посвящен в 1783 г. еп. Иоанном, служил более 33 лет, супруга Татьяна Васильевна Пономарёва [I233]); Пётр Петрович [I224] (~1714 г.р.).</li>
-              <li><strong>Сыновья причта:</strong> Иван [I238] (пономарь), Максим [I247], Гавриил [I248], Дмитрий [I249] (РС 1795 и 1811 гг.).</li>
+              <li><strong>Священники (иереи):</strong> о. Степан Иванович Туркин (служил в 1734–1773 гг., разбор 1736 г., в 1773 г. 62-летний вдовый священник по исповедной росписи ВЦА двор 167); о. Иван Петрович Туркин (пономарь в 1710 г., священник в 1747 г.).</li>
+              <li><strong>Диаконы:</strong> о. Алексей Елисеевич Туркин (пономарь с 1818 г., рукоположен в диакона в 1822 г., служил до 1844+ гг.).</li>
+              <li><strong>Пономари:</strong> Леонтий Петрович (1732–1783 гг.); Елисей Леонтьевич (посвящен в 1783 г. еп. Иоанном, служил более 33 лет, супруга Татьяна Васильевна Пономарёва); Пётр Петрович (~1714 г.р.).</li>
+              <li><strong>Сыновья причта:</strong> Иван (пономарь), Максим, Гавриил, Дмитрий (РС 1795 и 1811 гг.).</li>
             </ul>
           </div>
           <div style="display:flex; flex-wrap:wrap; gap:0.35rem; border-top:1px dashed var(--border-color); padding-top:0.5rem;">
-            <button class="pill-btn" onclick="focusPerson('I78'); switchTab('tree');" style="font-size:0.74rem;">🎯 о. Степан [I78]</button>
-            <button class="pill-btn" onclick="focusPerson('I234'); switchTab('tree');" style="font-size:0.74rem;">🎯 о. Алексей [I234]</button>
-            <button class="pill-btn" onclick="focusPerson('I232'); switchTab('tree');" style="font-size:0.74rem;">🎯 Елисей [I232]</button>
+            <button class="pill-btn" onclick="focusPerson('I78'); switchTab('tree');" style="font-size:0.74rem;">🎯 о. Степан</button>
+            <button class="pill-btn" onclick="focusPerson('I234'); switchTab('tree');" style="font-size:0.74rem;">🎯 о. Алексей</button>
+            <button class="pill-btn" onclick="focusPerson('I232'); switchTab('tree');" style="font-size:0.74rem;">🎯 Елисей</button>
           </div>
         </div>
 
@@ -2188,15 +2188,15 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">Оквадская волость, Яренский уезд • XVII–XVIII вв.</div>
             <p style="font-size:0.83rem; line-height:1.5; margin-bottom:0.65rem;">Древнейшее задокументированное местопребывание рода Туркиных на Вычегде:</p>
             <ul style="font-size:0.82rem; line-height:1.5; margin:0 0 0.75rem 0; padding-left:1.15rem;">
-              <li><strong>Основатель династии:</strong> Афанасий Семёнович Туркин [I74] (ок. 1600 г.р.) — архиепископский приказной человек на Коквицком погосте по переписи 1646 г. (РГАДА ф. 1209, д. 1080), управлял вотчинными доходами архиепископа Вологодского и Великопермского.</li>
-              <li><strong>Дьячки и пономари:</strong> Исаакий Афанасьевич Туркин [I73] (род. 1635 г., 11 лет в 1646 г.) — дьячок Введенской церкви (переписная книга 1678 г.), пономарь (1696/97 г.).</li>
-              <li><strong>Священники:</strong> о. Автоном Лаврентьевич Туркин [I245] (ок. 1690 г.р.) — священник Введенской церкви в 1731 и 1736 гг. (МК ГААО ф. 29, разбор ВУЦА ф. 363), дочь Марина [I246].</li>
+              <li><strong>Основатель династии:</strong> Афанасий Семёнович Туркин (ок. 1600 г.р.) — архиепископский приказной человек на Коквицком погосте по переписи 1646 г. (РГАДА ф. 1209, д. 1080), управлял вотчинными доходами архиепископа Вологодского и Великопермского.</li>
+              <li><strong>Дьячки и пономари:</strong> Исаакий Афанасьевич Туркин (род. 1635 г., 11 лет в 1646 г.) — дьячок Введенской церкви (переписная книга 1678 г.), пономарь (1696/97 г.).</li>
+              <li><strong>Священники:</strong> о. Автоном Лаврентьевич Туркин (ок. 1690 г.р.) — священник Введенской церкви в 1731 и 1736 гг. (МК ГААО ф. 29, разбор ВУЦА ф. 363), дочь Марина.</li>
             </ul>
           </div>
           <div style="display:flex; flex-wrap:wrap; gap:0.35rem; border-top:1px dashed var(--border-color); padding-top:0.5rem;">
-            <button class="pill-btn" onclick="focusPerson('I74'); switchTab('tree');" style="font-size:0.74rem;">🎯 Афанасий [I74]</button>
-            <button class="pill-btn" onclick="focusPerson('I73'); switchTab('tree');" style="font-size:0.74rem;">🎯 Исаакий [I73]</button>
-            <button class="pill-btn" onclick="focusPerson('I245'); switchTab('tree');" style="font-size:0.74rem;">🎯 о. Автоном [I245]</button>
+            <button class="pill-btn" onclick="focusPerson('I74'); switchTab('tree');" style="font-size:0.74rem;">🎯 Афанасий</button>
+            <button class="pill-btn" onclick="focusPerson('I73'); switchTab('tree');" style="font-size:0.74rem;">🎯 Исаакий</button>
+            <button class="pill-btn" onclick="focusPerson('I245'); switchTab('tree');" style="font-size:0.74rem;">🎯 о. Автоном</button>
           </div>
         </div>
 
@@ -2210,11 +2210,11 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">Усть-Вымская волость • Духовный центр св. Стефана Пермского</div>
             <p style="font-size:0.83rem; line-height:1.5; margin-bottom:0.65rem;">Кафедральный и исторический центр Пермской епархии на слиянии рек Выми и Вычегды:</p>
             <ul style="font-size:0.82rem; line-height:1.5; margin:0 0 0.75rem 0; padding-left:1.15rem;">
-              <li><strong>Священник о. Пётр Исаакович Туркин [I72]</strong> (род. ок. 1655–1661 гг. — прямой 8-й прадедушка) — сын церковного дьячка Исаака. Служил в Коквицкой Рождественской церкви (1696–1710 гг.) и Усть-Вымской Благовещенской церкви (Метрические книги 1731 г., ГААО ф. 29, оп. 27, д. 1, л. 40). Супруга Епистимия [I222], дочери Дарья [I225] и Епистимия [I226].</li>
+              <li><strong>Священник о. Пётр Исаакович Туркин</strong> (род. ок. 1655–1661 гг. — прямой 8-й прадедушка) — сын церковного дьячка Исаака. Служил в Коквицкой Рождественской церкви (1696–1710 гг.) и Усть-Вымской Благовещенской церкви (Метрические книги 1731 г., ГААО ф. 29, оп. 27, д. 1, л. 40). Супруга Епистимия, дочери Дарья и Епистимия.</li>
             </ul>
           </div>
           <div style="display:flex; flex-wrap:wrap; gap:0.35rem; border-top:1px dashed var(--border-color); padding-top:0.5rem;">
-            <button class="pill-btn" onclick="focusPerson('I72'); switchTab('tree');" style="font-size:0.74rem;">🎯 о. Пётр Исаакович [I72]</button>
+            <button class="pill-btn" onclick="focusPerson('I72'); switchTab('tree');" style="font-size:0.74rem;">🎯 о. Пётр Исаакович</button>
           </div>
         </div>
 
@@ -2228,11 +2228,11 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">г. Лальск, Вологодская епархия (ныне Кировская область)</div>
             <p style="font-size:0.83rem; line-height:1.5; margin-bottom:0.65rem;">Величественный пятиглавый Воскресенский собор Лальска:</p>
             <ul style="font-size:0.82rem; line-height:1.5; margin:0 0 0.75rem 0; padding-left:1.15rem;">
-              <li><strong>Соборный диакон о. Михаил Алексеевич Туркин [I236]</strong> (ок. 1839 – 14.06.1904) — сын диакона о. Алексея Коквицкого. Окончил Вологодскую духовную семинарию (1862 г.). С 1868 г. дьячок Лальского собора, 20.07.1870 г. рукоположен во диакона, с 1871 г. — штатный диакон собора (34 года беспорочного соборного служения). Супруга София Прокопьевна Брызгалова [I237].</li>
+              <li><strong>Соборный диакон о. Михаил Алексеевич Туркин</strong> (ок. 1839 – 14.06.1904) — сын диакона о. Алексея Коквицкого. Окончил Вологодскую духовную семинарию (1862 г.). С 1868 г. дьячок Лальского собора, 20.07.1870 г. рукоположен во диакона, с 1871 г. — штатный диакон собора (34 года беспорочного соборного служения). Супруга София Прокопьевна Брызгалова.</li>
             </ul>
           </div>
           <div style="display:flex; flex-wrap:wrap; gap:0.35rem; border-top:1px dashed var(--border-color); padding-top:0.5rem;">
-            <button class="pill-btn" onclick="focusPerson('I236'); switchTab('tree');" style="font-size:0.74rem;">🎯 о. Михаил Лальский [I236]</button>
+            <button class="pill-btn" onclick="focusPerson('I236'); switchTab('tree');" style="font-size:0.74rem;">🎯 о. Михаил Лальский</button>
           </div>
         </div>
 
@@ -2246,11 +2246,11 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">Княжпогостский район • Река Вымь</div>
             <p style="font-size:0.83rem; line-height:1.5; margin-bottom:0.65rem;">Старинный приход на берегу реки Выми:</p>
             <ul style="font-size:0.82rem; line-height:1.5; margin:0 0 0.75rem 0; padding-left:1.15rem;">
-              <li><strong>Дьячок Симеон Алексеевич Туркин [I235]</strong> (ок. 1822 – 14.02.1847) — сын диакона о. Алексея Коквицкого и брат о. Михаила Лальского. В 1840 г. посвящен в стихарь епископом Стефаном, служил дьячком Богоявленской церкви до безвременной кончины в возрасте 25 лет (НА РК, Клировые ведомости).</li>
+              <li><strong>Дьячок Симеон Алексеевич Туркин</strong> (ок. 1822 – 14.02.1847) — сын диакона о. Алексея Коквицкого и брат о. Михаила Лальского. В 1840 г. посвящен в стихарь епископом Стефаном, служил дьячком Богоявленской церкви до безвременной кончины в возрасте 25 лет (НА РК, Клировые ведомости).</li>
             </ul>
           </div>
           <div style="display:flex; flex-wrap:wrap; gap:0.35rem; border-top:1px dashed var(--border-color); padding-top:0.5rem;">
-            <button class="pill-btn" onclick="focusPerson('I235'); switchTab('tree');" style="font-size:0.74rem;">🎯 Симеон Ляльский [I235]</button>
+            <button class="pill-btn" onclick="focusPerson('I235'); switchTab('tree');" style="font-size:0.74rem;">🎯 Симеон Ляльский</button>
           </div>
         </div>
 
@@ -2263,15 +2263,15 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             </div>
             <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">Палевицы, Серёгово, Княжпогост, соборы г. Яренска</div>
             <ul style="font-size:0.82rem; line-height:1.5; margin:0 0 0.75rem 0; padding-left:1.15rem;">
-              <li><strong>с. Палевицы (Покровская ц.):</strong> священник о. Алексей Тимофеевич Туркин [I239] (1734–1758 гг., супруга Матрона [I240], дети Михаил [I241], Андрей [I243], Марфа [I244]); дьячок Иван Петрович Туркин [I14254] (1747 г.).</li>
-              <li><strong>с. Серёгово и Княжпогост:</strong> пономарь и дьячок Иван Елисеевич Туркин [I238] (1802–1815+ гг.).</li>
-              <li><strong>г. Яренск (Преображенский собор):</strong> соборный сторож Михаил Алексеевич Туркин [I241] (с 1755 г., жена Марфа Козьминична (Ипатова) [I242]).</li>
+              <li><strong>с. Палевицы (Покровская ц.):</strong> священник о. Алексей Тимофеевич Туркин (1734–1758 гг., супруга Матрона, дети Михаил, Андрей, Марфа); дьячок Иван Петрович Туркин (1747 г.).</li>
+              <li><strong>с. Серёгово и Княжпогост:</strong> пономарь и дьячок Иван Елисеевич Туркин (1802–1815+ гг.).</li>
+              <li><strong>г. Яренск (Преображенский собор):</strong> соборный сторож Михаил Алексеевич Туркин (с 1755 г., жена Марфа Козьминична (Ипатова)).</li>
             </ul>
           </div>
           <div style="display:flex; flex-wrap:wrap; gap:0.35rem; border-top:1px dashed var(--border-color); padding-top:0.5rem;">
-            <button class="pill-btn" onclick="focusPerson('I239'); switchTab('tree');" style="font-size:0.74rem;">🎯 о. Алексей [I239]</button>
-            <button class="pill-btn" onclick="focusPerson('I238'); switchTab('tree');" style="font-size:0.74rem;">🎯 Иван [I238]</button>
-            <button class="pill-btn" onclick="focusPerson('I241'); switchTab('tree');" style="font-size:0.74rem;">🎯 Михаил [I241]</button>
+            <button class="pill-btn" onclick="focusPerson('I239'); switchTab('tree');" style="font-size:0.74rem;">🎯 о. Алексей</button>
+            <button class="pill-btn" onclick="focusPerson('I238'); switchTab('tree');" style="font-size:0.74rem;">🎯 Иван</button>
+            <button class="pill-btn" onclick="focusPerson('I241'); switchTab('tree');" style="font-size:0.74rem;">🎯 Михаил</button>
           </div>
         </div>
 
@@ -2285,11 +2285,11 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">Усть-Сысольский и Усть-Куломский уезды • Верхняя Вычегда • 1865–1937 гг.</div>
             <p style="font-size:0.83rem; line-height:1.5; margin-bottom:0.65rem;">Монашеское служение и исповеднический подвиг за веру в годы гонений:</p>
             <ul style="font-size:0.82rem; line-height:1.5; margin:0 0 0.75rem 0; padding-left:1.15rem;">
-              <li><strong>Монах Виталий (Виталий Иванович Туркин) [I307]</strong> (1865, с. Коквицы – 06.11.1937) — родной брат прапрапрадеда Алексея Ивановича Туркина [I43] и дядя Николая Алексеевича Туркина [I25]. Монах знаменитого Троице-Стефано-Ульяновского мужского монастыря. После закрытия обители в 1923 г. проживал в с. Кужба вместе с казначеем обители священномучеником иеромонахом Мелетием (Федюнёвым), совершая требы для верующих. Арестован в сентябре 1937 г., приговорён тройкой УНКВД к 10 годам ИТЛ, умер от тягот заключения на Вогваздинском лагпункте Ухтпечлага. Реабилитирован.</li>
+              <li><strong>Монах Виталий (Виталий Иванович Туркин)</strong> (1865, с. Коквицы – 06.11.1937) — родной брат прапрапрадеда Алексея Ивановича Туркина и дядя Николая Алексеевича Туркина. Монах знаменитого Троице-Стефано-Ульяновского мужского монастыря. После закрытия обители в 1923 г. проживал в с. Кужба вместе с казначеем обители священномучеником иеромонахом Мелетием (Федюнёвым), совершая требы для верующих. Арестован в сентябре 1937 г., приговорён тройкой УНКВД к 10 годам ИТЛ, умер от тягот заключения на Вогваздинском лагпункте Ухтпечлага. Реабилитирован.</li>
             </ul>
           </div>
           <div style="display:flex; flex-wrap:wrap; gap:0.35rem; border-top:1px dashed var(--border-color); padding-top:0.5rem;">
-            <button class="pill-btn" onclick="focusPerson('I307'); switchTab('tree');" style="font-size:0.74rem;">🎯 монах Виталий [I307]</button>
+            <button class="pill-btn" onclick="focusPerson('I307'); switchTab('tree');" style="font-size:0.74rem;">🎯 монах Виталий</button>
           </div>
         </div>
       </div>
@@ -2354,21 +2354,21 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         <div style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="font-weight:700; font-size:1.05rem; color:#2563eb; margin-bottom:0.35rem;">⛰️ Село Коквицы (Коквицкая гора)</div>
           <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.5rem;">Усть-Вымский район • Левый берег Вычегды (Эжвы) • Известно с 1483 года</div>
-          <p style="font-size:0.86rem; line-height:1.5;">Знаменитая Коквицкая гора — возвышенность-«полуостров», омываемая Вычегдой, колыбель вычегодских коми (эжватас). Одно из легендарных сакральных мест Коми края со святынями времен Стефана Пермского. <strong>Главный духовный оплот рода Туркиных:</strong> при каменной Христорождественской церкви более 150 лет служили священники о. Степан [I78] и о. Иван [I71], диакон о. Алексей [I234], пономари Леонтий [I230] и Елисей [I232]. Родина прадеда Аркадия Михайловича (1935) и прапрадеда Михаила Николаевича (1906).</p>
+          <p style="font-size:0.86rem; line-height:1.5;">Знаменитая Коквицкая гора — возвышенность-«полуостров», омываемая Вычегдой, колыбель вычегодских коми (эжватас). Одно из легендарных сакральных мест Коми края со святынями времен Стефана Пермского. <strong>Главный духовный оплот рода Туркиных:</strong> при каменной Христорождественской церкви более 150 лет служили священники о. Степан и о. Иван, диакон о. Алексей, пономари Леонтий и Елисей. Родина прадеда Аркадия Михайловича (1935) и прапрадеда Михаила Николаевича (1906).</p>
         </div>
 
         <!-- ОКВАД -->
         <div style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="font-weight:700; font-size:1.05rem; color:#0284c7; margin-bottom:0.35rem;">⛪ Погост Оквад (Катвад)</div>
           <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.5rem;">Оквадская волость • Берег Вычегды • Погост с XVI века</div>
-          <p style="font-size:0.86rem; line-height:1.5;">Древнейшая задокументированная родина Туркиных. В писцовой книге 1608 г. здесь жил молодой домохозяин Микитка Туркин [I306], а в переписной книге 1646 г. — архиепископский приказной человек Афанасий Семёнович Туркин [I74] с 11-летним сыном Исааком. При местной церкви Введения Пресвятой Богородицы служили церковный дьячок Исаакий Афанасьевич [I73] (1678 г.) и священник о. Автоном Лаврентьевич [I245] (1731–1736 гг.).</p>
+          <p style="font-size:0.86rem; line-height:1.5;">Древнейшая задокументированная родина Туркиных. В писцовой книге 1608 г. здесь жил молодой домохозяин Микитка Туркин, а в переписной книге 1646 г. — архиепископский приказной человек Афанасий Семёнович Туркин с 11-летним сыном Исааком. При местной церкви Введения Пресвятой Богородицы служили церковный дьячок Исаакий Афанасьевич (1678 г.) и священник о. Автоном Лаврентьевич (1731–1736 гг.).</p>
         </div>
 
         <!-- УСТЬ-ВЫМЬ -->
         <div style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="font-weight:700; font-size:1.05rem; color:#059669; margin-bottom:0.35rem;">🏛️ Село Усть-Вымь (Емдін)</div>
           <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.5rem;">Слияние Выми и Вычегды • Основано св. Стефаном Пермским в 1380 г.</div>
-          <p style="font-size:0.86rem; line-height:1.5;">Исторический, административный и кафедральный центр Пермской епархии. В Благовещенской церкви Усть-Выми служил священник о. Пётр Исаакович Туркин [I72] (прямой 8-й прадед Николая, зафиксирован в метрической книге 1731 года, ГААО). Волостной центр, к которому в XIX веке относились государственные крестьяне Туркины (8-я ревизия 1834 г., ГАВО).</p>
+          <p style="font-size:0.86rem; line-height:1.5;">Исторический, административный и кафедральный центр Пермской епархии. В Благовещенской церкви Усть-Выми служил священник о. Пётр Исаакович Туркин (прямой 8-й прадед Николая, зафиксирован в метрической книге 1731 года, ГААО). Волостной центр, к которому в XIX веке относились государственные крестьяне Туркины (8-я ревизия 1834 г., ГАВО).</p>
         </div>
 
         <!-- СЮЛАТУЙСКАЯ -->
@@ -2413,7 +2413,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             <strong style="color:#2563eb; font-size:0.98rem;">Туркины</strong>
             <span style="font-size:0.72rem; padding:0.1rem 0.4rem; background:#eff6ff; color:#2563eb; border-radius:4px; font-weight:700;">Поколения I – XVI (с 1608 г., истоки с 1490 г.)</span>
           </div>
-          <p style="font-size:0.84rem; line-height:1.45;">Коренной северный род священнослужителей, монашествующих и крестьян Яренского уезда (Оквад, Коквицы). Древнейшие первоисточники: <strong>Дозорная книга 1608 г.</strong> с молодым домохозяином Микиткой Туркиным [I306] и родоначальником прямой мужской линии Семёном Туркиным [I274]; <strong>Переписная книга 1646 г.</strong> (РГАДА, ф. 1209, д. 1080) с двором архиепископского приказного человека Афанасия Семёнова сына Туркина [I74] с 11-летним сыном Исааком. Прямая мужская линия непрерывно соединяет 15 поколений до Николая Вячеславовича (2024 г.).</p>
+          <p style="font-size:0.84rem; line-height:1.45;">Коренной северный род священнослужителей, монашествующих и крестьян Яренского уезда (Оквад, Коквицы). Древнейшие первоисточники: <strong>Дозорная книга 1608 г.</strong> с молодым домохозяином Микиткой Туркиным и родоначальником прямой мужской линии Семёном Туркиным; <strong>Переписная книга 1646 г.</strong> (РГАДА, ф. 1209, д. 1080) с двором архиепископского приказного человека Афанасия Семёнова сына Туркина с 11-летним сыном Исааком. Прямая мужская линия непрерывно соединяет 15 поколений до Николая Вячеславовича (2024 г.).</p>
         </div>
 
         <!-- ЛЕТОВЫ -->
@@ -2581,7 +2581,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         <li><strong>Благовещенская церковь с. Усть-Вымь (1731 г.)</strong> — фонд ГААО № 29 (служение священника о. Петра Исааковича Туркина).</li>
         <li><strong>Покровская церковь с. Палевицы (1734–1758 гг.)</strong> — фонды ВУЦА, РГИА и ГААО (служение священника о. Алексея Тимофеевича Туркина).</li>
         <li><strong>Воскресенский собор г. Лальска (1868–1904 гг.)</strong> — фонд ГАКО № 1310 (34 года штатного соборного диаконского служения о. Михаила Алексеевича Туркина).</li>
-        <li><strong>Троице-Стефано-Ульяновский мужской монастырь (1865–1937 гг.)</strong> — монастырское служение монаха Виталия (Виталия Ивановича Туркина) [I307]; архивно-следственное дело УНКВД Коми АССР 1937 г. (Архив УФСБ РФ по РК, № КП-7444).</li>
+        <li><strong>Троице-Стефано-Ульяновский мужской монастырь (1865–1937 гг.)</strong> — монастырское служение монаха Виталия (Виталия Ивановича Туркина); архивно-следственное дело УНКВД Коми АССР 1937 г. (Архив УФСБ РФ по РК, № КП-7444).</li>
         <li><strong>Лоемская Успенская церковь (1802–1804 гг.)</strong> — приход рода Сюткиных.</li>
         <li><strong>Свято-Вознесенский собор с. Ыб (1827–1835 гг.)</strong> — фонд НАРК № 130 (метрики Зиновьевых, Пасынковых, Кызъюровых, Айбабиных).</li>
         <li><strong>Никольская церковь в д. Ероздино / Вёздино (1901 г.)</strong> — приход Шуктомовых, Полещиковых, Поздеевых.</li>
@@ -2747,7 +2747,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
                 <img src="книги_родословия/Усть-Вымское_родословие_Том3_Ванеева_обложка.jpg" alt="Обложка тома 3 Ванеевой" style="width:115px; height:165px; object-fit:cover; border-radius:8px; border:1.5px solid rgba(217,119,6,0.4); box-shadow:0 4px 10px rgba(0,0,0,0.15); transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
               </a>
               <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.5;">
-                <div>📗 <strong>Зелёный переплёт</strong> с синим орнаментом коми пасов.</div>
+                <div>📘 <strong>Синий переплёт</strong> с традиционным орнаментом коми пасов.</div>
                 <div style="margin-top:0.45rem;">🏛️ Вышел в свет в марте 2026 года в Сыктывкаре, презентован в Национальной библиотеке РК.</div>
                 <div style="margin-top:0.45rem;">📍 Приходы Часовской, Айкинской и Усть-Вымской волостей.</div>
               </div>
@@ -3424,7 +3424,7 @@ function renderTreeCards() {{
       <div class="card-anchor left"></div>
       <div class="card-anchor right"></div>
       <div class="card-top">
-        <span class="card-gen">[${{p.id}}] Пок. ${{p.gen}}</span>
+        <span class="card-gen">Пок. ${{p.gen}}</span>
         <div style="display:flex; align-items:center; gap:0.25rem;">
           ${{reconBadge}}
           ${{docBadge}}
@@ -4044,7 +4044,7 @@ function openModal(pid) {{
   }}
 
   document.getElementById('modalName').textContent = p.clean_name;
-  document.getElementById('modalSubtitle').textContent = `[${{p.id}}] • Поколение ${{p.gen}} • ${{p.branch}}`;
+  document.getElementById('modalSubtitle').textContent = `Поколение ${{p.gen}} • ${{p.branch}}`;
 
   const sexText = p.sex === 'M' ? 'Мужской ♂' : 'Женский ♀';
   const dates = p.display_birt ? `${{p.display_birt}}${{p.display_deat ? ' — ' + p.display_deat : ''}}` : (p.display_deat ? `ум. ${{p.display_deat}}` : 'не указано');
@@ -4086,7 +4086,7 @@ function openModal(pid) {{
               <div><strong>Музейный документ:</strong> Подлинная Красноармейская книжка от 13.06.1943 г. («Годен к … 7.8.44»). Хранится в Айкинском центральном музее Усть-Вымского района Коми (КП 8347, рег. № 21112145).</div>
             </div>
           ` : p.id === 'I21' ? `
-            <div><strong>Родство:</strong> Прапрадед Николая, отец Зинаиды Михайловны Туркиной (Шехониной) [I14], муж Марии Степановны Сюткиной [I22]. Родился и жил в селе Лойма Прилузского района Коми АССР.</div>
+            <div><strong>Родство:</strong> Прапрадед Николая, отец Зинаиды Михайловны Туркиной (Шехониной), муж Марии Степановны Сюткиной. Родился и жил в селе Лойма Прилузского района Коми АССР.</div>
             <div><strong>Воинское звание:</strong> Младший лейтенант (офицер РККА)</div>
             <div><strong>Призыв:</strong> Мобилизован Прилузским РВК Коми АССР в июле 1941 года.</div>
             <div><strong>Воинская часть:</strong> 995-й стрелковый полк 263-й стрелковой дивизии (Карельский фронт).</div>
@@ -4329,7 +4329,7 @@ function renderGenerations() {{
 
       card.innerHTML = `
         <div class="card-top">
-          <span class="card-gen">[${{p.id}}] Пок. ${{p.gen}}</span>
+          <span class="card-gen">Пок. ${{p.gen}}</span>
           <div style="display:flex; align-items:center; gap:0.25rem;">
             ${{reconBadge}}
             ${{docBadge}}
@@ -4358,11 +4358,11 @@ function renderTable() {{
   tbody.innerHTML = '';
 
   const list = Object.values(INDIS).sort((a,b) => (a.gen - b.gen) || a.clean_name.localeCompare(b.clean_name));
-  list.forEach(p => {{
+  list.forEach((p, idx) => {{
     const tr = document.createElement('tr');
     tr.onclick = () => openModal(p.id);
     tr.innerHTML = `
-      <td><strong>${{p.id}}</strong></td>
+      <td><strong>${{idx + 1}}</strong></td>
       <td><strong>${{escapeHtml(p.clean_name)}}</strong></td>
       <td>${{p.sex === 'M' ? 'Муж' : 'Жен'}}</td>
       <td>Пок. ${{p.gen}}</td>
