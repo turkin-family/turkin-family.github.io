@@ -20,3 +20,6 @@ data/backup_pre_collateral_filter/
 
 # Private connection configs
 *.ovpn
+
+# Originals backup (not pushed to GitHub)
+архив_оригиналы_исходники/
