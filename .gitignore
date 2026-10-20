@@ -1,0 +1,22 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Temporary IDE & OS files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Auxiliary raw scan dumps not used in the web application
+архив_сканы_первоисточников/1834_all/
+архив_сканы_первоисточников/1834_batch3/
+архив_сканы_первоисточников/1834_new/
+архив_сканы_первоисточников/1834_scans/
+архив_сканы_цамо/Зиновьев_Владимир_Семенович/
+архив_сканы_цамо/Туркин_Михаил_Николаевич/
+data/backup_pre_collateral_filter/
+
+# Private connection configs
+*.ovpn

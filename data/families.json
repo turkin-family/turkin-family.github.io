@@ -1,0 +1,723 @@
+[
+  {
+    "id": "F1",
+    "husb": "I2",
+    "wife": "I3",
+    "children": [
+      "I1"
+    ]
+  },
+  {
+    "id": "F2",
+    "husb": "I11",
+    "wife": "I12",
+    "children": [
+      "I3",
+      "I5",
+      "I6"
+    ]
+  },
+  {
+    "id": "F3",
+    "wife": "I12",
+    "children": [
+      "I7",
+      "I8"
+    ]
+  },
+  {
+    "id": "F4",
+    "husb": "I17",
+    "wife": "I18",
+    "children": [
+      "I12"
+    ]
+  },
+  {
+    "id": "F5",
+    "husb": "I9",
+    "wife": "I10",
+    "children": [
+      "I2",
+      "I4"
+    ]
+  },
+  {
+    "id": "F6",
+    "husb": "I15",
+    "wife": "I16",
+    "children": [
+      "I10"
+    ]
+  },
+  {
+    "id": "F7",
+    "husb": "I23",
+    "wife": "I24",
+    "children": [
+      "I15"
+    ]
+  },
+  {
+    "id": "F8",
+    "husb": "I35",
+    "wife": "I36",
+    "children": [
+      "I23"
+    ]
+  },
+  {
+    "id": "F9",
+    "husb": "I53",
+    "wife": "I54",
+    "marr_date": "10 NOV 1874",
+    "children": [
+      "I36"
+    ]
+  },
+  {
+    "id": "F10",
+    "husb": "I63",
+    "wife": "I64",
+    "marr_date": "24 APR 1846",
+    "children": [
+      "I53"
+    ]
+  },
+  {
+    "id": "F11",
+    "wife": "I66",
+    "children": [
+      "I64"
+    ]
+  },
+  {
+    "id": "F12",
+    "husb": "I37",
+    "wife": "I38",
+    "children": [
+      "I24"
+    ]
+  },
+  {
+    "id": "F13",
+    "husb": "I55",
+    "wife": "I56",
+    "children": [
+      "I37"
+    ]
+  },
+  {
+    "id": "F14",
+    "husb": "I25",
+    "wife": "I26",
+    "children": [
+      "I67",
+      "I16"
+    ]
+  },
+  {
+    "id": "F15",
+    "husb": "I39",
+    "wife": "I40",
+    "children": [
+      "I25"
+    ]
+  },
+  {
+    "id": "F16",
+    "husb": "I57",
+    "wife": "I58",
+    "marr_date": "24 JAN 1858",
+    "children": [
+      "I40"
+    ]
+  },
+  {
+    "id": "F17",
+    "husb": "I65",
+    "children": [
+      "I58"
+    ]
+  },
+  {
+    "id": "F18",
+    "husb": "I41",
+    "wife": "I42",
+    "children": [
+      "I26"
+    ]
+  },
+  {
+    "id": "F19",
+    "husb": "I59",
+    "wife": "I60",
+    "marr_date": "18 JAN 1859",
+    "children": [
+      "I41"
+    ]
+  },
+  {
+    "id": "F20",
+    "husb": "I61",
+    "wife": "I62",
+    "children": [
+      "I42"
+    ]
+  },
+  {
+    "id": "F21",
+    "husb": "I13",
+    "wife": "I14",
+    "children": [
+      "I9"
+    ]
+  },
+  {
+    "id": "F22",
+    "husb": "I21",
+    "wife": "I22",
+    "children": [
+      "I14"
+    ]
+  },
+  {
+    "id": "F23",
+    "husb": "I31",
+    "wife": "I32",
+    "children": [
+      "I21"
+    ]
+  },
+  {
+    "id": "F24",
+    "husb": "I49",
+    "children": [
+      "I31"
+    ]
+  },
+  {
+    "id": "F25",
+    "husb": "I50",
+    "wife": "I51",
+    "children": [
+      "I32"
+    ]
+  },
+  {
+    "id": "F26",
+    "husb": "I33",
+    "wife": "I34",
+    "children": [
+      "I22",
+      "I69"
+    ]
+  },
+  {
+    "id": "F27",
+    "husb": "I52",
+    "children": [
+      "I33"
+    ]
+  },
+  {
+    "id": "F28",
+    "husb": "I19",
+    "wife": "I20",
+    "children": [
+      "I13"
+    ]
+  },
+  {
+    "id": "F29",
+    "husb": "I27",
+    "wife": "I28",
+    "children": [
+      "I19",
+      "I68"
+    ]
+  },
+  {
+    "id": "F30",
+    "husb": "I43",
+    "wife": "I44",
+    "children": [
+      "I27"
+    ]
+  },
+  {
+    "id": "F31",
+    "husb": "I45",
+    "wife": "I46",
+    "children": [
+      "I28"
+    ]
+  },
+  {
+    "id": "F32",
+    "husb": "I29",
+    "wife": "I30",
+    "children": [
+      "I20"
+    ]
+  },
+  {
+    "id": "F33",
+    "husb": "I47",
+    "wife": "I48",
+    "children": [
+      "I30"
+    ]
+  },
+  {
+    "id": "F34",
+    "husb": "I70",
+    "children": [
+      "I43",
+      "I307"
+    ]
+  },
+  {
+    "id": "F36",
+    "husb": "I72",
+    "children": [
+      "I223",
+      "I71",
+      "I225",
+      "I224",
+      "I226"
+    ],
+    "wife": "I222"
+  },
+  {
+    "id": "F37",
+    "husb": "I73",
+    "children": [
+      "I72",
+      "I92",
+      "I95"
+    ]
+  },
+  {
+    "id": "F39",
+    "husb": "I83",
+    "children": [
+      "I85",
+      "I89",
+      "I90",
+      "I91"
+    ]
+  },
+  {
+    "id": "F40",
+    "husb": "I85",
+    "wife": "I86",
+    "children": [
+      "I87",
+      "I98",
+      "I99",
+      "I88"
+    ]
+  },
+  {
+    "id": "F41",
+    "husb": "I92",
+    "children": [
+      "I93"
+    ]
+  },
+  {
+    "id": "F42",
+    "husb": "I93",
+    "children": [
+      "I94"
+    ]
+  },
+  {
+    "id": "F43",
+    "husb": "I84",
+    "wife": "I102",
+    "children": [
+      "I96",
+      "I97",
+      "I103"
+    ]
+  },
+  {
+    "id": "F44",
+    "husb": "I71",
+    "wife": "I104",
+    "children": [
+      "I78",
+      "I227",
+      "I228",
+      "I75"
+    ]
+  },
+  {
+    "id": "F45",
+    "husb": "I75",
+    "wife": "I76",
+    "children": [
+      "I77"
+    ]
+  },
+  {
+    "id": "F46",
+    "husb": "I78",
+    "children": [
+      "I229",
+      "I79",
+      "I80"
+    ]
+  },
+  {
+    "id": "F47",
+    "husb": "I79",
+    "wife": "I81",
+    "children": [
+      "I82"
+    ]
+  },
+  {
+    "id": "F38",
+    "husb": "I74",
+    "children": [
+      "I73",
+      "I83",
+      "I84",
+      "I270"
+    ]
+  },
+  {
+    "id": "F48",
+    "husb": "I87",
+    "wife": "I100",
+    "children": [
+      "I101"
+    ]
+  },
+  {
+    "id": "F49",
+    "husb": "I105",
+    "wife": null,
+    "children": [
+      "I106",
+      "I46"
+    ]
+  },
+  {
+    "id": "F61",
+    "husb": "I148",
+    "wife": "I149",
+    "children": [
+      "I70",
+      "I151",
+      "I152",
+      "I153"
+    ]
+  },
+  {
+    "id": "F87",
+    "husb": "I80",
+    "wife": null,
+    "children": [
+      "I148"
+    ]
+  },
+  {
+    "id": "F88",
+    "husb": "I224",
+    "wife": null,
+    "children": [
+      "I254",
+      "I255",
+      "I256",
+      "I257",
+      "I230",
+      "I258"
+    ]
+  },
+  {
+    "id": "F89",
+    "husb": "I230",
+    "wife": "I231",
+    "children": [
+      "I232"
+    ]
+  },
+  {
+    "id": "F90",
+    "husb": "I232",
+    "wife": "I233",
+    "children": [
+      "I238",
+      "I247",
+      "I248",
+      "I249",
+      "I234"
+    ]
+  },
+  {
+    "id": "F91",
+    "husb": "I234",
+    "wife": null,
+    "children": [
+      "I235",
+      "I236"
+    ]
+  },
+  {
+    "id": "F92",
+    "husb": "I236",
+    "wife": "I237",
+    "children": [
+      "I260"
+    ]
+  },
+  {
+    "id": "F93",
+    "husb": "I92",
+    "wife": null,
+    "children": [
+      "I239"
+    ]
+  },
+  {
+    "id": "F94",
+    "husb": "I239",
+    "wife": "I240",
+    "children": [
+      "I253",
+      "I241",
+      "I243",
+      "I244"
+    ]
+  },
+  {
+    "id": "F95",
+    "husb": "I241",
+    "wife": "I242",
+    "children": [
+      "I259"
+    ]
+  },
+  {
+    "id": "F96",
+    "husb": "I245",
+    "wife": null,
+    "children": [
+      "I246"
+    ]
+  },
+  {
+    "id": "F97",
+    "husb": "I95",
+    "wife": null,
+    "children": [
+      "I245"
+    ],
+    "marr_date": null,
+    "marr_plac": null
+  },
+  {
+    "id": "F98",
+    "husb": "I250",
+    "wife": "I246",
+    "children": []
+  },
+  {
+    "id": "F99",
+    "husb": "I251",
+    "wife": "I244",
+    "children": []
+  },
+  {
+    "id": "F100",
+    "husb": "I241",
+    "wife": "I252",
+    "children": []
+  },
+  {
+    "id": "F101",
+    "husb": "I89",
+    "wife": "I261",
+    "children": [
+      "I262",
+      "I263",
+      "I264",
+      "I265"
+    ]
+  },
+  {
+    "id": "F102",
+    "husb": "I262",
+    "wife": "I266",
+    "children": [
+      "I267"
+    ]
+  },
+  {
+    "id": "F103",
+    "husb": "I264",
+    "wife": "I268",
+    "children": [
+      "I269"
+    ]
+  },
+  {
+    "id": "F104",
+    "husb": "I274",
+    "children": [
+      "I74",
+      "I272"
+    ]
+  },
+  {
+    "id": "F105",
+    "husb": "I272",
+    "children": [
+      "I273"
+    ]
+  },
+  {
+    "id": "F106",
+    "husb": "I270",
+    "children": [
+      "I271"
+    ]
+  },
+  {
+    "id": "F107",
+    "husb": "I275",
+    "children": [
+      "I276",
+      "I279"
+    ]
+  },
+  {
+    "id": "F108",
+    "husb": "I276",
+    "children": [
+      "I277",
+      "I278"
+    ]
+  },
+  {
+    "id": "F109",
+    "husb": "I279",
+    "children": [
+      "I280"
+    ]
+  },
+  {
+    "id": "F110",
+    "husb": "I281",
+    "children": [
+      "I282",
+      "I284"
+    ]
+  },
+  {
+    "id": "F111",
+    "husb": "I282",
+    "children": [
+      "I283"
+    ]
+  },
+  {
+    "id": "F112",
+    "husb": "I285",
+    "children": [
+      "I286",
+      "I288"
+    ]
+  },
+  {
+    "id": "F113",
+    "husb": "I286",
+    "children": [
+      "I287"
+    ]
+  },
+  {
+    "id": "F114",
+    "husb": "I288",
+    "children": [
+      "I289"
+    ]
+  },
+  {
+    "id": "F115",
+    "husb": "I290",
+    "children": [
+      "I291"
+    ]
+  },
+  {
+    "id": "F116",
+    "husb": "I291",
+    "children": [
+      "I292"
+    ]
+  },
+  {
+    "id": "F117",
+    "husb": "I293",
+    "children": [
+      "I294",
+      "I295"
+    ]
+  },
+  {
+    "id": "F118",
+    "husb": "I296",
+    "children": [
+      "I297",
+      "I298"
+    ]
+  },
+  {
+    "id": "F119",
+    "husb": "I298",
+    "children": [
+      "I299"
+    ]
+  },
+  {
+    "id": "F120",
+    "husb": "I300",
+    "children": [
+      "I301"
+    ]
+  },
+  {
+    "id": "F121",
+    "husb": "I302",
+    "children": [
+      "I303"
+    ]
+  },
+  {
+    "id": "F122",
+    "husb": "I303",
+    "children": [
+      "I304"
+    ]
+  },
+  {
+    "id": "F123",
+    "husb": "I304",
+    "children": [
+      "I305"
+    ]
+  },
+  {
+    "id": "F124",
+    "husb": "I305",
+    "children": [
+      "I274",
+      "I306"
+    ]
+  }
+]
