@@ -115,7 +115,7 @@ def validate_integrity() -> Tuple[bool, List[str]]:
     # 3. Source References
     for doc in documents:
         doc_id = doc.get("id", "UNKNOWN")
-        p_ids = doc.get("personIds", [])
+        p_ids = doc.get("personIds") or []
         if not p_ids and doc.get("personId"):
             p_ids = [doc.get("personId")]
         for pid in p_ids:

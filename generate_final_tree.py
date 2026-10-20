@@ -4467,19 +4467,18 @@ function getPersonSourceInfo(p) {{
     return null;
   }}
 
-  let birthYear = null;
-  const bStr = (p.birt_date || '') + ' ' + (p.display_birt || '');
-  const m = bStr.match(/(1\\d{{3}}|2\\d{{3}})/);
-  if (m) birthYear = parseInt(m[1]);
+  let num = 0;
+  try {{
+    num = parseInt(p.id.replace('I', ''));
+  }} catch(e) {{}}
 
-  const isKruglyakova = p.id === 'I66' || p.id === 'I64' || (p.name && p.name.includes('Кругляков')) || (p.clean_name && p.clean_name.includes('Кругляков'));
+  // Линии семейных предков: 5-6 поколения, 7 поколение (I43-I62), 8 поколение (Харлампий Пасынков I63, Параскева Круглякова I64, Иона Каракчиев I65), 9 поколение (Мария Круглякова I66)
+  const isFamilyArchivePerson = (gen === 5 || gen === 6) ||
+    ['I63', 'I64', 'I65', 'I66'].includes(p.id) ||
+    (p.name && p.name.includes('Кругляков')) ||
+    (gen === 7 && num >= 43 && num <= 62);
 
-  const isFromGen5UpTo1852 = (gen === 5 || gen === 6) ||
-    isKruglyakova ||
-    (birthYear !== null && birthYear >= 1852) ||
-    (gen === 7 && (birthYear === null || birthYear >= 1852));
-
-  if (isFromGen5UpTo1852) {{
+  if (isFamilyArchivePerson) {{
     return {{
       type: 'text',
       text: 'Заполнено по информации из личных семейных архивов и при помощи «Усть-Вымского Родословия» (тома 1–3, авторы: Людмила Владимировна Ванеева, Валентина Александровна Гусева, Лидия Афанасьевна Молодцова).'
@@ -4494,10 +4493,7 @@ function getPersonSourceInfo(p) {{
 function getPersonDocs(pid) {{
   const p = INDIS[pid];
   if (!p) return [];
-  const srcInfo = getPersonSourceInfo(p);
-  if (!srcInfo || srcInfo.type !== 'archive') {{
-    return [];
-  }}
+  if (p.gen <= 4) return [];
   return DOCS.filter(d => d.personId === pid || (d.personIds && d.personIds.includes(pid)));
 }}
 
