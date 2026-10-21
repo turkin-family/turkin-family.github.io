@@ -53,6 +53,7 @@ TURKIN_IDS = {'I2', 'I4', 'I9', 'I13', 'I19', 'I20', 'I27', 'I28', 'I29', 'I30',
 TURKIN_IDS.update(f'I{i}' for i in range(75, 205))
 TURKIN_IDS.update(f'I{i}' for i in range(224, 315))
 TURKIN_IDS.update({'I355', 'I356', 'I357'})
+TURKIN_IDS.update(f'I{i}' for i in range(368, 400))
 SHEKHONIN_IDS = {'I14', 'I21', 'I22', 'I31', 'I32', 'I33', 'I34', 'I49', 'I50', 'I51', 'I52', 'I69'}
 SHEKHONIN_IDS.update(f'I{i}' for i in range(314, 333))
 SHUKTOMOV_IDS = {'I10', 'I15', 'I23', 'I24', 'I35', 'I36', 'I37', 'I38', 'I53', 'I54', 'I55', 'I56', 'I63', 'I64', 'I66'}
