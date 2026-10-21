@@ -4553,7 +4553,7 @@ function renderTreeCards() {{
 
     const sexIcon = p.sex === 'M' ? '♂' : '♀';
     const dates = p.display_birt ? `${{p.display_birt}}${{p.display_deat ? ' – ' + p.display_deat : ''}}` : (p.display_deat ? `ум. ${{p.display_deat}}` : '');
-    const isVeteran = (p.id === 'I19' || p.id === 'I67' || p.id === 'I68' || p.id === 'I25' || p.id === 'I23' || p.id === 'I21' || p.id === 'I314' || p.id === 'I315');
+    const isVeteran = (p.id === 'I19' || p.id === 'I67' || p.id === 'I68' || p.id === 'I25' || p.id === 'I23' || p.id === 'I21' || p.id === 'I314' || p.id === 'I315' || p.id === 'I248' || p.id === 'I391');
     let vetBadge = '';
     if (p.id === 'I25') {{
       vetBadge = '<span class="badge-veteran" title="Ветеран Первой мировой и Великой Отечественной войн">🎖️ ПМВ / ВОВ</span>';
@@ -4561,6 +4561,10 @@ function renderTreeCards() {{
       vetBadge = '<span class="badge-veteran" title="Младший лейтенант ВОВ, кавалер Ордена Отечественной войны I степени">🎖️ ВОВ</span>';
     }} else if (p.id === 'I314' || p.id === 'I315') {{
       vetBadge = '<span class="badge-veteran" title="Участник Великой Отечественной войны (погиб на фронте в 1942 г.)">🎖️ ВОВ</span>';
+    }} else if (p.id === 'I248') {{
+      vetBadge = '<span class="badge-veteran" style="background:#fee2e2; color:#991b1b; border:1px solid #f87171;" title="Защитник Отечества: ратник ополчения 1813 г. (Заграничные походы против Наполеона), погиб в 1815 г.">⚔️ Ополчение 1813</span>';
+    }} else if (p.id === 'I391') {{
+      vetBadge = '<span class="badge-veteran" style="background:#fee2e2; color:#991b1b; border:1px solid #f87171;" title="Защитник Отечества: ратник народного ополчения Отечественной войны 1812 года">⚔️ Война 1812</span>';
     }} else if (p.id === 'I68' || p.id === 'I23') {{
       vetBadge = '<span class="badge-veteran" title="Участник Великой Отечественной войны">🎖️ ВОВ</span>';
     }} else if (isVeteran) {{
@@ -5675,15 +5679,26 @@ function openModal(pid) {{
     `;
   }}
 
-  if (p.id === 'I19' || p.id === 'I67' || p.id === 'I68' || p.id === 'I25' || p.id === 'I23' || p.id === 'I21') {{
+  if (p.id === 'I19' || p.id === 'I67' || p.id === 'I68' || p.id === 'I25' || p.id === 'I23' || p.id === 'I21' || p.id === 'I248' || p.id === 'I391') {{
     html += `
       <div class="detail-group" style="background: linear-gradient(135deg, rgba(220,38,38,0.07), rgba(245,158,11,0.07)); border: 1.5px solid rgba(220,38,38,0.25); border-radius:8px; padding:0.75rem 0.85rem;">
         <div style="display:flex; align-items:center; gap:0.45rem; margin-bottom:0.45rem;">
-          <span style="font-size:1.15rem;">🎖️</span>
-          <h3 style="margin:0; color:#b91c1c; font-size:0.92rem;">${{p.id === 'I25' ? 'Ветеран двух мировых войн (ПМВ и ВОВ)' : (p.id === 'I21' ? 'Младший лейтенант ВОВ • Кавалер Ордена Отечественной войны I ст.' : (p.id === 'I68' || p.id === 'I23' ? 'Участник Великой Отечественной войны' : 'Герой Великой Отечественной войны'))}}</h3>
+          <span style="font-size:1.15rem;">${{p.id === 'I248' || p.id === 'I391' ? '⚔️' : '🎖️'}}</span>
+          <h3 style="margin:0; color:#b91c1c; font-size:0.92rem;">${{p.id === 'I248' || p.id === 'I391' ? 'Защитник Отечества • Войны против Наполеона 1812–1814 гг.' : (p.id === 'I25' ? 'Ветеран двух мировых войн (ПМВ и ВОВ)' : (p.id === 'I21' ? 'Младший лейтенант ВОВ • Кавалер Ордена Отечественной войны I ст.' : (p.id === 'I68' || p.id === 'I23' ? 'Участник Великой Отечественной войны' : 'Герой Великой Отечественной войны')))}}</h3>
         </div>
         <div style="font-size:0.82rem; line-height:1.5; color:var(--text-main);">
-          ${{p.id === 'I25' ? `
+          ${{p.id === 'I248' ? `
+            <div><strong>Статус:</strong> ⚔️ Ратник народного ополчения войн против Наполеона (1812–1814 гг.)</div>
+            <div><strong>Сословие и призыв:</strong> Сын церковного пономаря с. Коквицы Елисея Леонтьевича Туркина. В 1813 году по указу Вологодской казенной палаты призван из духовного звания в народное ополчение для участия в освободительных Заграничных походах русской армии против войск Наполеона.</div>
+            <div><strong>Судьба:</strong> Скончался на воинской службе в 1815 году в возрасте ок. 26 лет.</div>
+            <div><strong>Семья:</strong> Вдова Марья (22 года в 1816 г.) и сын Енох (род. ок. 1813 г.).</div>
+            <div><strong>Архивный первоисточник:</strong> ГАВО, фонд 388, опись 9, дело 201, лист 344 об., семья № 171. Официальная помета ревизской сказки 1816 г.: <em>«Гаврило Елисеевъ Туркинъ — по ревизии 1811 г. 22 года, по указу Вологодской казенной палаты из духовного звания взят в ополчение в 1813 году, умер в 1815 году»</em>.</div>
+          ` : p.id === 'I391' ? `
+            <div><strong>Статус:</strong> ⚔️ Ратник народного ополчения Отечественной войны 1812 года против Наполеона</div>
+            <div><strong>Призыв:</strong> Мобилизован непосредственно в грозном 1812 году в ходе отражения вторжения Великой армии Наполеона на Россию (Вологодское народное ополчение). На момент призыва — 31 год.</div>
+            <div><strong>Семья и ветвь:</strong> Деревня Малая Лыата Коквицкого селения, семья № 213. Племянник главы двора Тита Васильева Туркина (59 лет в 1816 г.). Младшие братья: Матвей (13 лет) и Степан меньшой (11 лет).</div>
+            <div><strong>Архивный первоисточник:</strong> ГАВО, фонд 388, опись 9, дело 201, лист 363 об., семья № 213. Официальная помета ревизской сказки 1816 г.: <em>«Его Тита племянникъ Степанъ — по ревизии 1811 г. 31 год, взятъ въ ратники [народное ополчение] въ 1812 году»</em>.</div>
+          ` : p.id === 'I25' ? `
             <div style="margin-bottom:0.45rem; padding-bottom:0.45rem; border-bottom:1px dashed rgba(220,38,38,0.25);">
               <div style="font-weight:700; color:#991b1b; margin-bottom:0.15rem;">⚔️ Первая мировая война (1914–1918):</div>
               <div><strong>Звание:</strong> Унтер-офицер (ранее ефрейтор) Русской императорской армии</div>
@@ -5790,6 +5805,9 @@ function openModal(pid) {{
     }} else if (p.id === 'I21') {{
       pdfLink = '<span style="font-size:0.75rem; color:var(--text-muted); font-weight:600;">ЦАМО РФ, Филиал ВМД и Книга Памяти РК</span>';
       archiveTitle = `📑 Архивные документы и картотеки ВОВ (${{personDocs.length}})`;
+    }} else if (p.id === 'I248' || p.id === 'I391') {{
+      pdfLink = '<span style="font-size:0.75rem; color:var(--text-muted); font-weight:600;">ГАВО ф. 388, оп. 9, д. 201</span>';
+      archiveTitle = `⚔️ Сканы ревизии 1816 г. (Ополчение 1812–1813 гг.) (${{personDocs.length}})`;
     }} else if (['I75','I76','I77','I78','I79','I80','I81','I82'].includes(p.id)) {{
       pdfLink = '<span style="font-size:0.75rem; color:var(--accent); font-weight:600;">МКАУ ВЦА ф. 363, оп. 1, д. 2372, л. 472</span>';
       archiveTitle = `🏛️ Исповедная роспись 1773 г. (двор 167) (${{personDocs.length}})`;
@@ -5936,7 +5954,7 @@ function renderGenerations() {{
 
       const sexIcon = p.sex === 'M' ? '♂' : '♀';
       const dates = p.display_birt ? `${{p.display_birt}}${{p.display_deat ? ' – ' + p.display_deat : ''}}` : (p.display_deat ? `ум. ${{p.display_deat}}` : '');
-      const isVeteran = (p.id === 'I19' || p.id === 'I67' || p.id === 'I68' || p.id === 'I25' || p.id === 'I23' || p.id === 'I21' || p.id === 'I314' || p.id === 'I315');
+      const isVeteran = (p.id === 'I19' || p.id === 'I67' || p.id === 'I68' || p.id === 'I25' || p.id === 'I23' || p.id === 'I21' || p.id === 'I314' || p.id === 'I315' || p.id === 'I248' || p.id === 'I391');
       let vetBadge = '';
       if (p.id === 'I25') {{
         vetBadge = '<span class="badge-veteran" title="Ветеран Первой мировой и Великой Отечественной войн">🎖️ ПМВ / ВОВ</span>';
@@ -5944,6 +5962,10 @@ function renderGenerations() {{
         vetBadge = '<span class="badge-veteran" title="Младший лейтенант ВОВ, кавалер Ордена Отечественной войны I степени">🎖️ ВОВ</span>';
       }} else if (p.id === 'I314' || p.id === 'I315') {{
         vetBadge = '<span class="badge-veteran" title="Участник Великой Отечественной войны (погиб на фронте в 1942 г.)">🎖️ ВОВ</span>';
+      }} else if (p.id === 'I248') {{
+        vetBadge = '<span class="badge-veteran" style="background:#fee2e2; color:#991b1b; border:1px solid #f87171;" title="Защитник Отечества: ратник ополчения 1813 г. (Заграничные походы против Наполеона), погиб в 1815 г.">⚔️ Ополчение 1813</span>';
+      }} else if (p.id === 'I391') {{
+        vetBadge = '<span class="badge-veteran" style="background:#fee2e2; color:#991b1b; border:1px solid #f87171;" title="Защитник Отечества: ратник народного ополчения Отечественной войны 1812 года">⚔️ Война 1812</span>';
       }} else if (p.id === 'I68' || p.id === 'I23') {{
         vetBadge = '<span class="badge-veteran" title="Участник Великой Отечественной войны">🎖️ ВОВ</span>';
       }} else if (isVeteran) {{
