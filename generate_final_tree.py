@@ -2563,7 +2563,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
       </div>
 
       <div class="tree-subbar-right">
-        <button class="subbar-btn" id="btnToggleReview1816" onclick="toggleReview1816Highlight()" title="Перейти к следующей из 51 новых персон 7-й ревизии 1816 г. на проверке">🔍 На проверке 1816 (51)</button>
+        <button class="subbar-btn" id="btnToggleReview1816" onclick="toggleReview1816Highlight()" title="Перейти к следующей из новых персон 7-й ревизии 1816 г. на проверке">🔍 На проверке 1816</button>
         <button class="subbar-btn active" id="btnToggleSpouses" onclick="toggleSpouseLinks()" title="Показать или скрыть брачные союзы">💍 Браки</button>
       </div>
     </div>
@@ -4551,7 +4551,7 @@ function renderTreeCards() {{
     const isHidden = onlyDirectLine && !isDirect;
     let num = 0;
     try {{ num = parseInt(p.id.replace('I', '')); }} catch(e) {{}}
-    const isNew1816 = (num >= 368 && num <= 418) || !!p.is_new_1816;
+    const isNew1816 = (num >= 368 && num <= 450) || !!p.is_new_1816;
     const card = document.createElement('div');
     card.className = `person-card sex-${{p.sex}} ${{p.id === 'I1' ? 'is-proband' : ''}} ${{hasDocs ? 'has-archival-docs' : ''}} ${{isReconstructed ? 'is-reconstructed' : ''}} ${{isNew1816 ? 'is-review-1816' : ''}} ${{isHidden ? 'is-hidden-branch' : ''}}`;
     card.id = `card-${{p.id}}`;
@@ -4780,7 +4780,7 @@ let review1816Index = 0;
 function toggleReview1816Highlight() {{
   const reviewIds = Object.keys(INDIS).filter(pid => {{
     const num = parseInt(pid.replace('I', '')) || 0;
-    return (num >= 368 && num <= 418) || !!INDIS[pid].is_new_1816;
+    return (num >= 368 && num <= 450) || !!INDIS[pid].is_new_1816;
   }});
   if (reviewIds.length === 0) return;
   const targetId = reviewIds[review1816Index % reviewIds.length];
@@ -5731,7 +5731,7 @@ function openModal(pid) {{
   }}
 
   const modalPidNum = parseInt(pid.replace('I', '')) || 0;
-  const isModalNew1816 = (modalPidNum >= 368 && modalPidNum <= 418) || !!p.is_new_1816;
+  const isModalNew1816 = (modalPidNum >= 368 && modalPidNum <= 450) || !!p.is_new_1816;
   const assignedDoc = p.source_id ? DOCS.find(d => d.id === p.source_id) : (isModalNew1816 && personDocs.length > 0 ? personDocs[0] : null);
 
   if (assignedDoc) {{
