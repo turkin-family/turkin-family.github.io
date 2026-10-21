@@ -2586,7 +2586,6 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
       </div>
 
       <div class="tree-subbar-right">
-        <button class="subbar-btn" id="btnToggleReview1816" onclick="toggleReview1816Highlight()" title="Перейти к следующей из новых персон 7-й ревизии 1816 г. на проверке">🔍 На проверке 1816</button>
         <button class="subbar-btn active" id="btnToggleSpouses" onclick="toggleSpouseLinks()" title="Показать или скрыть брачные союзы">💍 Браки</button>
       </div>
     </div>
@@ -4576,11 +4575,8 @@ function renderTreeCards() {{
     const isReconstructed = !!p.is_reconstructed;
     const isDirect = directAncestorIds.has(p.id);
     const isHidden = onlyDirectLine && !isDirect;
-    let num = 0;
-    try {{ num = parseInt(p.id.replace('I', '')); }} catch(e) {{}}
-    const isNew1816 = (num >= 368 && num <= 450) || !!p.is_new_1816;
     const card = document.createElement('div');
-    card.className = `person-card sex-${{p.sex}} ${{p.id === 'I1' ? 'is-proband' : ''}} ${{hasDocs ? 'has-archival-docs' : ''}} ${{isReconstructed ? 'is-reconstructed' : ''}} ${{isNew1816 ? 'is-review-1816' : ''}} ${{isHidden ? 'is-hidden-branch' : ''}}`;
+    card.className = `person-card sex-${{p.sex}} ${{p.id === 'I1' ? 'is-proband' : ''}} ${{hasDocs ? 'has-archival-docs' : ''}} ${{isReconstructed ? 'is-reconstructed' : ''}} ${{isHidden ? 'is-hidden-branch' : ''}}`;
     card.id = `card-${{p.id}}`;
     card.style.left = `${{p.x}}px`;
     card.style.top = `${{p.y}}px`;
@@ -4630,14 +4626,9 @@ function renderTreeCards() {{
       reconBadge = '<span class="badge-reconstructed" title="Научная реконструкция промежуточного поколения XVI века (акты утрачены)">⏳ XVI в.</span>';
     }}
 
-    let reviewBadge = '';
-    if (isNew1816) {{
-      reviewBadge = '<span class="badge-review-1816" title="Новая персона из 7-й ревизии 1816 г. (на проверке)">🔍 1816</span>';
-    }}
-
     let hypoBadge = '';
     if (p.father_is_hypo || (p.is_hypothetical_parent && p.id === 'I397')) {{
-      hypoBadge = '<span class="badge-review-1816" style="background:#fffbeb; color:#b45309; border-color:#d97706;" title="Предположительная связь по архивным ревизиям 1816/1834 гг.">⚡ Гипотеза</span>';
+      hypoBadge = '<span class="badge-hypo-tree" style="background:#fffbeb; color:#b45309; border:1px dashed #d97706; border-radius:4px; padding:1px 5px; font-size:0.68rem; font-weight:700;" title="Предположительная связь по архивным ревизиям 1816/1834 гг.">⚡ Гипотеза</span>';
     }}
 
     let docBadge = '';
@@ -4653,7 +4644,6 @@ function renderTreeCards() {{
         <span class="card-gen" onclick="event.stopPropagation(); focusGeneration(${{p.gen}});" title="Центрировать древо по поколению ${{p.gen}}">Пок. ${{p.gen}}</span>
         <div style="display:flex; align-items:center; gap:0.25rem;">
           ${{hypoBadge}}
-          ${{reviewBadge}}
           ${{reconBadge}}
           ${{docBadge}}
           ${{vetBadge}}
@@ -5774,7 +5764,7 @@ function openModal(pid) {{
       <div class="detail-group" style="background:rgba(245, 158, 11, 0.08); border:1.5px solid #f59e0b; border-radius:8px; padding:0.75rem 0.85rem; margin-bottom:0.75rem;">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.35rem; flex-wrap:wrap; gap:0.35rem;">
           <div style="font-weight:700; font-size:0.85rem; color:#b45309; display:flex; align-items:center; gap:0.3rem;">
-            <span>🔍</span> <span>Архивный первоисточник (7-я ревизия 1816 г., на проверке):</span>
+            <span>🏛️</span> <span>Архивный первоисточник (7-я ревизия 1816 г.):</span>
           </div>
           <span style="font-size:0.72rem; background:#fef3c7; color:#92400e; padding:2px 6px; border-radius:4px; font-weight:700; border:1px solid #f59e0b;">
             ${{escapeHtml(assignedDoc.badge || 'Ревизия 1816')}}

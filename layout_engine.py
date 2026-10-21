@@ -46,6 +46,7 @@ BRANCH_DEFS = {
     'shekhonin': ('Линия Шехониных / Сюткиных', '#8b5cf6', 'shekhonin'),
     'shuktomov': ('Линия Шуктомовых / Пасынковых', '#d97706', 'shuktomov'),
     'zinoviev': ('Линия Зиновьевых / Кызъюровых', '#ec4899', 'zinoviev'),
+    'homonym': ('Ветка однофамильцев (1816)', '#64748b', 'homonym'),
 }
 
 THAI_IDS = {'I3', 'I5', 'I6', 'I7', 'I8', 'I11', 'I12', 'I17', 'I18'}
@@ -53,7 +54,7 @@ TURKIN_IDS = {'I2', 'I4', 'I9', 'I13', 'I19', 'I20', 'I27', 'I28', 'I29', 'I30',
 TURKIN_IDS.update(f'I{i}' for i in range(75, 205))
 TURKIN_IDS.update(f'I{i}' for i in range(205, 315))
 TURKIN_IDS.update({'I355', 'I356', 'I357'})
-TURKIN_IDS.update(f'I{i}' for i in range(368, 394))  # Коквицкие Туркины (до I393)
+TURKIN_IDS.update(f'I{i}' for i in range(368, 394))  # Коквицкие Туркины (до I393: Марья и Енох)
 
 SHEKHONIN_IDS = {'I14', 'I21', 'I22', 'I31', 'I32', 'I33', 'I34', 'I49', 'I50', 'I51', 'I52', 'I69'}
 SHEKHONIN_IDS.update(f'I{i}' for i in range(314, 333))
@@ -63,15 +64,22 @@ SHUKTOMOV_IDS = {'I10', 'I15', 'I23', 'I24', 'I35', 'I36', 'I37', 'I38', 'I53', 
 SHUKTOMOV_IDS.update(f'I{i}' for i in range(333, 355))
 SHUKTOMOV_IDS.update(f'I{i}' for i in range(358, 368))  # 1773 Шуктомовы (I358..I367)
 SHUKTOMOV_IDS.update(f'I{i}' for i in range(394, 403))  # 1816 Шуктомовы (I394..I402)
-SHUKTOMOV_IDS.update(f'I{i}' for i in range(409, 414))  # 1816 Полещиковы (I409..I413)
 SHUKTOMOV_IDS.update(f'I{i}' for i in range(419, 423))  # 1816 Шуктомовы дочери (I419..I422)
 SHUKTOMOV_IDS.update(f'I{i}' for i in range(438, 445))  # 1834 Шуктомовы дети (I438..I444)
 
 # Зиновьевы, Кызъюровы, Поздеевы, Каракчиевы (линия дедушки Семена Григорьевича Зиновьева)
 ZINOVIEV_IDS = {'I16', 'I25', 'I26', 'I39', 'I40', 'I41', 'I42', 'I57', 'I58', 'I59', 'I60', 'I61', 'I62', 'I65', 'I67'}
-ZINOVIEV_IDS.update(f'I{i}' for i in range(403, 409))  # 1816 Поздеевы (I403..I408)
-ZINOVIEV_IDS.add('I414')  # 1816 Кызъюров
-ZINOVIEV_IDS.update({'I415', 'I416', 'I417', 'I418'})  # 1816 Каракчиевы (Агафон и др.)
+ZINOVIEV_IDS.update({'I415', 'I416', 'I417', 'I418', 'I428', 'I429'})  # 1816 Каракчиевы (семья Агафона и Ионы)
+
+# Ветка однофамильцев и родственных селений 1816 г. (без задокументированной связи с пробандом)
+HOMONYM_IDS = {
+    # 1816 Поздеевы (д. Ероздино, двор № 200)
+    'I403', 'I404', 'I405', 'I406', 'I407', 'I408', 'I423', 'I424',
+    # 1816 Полещиковы (д. Ероздино, двор № 204)
+    'I409', 'I410', 'I411', 'I412', 'I413', 'I425', 'I426', 'I427',
+    # 1816 Кызъюровы (д. Ибская, дворы № 166 и 167)
+    'I414', 'I430', 'I431', 'I432', 'I433', 'I434', 'I435', 'I436', 'I437'
+}
 
 
 def load_calibrated_coords() -> Dict[str, Tuple[int, int]]:
@@ -105,6 +113,8 @@ def assign_branch_info(persons: List[Dict[str, Any]]) -> None:
             bname, bcol, bid = BRANCH_DEFS['shuktomov']
         elif pid in ZINOVIEV_IDS:
             bname, bcol, bid = BRANCH_DEFS['zinoviev']
+        elif pid in HOMONYM_IDS:
+            bname, bcol, bid = BRANCH_DEFS['homonym']
         else:
             bname, bcol, bid = ('Семья', '#64748b', 'general')
         p['branch'] = bname
