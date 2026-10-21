@@ -64,6 +64,8 @@ SHUKTOMOV_IDS.update(f'I{i}' for i in range(333, 355))
 SHUKTOMOV_IDS.update(f'I{i}' for i in range(358, 368))  # 1773 Шуктомовы (I358..I367)
 SHUKTOMOV_IDS.update(f'I{i}' for i in range(394, 403))  # 1816 Шуктомовы (I394..I402)
 SHUKTOMOV_IDS.update(f'I{i}' for i in range(409, 414))  # 1816 Полещиковы (I409..I413)
+SHUKTOMOV_IDS.update(f'I{i}' for i in range(419, 423))  # 1816 Шуктомовы дочери (I419..I422)
+SHUKTOMOV_IDS.update(f'I{i}' for i in range(438, 445))  # 1834 Шуктомовы дети (I438..I444)
 
 # Зиновьевы, Кызъюровы, Поздеевы, Каракчиевы (линия дедушки Семена Григорьевича Зиновьева)
 ZINOVIEV_IDS = {'I16', 'I25', 'I26', 'I39', 'I40', 'I41', 'I42', 'I57', 'I58', 'I59', 'I60', 'I61', 'I62', 'I65', 'I67'}

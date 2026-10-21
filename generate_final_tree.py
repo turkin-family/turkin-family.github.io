@@ -186,6 +186,8 @@ for p in persons:
     p['clean_name'] = clean_name
     p['father_id'] = None
     p['mother_id'] = None
+    p['father_is_hypo'] = False
+    p['mother_is_hypo'] = False
     p['spouses'] = []
     p['children_ids'] = []
     p['siblings_ids'] = []
@@ -195,6 +197,7 @@ for f in families:
     wife = f.get('wife')
     children = f.get('children', [])
     marr = f.get('marr_date')
+    is_hypo = f.get('is_hypothetical', False)
     if husb and wife:
         person_dict[husb]['spouses'].append({'id': wife, 'marr_date': marr})
         person_dict[wife]['spouses'].append({'id': husb, 'marr_date': marr})
@@ -202,10 +205,14 @@ for f in families:
         cp = person_dict[c]
         if husb:
             cp['father_id'] = husb
+            if is_hypo:
+                cp['father_is_hypo'] = True
             if c not in person_dict[husb]['children_ids']:
                 person_dict[husb]['children_ids'].append(c)
         if wife:
             cp['mother_id'] = wife
+            if is_hypo:
+                cp['mother_is_hypo'] = True
             if c not in person_dict[wife]['children_ids']:
                 person_dict[wife]['children_ids'].append(c)
         for other_c in children:
@@ -679,6 +686,12 @@ main {{
   stroke-width: 2.5px;
   stroke-dasharray: 6 5;
   stroke-opacity: 0.85;
+}}
+.tree-link.link-hypo {{
+  stroke: #d97706;
+  stroke-width: 2.5px;
+  stroke-dasharray: 6 4;
+  stroke-opacity: 0.9;
 }}
 
 .flow-active .tree-link {{
@@ -1209,6 +1222,16 @@ tr:hover td {{
   border-color: var(--accent);
   background: var(--accent-light);
   color: var(--accent);
+}}
+.link-badge.badge-hypo {{
+  border: 1px dashed #d97706;
+  background: #fffbeb;
+  color: #b45309;
+}}
+.link-badge.badge-hypo:hover {{
+  background: #fef3c7;
+  border-color: #b45309;
+  color: #78350f;
 }}
 
 button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
@@ -2590,6 +2613,9 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
           <marker id="arrow-research" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
             <path d="M 1 2 L 7 5 L 1 8 z" fill="#a855f7" />
           </marker>
+          <marker id="arrow-hypo" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 1 2 L 7 5 L 1 8 z" fill="#d97706" />
+          </marker>
 
           <!-- Arrow Markers Start (Parent -> Child) -->
           <marker id="arrow-start-father" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="6" markerHeight="6" orient="auto">
@@ -2627,6 +2653,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
       <div class="legend-item"><div class="legend-line" style="background:#db2777;"></div> Линия матери (стрелка ♀️)</div>
       <div class="legend-item"><div class="legend-line" style="background:#8b5cf6; border-top:1px dashed #8b5cf6;"></div> Брачный союз 💍</div>
       <div class="legend-item"><div class="legend-line" style="background:#f59e0b;"></div> Выделенная ветвь ⭐</div>
+      <div class="legend-item"><div class="legend-line" style="border-top:2px dashed #d97706; background:transparent;"></div> Предположительно (гипотеза) ⚡</div>
     </div>
   </div>
 
@@ -4608,6 +4635,11 @@ function renderTreeCards() {{
       reviewBadge = '<span class="badge-review-1816" title="Новая персона из 7-й ревизии 1816 г. (на проверке)">🔍 1816</span>';
     }}
 
+    let hypoBadge = '';
+    if (p.father_is_hypo || (p.is_hypothetical_parent && p.id === 'I397')) {{
+      hypoBadge = '<span class="badge-review-1816" style="background:#fffbeb; color:#b45309; border-color:#d97706;" title="Предположительная связь по архивным ревизиям 1816/1834 гг.">⚡ Гипотеза</span>';
+    }}
+
     let docBadge = '';
     if (hasDocs) {{
       const firstDocIdx = DOCS.indexOf(personDocs[0]);
@@ -4620,6 +4652,7 @@ function renderTreeCards() {{
       <div class="card-top">
         <span class="card-gen" onclick="event.stopPropagation(); focusGeneration(${{p.gen}});" title="Центрировать древо по поколению ${{p.gen}}">Пок. ${{p.gen}}</span>
         <div style="display:flex; align-items:center; gap:0.25rem;">
+          ${{hypoBadge}}
           ${{reviewBadge}}
           ${{reconBadge}}
           ${{docBadge}}
@@ -4661,7 +4694,8 @@ function renderSvgLinks() {{
         const father = INDIS[child.father_id];
         const fx = father.x;
         const fy = father.y + CARD_H / 2;
-        linksG.appendChild(createBezierLink(child.id, father.id, cx, cy, fx, fy, 'father'));
+        const linkType = child.father_is_hypo ? 'hypo' : 'father';
+        linksG.appendChild(createBezierLink(child.id, father.id, cx, cy, fx, fy, linkType));
       }}
     }}
 
@@ -4671,7 +4705,8 @@ function renderSvgLinks() {{
         const mother = INDIS[child.mother_id];
         const mx = mother.x;
         const my = mother.y + CARD_H / 2;
-        linksG.appendChild(createBezierLink(child.id, mother.id, cx, cy, mx, my, 'mother'));
+        const linkType = child.mother_is_hypo ? 'hypo' : 'mother';
+        linksG.appendChild(createBezierLink(child.id, mother.id, cx, cy, mx, my, linkType));
       }}
     }}
   }});
@@ -5921,10 +5956,14 @@ function openModal(pid) {{
   if (p.father_id || p.mother_id) {{
     html += `<div class="detail-group"><h3>Родители</h3><div>`;
     if (p.father_id && INDIS[p.father_id]) {{
-      html += `<a class="link-badge" onclick="openModal('${{p.father_id}}')">👨 Отец: ${{escapeHtml(INDIS[p.father_id].clean_name)}}</a>`;
+      const isHypo = p.father_is_hypo;
+      const prefix = isHypo ? '⚡ Отец (гипотеза): ' : '👨 Отец: ';
+      html += `<a class="link-badge ${{isHypo ? 'badge-hypo' : ''}}" onclick="openModal('${{p.father_id}}')">${{prefix}}${{escapeHtml(INDIS[p.father_id].clean_name)}}</a>`;
     }}
     if (p.mother_id && INDIS[p.mother_id]) {{
-      html += `<a class="link-badge" onclick="openModal('${{p.mother_id}}')">👩 Мать: ${{escapeHtml(INDIS[p.mother_id].clean_name)}}</a>`;
+      const isHypo = p.mother_is_hypo;
+      const prefix = isHypo ? '⚡ Мать (гипотеза): ' : '👩 Мать: ';
+      html += `<a class="link-badge ${{isHypo ? 'badge-hypo' : ''}}" onclick="openModal('${{p.mother_id}}')">${{prefix}}${{escapeHtml(INDIS[p.mother_id].clean_name)}}</a>`;
     }}
     html += `</div></div>`;
   }}
@@ -5946,7 +5985,11 @@ function openModal(pid) {{
     html += `<div class="detail-group"><h3>Дети (${{p.children_ids.length}})</h3><div>`;
     p.children_ids.forEach(cid => {{
       if (INDIS[cid]) {{
-        html += `<a class="link-badge" onclick="openModal('${{cid}}')">👶 ${{escapeHtml(INDIS[cid].clean_name)}}</a>`;
+        const ch = INDIS[cid];
+        const isHypo = (p.id === ch.father_id && ch.father_is_hypo) || (p.id === ch.mother_id && ch.mother_is_hypo);
+        const prefix = isHypo ? '⚡ ' : '👶 ';
+        const suffix = isHypo ? ' (гипотеза)' : '';
+        html += `<a class="link-badge ${{isHypo ? 'badge-hypo' : ''}}" onclick="openModal('${{cid}}')">${{prefix}}${{escapeHtml(ch.clean_name)}}${{suffix}}</a>`;
       }}
     }});
     html += `</div></div>`;

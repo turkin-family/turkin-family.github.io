@@ -76,6 +76,8 @@ def export_gedcom(filename="rodoslovnaya_turkin.ged"):
             lines.append(f"2 DATE {f['marr_date']}")
         for c in f.get('children', []):
             lines.append(f"1 CHIL @{c}@")
+        if f.get('note'):
+            lines.append(f"1 NOTE {f['note']}")
 
     lines.append("0 TRLR")
     content = "\n".join(lines) + "\n"
