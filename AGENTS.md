@@ -7,3 +7,4 @@
 - [Палеография, ономастика и фамилии](knowledge_base/paleography_and_surnames.md)
 - [Родовые селения и ревизские дворы](knowledge_base/family_branches_and_villages.md)
 - [Архитектура данных и пайплайн сборки](knowledge_base/codebase_architecture.md)
+- [Пайплайн сканирования, распознавания и внесения документов](knowledge_base/document_processing_pipeline.md)

@@ -62,3 +62,4 @@
 - `knowledge_base/paleography_and_surnames.md` — Ономастика, скоропись и родовые фамилии.
 - `knowledge_base/family_branches_and_villages.md` — Топонимика, селения и ревизские дворы.
 - `knowledge_base/codebase_architecture.md` — Архитектура проекта и пайплайн сборки.
+- `knowledge_base/document_processing_pipeline.md` — Пайплайн сканирования, распознавания и внесения документов в базу.
