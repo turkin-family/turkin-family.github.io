@@ -4553,11 +4553,11 @@ function renderTreeCards() {{
 
     const sexIcon = p.sex === 'M' ? '♂' : '♀';
     const dates = p.display_birt ? `${{p.display_birt}}${{p.display_deat ? ' – ' + p.display_deat : ''}}` : (p.display_deat ? `ум. ${{p.display_deat}}` : '');
-    const isVeteran = (p.id === 'I19' || p.id === 'I67' || p.id === 'I68' || p.id === 'I25' || p.id === 'I23' || p.id === 'I21' || p.id === 'I314' || p.id === 'I315' || p.id === 'I400' || p.id === 'I407' || p.id === 'I408' || p.id === 'I414');
+    const isVeteran = (p.id === 'I19' || p.id === 'I67' || p.id === 'I68' || p.id === 'I25' || p.id === 'I23' || p.id === 'I21' || p.id === 'I314' || p.id === 'I315' || p.id === 'I400' || p.id === 'I407' || p.id === 'I408' || p.id === 'I417' || p.id === 'I414' || p.id === 'I417');
     let vetBadge = '';
-    if (p.id === 'I400' || p.id === 'I414') {{
+    if (p.id === 'I400' || p.id === 'I414' || p.id === 'I417') {{
       vetBadge = '<span class="badge-veteran" style="background:#fee2e2; color:#991b1b; border:1px solid #f87171;" title="Участник Отечественной войны 1812 года (рекрут / ратник-стрелок Вологодского ополчения)">🎖️ 1812 г.</span>';
-    }} else if (p.id === 'I407' || p.id === 'I408') {{
+    }} else if (p.id === 'I407' || p.id === 'I408' || p.id === 'I417') {{
       vetBadge = '<span class="badge-veteran" style="background:#ffedd5; color:#9a3412; border:1px solid #fb923c;" title="Участник Заграничного похода русской армии 1813 года (рекрут 1813 г.)">🎖️ 1813 г.</span>';
     }} else if (p.id === 'I25') {{
       vetBadge = '<span class="badge-veteran" title="Ветеран Первой мировой и Великой Отечественной войн">🎖️ ПМВ / ВОВ</span>';
@@ -5943,11 +5943,11 @@ function renderGenerations() {{
 
       const sexIcon = p.sex === 'M' ? '♂' : '♀';
       const dates = p.display_birt ? `${{p.display_birt}}${{p.display_deat ? ' – ' + p.display_deat : ''}}` : (p.display_deat ? `ум. ${{p.display_deat}}` : '');
-      const isVeteran = (p.id === 'I19' || p.id === 'I67' || p.id === 'I68' || p.id === 'I25' || p.id === 'I23' || p.id === 'I21' || p.id === 'I314' || p.id === 'I315' || p.id === 'I400' || p.id === 'I407' || p.id === 'I408' || p.id === 'I414');
+      const isVeteran = (p.id === 'I19' || p.id === 'I67' || p.id === 'I68' || p.id === 'I25' || p.id === 'I23' || p.id === 'I21' || p.id === 'I314' || p.id === 'I315' || p.id === 'I400' || p.id === 'I407' || p.id === 'I408' || p.id === 'I417' || p.id === 'I414' || p.id === 'I417');
       let vetBadge = '';
-      if (p.id === 'I400' || p.id === 'I414') {{
+      if (p.id === 'I400' || p.id === 'I414' || p.id === 'I417') {{
         vetBadge = '<span class="badge-veteran" style="background:#fee2e2; color:#991b1b; border:1px solid #f87171;" title="Участник Отечественной войны 1812 года (рекрут / ратник-стрелок Вологодского ополчения)">🎖️ 1812 г.</span>';
-      }} else if (p.id === 'I407' || p.id === 'I408') {{
+      }} else if (p.id === 'I407' || p.id === 'I408' || p.id === 'I417') {{
         vetBadge = '<span class="badge-veteran" style="background:#ffedd5; color:#9a3412; border:1px solid #fb923c;" title="Участник Заграничного похода русской армии 1813 года (рекрут 1813 г.)">🎖️ 1813 г.</span>';
       }} else if (p.id === 'I25') {{
         vetBadge = '<span class="badge-veteran" title="Ветеран Первой мировой и Великой Отечественной войн">🎖️ ПМВ / ВОВ</span>';

@@ -51,14 +51,25 @@ BRANCH_DEFS = {
 THAI_IDS = {'I3', 'I5', 'I6', 'I7', 'I8', 'I11', 'I12', 'I17', 'I18'}
 TURKIN_IDS = {'I2', 'I4', 'I9', 'I13', 'I19', 'I20', 'I27', 'I28', 'I29', 'I30', 'I43', 'I44', 'I45', 'I46', 'I47', 'I48', 'I68', 'I70', 'I71', 'I72', 'I73', 'I74'}
 TURKIN_IDS.update(f'I{i}' for i in range(75, 205))
-TURKIN_IDS.update(f'I{i}' for i in range(224, 315))
+TURKIN_IDS.update(f'I{i}' for i in range(205, 315))
 TURKIN_IDS.update({'I355', 'I356', 'I357'})
-TURKIN_IDS.update(f'I{i}' for i in range(368, 400))
+TURKIN_IDS.update(f'I{i}' for i in range(368, 394))  # Коквицкие Туркины (до I393)
+
 SHEKHONIN_IDS = {'I14', 'I21', 'I22', 'I31', 'I32', 'I33', 'I34', 'I49', 'I50', 'I51', 'I52', 'I69'}
 SHEKHONIN_IDS.update(f'I{i}' for i in range(314, 333))
+
+# Шуктомовы, Пасынковы, Полещиковы (линия бабушки Светланы Евгеньевны Шуктомовой)
 SHUKTOMOV_IDS = {'I10', 'I15', 'I23', 'I24', 'I35', 'I36', 'I37', 'I38', 'I53', 'I54', 'I55', 'I56', 'I63', 'I64', 'I66'}
 SHUKTOMOV_IDS.update(f'I{i}' for i in range(333, 355))
+SHUKTOMOV_IDS.update(f'I{i}' for i in range(358, 368))  # 1773 Шуктомовы (I358..I367)
+SHUKTOMOV_IDS.update(f'I{i}' for i in range(394, 403))  # 1816 Шуктомовы (I394..I402)
+SHUKTOMOV_IDS.update(f'I{i}' for i in range(409, 414))  # 1816 Полещиковы (I409..I413)
+
+# Зиновьевы, Кызъюровы, Поздеевы, Каракчиевы (линия дедушки Семена Григорьевича Зиновьева)
 ZINOVIEV_IDS = {'I16', 'I25', 'I26', 'I39', 'I40', 'I41', 'I42', 'I57', 'I58', 'I59', 'I60', 'I61', 'I62', 'I65', 'I67'}
+ZINOVIEV_IDS.update(f'I{i}' for i in range(403, 409))  # 1816 Поздеевы (I403..I408)
+ZINOVIEV_IDS.add('I414')  # 1816 Кызъюров
+ZINOVIEV_IDS.update({'I415', 'I416', 'I417', 'I418'})  # 1816 Каракчиевы (Агафон и др.)
 
 
 def load_calibrated_coords() -> Dict[str, Tuple[int, int]]:
