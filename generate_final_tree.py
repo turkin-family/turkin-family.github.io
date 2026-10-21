@@ -834,6 +834,29 @@ main {{
   border: 2px dashed #d97706 !important;
   background: linear-gradient(135deg, rgba(254, 252, 191, 0.45), rgba(255, 255, 255, 0.96)) !important;
 }}
+.person-card.is-review-1816 {{
+  border: 2px dashed #f59e0b !important;
+  box-shadow: 0 0 14px rgba(245, 158, 11, 0.45) !important;
+}}
+.badge-review-1816 {{
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #f59e0b;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  cursor: pointer;
+  white-space: nowrap;
+}}
+[data-theme="dark"] .badge-review-1816 {{
+  background: rgba(245, 158, 11, 0.22);
+  color: #fde68a;
+  border-color: #f59e0b;
+}}
 .badge-doc-tree:hover {{
   background: #2563eb;
   color: #ffffff;
@@ -2540,6 +2563,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
       </div>
 
       <div class="tree-subbar-right">
+        <button class="subbar-btn" id="btnToggleReview1816" onclick="toggleReview1816Highlight()" title="Перейти к следующей из 51 новых персон 7-й ревизии 1816 г. на проверке">🔍 На проверке 1816 (51)</button>
         <button class="subbar-btn active" id="btnToggleSpouses" onclick="toggleSpouseLinks()" title="Показать или скрыть брачные союзы">💍 Браки</button>
       </div>
     </div>
@@ -4525,8 +4549,11 @@ function renderTreeCards() {{
     const isReconstructed = !!p.is_reconstructed;
     const isDirect = directAncestorIds.has(p.id);
     const isHidden = onlyDirectLine && !isDirect;
+    let num = 0;
+    try {{ num = parseInt(p.id.replace('I', '')); }} catch(e) {{}}
+    const isNew1816 = (num >= 368 && num <= 418) || !!p.is_new_1816;
     const card = document.createElement('div');
-    card.className = `person-card sex-${{p.sex}} ${{p.id === 'I1' ? 'is-proband' : ''}} ${{hasDocs ? 'has-archival-docs' : ''}} ${{isReconstructed ? 'is-reconstructed' : ''}} ${{isHidden ? 'is-hidden-branch' : ''}}`;
+    card.className = `person-card sex-${{p.sex}} ${{p.id === 'I1' ? 'is-proband' : ''}} ${{hasDocs ? 'has-archival-docs' : ''}} ${{isReconstructed ? 'is-reconstructed' : ''}} ${{isNew1816 ? 'is-review-1816' : ''}} ${{isHidden ? 'is-hidden-branch' : ''}}`;
     card.id = `card-${{p.id}}`;
     card.style.left = `${{p.x}}px`;
     card.style.top = `${{p.y}}px`;
@@ -4576,6 +4603,11 @@ function renderTreeCards() {{
       reconBadge = '<span class="badge-reconstructed" title="Научная реконструкция промежуточного поколения XVI века (акты утрачены)">⏳ XVI в.</span>';
     }}
 
+    let reviewBadge = '';
+    if (isNew1816) {{
+      reviewBadge = '<span class="badge-review-1816" title="Новая персона из 7-й ревизии 1816 г. (на проверке)">🔍 1816</span>';
+    }}
+
     let docBadge = '';
     if (hasDocs) {{
       const firstDocIdx = DOCS.indexOf(personDocs[0]);
@@ -4588,6 +4620,7 @@ function renderTreeCards() {{
       <div class="card-top">
         <span class="card-gen" onclick="event.stopPropagation(); focusGeneration(${{p.gen}});" title="Центрировать древо по поколению ${{p.gen}}">Пок. ${{p.gen}}</span>
         <div style="display:flex; align-items:center; gap:0.25rem;">
+          ${{reviewBadge}}
           ${{reconBadge}}
           ${{docBadge}}
           ${{vetBadge}}
@@ -4741,6 +4774,24 @@ function toggleSpouseLinks() {{
   const btn = document.getElementById('btnToggleSpouses');
   btn.classList.toggle('active', showSpouses);
   renderSvgLinks();
+}}
+
+let review1816Index = 0;
+function toggleReview1816Highlight() {{
+  const reviewIds = Object.keys(INDIS).filter(pid => {{
+    const num = parseInt(pid.replace('I', '')) || 0;
+    return (num >= 368 && num <= 418) || !!INDIS[pid].is_new_1816;
+  }});
+  if (reviewIds.length === 0) return;
+  const targetId = reviewIds[review1816Index % reviewIds.length];
+  focusPerson(targetId);
+  const btn = document.getElementById('btnToggleReview1816');
+  if (btn) {{
+    const currNum = (review1816Index % reviewIds.length) + 1;
+    btn.textContent = `🔍 Проверка [${{currNum}}/${{reviewIds.length}}]: ${{INDIS[targetId].clean_name.split(' ')[0]}}`;
+    btn.classList.add('active');
+  }}
+  review1816Index++;
 }}
 
 // INTERACTIVE ANCESTRY HIGHLIGHTING
@@ -5679,6 +5730,36 @@ function openModal(pid) {{
     `;
   }}
 
+  const modalPidNum = parseInt(pid.replace('I', '')) || 0;
+  const isModalNew1816 = (modalPidNum >= 368 && modalPidNum <= 418) || !!p.is_new_1816;
+  const assignedDoc = p.source_id ? DOCS.find(d => d.id === p.source_id) : (isModalNew1816 && personDocs.length > 0 ? personDocs[0] : null);
+
+  if (assignedDoc) {{
+    html += `
+      <div class="detail-group" style="background:rgba(245, 158, 11, 0.08); border:1.5px solid #f59e0b; border-radius:8px; padding:0.75rem 0.85rem; margin-bottom:0.75rem;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.35rem; flex-wrap:wrap; gap:0.35rem;">
+          <div style="font-weight:700; font-size:0.85rem; color:#b45309; display:flex; align-items:center; gap:0.3rem;">
+            <span>🔍</span> <span>Архивный первоисточник (7-я ревизия 1816 г., на проверке):</span>
+          </div>
+          <span style="font-size:0.72rem; background:#fef3c7; color:#92400e; padding:2px 6px; border-radius:4px; font-weight:700; border:1px solid #f59e0b;">
+            ${{escapeHtml(assignedDoc.badge || 'Ревизия 1816')}}
+          </span>
+        </div>
+        <div style="font-size:0.82rem; line-height:1.45; color:var(--text-main); margin-bottom:0.3rem;">
+          <strong>Шифр дела:</strong> ${{escapeHtml(assignedDoc.archive)}}
+        </div>
+        <div style="font-size:0.80rem; line-height:1.4; color:var(--text-muted); margin-bottom:0.5rem;">
+          ${{escapeHtml(assignedDoc.title)}}
+        </div>
+        <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
+          <button class="pill-btn active" onclick="openDocViewerById('${{assignedDoc.id}}')" style="background:#d97706; border-color:#d97706; color:#fff; font-size:0.76rem; font-weight:600;">
+            🔍 Открыть 2-страничный скан в просмотрщике
+          </button>
+        </div>
+      </div>
+    `;
+  }}
+
   if (p.id === 'I19' || p.id === 'I67' || p.id === 'I68' || p.id === 'I25' || p.id === 'I23' || p.id === 'I21') {{
     html += `
       <div class="detail-group" style="background: linear-gradient(135deg, rgba(220,38,38,0.07), rgba(245,158,11,0.07)); border: 1.5px solid rgba(220,38,38,0.25); border-radius:8px; padding:0.75rem 0.85rem;">
@@ -5797,6 +5878,9 @@ function openModal(pid) {{
     }} else if (p.id === 'I248') {{
       pdfLink = '<span style="font-size:0.75rem; color:var(--text-muted); font-weight:600;">ГАВО ф. 388, оп. 9, д. 201</span>';
       archiveTitle = `🏛️ Ревизская сказка 1816 г. (семья 171) (${{personDocs.length}})`;
+    }} else if (isModalNew1816) {{
+      pdfLink = '<span style="font-size:0.75rem; color:#b45309; font-weight:700;">ГАВО. Ф. 388, Оп. 9, Д. 201 (7-я ревизия 1816 г.)</span>';
+      archiveTitle = `🏛️ Разворот 7-й ревизии 1816 г. (${{personDocs.length}} сканов)`;
     }} else if (['I75','I76','I77','I78','I79','I80','I81','I82'].includes(p.id)) {{
       pdfLink = '<span style="font-size:0.75rem; color:var(--accent); font-weight:600;">МКАУ ВЦА ф. 363, оп. 1, д. 2372, л. 472</span>';
       archiveTitle = `🏛️ Исповедная роспись 1773 г. (двор 167) (${{personDocs.length}})`;
