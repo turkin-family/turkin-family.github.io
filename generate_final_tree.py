@@ -151,7 +151,16 @@ def format_gedcom_date(d):
     if not d:
         return ""
     d_clean = d.strip()
-    if any(d_clean.lower().startswith(pfx) for pfx in ['ок.', 'ок', 'abt', 'bef', 'aft', 'до', 'после', 'около', '~']):
+    if d_clean.upper().startswith("ABT "):
+        rest = format_gedcom_date(d_clean[4:])
+        return f"ок. {rest}"
+    if d_clean.upper().startswith("BEF "):
+        rest = format_gedcom_date(d_clean[4:])
+        return f"до {rest}"
+    if d_clean.upper().startswith("AFT "):
+        rest = format_gedcom_date(d_clean[4:])
+        return f"после {rest}"
+    if any(d_clean.lower().startswith(pfx) for pfx in ['ок.', 'ок', 'до', 'после', 'около', '~']):
         return d_clean
     months = {
         'JAN': '01', 'FEB': '02', 'MAR': '03', 'APR': '04', 'MAY': '05', 'JUN': '06',
@@ -4480,9 +4489,9 @@ function getPersonSourceInfo(p) {{
     return null;
   }}
 
-  // Линии семейных предков: 5-6 поколения, 7 поколение (I43-I62), 8 поколение (Харлампий Пасынков I63, Параскева Круглякова I64, Иона Каракчиев I65), 9 поколение (Мария Круглякова I66)
+  // Линии семейных предков: 5-6 поколения, 7 поколение (I43-I62, I333), 8 поколение (Харлампий Пасынков I63, Параскева Круглякова I64, Иона Каракчиев I65), 9 поколение (Мария Круглякова I66)
   const isFamilyArchivePerson = (gen === 5 || gen === 6) ||
-    ['I63', 'I64', 'I65', 'I66'].includes(p.id) ||
+    ['I63', 'I64', 'I65', 'I66', 'I333'].includes(p.id) ||
     (p.name && p.name.includes('Кругляков')) ||
     (gen === 7 && num >= 43 && num <= 62);
 

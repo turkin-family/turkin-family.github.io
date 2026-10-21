@@ -52,9 +52,11 @@ THAI_IDS = {'I3', 'I5', 'I6', 'I7', 'I8', 'I11', 'I12', 'I17', 'I18'}
 TURKIN_IDS = {'I2', 'I4', 'I9', 'I13', 'I19', 'I20', 'I27', 'I28', 'I29', 'I30', 'I43', 'I44', 'I45', 'I46', 'I47', 'I48', 'I68', 'I70', 'I71', 'I72', 'I73', 'I74'}
 TURKIN_IDS.update(f'I{i}' for i in range(75, 205))
 TURKIN_IDS.update(f'I{i}' for i in range(224, 315))
+TURKIN_IDS.update({'I355', 'I356', 'I357'})
 SHEKHONIN_IDS = {'I14', 'I21', 'I22', 'I31', 'I32', 'I33', 'I34', 'I49', 'I50', 'I51', 'I52', 'I69'}
 SHEKHONIN_IDS.update(f'I{i}' for i in range(314, 333))
 SHUKTOMOV_IDS = {'I10', 'I15', 'I23', 'I24', 'I35', 'I36', 'I37', 'I38', 'I53', 'I54', 'I55', 'I56', 'I63', 'I64', 'I66'}
+SHUKTOMOV_IDS.update(f'I{i}' for i in range(333, 355))
 ZINOVIEV_IDS = {'I16', 'I25', 'I26', 'I39', 'I40', 'I41', 'I42', 'I57', 'I58', 'I59', 'I60', 'I61', 'I62', 'I65', 'I67'}
 
 
@@ -216,8 +218,8 @@ def compute_smart_layout(
                     queue.append(nb)
         clusters.append(comp)
 
-    # Базовый Y для новых кластеров (ниже основного древа)
-    base_max_y = max((y for pid, (_, y) in coords.items() if int(pid[1:]) <= 106), default=3100)
+    # Базовый Y для новых кластеров (ниже всех размещенных персон)
+    base_max_y = max((y for _, y in coords.values()), default=3100)
     cur_y = max(3300, base_max_y + 190)
 
     for cluster in clusters:
