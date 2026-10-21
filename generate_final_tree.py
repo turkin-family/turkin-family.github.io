@@ -2666,7 +2666,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </button>
       </div>
       <div id="genCountBadge" style="font-size:0.8rem; color:var(--text-muted); font-weight:600;">
-        Все родственники (197 персон • 20 поколений)
+        Все родственники (332 персоны • 20 поколений)
       </div>
     </div>
     <div id="generationsContainer"></div>
@@ -4950,7 +4950,9 @@ function focusPerson(pid) {{
 
 function toggleDirectLine() {{
   onlyDirectLine = !onlyDirectLine;
-  const label = onlyDirectLine ? '🎯 Прямая линия (78)' : '🎯 Прямая линия';
+  const directCount = directAncestorIds.size;
+  const totalCount = Object.keys(INDIS).length;
+  const label = onlyDirectLine ? `🎯 Прямая линия (${{directCount}})` : '🎯 Прямая линия';
 
   const btn = document.getElementById('btnToggleDirectLine');
   if (btn) {{
@@ -4964,7 +4966,7 @@ function toggleDirectLine() {{
   }}
   const genCount = document.getElementById('genCountBadge');
   if (genCount) {{
-    genCount.textContent = onlyDirectLine ? 'Прямая линия: 78 предков (20 поколений)' : 'Все родственники (197 персон • 20 поколений)';
+    genCount.textContent = onlyDirectLine ? `Прямая линия: ${{directCount}} предков (20 поколений)` : `Все родственники (${{totalCount}} персоны • 20 поколений)`;
   }}
 
   Object.values(INDIS).forEach(p => {{
