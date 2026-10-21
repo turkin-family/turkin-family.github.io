@@ -48,6 +48,7 @@
 | `revision_1816_erozdino_poleshchikov_195` | д. Ероздино, двор 195 | ГАВО ф. 388 оп. 9 д. 201 лл. 451об–452 | `erozdino_spread_451ob_452.jpg` | `erozdino_thumb_451ob_452.jpg` |
 | `revision_1816_ibskaya_opolchenets_166` | д. Ибская, дворы 166, 167 | ГАВО ф. 388 оп. 9 д. 201 лл. 446об–447 | `ibskaya_spread_446ob_447.jpg` | `ibskaya_thumb_446ob_447.jpg` |
 | `revision_1816_lyali_karakchiev_15` | Погост Ляльский, двор 15 | ГАВО ф. 388 оп. 9 д. 201 лл. 423об–424 | `karakchiev_15_full_spread.jpg` | `karakchiev_15_full_thumb.jpg` |
+| `revision_1834_erozdino_shuktomov_187` | д. Ероздино, дворы 187, 188, 189 | ГАВО ф. 388 оп. 10 д. 70 лл. 148об–149 | `1834_crops/erozdino_spread_148ob_149.jpg` | `erozdino_thumb_148ob_149.jpg` |
 
 ---
 
