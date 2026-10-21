@@ -4461,16 +4461,24 @@ function renderPinnedGenHeaders() {{
 
 function getPersonSourceInfo(p) {{
   if (!p) return null;
-  const gen = p.gen || 1;
-  if (gen <= 4) {{
-    // С 1 по 4 поколения: никаких документов и источников
-    return null;
-  }}
 
   let num = 0;
   try {{
     num = parseInt(p.id.replace('I', ''));
   }} catch(e) {{}}
+
+  if (num >= 314 && num <= 332) {{
+    return {{
+      type: 'text',
+      text: 'Заполнено по информации из личного семейного архива (родословное древо Олега Лычковского, с. Лойма).'
+    }};
+  }}
+
+  const gen = p.gen || 1;
+  if (gen <= 4) {{
+    // С 1 по 4 поколения: никаких документов и источников
+    return null;
+  }}
 
   // Линии семейных предков: 5-6 поколения, 7 поколение (I43-I62), 8 поколение (Харлампий Пасынков I63, Параскева Круглякова I64, Иона Каракчиев I65), 9 поколение (Мария Круглякова I66)
   const isFamilyArchivePerson = (gen === 5 || gen === 6) ||
@@ -4536,12 +4544,14 @@ function renderTreeCards() {{
 
     const sexIcon = p.sex === 'M' ? '♂' : '♀';
     const dates = p.display_birt ? `${{p.display_birt}}${{p.display_deat ? ' – ' + p.display_deat : ''}}` : (p.display_deat ? `ум. ${{p.display_deat}}` : '');
-    const isVeteran = (p.id === 'I19' || p.id === 'I67' || p.id === 'I68' || p.id === 'I25' || p.id === 'I23' || p.id === 'I21');
+    const isVeteran = (p.id === 'I19' || p.id === 'I67' || p.id === 'I68' || p.id === 'I25' || p.id === 'I23' || p.id === 'I21' || p.id === 'I314' || p.id === 'I315');
     let vetBadge = '';
     if (p.id === 'I25') {{
       vetBadge = '<span class="badge-veteran" title="Ветеран Первой мировой и Великой Отечественной войн">🎖️ ПМВ / ВОВ</span>';
     }} else if (p.id === 'I21') {{
       vetBadge = '<span class="badge-veteran" title="Младший лейтенант ВОВ, кавалер Ордена Отечественной войны I степени">🎖️ ВОВ</span>';
+    }} else if (p.id === 'I314' || p.id === 'I315') {{
+      vetBadge = '<span class="badge-veteran" title="Участник Великой Отечественной войны (погиб на фронте в 1942 г.)">🎖️ ВОВ</span>';
     }} else if (p.id === 'I68' || p.id === 'I23') {{
       vetBadge = '<span class="badge-veteran" title="Участник Великой Отечественной войны">🎖️ ВОВ</span>';
     }} else if (isVeteran) {{
@@ -5734,6 +5744,23 @@ function openModal(pid) {{
     `;
   }}
 
+  if (p.id === 'I314' || p.id === 'I315') {{
+    const ageText = p.id === 'I314' ? '39 лет' : '22 года';
+    html += `
+      <div class="detail-group" style="background: linear-gradient(135deg, rgba(220,38,38,0.07), rgba(245,158,11,0.07)); border: 1.5px solid rgba(220,38,38,0.25); border-radius:8px; padding:0.75rem 0.85rem;">
+        <div style="display:flex; align-items:center; gap:0.45rem; margin-bottom:0.45rem;">
+          <span style="font-size:1.15rem;">🎖️</span>
+          <h3 style="margin:0; color:#b91c1c; font-size:0.92rem;">Участник Великой Отечественной войны (погиб на фронте)</h3>
+        </div>
+        <div style="font-size:0.82rem; line-height:1.5; color:var(--text-main);">
+          <div><strong>Родство:</strong> Родной брат прабабушки Марии Степановны Сюткиной (Шехониной), сын Степана Петровича и Екатерины Васильевны Сюткиных. Родился в с. Лойма.</div>
+          <div><strong>Воинский подвиг:</strong> Призван на фронт Великой Отечественной войны. Погиб в боях за Родину в 1942 году (в возрасте ${{ageText}}).</div>
+          <div><strong>Источник:</strong> Личный семейный архив (родословное древо Олега Лычковского, с. Лойма).</div>
+        </div>
+      </div>
+    `;
+  }}
+
 
 
   if (personDocs.length > 0) {{
@@ -5900,12 +5927,14 @@ function renderGenerations() {{
 
       const sexIcon = p.sex === 'M' ? '♂' : '♀';
       const dates = p.display_birt ? `${{p.display_birt}}${{p.display_deat ? ' – ' + p.display_deat : ''}}` : (p.display_deat ? `ум. ${{p.display_deat}}` : '');
-      const isVeteran = (p.id === 'I19' || p.id === 'I67' || p.id === 'I68' || p.id === 'I25' || p.id === 'I23' || p.id === 'I21');
+      const isVeteran = (p.id === 'I19' || p.id === 'I67' || p.id === 'I68' || p.id === 'I25' || p.id === 'I23' || p.id === 'I21' || p.id === 'I314' || p.id === 'I315');
       let vetBadge = '';
       if (p.id === 'I25') {{
         vetBadge = '<span class="badge-veteran" title="Ветеран Первой мировой и Великой Отечественной войн">🎖️ ПМВ / ВОВ</span>';
       }} else if (p.id === 'I21') {{
         vetBadge = '<span class="badge-veteran" title="Младший лейтенант ВОВ, кавалер Ордена Отечественной войны I степени">🎖️ ВОВ</span>';
+      }} else if (p.id === 'I314' || p.id === 'I315') {{
+        vetBadge = '<span class="badge-veteran" title="Участник Великой Отечественной войны (погиб на фронте в 1942 г.)">🎖️ ВОВ</span>';
       }} else if (p.id === 'I68' || p.id === 'I23') {{
         vetBadge = '<span class="badge-veteran" title="Участник Великой Отечественной войны">🎖️ ВОВ</span>';
       }} else if (isVeteran) {{
