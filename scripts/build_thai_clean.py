@@ -82,6 +82,10 @@ def build_thai_file():
               <div>{d['meletiy_body']}</div>
             </div>
           </div>
+
+          <div style="margin-top:0.75rem; padding-top:0.5rem; border-top:1px dashed var(--border-color); display:flex; gap:0.4rem;">
+            <button class="pill-btn" onclick="focusPerson('I307'); switchTab('tree');" style="font-size:0.74rem;">🎯 พระภิกษุวิตาลี (เตอร์คิน)</button>
+          </div>
         </div>"""
         else:
             c_html = f"""        <div style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">

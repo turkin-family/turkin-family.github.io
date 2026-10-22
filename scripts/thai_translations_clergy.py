@@ -132,27 +132,47 @@ def get_thai_clergy_html():
         <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #4f46e533; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
-              <h3 style="margin:0; font-size:1.05rem; color:#4f46e5;">⛪ วัดอูลยานอโวและคุจบะ — อารามหลวงตรีเอกภาพเซนต์สเตฟาน</h3>
+              <h3 style="margin:0; font-size:1.05rem; color:#4f46e5;">⛪ с. Ульяново и с. Кужба — อารามหลวงตรีเอกภาพเซนต์สเตฟาน</h3>
               <span style="background:#eef2ff; color:#4f46e5; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #c7d2fe;">ผู้สละชีพเพื่อศรัทธา ศตวรรษที่ 20</span>
             </div>
-            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">ลุ่มแม่น้ำวิเชกดะตอนบน • ศูนย์กลางนักพรตแห่งดินแดนเหนือ</div>
+            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">แขวงอุสต์-ซีโซลสค์และอุสต์-คุลอม • ลุ่มแม่น้ำวิเชกดะตอนบน • ค.ศ. 1865–1937</div>
 
             <div style="display:flex; gap:0.85rem; margin-bottom:0.75rem; align-items:flex-start;">
-              <div onclick="openFullscreenScan('архив_сканы_первоисточников/Преподобномученик_Мелетий_Федюнев.jpg', 'Преподобномученик МЕЛЕТИЙ иеромонах', 'Казначей Ульяновского монастыря')" title="คลิกเพื่อดูรูปขนาดใหญ่" style="cursor:pointer; flex-shrink:0;">
-                <img src="архив_сканы_первоисточников/Преподобномученик_Мелетий_Федюнев.jpg" alt="พระมรณสักขี เมเลตี" style="width:115px; height:130px; object-fit:cover; border-radius:6px; border:1px solid #7c3aed; box-shadow:0 2px 6px rgba(0,0,0,0.15); transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+              <div onclick="openFullscreenScan('фото_храмов/Ульяново_Троице_Стефановский_монастырь.jpg', 'с. Ульяново — Троице-Стефановский мужской монастырь', 'อารามหลวงเซนต์สเตฟานแห่งเปียร์ม • วีรกรรมแห่งศรัทธาของพระภิกษุวิตาลี (เตอร์คิน), ค.ศ. 1937')" title="คลิกเพื่อดูรูปขนาดใหญ่" style="cursor:pointer; flex-shrink:0;">
+                <img src="фото_храмов/Ульяново_Троице_Стефановский_монастырь.jpg" alt="อารามหลวงอูลยานอโว" style="width:115px; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 6px rgba(0,0,0,0.1); transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
               </div>
               <div style="font-size:0.82rem; line-height:1.5; color:var(--text-main);">
-                <div>🏛️ อารามหลวงอูลยานอฟสกี ก่อตั้งขึ้นในศตวรรษที่ 14 โดยนักบุญสเตฟานแห่งเปียร์ม</div>
-                <div style="margin-top:0.35rem;">📜 <strong>พระมรณสักขี เมเลตี (เฟดิวเนียฟ):</strong> พระเหรัญญิกแห่งอารามหลวง ผู้ไม่ยอมละทิ้งศรัทธา ถูกจับกุมและสละชีพเพื่อพระคริสต์ในปี ค.ศ. 1937 ได้รับการสถาปนาเป็นนักบุญแห่งศาสนจักรออร์โธดอกซ์รัสเซีย</div>
+                <div>🌲 อารามหลวงฝ่ายชายอันเลื่องชื่อแห่งแดนเหนือ ก่อตั้งโดยนักบุญสเตฟานแห่งเปียร์ม ปลายศตวรรษที่ 14 และฟื้นฟูขึ้นในศตวรรษที่ 19</div>
+                <div style="margin-top:0.35rem;">⚖️ สำนวนคดีสืบสวนประวัติศาสตร์ UNKVD โคมิ ASSR ปี 1937 (หอจดหมายเหตุ FSB หมายเลข KP-7444)</div>
               </div>
             </div>
 
-            <p style="font-size:0.83rem; line-height:1.55; margin-bottom:0.65rem;">
-              สายสัมพันธ์ทางเครือญาติกับตระกูลเฟดิวเนียฟแห่งหมู่บ้านคุจบะและอึบ
-            </p>
+            <!-- พระภิกษุวิตาลี เตอร์คิน -->
+            <ul style="font-size:0.82rem; line-height:1.6; margin:0 0 0.65rem 0; padding-left:1.15rem;">
+              <li><strong>พระภิกษุ วิตาลี (วิตาลี อิวาโนวิช เตอร์คิน)</strong> (1865, หมู่บ้านโคควิทซี – 06.11.1937) — <strong>น้องชายแท้ๆ ของเทียด อะเลคซี อิวาโนวิช เตอร์คิน</strong> และเป็น <strong>คุณลุงแท้ๆ ของคุณทวด นิโคไล อะเลคเซเยวิช เตอร์คิน</strong> ท่านอุปสมบทเป็นพระภิกษุแห่งอารามหลวงอูลยานอฟสกี ภายหลังอารามถูกสั่งปิดในปี 1923 ท่านได้ย้ายไปจำพรรษา ณ หมู่บ้านคุจบะ พำนักในเรือนหลังเดียวกันกับ <strong>พระไอเอโรมอนัค เมเลตี (เฟดิวเนียฟ)</strong> พระเหรัญญิกของอาราม ร่วมกันประกอบพิธีกรรมทางศาสนาอย่างลับๆ ให้แก่ชาวบ้านนานถึง 14 ปี จนกระทั่งถูกจับกุมในเดือนกันยายน 1937 ถูกตัดสินจำคุกค่ายกักกันแรงงาน 10 ปี และมรณภาพ ณ ค่ายกักกันวอกวาซดีโน (ค่ายอุกต์เปชลาก) เมื่อวันที่ 6 พ.ย. 1937 (ได้รับการล้างมลทินกอบกู้เกียรติยศแล้ว)</li>
+            </ul>
+
+            <!-- ВЫДЕЛЕННЫЙ БЛОК: НОВОМУЧЕНИК МЕЛЕТИЙ -->
+            <div style="background:linear-gradient(135deg, rgba(124,58,237,0.06), rgba(217,119,6,0.06)); border:1.5px solid rgba(124,58,237,0.25); border-radius:8px; padding:0.65rem 0.75rem; margin-bottom:0.75rem; display:flex; gap:0.75rem; align-items:flex-start;">
+              <div onclick="openFullscreenScan('архив_сканы_первоисточников/Преподобномученик_Мелетий_Федюнев.jpg', 'Преподобномученик МЕЛЕТИЙ иеромонах', 'พระเหรัญญิกอารามหลวง ผู้ร่วมคดีความปี 1937 เดียวกันกับพระภิกษุวิตาลี เตอร์คิน')" title="คลิกเพื่อดูรูปขนาดใหญ่" style="cursor:pointer; flex:0 0 92px; text-align:center;">
+                <img src="архив_сканы_первоисточников/Преподобномученик_Мелетий_Федюнев.jpg" alt="พระมรณสักขี เมเลตี" style="width:92px; height:118px; object-fit:cover; border-radius:6px; border:1.5px solid #7c3aed; box-shadow:0 2px 5px rgba(0,0,0,0.15); display:block; transition:transform 0.2s; margin:0 auto;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
+                <div style="font-size:0.64rem; font-weight:700; color:#6d28d9; margin-top:0.35rem; width:100%; line-height:1.2;">นักบุญเมเลตี<br><span style="font-size:0.60rem; font-weight:600; color:var(--text-muted);">(เฟดิวเนียฟ)</span></div>
+              </div>
+              <div style="font-size:0.79rem; line-height:1.5; color:var(--text-main);">
+                <div style="font-weight:700; color:#6d28d9; margin-bottom:0.2rem; font-size:0.82rem;">🕊️ การสถาปนาเป็นนักบุญของสหายร่วมคดีปี 1937:</div>
+                <p style="margin:0 0 0.35rem 0; font-size:0.77rem; line-height:1.45; color:var(--text-main);">
+                  <em>«มหาเถรสมาคมแห่งศาสนจักรออร์โธดอกซ์รัสเซีย มีมติลงวันที่ 6 ต.ค. 2001 ประกาศสถาปนาพระไอเอโรมอนัค เมเลตี (เฟดิวเนียฟ) ขึ้นเป็นนักบุญในหมู่นักบุญมรณสักขีและผู้ยืนหยัดแห่งรัสเซียในศตวรรษที่ 20»</em>
+                </p>
+                <div style="font-size:0.75rem; line-height:1.45; color:var(--text-main);">
+                  • พระเหรัญญิกอารามหลวงอูลยานอฟสกี, <strong>ผู้ต้องหาในสำนวนคดีสืบสวนปี 1937 เดียวกันกับพระภิกษุวิตาลี เตอร์คิน</strong><br>
+                  • ในปี ค.ศ. 1923–1937 ท่านทั้งสองได้อาศัยอยู่ร่วมกันในเรือนหลังเดียวกัน ณ หมู่บ้านคุจบะ ทำพิธีและสวดมนต์อย่างลับๆ ให้ชาวบ้าน<br>
+                  • พระเมเลตี ถูกตัดสินประหารชีวิตและถูกยิงเป้าเมื่อ 15.09.1937 (ได้รับการล้างมลทินแล้ว)
+                </div>
+              </div>
+            </div>
           </div>
           <div style="display:flex; flex-wrap:wrap; gap:0.35rem; border-top:1px dashed var(--border-color); padding-top:0.5rem;">
-            <button class="pill-btn" onclick="focusPerson('I175'); switchTab('tree');" style="font-size:0.74rem;">🎯 สาแหรกสายอูลยานอโว</button>
+            <button class="pill-btn" onclick="focusPerson('I307'); switchTab('tree');" style="font-size:0.74rem;">🎯 พระภิกษุวิตาลี (เตอร์คิน)</button>
           </div>
         </div>
 
