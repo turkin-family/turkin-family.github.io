@@ -4345,11 +4345,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
           <span class="doc-viewer-badge" id="docViewerBadge">ГАВО</span>
           <span id="docViewerArchive" style="font-size:0.78rem; color:var(--text-muted); font-weight:500;">Архивные реквизиты</span>
         </div>
-        <h3 id="docViewerTitle" style="margin:0 0 0.35rem 0; font-size:1.06rem; line-height:1.35; font-weight:700; color:var(--text-main); word-break:break-word;">Название документа</h3>
-        <div id="docViewerPersonRow" style="display:flex; align-items:baseline; gap:0.45rem; font-size:0.83rem; line-height:1.4; color:#f59e0b; background:rgba(245, 158, 11, 0.08); border:1px solid rgba(245, 158, 11, 0.25); border-radius:6px; padding:0.35rem 0.65rem; margin-top:0.25rem; flex-wrap:wrap;">
-          <span style="font-weight:700; color:#fbbf24; flex-shrink:0;">⚖️ Стороны и участники:</span>
-          <span id="docViewerPerson" style="font-weight:600; color:#fde68a; word-break:break-word;"></span>
-        </div>
+        <h3 id="docViewerTitle" style="margin:0; font-size:1.06rem; line-height:1.35; font-weight:700; color:var(--text-main); word-break:break-word;">Название документа</h3>
       </div>
       <div class="doc-viewer-actions">
         <button class="doc-close-btn" onclick="closeDocViewer()" title="Закрыть документ и вернуться в карточку (Esc)">
@@ -5405,15 +5401,6 @@ function openDocViewer(index, customList) {{
   badgeEl.style.color = doc.badgeColor || '#2563eb';
   badgeEl.style.borderColor = (doc.badgeColor || '#2563eb') + '66';
   
-  const personEl = document.getElementById('docViewerPerson');
-  const personRow = document.getElementById('docViewerPersonRow');
-  if (doc.personName) {{
-    personEl.textContent = doc.personName;
-    if (personRow) personRow.style.display = 'flex';
-  }} else {{
-    personEl.textContent = '';
-    if (personRow) personRow.style.display = 'none';
-  }}
   document.getElementById('docViewerArchive').textContent = `${{doc.archive}}${{doc.date ? ' • ' + doc.date : ''}}`;
   document.getElementById('docViewerDesc').textContent = doc.desc;
   document.getElementById('docViewerCounter').textContent = `${{currentDocIndex + 1}} из ${{currentDocList.length}}`;
@@ -5783,35 +5770,6 @@ function openModal(pid) {{
     `;
   }}
 
-  const modalPidNum = parseInt(pid.replace('I', '')) || 0;
-  const isModalNew1816 = (modalPidNum >= 368 && modalPidNum <= 450) || !!p.is_new_1816;
-  const assignedDoc = p.source_id ? DOCS.find(d => d.id === p.source_id) : (isModalNew1816 && personDocs.length > 0 ? personDocs[0] : null);
-
-  if (assignedDoc) {{
-    html += `
-      <div class="detail-group" style="background:rgba(245, 158, 11, 0.08); border:1.5px solid #f59e0b; border-radius:8px; padding:0.75rem 0.85rem; margin-bottom:0.75rem;">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.35rem; flex-wrap:wrap; gap:0.35rem;">
-          <div style="font-weight:700; font-size:0.85rem; color:#b45309; display:flex; align-items:center; gap:0.3rem;">
-            <span>🏛️</span> <span>Архивный первоисточник (7-я ревизия 1816 г.):</span>
-          </div>
-          <span style="font-size:0.72rem; background:#fef3c7; color:#92400e; padding:2px 6px; border-radius:4px; font-weight:700; border:1px solid #f59e0b;">
-            ${{escapeHtml(assignedDoc.badge || 'Ревизия 1816')}}
-          </span>
-        </div>
-        <div style="font-size:0.82rem; line-height:1.45; color:var(--text-main); margin-bottom:0.3rem;">
-          <strong>Шифр дела:</strong> ${{escapeHtml(assignedDoc.archive)}}
-        </div>
-        <div style="font-size:0.80rem; line-height:1.4; color:var(--text-muted); margin-bottom:0.5rem;">
-          ${{escapeHtml(assignedDoc.title)}}
-        </div>
-        <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
-          <button class="pill-btn active" onclick="openDocViewerById('${{assignedDoc.id}}')" style="background:#d97706; border-color:#d97706; color:#fff; font-size:0.76rem; font-weight:600;">
-            🔍 Открыть 2-страничный скан в просмотрщике
-          </button>
-        </div>
-      </div>
-    `;
-  }}
 
   if (p.id === 'I19' || p.id === 'I67' || p.id === 'I68' || p.id === 'I25' || p.id === 'I23' || p.id === 'I21') {{
     html += `
@@ -5931,9 +5889,9 @@ function openModal(pid) {{
     }} else if (p.id === 'I248') {{
       pdfLink = '<span style="font-size:0.75rem; color:var(--text-muted); font-weight:600;">ГАВО ф. 388, оп. 9, д. 201</span>';
       archiveTitle = `🏛️ Ревизская сказка 1816 г. (семья 171) (${{personDocs.length}})`;
-    }} else if (isModalNew1816) {{
-      pdfLink = '<span style="font-size:0.75rem; color:#b45309; font-weight:700;">ГАВО. Ф. 388, Оп. 9, Д. 201 (7-я ревизия 1816 г.)</span>';
-      archiveTitle = `🏛️ Разворот 7-й ревизии 1816 г. (${{personDocs.length}} сканов)`;
+    }} else if (personDocs.some(d => d.id && d.id.startsWith('revision_1816'))) {{
+      pdfLink = '<span style="font-size:0.75rem; color:var(--text-muted); font-weight:600;">ГАВО. Ф. 388, Оп. 9, Д. 201 (7-я ревизия 1816 г.)</span>';
+      archiveTitle = `🏛️ Ревизские сказки 1816 г. (${{personDocs.length}} сканов)`;
     }} else if (['I75','I76','I77','I78','I79','I80','I81','I82'].includes(p.id)) {{
       pdfLink = '<span style="font-size:0.75rem; color:var(--accent); font-weight:600;">МКАУ ВЦА ф. 363, оп. 1, д. 2372, л. 472</span>';
       archiveTitle = `🏛️ Исповедная роспись 1773 г. (двор 167) (${{personDocs.length}})`;
@@ -5948,26 +5906,66 @@ function openModal(pid) {{
       archiveTitle = `🏛️ Первоисточники переписи 1710 г. (${{personDocs.length}})`;
     }}
 
-    const firstDocIdx = DOCS.indexOf(personDocs[0]);
-    html += `
-      <div class="detail-group" style="background:rgba(37,99,235,0.04); border:1.5px solid rgba(37,99,235,0.25); border-radius:8px; padding:0.75rem 0.85rem;">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem; flex-wrap:wrap; gap:0.35rem;">
-          <h3 style="margin:0; font-size:0.92rem;">${{archiveTitle}}</h3>
-          ${{pdfLink}}
-        </div>
-        <div class="person-docs-mini-grid">
-          ${{personDocs.map(d => `
-            <div class="person-doc-thumb-item" onclick="openDocViewerById('${{d.id}}')" title="${{escapeHtml(d.title)}}">
-              <img src="${{escapeHtml(d.thumb)}}" alt="${{escapeHtml(d.title)}}" loading="lazy" />
-              <span class="thumb-label">${{escapeHtml(d.badge || d.title)}}</span>
+    if (personDocs.length === 1) {{
+      const d = personDocs[0];
+      html += `
+        <div class="detail-group" style="background:var(--bg-surface); border:1px solid var(--border-color); border-radius:8px; padding:0.75rem 0.85rem; margin-bottom:0.75rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem; flex-wrap:wrap; gap:0.35rem;">
+            <div style="font-weight:700; font-size:0.88rem; color:var(--text-main); display:flex; align-items:center; gap:0.35rem;">
+              <span>🏛️</span> <span>Архивный первоисточник:</span>
             </div>
-          `).join('')}}
+            <span style="font-size:0.72rem; background:rgba(37,99,235,0.08); color:var(--accent); padding:2px 6px; border-radius:4px; font-weight:700; border:1px solid rgba(37,99,235,0.2);">
+              ${{escapeHtml(d.badge || d.categoryLabel || 'Архив')}}
+            </span>
+          </div>
+          <div style="font-size:0.82rem; line-height:1.45; color:var(--text-main); margin-bottom:0.25rem;">
+            <strong>Шифр дела:</strong> ${{escapeHtml(d.archive)}}
+          </div>
+          <div style="font-size:0.80rem; line-height:1.4; color:var(--text-muted); margin-bottom:0.55rem;">
+            <strong>Документ:</strong> ${{escapeHtml(d.title)}}
+          </div>
+          <div style="display:flex; gap:0.75rem; align-items:center; margin-bottom:0.55rem;">
+            <div class="person-doc-thumb-item" onclick="openDocViewerById('${{d.id}}')" title="${{escapeHtml(d.title)}}" style="width:130px; aspect-ratio:4/3; flex-shrink:0; cursor:pointer;">
+              <img src="${{escapeHtml(d.thumb)}}" alt="${{escapeHtml(d.title)}}" loading="lazy" style="width:100%; height:100%; object-fit:cover;" />
+              <span class="thumb-label">🔍 Разворот</span>
+            </div>
+            <div style="flex:1; font-size:0.78rem; line-height:1.4; color:var(--text-muted);">
+              Нажмите на миниатюру или кнопку ниже, чтобы открыть полный двухстраничный архивный разворот с возможностью масштабирования.
+            </div>
+          </div>
+          <div>
+            <button class="pill-btn active" onclick="openDocViewerById('${{d.id}}')" style="font-size:0.78rem; width:100%; justify-content:center; font-weight:600;">
+              🔍 Открыть скан в просмотрщике
+            </button>
+          </div>
         </div>
-        <div style="margin-top:0.5rem;">
-          <button class="pill-btn active" onclick="openDocViewer(${{firstDocIdx}}, getPersonDocs('${{p.id}}'))" style="font-size:0.76rem; width:100%; justify-content:center;">🔍 Смотреть все (${{personDocs.length}})</button>
+      `;
+    }} else if (personDocs.length > 1) {{
+      const firstDocIdx = DOCS.indexOf(personDocs[0]);
+      html += `
+        <div class="detail-group" style="background:var(--bg-surface); border:1px solid var(--border-color); border-radius:8px; padding:0.75rem 0.85rem; margin-bottom:0.75rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem; flex-wrap:wrap; gap:0.35rem;">
+            <h3 style="margin:0; font-size:0.92rem;">${{archiveTitle}}</h3>
+            ${{pdfLink}}
+          </div>
+          <div class="person-docs-mini-grid">
+            ${{personDocs.map(d => `
+              <div class="person-doc-thumb-item" onclick="openDocViewerById('${{d.id}}')" title="${{escapeHtml(d.title)}}">
+                <img src="${{escapeHtml(d.thumb)}}" alt="${{escapeHtml(d.title)}}" loading="lazy" />
+                <span class="thumb-label">${{escapeHtml(d.badge || d.title)}}</span>
+              </div>
+            `).join('')}}
+          </div>
+          <div style="font-size:0.78rem; line-height:1.45; color:var(--text-muted); margin-top:0.6rem; border-top:1px dashed var(--border-color); padding-top:0.45rem;">
+            <div style="font-weight:700; color:var(--text-main); margin-bottom:0.25rem;">Шифры архивных дел персоны:</div>
+            ${{personDocs.map(d => `<div style="margin-bottom:0.2rem;">• <strong>${{escapeHtml(d.archive || 'Архив')}}:</strong> ${{escapeHtml(d.title)}}</div>`).join('')}}
+          </div>
+          <div style="margin-top:0.6rem;">
+            <button class="pill-btn active" onclick="openDocViewer(${{firstDocIdx}}, getPersonDocs('${{p.id}}'))" style="font-size:0.78rem; width:100%; justify-content:center; font-weight:600;">🔍 Смотреть все сканы (${{personDocs.length}})</button>
+          </div>
         </div>
-      </div>
-    `;
+      `;
+    }}
   }}
 
   // Parents
