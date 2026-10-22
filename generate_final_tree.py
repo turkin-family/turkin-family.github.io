@@ -1459,8 +1459,9 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
   transition: all 0.2s ease;
 }}
 .doc-viewer-viewport {{
-  flex: 1 0 auto;
-  min-height: 48vh;
+  flex: 1 1 auto;
+  min-height: 280px;
+  max-height: 58vh;
   position: relative;
   background: #080d1a;
   overflow: auto;
@@ -1508,7 +1509,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
 #docViewerImg {{
   max-width: 100%;
   height: auto;
-  max-height: 72vh;
+  max-height: 56vh;
   object-fit: contain;
   box-shadow: 0 6px 30px rgba(0,0,0,0.7);
   border-radius: 4px;
@@ -1518,10 +1519,18 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
   border-top: 1px solid var(--border-color);
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   background: var(--bg-primary);
   gap: 1rem;
   flex-shrink: 0;
+}}
+#docViewerDesc {{
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--text-main);
+  max-height: 130px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
 }}
 .doc-viewer-footer-counter {{
   font-size: 0.82rem;
@@ -4332,16 +4341,19 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
     <!-- VIEWER HEADER -->
     <div class="doc-viewer-header">
       <div class="doc-viewer-title-group" style="min-width:0; flex:1;">
-        <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.2rem;">
-          <span class="doc-viewer-badge" id="docViewerBadge">ЦАМО РФ</span>
-          <span id="docViewerPerson" style="font-size:0.8rem; font-weight:600; color:var(--text-muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"></span>
+        <div style="display:flex; align-items:center; gap:0.55rem; flex-wrap:wrap; margin-bottom:0.25rem;">
+          <span class="doc-viewer-badge" id="docViewerBadge">ГАВО</span>
+          <span id="docViewerArchive" style="font-size:0.78rem; color:var(--text-muted); font-weight:500;">Архивные реквизиты</span>
         </div>
-        <h3 id="docViewerTitle" style="margin:0; font-size:1.02rem; line-height:1.3; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">Название документа</h3>
-        <div id="docViewerArchive" style="font-size:0.75rem; color:var(--text-muted); margin-top:0.2rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">Архивные реквизиты</div>
+        <h3 id="docViewerTitle" style="margin:0 0 0.35rem 0; font-size:1.06rem; line-height:1.35; font-weight:700; color:var(--text-main); word-break:break-word;">Название документа</h3>
+        <div id="docViewerPersonRow" style="display:flex; align-items:baseline; gap:0.45rem; font-size:0.83rem; line-height:1.4; color:#f59e0b; background:rgba(245, 158, 11, 0.08); border:1px solid rgba(245, 158, 11, 0.25); border-radius:6px; padding:0.35rem 0.65rem; margin-top:0.25rem; flex-wrap:wrap;">
+          <span style="font-weight:700; color:#fbbf24; flex-shrink:0;">⚖️ Стороны и участники:</span>
+          <span id="docViewerPerson" style="font-weight:600; color:#fde68a; word-break:break-word;"></span>
+        </div>
       </div>
       <div class="doc-viewer-actions">
         <button class="doc-close-btn" onclick="closeDocViewer()" title="Закрыть документ и вернуться в карточку (Esc)">
-          <span style="font-size:1.05rem; line-height:1;">✕</span> <span>Назад</span>
+          <span style="font-size:1.05rem; line-height:1;">✕</span> <span>Закрыть</span>
         </button>
       </div>
     </div>
@@ -5393,7 +5405,15 @@ function openDocViewer(index, customList) {{
   badgeEl.style.color = doc.badgeColor || '#2563eb';
   badgeEl.style.borderColor = (doc.badgeColor || '#2563eb') + '66';
   
-  document.getElementById('docViewerPerson').textContent = doc.personName ? `• ${{doc.personName}}` : '';
+  const personEl = document.getElementById('docViewerPerson');
+  const personRow = document.getElementById('docViewerPersonRow');
+  if (doc.personName) {{
+    personEl.textContent = doc.personName;
+    if (personRow) personRow.style.display = 'flex';
+  }} else {{
+    personEl.textContent = '';
+    if (personRow) personRow.style.display = 'none';
+  }}
   document.getElementById('docViewerArchive').textContent = `${{doc.archive}}${{doc.date ? ' • ' + doc.date : ''}}`;
   document.getElementById('docViewerDesc').textContent = doc.desc;
   document.getElementById('docViewerCounter').textContent = `${{currentDocIndex + 1}} из ${{currentDocList.length}}`;
