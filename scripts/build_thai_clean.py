@@ -16,77 +16,7 @@ def build_thai_file():
     with open('index.html', 'r', encoding='utf-8') as f:
         html = f.read()
 
-    # 1. Page Title and Google Font Sarabun
-    thai_font_links = """  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-</head>"""
-    html = html.replace('</head>', thai_font_links)
-
-    html = html.replace(
-        '<title>Родословная Туркиных</title>',
-        '<title>สาแหรกตระกูลเตอร์คิน (ตูร์กิน) • ตระกูลพิทักษ์ • ลำดับญาติ 20 ชั่วคน</title>'
-    )
-    html = html.replace(
-        '<h1>Родословная Туркиных</h1>',
-        '<h1>สาแหรกตระกูลเตอร์คิน (ตูร์กิน)</h1>'
-    )
-    html = html.replace(
-        '>20 поколений • 332 персон<',
-        '>ลำดับญาติ 20 ชั่วคน • 332 บุคคล<'
-    )
-
-    # 2. Header and Drawer language buttons (switch back to Russian)
-    desktop_th_btn = '<a href="thai.html" class="pill-btn" style="text-decoration:none; font-weight:600; font-size:0.78rem; padding:0.25rem 0.6rem; background:rgba(16,185,129,0.08); border-color:#10b981; color:#059669;" title="หน้าภาษาไทย">🇹🇭 ภาษาไทย</a>'
-    desktop_ru_btn = '<a href="index.html" class="pill-btn" style="text-decoration:none; font-weight:600; font-size:0.78rem; padding:0.25rem 0.6rem; background:rgba(37,99,235,0.08); border-color:#2563eb; color:#2563eb;" title="กลับไปหน้าภาษารัสเซีย">🇷🇺 Версия на русском</a>'
-    html = html.replace(desktop_th_btn, desktop_ru_btn)
-
-    mobile_th_btn = '<a href="thai.html" class="pill-btn" style="text-decoration:none; font-size:0.78rem; padding:0.3rem 0.7rem; color:#059669; border-color:#10b981; background:rgba(16,185,129,0.08);">🇹🇭 ภาษาไทย</a>'
-    mobile_ru_btn = '<a href="index.html" class="pill-btn" style="text-decoration:none; font-size:0.78rem; padding:0.3rem 0.7rem; color:#2563eb; border-color:#2563eb; background:rgba(37,99,235,0.08);" title="กลับไปหน้าภาษารัสเซีย">🇷🇺 Русский</a>'
-    html = html.replace(mobile_th_btn, mobile_ru_btn)
-
-    # 3. Nav tabs translation
-    html = html.replace(
-        '<button class="nav-tab active" onclick="switchTab(\'tree\')">🌿 Древо</button>',
-        '<button class="nav-tab" onclick="switchTab(\'tree\')">🌿 สาแหรกต้นไม้</button>'
-    )
-    html = html.replace(
-        '<button class="nav-tab" onclick="switchTab(\'list\')">📜 Поколения</button>',
-        '<button class="nav-tab" onclick="switchTab(\'list\')">📜 ลำดับรุ่น</button>'
-    )
-    html = html.replace(
-        '<button class="nav-tab" onclick="switchTab(\'table\')">📋 Таблица</button>',
-        '<button class="nav-tab" onclick="switchTab(\'table\')">📋 สารบัญรายชื่อ</button>'
-    )
-    html = html.replace(
-        '<button class="nav-tab" onclick="switchTab(\'archive\')">🏛️ Архив документов',
-        '<button class="nav-tab" onclick="switchTab(\'archive\')">🏛️ หอจดหมายเหตุ'
-    )
-    html = html.replace(
-        '<button class="nav-tab" onclick="switchTab(\'info\')">🗺️ Места и роды</button>',
-        '<button class="nav-tab active" onclick="switchTab(\'info\')">🗺️ ถิ่นกำเนิดและสายตระกูล</button>'
-    )
-    html = html.replace(
-        '<button class="nav-tab" onclick="switchTab(\'sources\')">📚 Источники</button>',
-        '<button class="nav-tab" onclick="switchTab(\'sources\')">📚 เอกสารอ้างอิง</button>'
-    )
-    html = html.replace(
-        '<button class="nav-tab" onclick="switchTab(\'stats\')">📊 Статистика</button>',
-        '<button class="nav-tab" onclick="switchTab(\'stats\')">📊 สถิติตระกูล</button>'
-    )
-
-    # Drawer menu items
-    html = html.replace('<span>Интерактивное древо</span>', '<span>สาแหรกต้นไม้</span>')
-    html = html.replace('<span>Список поколений</span>', '<span>ลำดับรุ่น</span>')
-    html = html.replace('<span>Таблица персон</span>', '<span>สารบัญรายชื่อ</span>')
-    html = html.replace('<span>Архив первоисточников</span>', '<span>หอจดหมายเหตุ</span>')
-    html = html.replace('<span>Места и роды</span>', '<span>ถิ่นกำเนิดและสายตระกูล</span>')
-    html = html.replace('<span>Источники и литература</span>', '<span>เอกสารอ้างอิง</span>')
-    html = html.replace('<span>Статистика рода</span>', '<span>สถิติตระกูล</span>')
-    html = html.replace('<span>☰</span> <span>Меню</span>', '<span>☰</span> <span>เมนู</span>')
-    html = html.replace('placeholder="Поиск персоны..."', 'placeholder="ค้นหาบุคคลในตระกูล..."')
-
-    # 4. Build Thai Geography Cards
+    # 1. Build Thai Geography Cards
     geo = THAI_TRANSLATIONS_ALL["geo"]
     geo_keys = [
         'yb', 'gorely_yb', 'loyma', 'erozdino', 'vogvazdino', 'lyali', 'paltydor',
@@ -133,7 +63,7 @@ def build_thai_file():
 
     new_geo_cards_str = '\n\n'.join(new_geo_cards)
 
-    # 5. Build Thai Surnames Cards
+    # 2. Build Thai Surnames Cards
     sur = THAI_TRANSLATIONS_ALL["sur"]
     sur_keys = [
         ('turkin', '#2563eb'), ('letov', '#2563eb'), ('yaranov', '#2563eb'), ('sizev', '#2563eb'),
@@ -157,7 +87,7 @@ def build_thai_file():
 
     new_sur_cards_str = '\n\n'.join(new_sur_cards)
 
-    # 6. Entire pure Thai view-info section
+    # 3. Construct entire 100% Thai view-info section
     thai_overview_card = """    <!-- OVERVIEW -->
     <div class="info-card" id="info-overview">
       <h2>🌳 เกี่ยวกับครอบครัวและโครงสร้างสาแหรกตระกูล</h2>
@@ -214,20 +144,96 @@ def build_thai_file():
 {thai_bottom_bar}
   </div>"""
 
-    # Replace the entire view-info in html
-    start_info = html.find('<div id="view-info" class="view-section">')
-    end_info = html.find('<div id="view-sources" class="view-section">', start_info)
+    # 4. Safely replace view-info BEFORE any other string manipulations
+    start_tag = '<div id="view-info" class="view-section">'
+    end_tag = '<!-- TAB 6: SOURCES AND BIBLIOGRAPHY VIEW -->'
+    start_info = html.find(start_tag)
+    end_info = html.find(end_tag, start_info)
     assert start_info != -1 and end_info != -1, "view-info section boundary not found!"
 
-    # Also make view-tree inactive by default in thai.html so view-info is the active one!
-    html = html.replace('<div id="view-tree" class="view-section active">', '<div id="view-tree" class="view-section">')
+    # Replace view-info cleanly
+    html = html[:start_info] + new_view_info + '\n\n  ' + html[end_info:]
 
-    html = html[:start_info] + new_view_info + '\n\n  <!-- TAB 6: SOURCES AND BIBLIOGRAPHY VIEW -->\n  ' + html[end_info:]
+    # 5. Page Title and Google Font Sarabun
+    thai_font_links = """  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+</head>"""
+    html = html.replace('</head>', thai_font_links, 1)
 
-    # 7. Add Thai body font styling
+    html = html.replace(
+        '<title>Родословная Туркиных</title>',
+        '<title>สาแหรกตระกูลเตอร์คิน (ตูร์กิน) • ตระกูลพิทักษ์ • ลำดับญาติ 20 ชั่วคน</title>'
+    )
+    html = html.replace(
+        '<h1>Родословная Туркиных</h1>',
+        '<h1>สาแหรกตระกูลเตอร์คิน (ตูร์กิน)</h1>'
+    )
+    html = html.replace(
+        '>20 поколений • 332 персон<',
+        '>ลำดับญาติ 20 ชั่วคน • 332 บุคคล<'
+    )
+
+    # 6. Header and Drawer language buttons (switch back to Russian)
+    desktop_th_btn = '<a href="thai.html" class="pill-btn" style="text-decoration:none; font-weight:600; font-size:0.78rem; padding:0.25rem 0.6rem; background:rgba(16,185,129,0.08); border-color:#10b981; color:#059669;" title="หน้าภาษาไทย">🇹🇭 ภาษาไทย</a>'
+    desktop_ru_btn = '<a href="index.html" class="pill-btn" style="text-decoration:none; font-weight:600; font-size:0.78rem; padding:0.25rem 0.6rem; background:rgba(37,99,235,0.08); border-color:#2563eb; color:#2563eb;" title="กลับไปหน้าภาษารัสเซีย">🇷🇺 Версия на русском</a>'
+    html = html.replace(desktop_th_btn, desktop_ru_btn)
+
+    mobile_th_btn = '<a href="thai.html" class="pill-btn" style="text-decoration:none; font-size:0.78rem; padding:0.3rem 0.7rem; color:#059669; border-color:#10b981; background:rgba(16,185,129,0.08);">🇹🇭 ภาษาไทย</a>'
+    mobile_ru_btn = '<a href="index.html" class="pill-btn" style="text-decoration:none; font-size:0.78rem; padding:0.3rem 0.7rem; color:#2563eb; border-color:#2563eb; background:rgba(37,99,235,0.08);" title="กลับไปหน้าภาษารัสเซีย">🇷🇺 Русский</a>'
+    html = html.replace(mobile_th_btn, mobile_ru_btn)
+
+    # 7. Nav tabs translation & setting default active tab to 'info'
+    html = html.replace(
+        '<button class="nav-tab active" onclick="switchTab(\'tree\')">🌿 Древо</button>',
+        '<button class="nav-tab" onclick="switchTab(\'tree\')">🌿 สาแหรกต้นไม้</button>'
+    )
+    html = html.replace(
+        '<button class="nav-tab" onclick="switchTab(\'list\')">📜 Поколения</button>',
+        '<button class="nav-tab" onclick="switchTab(\'list\')">📜 ลำดับรุ่น</button>'
+    )
+    html = html.replace(
+        '<button class="nav-tab" onclick="switchTab(\'table\')">📋 Таблица</button>',
+        '<button class="nav-tab" onclick="switchTab(\'table\')">📋 สารบัญรายชื่อ</button>'
+    )
+    html = html.replace(
+        '<button class="nav-tab" onclick="switchTab(\'archive\')">🏛️ Архив документов',
+        '<button class="nav-tab" onclick="switchTab(\'archive\')">🏛️ หอจดหมายเหตุ'
+    )
+    html = html.replace(
+        '<button class="nav-tab" onclick="switchTab(\'info\')">🗺️ Места и роды</button>',
+        '<button class="nav-tab active" onclick="switchTab(\'info\')">🗺️ ถิ่นกำเนิดและสายตระกูล</button>'
+    )
+    html = html.replace(
+        '<button class="nav-tab" onclick="switchTab(\'sources\')">📚 Источники</button>',
+        '<button class="nav-tab" onclick="switchTab(\'sources\')">📚 เอกสารอ้างอิง</button>'
+    )
+    html = html.replace(
+        '<button class="nav-tab" onclick="switchTab(\'stats\')">📊 Статистика</button>',
+        '<button class="nav-tab" onclick="switchTab(\'stats\')">📊 สถิติตระกูล</button>'
+    )
+
+    # In HTML, view-tree was originally active; make it inactive by default so only view-info is active
+    html = html.replace(
+        '<div id="view-tree" class="view-section active">',
+        '<div id="view-tree" class="view-section">'
+    )
+
+    # Drawer menu items
+    html = html.replace('<span>Интерактивное древо</span>', '<span>สาแหรกต้นไม้</span>')
+    html = html.replace('<span>Список поколений</span>', '<span>ลำดับรุ่น</span>')
+    html = html.replace('<span>Таблица персон</span>', '<span>สารบัญรายชื่อ</span>')
+    html = html.replace('<span>Архив первоисточников</span>', '<span>หอจดหมายเหตุ</span>')
+    html = html.replace('<span>Места и роды</span>', '<span>ถิ่นกำเนิดและสายตระกูล</span>')
+    html = html.replace('<span>Источники и литература</span>', '<span>เอกสารอ้างอิง</span>')
+    html = html.replace('<span>Статистика рода</span>', '<span>สถิติตระกูล</span>')
+    html = html.replace('<span>☰</span> <span>Меню</span>', '<span>☰</span> <span>เมนู</span>')
+    html = html.replace('placeholder="Поиск персоны..."', 'placeholder="ค้นหาบุคคลในตระกูล..."')
+
+    # 8. Add Thai body font styling
     html = html.replace('<body>', '<body style="font-family: \'Sarabun\', -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, sans-serif; line-height: 1.6;">')
 
-    # 8. Set default tab to 'info' on load if no specific hash provided
+    # 9. Set default tab to 'info' on load if no specific hash provided
     html = html.replace(
         'setupHashRouting();\n}',
         'setupHashRouting();\n  if (!window.location.hash) switchTab(\'info\');\n}'
