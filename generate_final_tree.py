@@ -3134,9 +3134,9 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">Коквицкая гора, Яренский уезд • Приход родов: Туркины, Летовы, Ярановы, Сизевы</div>
             
             <div style="display:flex; gap:0.85rem; margin-bottom:0.75rem; align-items:flex-start;">
-              <a href="архив_сканы_первоисточников/1773_Коквицы_двор_167_crop.png" target="_blank" title="Исповедная роспись 1773 г., двор 167 священника о. Степана Туркина (нажмите для открытия)">
-                <img src="архив_сканы_первоисточников/1773_Коквицы_двор_167_crop.png" alt="Исповедная роспись 1773 г., Коквицы" style="width:115px; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 6px rgba(0,0,0,0.1); cursor:pointer; transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
-              </a>
+              <div onclick="openFullscreenScan('архив_сканы_первоисточников/1773_Коквицы_двор_167_crop.png', 'Христорождественская церковь в с. Коквицы', 'Исповедная роспись 1773 г., двор 167 священника о. Степана Туркина')" title="Нажмите для открытия на весь экран с возможностью зума" style="cursor:pointer; flex-shrink:0;">
+                <img src="архив_сканы_первоисточников/1773_Коквицы_двор_167_crop.png" alt="Исповедная роспись 1773 г., Коквицы" style="width:115px; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 6px rgba(0,0,0,0.1); transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+              </div>
               <div style="font-size:0.82rem; line-height:1.45; color:var(--text-main);">
                 <div>📜 Каменная двухэтажная церковь построена в 1820–1837 гг. (ранее деревянный храм XVII–XVIII вв.).</div>
                 <div style="margin-top:0.35rem;">👶 В метрической книге прихода зафиксировано рождение прапрадеда <strong>Николая Алексеевича Туркина</strong> 3 ноября 1876 г. (д. Сюлатуй, запись на с. 267).</div>
@@ -3168,9 +3168,9 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">г. Лальск, Вологодская епархия (ныне Кировская область) • Шедевр барокко 1698–1715 гг.</div>
 
             <div style="display:flex; gap:0.85rem; margin-bottom:0.75rem; align-items:flex-start;">
-              <a href="фото_храмов/Лальск_Воскресенский_собор.jpg" target="_blank" title="Воскресенский собор в Лальске (архивное фото С. Лобовикова конца XIX в., нажмите для увеличения)">
-                <img src="фото_храмов/Лальск_Воскресенский_собор.jpg" alt="Воскресенский собор г. Лальска" style="width:115px; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 6px rgba(0,0,0,0.1); cursor:pointer; transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
-              </a>
+              <div onclick="openFullscreenScan('фото_храмов/Лальск_Воскресенский_собор.jpg', 'г. Лальск — Воскресенский собор (шедевр барокко 1698–1715 гг.)', 'Архивное фото С. Лобовикова конца XIX в. • Место служения соборного диакона о. Михаила Туркина')" title="Нажмите для открытия на весь экран с возможностью зума" style="cursor:pointer; flex-shrink:0;">
+                <img src="фото_храмов/Лальск_Воскресенский_собор.jpg" alt="Воскресенский собор г. Лальска" style="width:115px; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 6px rgba(0,0,0,0.1); transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+              </div>
               <div style="font-size:0.82rem; line-height:1.45; color:var(--text-main);">
                 <div>🏛️ Величественный пятиглавый соборный ансамбль с шатровой колокольней.</div>
                 <div style="margin-top:0.35rem;">📜 Снимок сделан выдающимся русским фотографом С. Лобовиковым именно в годы соборного служения о. Михаила Туркина.</div>
@@ -3179,10 +3179,12 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
 
             <ul style="font-size:0.82rem; line-height:1.5; margin:0 0 0.75rem 0; padding-left:1.15rem;">
               <li><strong>Соборный диакон о. Михаил Алексеевич Туркин</strong> (ок. 1839 – 14.06.1904) — сын диакона о. Алексея Коквицкого. Выпускник Вологодской духовной семинарии (1862 г.). С 1868 г. дьячок, 20.07.1870 г. рукоположен во диакона, с 1871 г. — штатный соборный диакон (34 года беспорочного служения, фонд ГАКО № 1310). Супруга София Прокопьевна Брызгалова.</li>
+              <li><strong>Священник о. Прокопий Михайлович Туркин</strong> (род. ок. 1868 г.) — сын диакона о. Михаила Лальского. Выпускник Вологодской духовной семинарии. Рукоположен во диакона 30.08.1891 г. к Успенской Чернецкой церкви Грязовецкого уезда; с 1897 г. — священник Николаевской Пустораменской церкви Кадниковского уезда; с 13.09.1911 г. — священник Спасо-Преображенской церкви на Брусничном Вологодского уезда (ВЕВ 1891, № 20; 1911, № 19; parishes.ru № 7463).</li>
             </ul>
           </div>
           <div style="display:flex; flex-wrap:wrap; gap:0.35rem; border-top:1px dashed var(--border-color); padding-top:0.5rem;">
             <button class="pill-btn" onclick="focusPerson('I236'); switchTab('tree');" style="font-size:0.74rem;">🎯 о. Михаил Лальский</button>
+            <button class="pill-btn" onclick="focusPerson('I260'); switchTab('tree');" style="font-size:0.74rem;">🎯 о. Прокопий</button>
           </div>
         </div>
 
@@ -3196,9 +3198,9 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">Усть-Сысольский и Усть-Куломский уезды • Верхняя Вычегда • 1865–1937 гг.</div>
 
             <div style="display:flex; gap:0.85rem; margin-bottom:0.75rem; align-items:flex-start;">
-              <a href="фото_храмов/Ульяново_Троице_Стефановский_монастырь.jpg" target="_blank" title="Троице-Стефано-Ульяновский мужской монастырь (нажмите для увеличения)">
-                <img src="фото_храмов/Ульяново_Троице_Стефановский_монастырь.jpg" alt="Троице-Стефано-Ульяновский монастырь" style="width:115px; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 6px rgba(0,0,0,0.1); cursor:pointer; transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
-              </a>
+              <div onclick="openFullscreenScan('фото_храмов/Ульяново_Троице_Стефановский_монастырь.jpg', 'с. Ульяново — Троице-Стефановский мужской монастырь', 'Обитель святителя Стефана Пермского на Верхней Вычегде • Мученический подвиг монаха Виталия (Туркина), 1937 г.')" title="Нажмите для открытия на весь экран с возможностью зума" style="cursor:pointer; flex-shrink:0;">
+                <img src="фото_храмов/Ульяново_Троице_Стефановский_монастырь.jpg" alt="Троице-Стефано-Ульяновский монастырь" style="width:115px; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 6px rgba(0,0,0,0.1); transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+              </div>
               <div style="font-size:0.82rem; line-height:1.45; color:var(--text-main);">
                 <div>🌲 Знаменитая северная обитель, основанная святителем Стефаном Пермским в конце XIV в. и возрожденная в XIX в.</div>
                 <div style="margin-top:0.35rem;">⚖️ Архивно-следственное дело УНКВД Коми АССР 1937 г. (Архив УФСБ по РК, № КП-7444).</div>
@@ -3224,9 +3226,9 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">Село Ыб (Ыбский приход) • Сыктывдинский район • Памятник зодчества XIX века</div>
 
             <div style="display:flex; gap:0.85rem; margin-bottom:0.75rem; align-items:flex-start;">
-              <a href="фото_храмов/Ыб_Вознесенская_церковь.jpg" target="_blank" title="Свято-Вознесенская церковь в селе Ыб (нажмите для увеличения)">
-                <img src="фото_храмов/Ыб_Вознесенская_церковь.jpg" alt="Вознесенский храм в с. Ыб" style="width:115px; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 6px rgba(0,0,0,0.1); cursor:pointer; transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
-              </a>
+              <div onclick="openFullscreenScan('фото_храмов/Ыб_Вознесенская_церковь.jpg', 'с. Ыб — Свято-Вознесенский храм', 'Памятник каменного зодчества 1827–1835 гг. • Родовой приход предков Зиновьевых, Пасынковых, Кызъюровых')" title="Нажмите для открытия на весь экран с возможностью зума" style="cursor:pointer; flex-shrink:0;">
+                <img src="фото_храмов/Ыб_Вознесенская_церковь.jpg" alt="Вознесенский храм в с. Ыб" style="width:115px; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 6px rgba(0,0,0,0.1); transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+              </div>
               <div style="font-size:0.82rem; line-height:1.45; color:var(--text-main);">
                 <div>🏛️ Монументальный каменный храм с высокой колокольней, воздвигнутый в 1827–1835 гг.</div>
                 <div style="margin-top:0.35rem;">💍 Родовой духовный центр предков по линии бабушки Риммы Александровны Туркиной: родов <strong>Зиновьевых, Пасынковых, Кызъюровых, Айбабиных</strong>.</div>
@@ -3249,9 +3251,9 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">Прилузский район • Река Луза • Построена в 1802–1804 гг. • Росписи 1916 г.</div>
 
             <div style="display:flex; gap:0.85rem; margin-bottom:0.75rem; align-items:flex-start;">
-              <a href="фото_храмов/Лойма_Успенская_церковь.jpg" target="_blank" title="Церковь Успения Богородицы в с. Лойма (нажмите для увеличения)">
-                <img src="фото_храмов/Лойма_Успенская_церковь.jpg" alt="Успенская церковь в с. Лойма" style="width:115px; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 6px rgba(0,0,0,0.1); cursor:pointer; transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
-              </a>
+              <div onclick="openFullscreenScan('фото_храмов/Лойма_Успенская_церковь.jpg', 'с. Лойма — Церковь Успения Пресвятой Богородицы', 'Каменный храм 1802–1804 гг., росписи 1916 г. • Приходской храм рода Сюткиных')" title="Нажмите для открытия на весь экран с возможностью зума" style="cursor:pointer; flex-shrink:0;">
+                <img src="фото_храмов/Лойма_Успенская_церковь.jpg" alt="Успенская церковь в с. Лойма" style="width:115px; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 6px rgba(0,0,0,0.1); transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+              </div>
               <div style="font-size:0.82rem; line-height:1.45; color:var(--text-main);">
                 <div>🎨 Каменный храм с тёплым и холодным приделами Афанасия и Кирилла Александрийских. Сохранил росписи васнецовской школы 1916 г.</div>
                 <div style="margin-top:0.35rem;">🌾 Приходской храм прапрабабушки <strong>Марии Степановны Сюткиной</strong> (1911–1981), её отца Степана Петровича Сюткина (1880–1933) и деда Петра Сюткина.</div>
@@ -3270,9 +3272,9 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">Усть-Вымская волость • Кафедральный духовный центр св. Стефана Пермского</div>
 
             <div style="display:flex; gap:0.85rem; margin-bottom:0.75rem; align-items:flex-start;">
-              <a href="фото_храмов/Усть_Вымь_Михайло_Архангельский_храм.jpg" target="_blank" title="Усть-Вымский ансамбль (нажмите для увеличения)">
-                <img src="фото_храмов/Усть_Вымь_Михайло_Архангельский_храм.jpg" alt="Усть-Вымский Михайло-Архангельский ансамбль" style="width:115px; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 6px rgba(0,0,0,0.1); cursor:pointer; transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
-              </a>
+              <div onclick="openFullscreenScan('фото_храмов/Усть_Вымь_Михайло_Архангельский_храм.jpg', 'с. Усть-Вымь — Михайло-Архангельский соборный ансамбль', 'Кафедральный центр Пермской епархии св. Стефана • Служение о. Петра Туркина в Благовещенской церкви в 1731 г.')" title="Нажмите для открытия на весь экран с возможностью зума" style="cursor:pointer; flex-shrink:0;">
+                <img src="фото_храмов/Усть_Вымь_Михайло_Архангельский_храм.jpg" alt="Усть-Вымский Михайло-Архангельский ансамбль" style="width:115px; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 6px rgba(0,0,0,0.1); transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+              </div>
               <div style="font-size:0.82rem; line-height:1.45; color:var(--text-main);">
                 <div>🏛️ Исторический кафедральный центр Пермской епархии на слиянии рек Выми и Вычегды.</div>
                 <div style="margin-top:0.35rem;">📜 Здесь в Благовещенской церкви в 1731 г. служил священник <strong>о. Пётр Исаакович Туркин</strong> (прямой 8-й прадедушка, МК ГААО ф. 29, оп. 27, д. 1, л. 40).</div>
@@ -3294,9 +3296,9 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">Княжпогостский район • Река Вымь • Памятник зодчества 1852–1856 гг.</div>
 
             <div style="display:flex; gap:0.85rem; margin-bottom:0.75rem; align-items:flex-start;">
-              <a href="фото_храмов/Ляли_Богоявленская_церковь.jpg" target="_blank" title="Богоявленская церковь в с. Ляли (нажмите для увеличения)">
-                <img src="фото_храмов/Ляли_Богоявленская_церковь.jpg" alt="Богоявленская церковь в с. Ляли" style="width:115px; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 6px rgba(0,0,0,0.1); cursor:pointer; transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
-              </a>
+              <div onclick="openFullscreenScan('фото_храмов/Ляли_Богоявленская_церковь.jpg', 'с. Ляли — Богоявленская церковь (1852–1856 гг.)', 'Река Вымь • Служение дьячка Симеона Алексеевича Туркина (1822–1847 гг.) • Приход Каракчиевых и Шилиных')" title="Нажмите для открытия на весь экран с возможностью зума" style="cursor:pointer; flex-shrink:0;">
+                <img src="фото_храмов/Ляли_Богоявленская_церковь.jpg" alt="Богоявленская церковь в с. Ляли" style="width:115px; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 6px rgba(0,0,0,0.1); transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+              </div>
               <div style="font-size:0.82rem; line-height:1.45; color:var(--text-main);">
                 <div>🏰 Каменный храм на древнем торговом пути по реке Вымь.</div>
                 <div style="margin-top:0.35rem;">🔔 Здесь служил дьячком <strong>Симеон Алексеевич Туркин</strong> (1822–1847 гг.). Также являлся родовым приходом семей <strong>Каракчиевых</strong> и <strong>Шилиных</strong>.</div>
@@ -3368,41 +3370,15 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         <span style="background:#fffbeb; color:#b45309; font-weight:700; font-size:0.78rem; padding:0.35rem 0.8rem; border-radius:6px; border:1px solid #fde68a; box-shadow:0 1px 3px rgba(0,0,0,0.05);">ГАВО • Фонд 1260 «Вологодский архиерейский дом»</span>
       </div>
 
-      <p style="font-size:0.92rem; line-height:1.65; color:var(--text-main); margin-bottom:1.15rem;">
+      <p style="font-size:0.92rem; line-height:1.65; color:var(--text-main); margin-bottom:1.25rem;">
         Уникальный комплекс подлинных следственных дел XVII века из фонда Вологодского архиерейского дома раскрывает подлинную, полную драматизма и эпического размаха жизнь наших прямых предков. В отличие от сухих статистических перечней, эти дела сохранили живую русскую скоропись допетровской Руси, показания под крестным целованием, прямую речь предков, яростные семейные тяжбы, государственные поручения и дипломатические миссии рода Туркиных на гигантском пространстве от первопрестольной Москвы и кафедральной Вологды до Сургута на реке Оби и заполярного Пустозерска.
       </p>
 
-      <!-- ECONOMIC SCALE INFOGRAPHIC BANNER -->
-      <div style="background:var(--bg-primary); border:1.5px solid #d9770644; border-radius:10px; padding:1.1rem; margin-bottom:1.4rem; box-shadow:0 2px 8px rgba(217, 119, 6, 0.08);">
-        <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.6rem;">
-          <span style="font-size:1.15rem;">💰</span>
-          <strong style="color:#b45309; font-size:0.95rem;">Экономический масштаб и покупательная способность денег в делах рода Туркиных XVII в.:</strong>
-        </div>
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:0.75rem; font-size:0.83rem; line-height:1.5;">
-          <div style="background:var(--bg-surface); padding:0.75rem 0.9rem; border-radius:6px; border:1px solid var(--border-color);">
-            <div style="font-weight:700; color:#b45309; font-size:0.88rem; margin-bottom:0.25rem;">🪙 347 рублей серебром (Архип, 1656 г.)</div>
-            <div>Вес: <strong>16,5 кг чистого серебра</strong> • Эквивалент <strong>150–230 коров</strong>, <strong>35–70 добротных усадеб</strong> или <strong>70 лет</strong> государева жалования пешего стрельца. В современных деньгах — около <strong>75–100+ млн рублей</strong>.</div>
-          </div>
-          <div style="background:var(--bg-surface); padding:0.75rem 0.9rem; border-radius:6px; border:1px solid var(--border-color);">
-            <div style="font-weight:700; color:#059669; font-size:0.88rem; margin-bottom:0.25rem;">🌾 75 рублей мирского займа (Афанасий, 1646 г.)</div>
-            <div>Стоимость стада в <strong>50 голов скота</strong> или годовой бюджет крупной северной волости. Взят миром под поручительство и кабалу Афанасия Туркина на неотложные волостные нужды.</div>
-          </div>
-          <div style="background:var(--bg-surface); padding:0.75rem 0.9rem; border-radius:6px; border:1px solid var(--border-color);">
-            <div style="font-weight:700; color:#2563eb; font-size:0.88rem; margin-bottom:0.25rem;">🏡 15 рублей отпускного надела (Архип, 1656 г.)</div>
-            <div>Корова + 100 аршин домотканого холста и крашенины + 15 руб. наличным серебром — сумма, достаточная для единовременной постройки новой просторной избы и полного обзаведения крестьянским двором.</div>
-          </div>
-          <div style="background:var(--bg-surface); padding:0.75rem 0.9rem; border-radius:6px; border:1px solid var(--border-color);">
-            <div style="font-weight:700; color:#7c3aed; font-size:0.88rem; margin-bottom:0.25rem;">🐎 10–14 рублей ямских прогонов (Кирилл, 1678 г.)</div>
-            <div>Наём 4 выносливых ямских подвод с проводниками на сотни верст через северную тайгу для доставки ссыльного правителя России боярина А.С. Матвеева в заполярный Пустозерский острог.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- GRID OF 8 CHRONICLE CASES -->
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(360px, 1fr)); gap:1.15rem;">
+      <!-- GRID OF 9 CHRONICLE CASES -->
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(360px, 1fr)); gap:1.25rem;">
 
         <!-- CASE 1: 1646 (№ 633) AFANASY & VASILY -->
-        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #d9770633; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
+        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #d9770633; padding:1.2rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.4rem;">
               <span style="font-size:0.75rem; font-weight:700; background:#fef3c7; color:#b45309; padding:0.15rem 0.5rem; border-radius:4px; border:1px solid #fde68a;">1646 год • 16 листов скорописи</span>
@@ -3418,8 +3394,11 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
               «...на соседа Степана Ефимьева, завладевшего частью его дворовой земли, и на Афанасия и Василия Туркиных, которые бранили и били его...»
             </div>
             <p style="font-size:0.83rem; line-height:1.5; color:var(--text-main); margin-bottom:0.6rem;">
-              Подлинное следственное дело 1646 года (года составления знаменитой Переписной книги И. Скрябина). Введенский священник погоста Оквад и с. Усть-Вымь Гавриил Костромин обратился с челобитной к архиепископу Маркеллу сразу по двум взаимосвязанным обвинениям: против соседа Степана Ефимьева о незаконном захвате части церковной дворовой земли, и против светского правителя вотчины Афанасия Туркина с сородичем Василием Туркиным, которые «бранили и били его» в ходе волостного конфликта. Дело на 16 листах скорописи фиксирует властный статус и неукротимый характер основателей династии Туркиных на Вычегде.
+              Подлинное следственное дело 1646 года (года составления знаменитой Переписной книги И. Скрябина). Введенский священник погоста Оквад и с. Усть-Вымь Гавриил Костромин обратился с челобитной к архиепископу Маркеллу сразу по двум взаимосвязанным обвинениям: против соседа Степана Ефимьева о незаконном захвате части приходской дворовой земли, и против светского правителя вотчины Афанасия Туркина с сородичем Василием Туркиным, которые «бранили и били его» в ходе волостного конфликта.
             </p>
+            <div style="background:var(--bg-surface); border-left:3px solid #6366f1; padding:0.5rem 0.65rem; border-radius:0 6px 6px 0; margin-bottom:0.65rem; font-size:0.79rem; line-height:1.48; color:var(--text-main);">
+              <strong>🏛️ Исторический контекст эпохи:</strong> Первые годы царствования царя Алексея Михайловича. На северных погостах границы церковных усадеб и волостных земель находились в вотчинной собственности Вологодского архиерейского дома. Духовный причт и светская вотчинная администрация вели непрерывную борьбу за межи, покосы и дворовые усадьбы. Попытка священника вернуть землю натолкнулась на монолитный союз соседа со светским правителем вотчины Афанасием Туркиным, пустившим в ход «кулачное право». Следствие на 16 листах столбца с допросом понятых и крестным целованием раскрывает бурный, неукротимый нрав родоначальников на Вычегде.
+            </div>
             <div style="font-size:0.8rem; line-height:1.45; background:rgba(16,185,129,0.06); border-left:3px solid #10b981; padding:0.4rem 0.6rem; border-radius:0 4px 4px 0; margin-bottom:0.75rem; color:var(--text-main);">
               <strong>💡 Генеалогический вывод:</strong> Василий Туркин принадлежал к ближайшему родовому кругу Афанасия (вероятный родной брат либо двоюродный сородич с Серёговского погоста), опровергая гипотезу о разрозненности семей Туркиных на Вычегде в первой половине XVII века.
             </div>
@@ -3432,7 +3411,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </div>
 
         <!-- CASE 2: 1646 (№ 635) 75 RUBLES DEBT -->
-        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #d9770633; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
+        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #d9770633; padding:1.2rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.4rem;">
               <span style="font-size:0.75rem; font-weight:700; background:#fef3c7; color:#b45309; padding:0.15rem 0.5rem; border-radius:4px; border:1px solid #fde68a;">1646 год • Судное дело</span>
@@ -3442,14 +3421,20 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
               Волостной мирской долг: иск приказного дьяка Палицына на 75 рублей серебром
             </h3>
             <div style="font-size:0.77rem; background:rgba(37,99,235,0.06); border-left:3px solid #2563eb; padding:0.4rem 0.6rem; border-radius:0 4px 4px 0; margin-bottom:0.6rem; color:var(--text-main); line-height:1.45;">
-              <strong>⚖️ Стороны дела:</strong> Истец: приказной дьяк Андрей Палицын • Ответчики: Афанасий Туркин с выборными крестьянами • Суд: Усть-Вымский судный приказ.
+              <strong>⚖️ Стороны дела:</strong> Истец: приказной дьяк Андрей Палицын • Ответчики: Афанасий Туркин, Опара Иванов, Козьма Пономарев и другие усть-вымские и оквадские крестьяне • Суд: Архиепископ Вологодский Маркелл.
             </div>
             <div style="font-size:0.8rem; font-style:italic; background:var(--bg-surface); border:1px dashed #d9770666; padding:0.5rem 0.75rem; border-radius:6px; margin-bottom:0.65rem; color:#b45309; line-height:1.45;">
-              «...доправить с оквадских и усть-вымских крестьян мирского долгу 75 рублев по заемной кабале...»
+              «...доправить с оквадских и усть-вымских крестьян мирского долгу 75 рублев по заемной кабале, занятых на мирские расходы и не отданных в срок...»
             </div>
             <p style="font-size:0.83rem; line-height:1.5; color:var(--text-main); margin-bottom:0.6rem;">
-              Судное дело по челобитной усть-вымского приказного дьяка Андрея Палицына о принудительном взыскании 75 рублей с представителей крестьянской общины во главе с Афанасием Туркиным. Деньги были взяты миром под заемную кабалу на неотложные мирские расходы волости. 75 рублей серебром XVII века — сумма, равная 50 дойным коровам.
+              Судное дело по челобитной усть-вымского приказного дьяка Андрея Палицына о принудительном взыскании 75 рублей с представителей крестьянской общины во главе с Афанасием Туркиным. Деньги были взяты миром под заемную кабалу на неотложные мирские нужды волости.
             </p>
+            <div style="background:var(--bg-surface); border-left:3px solid #059669; padding:0.5rem 0.65rem; border-radius:0 6px 6px 0; margin-bottom:0.65rem; font-size:0.79rem; line-height:1.48; color:var(--text-main);">
+              <strong>💰 Экономический масштаб дела:</strong> 75 рублей серебром в 1646 г. — гигантская сумма! Это стоимость стада из <strong>50 дойных коров</strong> (по 1,5 руб. за голову) или годовой бюджет крупной северной волости. Взятие такой суммы под поручительство Афанасия Туркина свидетельствует о его колоссальной финансовой состоятельности.
+            </div>
+            <div style="background:var(--bg-surface); border-left:3px solid #6366f1; padding:0.5rem 0.65rem; border-radius:0 6px 6px 0; margin-bottom:0.65rem; font-size:0.79rem; line-height:1.48; color:var(--text-main);">
+              <strong>🏛️ Исторический контекст эпохи:</strong> Крестьянский «мир» допетровской Руси обладал финансовой автономией и круговой порукой. Для уплаты государевых податей, починки мостов и снаряжения ратников община брала ссуды у приказных дьяков. Тот факт, что заемщиком и гарантом волости выступал лично Афанасий Туркин, показывает его как подлинного мирского лидера Вычегды.
+            </div>
             <div style="font-size:0.8rem; line-height:1.45; background:rgba(16,185,129,0.06); border-left:3px solid #10b981; padding:0.4rem 0.6rem; border-radius:0 4px 4px 0; margin-bottom:0.75rem; color:var(--text-main);">
               <strong>💡 Генеалогический вывод:</strong> Афанасий Семёнович Туркин сочетал статус приказного человека архиерейского дома с положением влиятельнейшего лидера крестьянской общины, управлявшего волостными финансовыми потоками.
             </div>
@@ -3461,7 +3446,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </div>
 
         <!-- CASE 3: 1656 SURGUT ODYSSEY 347 RUBLES -->
-        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #d9770633; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
+        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #d9770633; padding:1.2rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.4rem;">
               <span style="font-size:0.75rem; font-weight:700; background:#fef3c7; color:#b45309; padding:0.15rem 0.5rem; border-radius:4px; border:1px solid #fde68a;">1656 год • Сургут — Вологда</span>
@@ -3477,10 +3462,16 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
               «...на Оби в Сургуте на переезде отнял у меня кабалы на триста на сорок на семь рублев... а жену и детей выбил вон и косою хотел срубить...»
             </div>
             <p style="font-size:0.83rem; line-height:1.5; color:var(--text-main); margin-bottom:0.6rem;">
-              Старший сын Архип Туркин 10 лет ходил в Сибири на промыслах, сколотив колоссальный капитал в 347 рублей (16,5 кг чистого серебра, эквивалент 75–100+ млн руб. сегодня). При встрече в Сургуте на Оби отец Афанасий силой отобрал кабалы, выгнал семью Архипа и угрожал косой. Архип преодолел тысячи верст в Вологду и добился архиерейского указа: взыскать 347 рублей с отца и вернуть сыну.
+              Старший сын Архип Туркин 10 лет ходил в Сибири на промыслах, сколотив капитал в 347 рублей серебром. При встрече в Сургуте на Оби отец Афанасий силой отобрал кабалы, выгнал семью Архипа и угрожал косой. Архип преодолел тысячи верст в Вологду и добился указа архиепископа: взыскать 347 рублей с отца и вернуть сыну.
             </p>
+            <div style="background:var(--bg-surface); border-left:3px solid #b45309; padding:0.5rem 0.65rem; border-radius:0 6px 6px 0; margin-bottom:0.65rem; font-size:0.79rem; line-height:1.48; color:var(--text-main);">
+              <strong>💰 Экономический масштаб дела:</strong> 347 рублей серебром 1656 года — это <strong>16,5 кг чистого серебра</strong> (34 700 проволочных копеек)! Эквивалент <strong>150–230 коров</strong>, <strong>35–70 добротных усадеб</strong> (целая деревня!) или <strong>70 лет</strong> государева жалованья стрельца. В современных деньгах — около <strong>75–100+ млн рублей</strong>!
+            </div>
+            <div style="background:var(--bg-surface); border-left:3px solid #6366f1; padding:0.5rem 0.65rem; border-radius:0 6px 6px 0; margin-bottom:0.65rem; font-size:0.79rem; line-height:1.48; color:var(--text-main);">
+              <strong>🏛️ Исторический контекст эпохи:</strong> Золотой век сибирской «пушной лихорадки». Тысячи поморов уходили «за Камень» промышлять соболя. Сургут на Оби был ключевым торговым узлом Сибири. Конфликт обнажает суровые нравы фронтира: абсолютную патриархальную власть отца, но и юридическую непреклонность сына, добившегося справедливости в высшем суде.
+            </div>
             <div style="font-size:0.8rem; line-height:1.45; background:rgba(16,185,129,0.06); border-left:3px solid #10b981; padding:0.4rem 0.6rem; border-radius:0 4px 4px 0; margin-bottom:0.75rem; color:var(--text-main);">
-              <strong>💡 Генеалогический вывод:</strong> Документ свидетельствует о поразительной географической и финансовой активности рода Туркиных — освоение Сибири, пушная торговля на Оби и уверенная судебная защита личных прав в высшей епархиальной инстанции.
+              <strong>💡 Генеалогический вывод:</strong> Документ свидетельствует о колоссальной географической и финансовой активности рода — освоение Сибири, пушная торговля на Оби и уверенная судебная защита личных прав в высшей епархиальной инстанции.
             </div>
           </div>
           <div style="display:flex; flex-wrap:wrap; gap:0.4rem; border-top:1px dashed var(--border-color); padding-top:0.6rem;">
@@ -3492,7 +3483,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </div>
 
         <!-- CASE 4: 1656-1664 (№ 2347) OTPUSK & DOPROS -->
-        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #d9770633; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
+        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #d9770633; padding:1.2rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.4rem;">
               <span style="font-size:0.75rem; font-weight:700; background:#fef3c7; color:#b45309; padding:0.15rem 0.5rem; border-radius:4px; border:1px solid #fde68a;">1656–1664 гг. • Раздел и допрос</span>
@@ -3502,14 +3493,20 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
               «Все ему прощаю»: отпускная отпись на выдел имущества и отказ Архипа кормить отца
             </h3>
             <div style="font-size:0.77rem; background:rgba(37,99,235,0.06); border-left:3px solid #2563eb; padding:0.4rem 0.6rem; border-radius:0 4px 4px 0; margin-bottom:0.6rem; color:var(--text-main); line-height:1.45;">
-              <strong>⚖️ Стороны дела:</strong> Афанасий Семёнович Туркин и сын Архип Туркин • Орган: Усть-Вымский духовный заказчик.
+              <strong>⚖️ Стороны дела:</strong> Афанасий Семёнович Туркин и сын Архип Туркин • Орган: Усть-Вымский духовный заказчик Михаил Константинов.
             </div>
             <div style="font-size:0.8rem; font-style:italic; background:var(--bg-surface); border:1px dashed #d9770666; padding:0.5rem 0.75rem; border-radius:6px; margin-bottom:0.65rem; color:#b45309; line-height:1.45;">
-              «...дал отпись сыну Архипу, благословил жить особо, дал корову, 100 аршин холста и 15 рублев... а кормить отца отказался и ушел в Сибирь...»
+              «...дал отпись сыну Архипу, благословил жить особо, дал корову, 100 аршин холста и крашенины и 15 руб. денег... а кормить отца отказался и ушел в Сибирь...»
             </div>
             <p style="font-size:0.83rem; line-height:1.5; color:var(--text-main); margin-bottom:0.6rem;">
-              Прямое продолжение сургутского конфликта. Содержит отпись Афанасия от 6 октября 1656 г.: отец благословляет Архипа жить отдельным двором, все ему прощает и выделяет корову, 100 аршин ткани и 15 рублей деньгами. Спустя 8 лет (1664 г.) на допросе на Усть-Выми престарелый отец потребовал содержания, но Архип твердо отказался, ссылаясь на текст отписи, и вновь отбыл в Сибирь.
+              Прямое продолжение сургутского конфликта. Содержит отпись Афанасия от 6 октября 1656 г.: отец благословляет Архипа жить отдельным двором, все ему прощает и выделяет корову, 100 аршин ткани и 15 рублей деньгами. Спустя 8 лет (1664 г.) на допросе на Усть-Выми отец потребовал содержания, но Архип твердо отказался по отписи и вновь ушел в Сибирь.
             </p>
+            <div style="background:var(--bg-surface); border-left:3px solid #2563eb; padding:0.5rem 0.65rem; border-radius:0 6px 6px 0; margin-bottom:0.65rem; font-size:0.79rem; line-height:1.48; color:var(--text-main);">
+              <strong>💰 Экономический масштаб надела:</strong> Корова + 100 аршин домотканого полотна и крашенины + 15 рублей наличным серебром. 15 руб. хватало на единовременную постройку новой пятистенной избы с амбаром и запасом хлеба на семью на несколько лет. Это был полноценный капитал для обустройства самостоятельного двора.
+            </div>
+            <div style="background:var(--bg-surface); border-left:3px solid #6366f1; padding:0.5rem 0.65rem; border-radius:0 6px 6px 0; margin-bottom:0.65rem; font-size:0.79rem; line-height:1.48; color:var(--text-main);">
+              <strong>🏛️ Исторический контекст эпохи:</strong> По нормам права XVII века взрослый сын мог выделиться из семьи только по официальной отпускной памяти. Архип проявил блестящую правовую грамотность: зафиксировав отцовское прощение и выдел на бумаге, он защитил себя от любых будущих претензий и сохранил свободу перемещения по Сибири.
+            </div>
             <div style="font-size:0.8rem; line-height:1.45; background:rgba(16,185,129,0.06); border-left:3px solid #10b981; padding:0.4rem 0.6rem; border-radius:0 4px 4px 0; margin-bottom:0.75rem; color:var(--text-main);">
               <strong>💡 Генеалогический вывод:</strong> Документ подтверждает окончательный раздел родового имущества и образование Архипом независимой ветви Туркиных, дети которой (Фёдор Архипович Туркин) жили на Оквадском погосте по переписи 1710 года.
             </div>
@@ -3522,7 +3519,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </div>
 
         <!-- CASE 5: 1667 (№ 2913) AFANASY VS ARKHIP & ISAAK -->
-        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #d9770633; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
+        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #d9770633; padding:1.2rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.4rem;">
               <span style="font-size:0.75rem; font-weight:700; background:#fef3c7; color:#b45309; padding:0.15rem 0.5rem; border-radius:4px; border:1px solid #fde68a;">1667 год • 11 листов дела</span>
@@ -3540,6 +3537,9 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             <p style="font-size:0.83rem; line-height:1.5; color:var(--text-main); margin-bottom:0.6rem;">
               Обширное следственное дело на 11 листах по челобитным престарелого патриарха рода (~70 лет). Афанасий ведет тяжбу на два фронта: бьёт челом архиепископу Симону против крестьянки Фёклы Михайловой дочери Жужгиной, незаконно завладевшей родовым двором и землей, а также против собственных взрослых сыновей — Архипа и Исаака, которые оставили престарелого отца без содержания («не кормят») и взяли у него деньги.
             </p>
+            <div style="background:var(--bg-surface); border-left:3px solid #6366f1; padding:0.5rem 0.65rem; border-radius:0 6px 6px 0; margin-bottom:0.65rem; font-size:0.79rem; line-height:1.48; color:var(--text-main);">
+              <strong>🏛️ Исторический контекст эпохи:</strong> К концу 1660-х годов Афанасию Туркину пошел восьмой десяток лет. Патриарх столкнулся с драмой угасания власти: родовой двор пыталась отсудить крестьянка Фёкла Жужгина, а сыновья Архип и молодой дьячок Исаак объединились, взяли семейную казну в свои руки и отказались содержать немощного отца. Это уникальный исторический снимок смены поколений в семье XVII века через судебное сопротивление уходящего патриарха.
+            </div>
             <div style="font-size:0.8rem; line-height:1.45; background:rgba(16,185,129,0.06); border-left:3px solid #10b981; padding:0.4rem 0.6rem; border-radius:0 4px 4px 0; margin-bottom:0.75rem; color:var(--text-main);">
               <strong>💡 Генеалогический вывод:</strong> Документ окончательно объединяет родословную в монолитную структуру: церковный дьячок Исаак Туркин (наш прямой предок) и сибирский промысловик Архип Туркин были родными братьями, сыновьями приказного Афанасия Семёновича.
             </div>
@@ -3553,24 +3553,30 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </div>
 
         <!-- CASE 6: 1678 (№ 5032) KIRILL TURKIN & BOYAR MATVEEV -->
-        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #d9770633; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
+        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #d9770633; padding:1.2rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.4rem;">
-              <span style="font-size:0.75rem; font-weight:700; background:#fef3c7; color:#b45309; padding:0.15rem 0.5rem; border-radius:4px; border:1px solid #fde68a;">1678 год • Общерусская история</span>
-              <span style="font-size:0.73rem; color:var(--text-muted);">ГАВО ф. 1260, оп. 1, д. 5032</span>
+              <span style="font-size:0.75rem; font-weight:700; background:#fef3c7; color:#b45309; padding:0.15rem 0.5rem; border-radius:4px; border:1px solid #fde68a;">1677–1678 гг. • Общерусская история</span>
+              <span style="font-size:0.73rem; color:var(--text-muted);">ГАВО ф. 1260, д. 4829, 5032</span>
             </div>
             <h3 style="margin:0 0 0.5rem 0; font-size:1.02rem; color:var(--text-main); font-weight:700; line-height:1.35;">
               Государева служба: конвой боярина Артамона Матвеева в Пустозерск целовальником Кириллом Туркиным
             </h3>
             <div style="font-size:0.77rem; background:rgba(37,99,235,0.06); border-left:3px solid #2563eb; padding:0.4rem 0.6rem; border-radius:0 4px 4px 0; margin-bottom:0.6rem; color:var(--text-main); line-height:1.45;">
-              <strong>⚖️ Должностное лицо:</strong> Земский целовальник Кирилл Афанасьевич Туркин • Конвоируемые: «великий государев ближний боярин» А.С. Матвеев, сын Андрей, стольник Г. Тухачевский.
+              <strong>⚖️ Должностное лицо:</strong> Земский целовальник Кирилл Афанасьевич Туркин (Усть-Вымь, Вожема, Шежамка) • Опальные узники: «великий государев ближний боярин» А.С. Матвеев с сыном Андреем • Конвоир: стольник Гавриил Тухачевский • Ямщики: Яков Одинцов, Семён Малафеев.
             </div>
             <div style="font-size:0.8rem; font-style:italic; background:var(--bg-surface); border:1px dashed #d9770666; padding:0.5rem 0.75rem; border-radius:6px; margin-bottom:0.65rem; color:#b45309; line-height:1.45;">
               «...для проезду боярина Артамона Сергеевича Матвеева наняли ямских 4 лошади с проводниками до Пустозерского острогу...»
             </div>
             <p style="font-size:0.83rem; line-height:1.5; color:var(--text-main); margin-bottom:0.6rem;">
-              Документы первостепенного государственного значения. Земский целовальник Кирилл Туркин (родной брат дьячка Исаака) организует транзитное конвоирование через Яренский уезд бывшего главы правительства России боярина А.С. Матвеева, ссылаемого в Заполярье. Кирилл лично нанимает ямщиков, подводы и производит выплаты из мирской казны.
+              Документы первостепенного государственного значения. Земский целовальник Кирилл Туркин (родной брат дьячка Исаака) организует транзитное конвоирование через Яренский уезд опального главы правительства России боярина А.С. Матвеева, ссылаемого в Заполярье. Кирилл лично нанимает ямщиков, подводы и производит выплаты из мирской казны.
             </p>
+            <div style="background:var(--bg-surface); border-left:3px solid #7c3aed; padding:0.5rem 0.65rem; border-radius:0 6px 6px 0; margin-bottom:0.65rem; font-size:0.79rem; line-height:1.48; color:var(--text-main);">
+              <strong>💰 Экономический масштаб миссии:</strong> 10 рублей на ямские расходы (отпись старосты Ермакова от 28.11.1677 г., д. 4829) + наем 4 ямских лошадей с подводами на сотни верст через глухую северную тайгу. Наем ямской упряжки с проводником стоил от 50 коп. до 1 рубля за перегон — сумма, сопоставимая с месячным бюджетом волостного яма.
+            </div>
+            <div style="background:var(--bg-surface); border-left:3px solid #6366f1; padding:0.5rem 0.65rem; border-radius:0 6px 6px 0; margin-bottom:0.65rem; font-size:0.79rem; line-height:1.48; color:var(--text-main);">
+              <strong>🏛️ Исторический контекст эпохи:</strong> Боярин Артамон Сергеевич Матвеев — фактический руководитель государства при царе Алексее Михайловиче, воспитатель царицы Натальи Нарышкиной (матери Петра I). После воцарения Фёдора Алексеевича власть перешла к Милославским; Матвеев был ложно обвинен в чернокнижии и сослан в Пустозерск (к протопопу Аввакуму). Тракт по Вычегде и Печоре был единственным путем в Заполярье. Поручение транспортировки первого сановника государства именно Кириллу Туркину доказывает его высочайший статус среди выборных властей Севера.
+            </div>
             <div style="font-size:0.8rem; line-height:1.45; background:rgba(16,185,129,0.06); border-left:3px solid #10b981; padding:0.4rem 0.6rem; border-radius:0 4px 4px 0; margin-bottom:0.75rem; color:var(--text-main);">
               <strong>💡 Генеалогический вывод:</strong> Кирилл Афанасьевич Туркин был одним из главных выборных казначеев и государственных распорядителей Яренского края конца XVII века, выполняя поручения высшей государственной важности.
             </div>
@@ -3583,7 +3589,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </div>
 
         <!-- CASE 7: 1679 (№ 5260) ISAAK POSYLSHCHIK TO MOSCOW -->
-        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #d9770633; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
+        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #d9770633; padding:1.2rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.4rem;">
               <span style="font-size:0.75rem; font-weight:700; background:#fef3c7; color:#b45309; padding:0.15rem 0.5rem; border-radius:4px; border:1px solid #fde68a;">1679 год • Москва, Казенный приказ</span>
@@ -3593,14 +3599,20 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
               Миссия в Москву: посыльщик Исаак Туркин и доставка военных податей со 144 дворов
             </h3>
             <div style="font-size:0.77rem; background:rgba(37,99,235,0.06); border-left:3px solid #2563eb; padding:0.4rem 0.6rem; border-radius:0 4px 4px 0; margin-bottom:0.6rem; color:var(--text-main); line-height:1.45;">
-              <strong>⚖️ Посыльщик:</strong> Исаак Туркин • Приемщики в Москве: казенные дьяки Е. Глызин и Г. Козлов • Цель: сбор на ратных людей Русско-турецкой войны.
+              <strong>⚖️ Посыльщик:</strong> Исаак Туркин • Приемщики в Москве: казенные дьяки Еремей Глызин, Григорий Козлов, Григорий Бутин, Затей Бахматов • Цель: сбор на ратных людей Русско-турецкой войны.
             </div>
             <div style="font-size:0.8rem; font-style:italic; background:var(--bg-surface); border:1px dashed #d9770666; padding:0.5rem 0.75rem; border-radius:6px; margin-bottom:0.65rem; color:#b45309; line-height:1.45;">
-              «...приняли на Москве с Усть-Выми и Оквада от посыльщика Исаака Туркина со 144 дворов сборные деньги на жалованье ратным людем...»
+              «...приняли на Москве с Усть-Выми и Оквада от посыльщика Исаака Туркина со 144 дворов сборные деньги на жалованье ратным людем... да от него ж 14 руб...»
             </div>
             <p style="font-size:0.83rem; line-height:1.5; color:var(--text-main); margin-bottom:0.6rem;">
               Приемная отпись от 23 января 1679 года московских казенных приемщиков. Они подтверждают сдачу крупной суммы серебра, собранной со 144 дворов церковного причта, крестьян и бобылей Усть-Вымской и Оквадской вотчин на жалованье ратным людям Чигиринских походов. Ответственным лицом, доставившим казну в Москву через глухие зимние тракты, записан посыльщик Исаак Туркин.
             </p>
+            <div style="background:var(--bg-surface); border-left:3px solid #0284c7; padding:0.5rem 0.65rem; border-radius:0 6px 6px 0; margin-bottom:0.65rem; font-size:0.79rem; line-height:1.48; color:var(--text-main);">
+              <strong>💰 Экономический масштаб сборов:</strong> Налог со 144 дворов волости + 14 рублей наличного серебра, сданные приемщикам Бутину и Бахматову. 14 рублей серебром — сумма годового жалованья 3–4 стрельцов или стоимость табуна из 5–7 рабочих лошадей.
+            </div>
+            <div style="background:var(--bg-surface); border-left:3px solid #6366f1; padding:0.5rem 0.65rem; border-radius:0 6px 6px 0; margin-bottom:0.65rem; font-size:0.79rem; line-height:1.48; color:var(--text-main);">
+              <strong>🏛️ Исторический контекст эпохи:</strong> 1676–1681 гг. — война с Османской империей за Украину (Чигиринские походы). Царское правительство обложило чрезвычайным военным сбором все тяглые дворы страны. Доверить транспортировку казны через тысячи верст зимней тайги община могла только абсолютно честному и мужественному человеку: дьячок Исаак Туркин доставил серебро в Москву до копейки.
+            </div>
             <div style="font-size:0.8rem; line-height:1.45; background:rgba(16,185,129,0.06); border-left:3px solid #10b981; padding:0.4rem 0.6rem; border-radius:0 4px 4px 0; margin-bottom:0.75rem; color:var(--text-main);">
               <strong>💡 Генеалогический вывод:</strong> Наш прямой предок дьячок Исаак Афанасьевич Туркин к 1679 году обладал безупречной репутацией и непререкаемым авторитетом, совмещая церковное служение с ответственнейшими финансовыми командировками в столицу.
             </div>
@@ -3611,11 +3623,11 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
           </div>
         </div>
 
-        <!-- CASE 8: 1687-1688 (№ 7519) PRIEST PETR IN VOLOGDA PODVORIE -->
-        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #d9770633; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
+        <!-- CASE 8: 1687-1688 (№ 7519) PRIEST PETR IN MOSCOW PODVORIE -->
+        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #d9770633; padding:1.2rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.4rem;">
-              <span style="font-size:0.75rem; font-weight:700; background:#fef3c7; color:#b45309; padding:0.15rem 0.5rem; border-radius:4px; border:1px solid #fde68a;">1687–1688 гг. • Вологда, Палаты владыки</span>
+              <span style="font-size:0.75rem; font-weight:700; background:#fef3c7; color:#b45309; padding:0.15rem 0.5rem; border-radius:4px; border:1px solid #fde68a;">1687–1688 гг. • Московское подворье</span>
               <span style="font-size:0.73rem; color:var(--text-muted);">ГАВО ф. 1260, оп. 1, д. 7519</span>
             </div>
             <h3 style="margin:0 0 0.5rem 0; font-size:1.02rem; color:var(--text-main); font-weight:700; line-height:1.35;">
@@ -3630,6 +3642,9 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             <p style="font-size:0.83rem; line-height:1.5; color:var(--text-main); margin-bottom:0.6rem;">
               В архиерейском делопроизводственном томе (130 листов) зафиксированы памяти архиепископа Гавриила стряпчему московских дел Ивану Суровцову. Владыка предписывает: прибывших с Вычегды священника о. Петра Туркина и крестьянина Гаврила Козлова поселить на Московском архиерейском подворье, содержать и кормить за счет казны и оказать всестороннюю юридическую помощь в судебной защите приходских земель против притязаний Устюжской кафедры (лл. 78, 79–81, 83).
             </p>
+            <div style="background:var(--bg-surface); border-left:3px solid #6366f1; padding:0.5rem 0.65rem; border-radius:0 6px 6px 0; margin-bottom:0.65rem; font-size:0.79rem; line-height:1.48; color:var(--text-main);">
+              <strong>🏛️ Исторический контекст эпохи:</strong> Регентство царевны Софьи. После учреждения в 1682 г. Великоустюжской епархии между Вологдой и Устюгом вспыхнул острый межъепархиальный спор за приходы и рыбные ловли по Вычегде. Молодой священник о. Пётр Туркин поехал послом в Москву. Владыка Гавриил поселил его на архиерейском подворье столицы и выделил опытного стряпчего для защиты церковных прав Севера в приказах.
+            </div>
             <div style="font-size:0.8rem; line-height:1.45; background:rgba(16,185,129,0.06); border-left:3px solid #10b981; padding:0.4rem 0.6rem; border-radius:0 4px 4px 0; margin-bottom:0.75rem; color:var(--text-main);">
               <strong>💡 Генеалогический вывод:</strong> Прямой предок рода о. Пётр Исаакович Туркин лично представлял интересы своей паствы и Вологодской кафедры на высшем уровне в Москве, пользуясь исключительным доверием правящего архиерея.
             </div>
@@ -3642,7 +3657,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </div>
 
         <!-- CASE 9: 1688-1698 (№ 7753, 8267, 10789) ISAAK VYBORNY SUDYA -->
-        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #d9770633; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
+        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #d9770633; padding:1.2rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.4rem;">
               <span style="font-size:0.75rem; font-weight:700; background:#fef3c7; color:#b45309; padding:0.15rem 0.5rem; border-radius:4px; border:1px solid #fde68a;">1688–1698 гг. • Усть-Вымский суд</span>
@@ -3660,6 +3675,9 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             <p style="font-size:0.83rem; line-height:1.5; color:var(--text-main); margin-bottom:0.6rem;">
               Комплекс актов, фиксирующих Исаака Туркина в высшей выборной должности волости — выборного крестьянина и судьи на Усть-Выми: разбор челобитной священника о. Петра о земельном наделе (1688 г., д. 7753), земельный спор о пожне Онучина (1689 г., д. 8267) и указ приказа о проведении официального следствия по земельному спору на реке Ибеж (1698 г., д. 10789).
             </p>
+            <div style="background:var(--bg-surface); border-left:3px solid #6366f1; padding:0.5rem 0.65rem; border-radius:0 6px 6px 0; margin-bottom:0.65rem; font-size:0.79rem; line-height:1.48; color:var(--text-main);">
+              <strong>🏛️ Исторический контекст эпохи:</strong> На Русском Севере никогда не существовало крепостного права: волостная жизнь управлялась институтом выборного самоуправления. На протяжении десятилетия Исаак Туркин обладал высшей судебной властью волости. Поразительный штрих эпохи: судья Исаак Туркин разбирал земельные челобитные священника о. Петра Туркина — своего родного сына, воплощая соединение духовной и светской власти династии.
+            </div>
             <div style="font-size:0.8rem; line-height:1.45; background:rgba(16,185,129,0.06); border-left:3px solid #10b981; padding:0.4rem 0.6rem; border-radius:0 4px 4px 0; margin-bottom:0.75rem; color:var(--text-main);">
               <strong>💡 Генеалогический вывод:</strong> Исаак Туркин — ключевая фигура в истории рода, соединившая духовное служение (церковный дьячок) с высшим светским судейским авторитетом среди выборного самоуправления Русского Севера.
             </div>
