@@ -141,27 +141,27 @@ def build_thai_file():
       </div>
     </div>"""
 
-    # 7. Complete 6-item Bottom Anchor Bar (Thai)
-    thai_bottom_bar = """    <!-- BOTTOM ANCHOR NAVIGATION BAR FOR PLACES & ROOTS (THAI) -->
-    <nav class="info-bottom-bar-container" id="infoBottomBar" aria-label="นำทางในหมวดหมู่">
-      <div class="info-bottom-bar">
-        <a href="#info-overview" class="info-bottom-pill active" onclick="scrollToAnchor(event, 'info-overview')">
-          <span>🌳</span> <span class="pill-lbl-full">เกี่ยวกับตระกูล</span><span class="pill-lbl-short">ตระกูล</span>
+    # 7. Complete 6-item Bottom Anchor Bar (Identical to Russian version)
+    thai_bottom_bar = """    <!-- BOTTOM ANCHOR NAVIGATION BAR FOR PLACES & ROOTS -->
+    <nav class="info-bottom-bar" id="infoBottomBar">
+      <div class="info-bottom-scroll">
+        <a href="#info-overview" class="info-bottom-pill active" onclick="scrollToAnchor(event, 'info-overview')" title="เกี่ยวกับตระกูล (О семье)">
+          <span>🌳</span> <span class="pill-lbl-full">О семье</span><span class="pill-lbl-short">Семья</span>
         </a>
-        <a href="#info-heroes" class="info-bottom-pill" onclick="scrollToAnchor(event, 'info-heroes')">
-          <span>🎖️</span> <span class="pill-lbl-full">วีรชนสงคราม</span><span class="pill-lbl-short">วีรชน</span>
+        <a href="#info-heroes" class="info-bottom-pill" onclick="scrollToAnchor(event, 'info-heroes')" title="ผู้พิทักษ์ปิตุภูมิ / วีรชน (Защитники)">
+          <span>🎖️</span> <span class="pill-lbl-full">Защитники</span><span class="pill-lbl-short">Герои</span>
         </a>
-        <a href="#info-clergy" class="info-bottom-pill" onclick="scrollToAnchor(event, 'info-clergy')">
-          <span>⛪</span> <span class="pill-lbl-full">คณะสงฆ์</span><span class="pill-lbl-short">วัดวาอาราม</span>
+        <a href="#info-clergy" class="info-bottom-pill" onclick="scrollToAnchor(event, 'info-clergy')" title="คณะสงฆ์และวัดวาอาราม (Духовенство)">
+          <span>⛪</span> <span class="pill-lbl-full">Духовенство</span><span class="pill-lbl-short">Храмы</span>
         </a>
-        <a href="#info-court-cases" class="info-bottom-pill" onclick="scrollToAnchor(event, 'info-court-cases')">
-          <span>⚖️</span> <span class="pill-lbl-full">การรับราชการ</span><span class="pill-lbl-short">ราชการ</span>
+        <a href="#info-court-cases" class="info-bottom-pill" onclick="scrollToAnchor(event, 'info-court-cases')" title="การรับราชการและคดีความ (Служба)">
+          <span>⚖️</span> <span>Служба</span>
         </a>
-        <a href="#info-geography" class="info-bottom-pill" onclick="scrollToAnchor(event, 'info-geography')">
-          <span>🗺️</span> <span class="pill-lbl-full">ถิ่นกำเนิด</span><span class="pill-lbl-short">14 ดินแดน</span>
+        <a href="#info-geography" class="info-bottom-pill" onclick="scrollToAnchor(event, 'info-geography')" title="ภูมิศาสตร์ประวัติศาสตร์ (География)">
+          <span>🗺️</span> <span class="pill-lbl-full">География</span><span class="pill-lbl-short">Места</span>
         </a>
-        <a href="#info-surnames" class="info-bottom-pill" onclick="scrollToAnchor(event, 'info-surnames')">
-          <span>🧬</span> <span class="pill-lbl-full">สายตระกูล</span><span class="pill-lbl-short">18 นามสกุล</span>
+        <a href="#info-surnames" class="info-bottom-pill" onclick="scrollToAnchor(event, 'info-surnames')" title="สายตระกูลและนามสกุล (Фамилии)">
+          <span>🧬</span> <span class="pill-lbl-full">Фамилии</span><span class="pill-lbl-short">Роды</span>
         </a>
       </div>
     </nav>"""

@@ -813,6 +813,7 @@ tr:hover td {
   padding: 1.25rem;
   margin-bottom: 1.25rem;
   box-shadow: var(--shadow);
+  scroll-margin-top: 4.5rem;
 }
 .info-card h2 {
   font-size: 1.15rem;
@@ -4666,6 +4667,7 @@ function init() {
   setupFsScanEvents();
   centerOnRoot();
   setupHashRouting();
+  setupInfoScrollSpy();
 }
 
 function switchTab(tabId) {
@@ -5348,6 +5350,38 @@ window.addEventListener('hashchange', () => {
     }
   }
 });
+
+function setupInfoScrollSpy() {
+  if (!('IntersectionObserver' in window)) return;
+  const sections = ['info-overview', 'info-heroes', 'info-clergy', 'info-court-cases', 'info-geography', 'info-surnames'];
+  const pills = document.querySelectorAll('#infoBottomBar .info-bottom-pill');
+  if (!pills.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    let bestEntry = null;
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        if (!bestEntry || entry.intersectionRatio > bestEntry.intersectionRatio) {
+          bestEntry = entry;
+        }
+      }
+    });
+    if (bestEntry && bestEntry.target && bestEntry.target.id) {
+      const targetId = bestEntry.target.id;
+      pills.forEach(pill => {
+        pill.classList.toggle('active', pill.getAttribute('href') === '#' + targetId);
+      });
+    }
+  }, {
+    rootMargin: '-10% 0px -40% 0px',
+    threshold: [0, 0.25, 0.5, 0.75]
+  });
+
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+}
 
 function setupCanvasDrag() {
   const viewport = document.getElementById('view-tree');
