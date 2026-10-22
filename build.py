@@ -53,6 +53,12 @@ def step_generate_html():
     if result.returncode != 0:
         raise RuntimeError(f"Сбой generate_final_tree.py:\n{result.stderr}")
     print("   " + result.stdout.strip())
+    
+    # Генерация тайской версии (thai.html)
+    res_thai = subprocess.run([sys.executable, "scripts/build_thai_clean.py"], capture_output=True, text=True)
+    if res_thai.returncode != 0:
+        raise RuntimeError(f"Сбой build_thai_clean.py:\n{res_thai.stderr}")
+    print("   " + res_thai.stdout.strip())
 
 def main():
     print("=" * 65)
@@ -79,7 +85,7 @@ def main():
     print(f"  • Семейных союзов:       {len(families)}")
     print(f"  • Архивных документов:   {len(sources.get('documents', []))}")
     print(f"  • PDF-альбомов и книг:   {len(sources.get('pdf_albums', []))}")
-    print(f"  • Готовых HTML-файлов:   index.html, tree.html, родословная.html")
+    print(f"  • Готовых HTML-файлов:   index.html, tree.html, родословная.html, thai.html")
     print(f"  • Экспорт GEDCOM:        rodoslovnaya_turkin.ged")
     print("-" * 65)
     print("  Для локального запуска выполните:")

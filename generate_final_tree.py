@@ -2457,6 +2457,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         <span class="search-icon">🔍</span>
         <input type="text" id="searchInput" placeholder="Поиск персоны..." oninput="handleSearch(this.value)">
       </div>
+      <a href="thai.html" class="pill-btn" style="text-decoration:none; font-weight:600; font-size:0.78rem; padding:0.25rem 0.6rem; background:rgba(16,185,129,0.08); border-color:#10b981; color:#059669;" title="หน้าภาษาไทย">🇹🇭 ภาษาไทย</a>
       <button class="btn-icon" onclick="toggleTheme()" title="Сменить тему оформления">🌓</button>
     </div>
 
@@ -2495,6 +2496,12 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         <input type="text" id="drawerSearchInput" placeholder="Поиск персоны..." oninput="handleDrawerSearch(this.value)">
       </div>
       <div id="drawerSearchResults" class="drawer-search-results"></div>
+    </div>
+
+    <!-- LANGUAGE SWITCH -->
+    <div class="drawer-theme-box" style="margin-bottom:0.6rem;">
+      <span style="font-size:0.82rem; font-weight:600; color:var(--text-muted);">Язык / ภาษา:</span>
+      <a href="thai.html" class="pill-btn" style="text-decoration:none; font-size:0.78rem; padding:0.3rem 0.7rem; color:#059669; border-color:#10b981; background:rgba(16,185,129,0.08);">🇹🇭 ภาษาไทย</a>
     </div>
 
     <!-- THEME TOGGLE -->
