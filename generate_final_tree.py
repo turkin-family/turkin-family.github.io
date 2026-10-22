@@ -1125,6 +1125,42 @@ tr:hover td {{
 
 
 
+/* LANGUAGE SWITCHER */
+.lang-switch {{
+  display: flex;
+  align-items: center;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 2px;
+  gap: 2px;
+}}
+.lang-btn {{
+  background: transparent;
+  border: none;
+  border-radius: 16px;
+  padding: 0.22rem 0.55rem;
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+  line-height: 1.2;
+}}
+.lang-btn.active {{
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}}
+.lang-btn:hover:not(.active) {{
+  color: var(--text-main);
+  background: rgba(0,0,0,0.05);
+}}
+[data-lang="th"] {{
+  font-family: 'Sarabun', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+}}
+
 /* MODAL */
 .modal-overlay {{
   position: fixed;
@@ -2457,6 +2493,10 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         <span class="search-icon">🔍</span>
         <input type="text" id="searchInput" placeholder="Поиск персоны..." oninput="handleSearch(this.value)">
       </div>
+      <div class="lang-switch" title="Выбор языка / เลือกภาษา">
+        <button class="lang-btn active" id="btnLangRu" onclick="setLanguage('ru')">🇷🇺 RU</button>
+        <button class="lang-btn" id="btnLangTh" onclick="setLanguage('th')">🇹🇭 TH</button>
+      </div>
       <button class="btn-icon" onclick="toggleTheme()" title="Сменить тему оформления">🌓</button>
     </div>
 
@@ -2498,6 +2538,13 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
     </div>
 
     <!-- THEME TOGGLE -->
+    <div class="drawer-theme-box" style="margin-bottom:0.6rem;">
+      <span style="font-size:0.82rem; font-weight:600; color:var(--text-muted);">Язык / ภาษา:</span>
+      <div class="lang-switch">
+        <button class="lang-btn active" id="drawerBtnLangRu" onclick="setLanguage('ru')">🇷🇺 Русский</button>
+        <button class="lang-btn" id="drawerBtnLangTh" onclick="setLanguage('th')">🇹🇭 ภาษาไทย</button>
+      </div>
+    </div>
     <div class="drawer-theme-box">
       <span style="font-size:0.82rem; font-weight:600; color:var(--text-muted);">Тема оформления:</span>
       <button class="pill-btn" onclick="toggleTheme()" id="drawerThemeBtn" style="font-size:0.78rem; padding:0.3rem 0.7rem;">
@@ -3125,7 +3172,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:1.15rem;">
         
         <!-- КОКВИЦЫ -->
-        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #2563eb33; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
+        <div id="geo-kokvitsy" style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #2563eb33; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
               <h3 style="margin:0; font-size:1.05rem; color:#2563eb;">🏛️ с. Коквицы — Христорождественская церковь</h3>
@@ -3253,8 +3300,8 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
                 <div style="font-size:0.64rem; font-weight:700; color:#6d28d9; margin-top:0.35rem; width:100%; line-height:1.2; word-break:normal; hyphens:auto;">Прмч. Мелетий<br><span style="font-size:0.60rem; font-weight:600; color:var(--text-muted);">(иеромонах)</span></div>
               </div>
               <div style="font-size:0.79rem; line-height:1.45; color:var(--text-main);">
-                <div style="font-weight:700; color:#6d28d9; margin-bottom:0.2rem; font-size:0.82rem;">🕊️ Канонизация соратника по делу 1937 г.:</div>
-                <div>Фигурант того же дела иеромонах Мелетий (Федюнёв) был расстрелян в Сыктывкаре <strong>23.09.1937 г.</strong></div>
+                <div style="font-weight:700; color:#6d28d9; margin-bottom:0.2rem; font-size:0.82rem;"><span class="meletiy-title">🕊️ Канонизация соратника по делу 1937 г.:</span></div>
+                <div class="meletiy-body">Фигурант того же дела иеромонах Мелетий (Федюнёв) был расстрелян в Сыктывкаре <strong>23.09.1937 г.</strong></div>
                 <div style="margin-top:0.35rem; background:rgba(124,58,237,0.08); padding:0.4rem 0.55rem; border-radius:5px; border-left:3px solid #7c3aed; font-style:italic;">
                   «Священный Синод Определением от 6.10.2001 г. причислил иеромонаха Мелетия (Федюнева) к лику святых и включил в Собор новомучеников и исповедников Российских (Церкви Русской) ХХ века.»
                 </div>
@@ -3268,7 +3315,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </div>
 
         <!-- ЫБ -->
-        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #05966933; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
+        <div id="geo-yb" style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #05966933; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
               <h3 style="margin:0; font-size:1.05rem; color:#059669;">⛪ с. Ыб — Свято-Вознесенский храм</h3>
@@ -3293,7 +3340,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </div>
 
         <!-- ЛОЙМА -->
-        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #d9770633; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
+        <div id="geo-loyma" style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #d9770633; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
               <h3 style="margin:0; font-size:1.05rem; color:#d97706;">⛪ с. Лойма — Церковь Успения Богородицы</h3>
@@ -3314,7 +3361,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </div>
 
         <!-- УСТЬ-ВЫМЬ -->
-        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #10b98133; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
+        <div id="geo-ust-vym" style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #10b98133; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
               <h3 style="margin:0; font-size:1.05rem; color:#059669;">⛪ с. Усть-Вымь — Михайло-Архангельский монастырь и храмы</h3>
@@ -3338,7 +3385,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </div>
 
         <!-- ЛЯЛИ -->
-        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #ec489933; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
+        <div id="geo-lyali" style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #ec489933; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
               <h3 style="margin:0; font-size:1.05rem; color:#db2777;">⛪ с. Ляли — Богоявленская церковь</h3>
@@ -3362,7 +3409,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </div>
 
         <!-- ОКВАД -->
-        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #0284c733; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
+        <div id="geo-okvad" style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #0284c733; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
               <h3 style="margin:0; font-size:1.05rem; color:#0284c7;">⛪ погост Оквад (Катвад) — Введенская церковь</h3>
@@ -3808,91 +3855,91 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
 
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">
         <!-- ЫБ -->
-        <div style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
+        <div id="geo-yb" style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="font-weight:700; font-size:1.05rem; color:var(--accent); margin-bottom:0.35rem;">🏛️ Село Ыб (Ибы, Мельничный Иб)</div>
           <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.5rem;">Сыктывдинский район • Река Сысола • Известно с 1586 года</div>
           <p style="font-size:0.86rem; line-height:1.5;">Один из древнейших культурных и сакральных центров Коми края, расположенный на семи холмах вдоль реки Сысолы. Название происходит от коми слова <em>«ыб»</em> — возвышенность, суходольное поле на холме. Родовое гнездо многих поколений <strong>Туркиных, Зиновьевых, Пасынковых, Кызъюровых и Айбабиных</strong>. В селе действовала каменная Свято-Вознесенская церковь (освящена в 1827–1835 гг., НАРК ф. 130) и более десятка святых целебных источников.</p>
         </div>
 
         <!-- ГОРЕЛЫЙ ЫБ -->
-        <div style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
+        <div id="geo-gorely-yb" style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="font-weight:700; font-size:1.05rem; color:#ec4899; margin-bottom:0.35rem;">🌲 Деревня Горелый Ыб (с. Горесоит)</div>
           <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.5rem;">Серегово-Горская волость • Река Вымь</div>
           <p style="font-size:0.86rem; line-height:1.5;">Старинное селение Сереговских гор на реке Вымь. Историческая родина ветвей <strong>Кызъюровых и Зиновьевых</strong>. Здесь родились прапрабабушка Клавдия Ильинична Кызъюрова (род. 1900), герой войны Владимир Семенович Зиновьев (род. 1925), а также советский государственный деятель, председатель Коми облисполкома (1937–1938) Иона Алексеевич Кызъюров.</p>
         </div>
 
         <!-- ЛОЙМА -->
-        <div style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
+        <div id="geo-loyma" style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="font-weight:700; font-size:1.05rem; color:#8b5cf6; margin-bottom:0.35rem;">🌾 Село Лойма</div>
           <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.5rem;">Прилузский район • Река Луза (Лузская Пермца) • Известно с 1478 года</div>
           <p style="font-size:0.86rem; line-height:1.5;">Древнейшее село юга Коми земли на правом берегу реки Лузы, впервые упомянутое в летописях в 1478 году (близ села исследован Лоемский могильник IX–X веков). Село славится уникальным архаичным лоемским говором и величественным каменным храмом Успения Пресвятой Богородицы (построен в 1802–1804 гг.) с росписями Васнецовской школы 1916 г. <strong>Родина Марии Степановны Сюткиной (Шехониной) (1911–1981)</strong>, её сестры Александры (род. 1922), их отца Степана Петровича Сюткина (1880–1933, раскулаченного в 1930 г.) и деда Петра Сюткина.</p>
         </div>
 
         <!-- ЕРОЗДИНО -->
-        <div style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
+        <div id="geo-erozdino" style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="font-weight:700; font-size:1.05rem; color:#d97706; margin-bottom:0.35rem;">🌲 Деревня Ероздино (Йӧрӧсдін)</div>
           <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.5rem;">Ыбский куст / Вымь • Известна с 1602 года</div>
           <p style="font-size:0.86rem; line-height:1.5;">Старинная коми деревня, название которой происходит от коми слов <em>«йӧрӧс»</em> (речной порог, быстрина) и <em>«дін»</em> (около, устье) — «селение у речного порога». Историческая родина предков <strong>Шуктомовых, Полещиковых и Поздеевых</strong>. Здесь родились прадед Евгений Александрович Шуктомов (род. 1946), прапрадед Александр Михайлович Шуктомов (род. 1911), прапрабабушка Серафима Афанасьевна Полещикова (род. 1912). Из Ероздино также происходит выдающийся коми филолог и писатель Адольф Иванович Туркин (1936–1996).</p>
         </div>
 
         <!-- ВОГВАЗДИНО -->
-        <div style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
+        <div id="geo-vogvazdino" style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="font-weight:700; font-size:1.05rem; color:#059669; margin-bottom:0.35rem;">⛵ Деревня Вогваздино / Вагваздино (Ванвисдін)</div>
           <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.5rem;">Усть-Вымский район • Слияние Выми и Вычегды • Известна с 1678 года</div>
           <p style="font-size:0.86rem; line-height:1.5;">Селение при впадении реки Вымь в Вычегду — колыбель зырянского православия святителя Стефана Пермского. В XVII веке фиксировалось как починок Боровой (местные жители называли «Яг» — сосновый бор). Коми название расшифровывается как <em>«вок Вась дін»</em> — «место у брата Василия». Родина прапрапрапрабабушки <strong>Параскевы Ивановны Кругляковой (Пасынковой)</strong> (род. 1828) и старейшей известной представительницы 9-го поколения <strong>Марии Григорьевны Кругляковой</strong>.</p>
         </div>
 
         <!-- ЛЯЛИ -->
-        <div style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
+        <div id="geo-lyali" style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="font-weight:700; font-size:1.05rem; color:#ec4899; margin-bottom:0.35rem;">🏰 Деревня Ляли (Ляй)</div>
           <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.5rem;">Княжпогостский район • Река Вымь • Погост с 1608 года</div>
           <p style="font-size:0.86rem; line-height:1.5;">Древний погост на левом берегу реки Вымь, старинном Вымском речном торговом пути в Сибирь. Название восходит к финно-угорскому <em>«ляй»</em> (ручей в овраге, ключевая речка). В 1856 году здесь был воздвигнут каменный Богоявленский храм. Родина коми родов <strong>Каракчиевых</strong> (Анастасия Андреевна Каракчиева, род. 1851) и <strong>Шилиных</strong> (Александра Николаевна Шилина, род. 1839).</p>
         </div>
 
         <!-- ПАЛЬТЫДОР -->
-        <div style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
+        <div id="geo-paltydor" style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="font-weight:700; font-size:1.05rem; color:#2563eb; margin-bottom:0.35rem;">🏡 Деревня Пальтыдор (Калтыдор)</div>
           <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.5rem;">Сысольский / Усть-Вымский уезд • Основана в 1707–1719 гг.</div>
           <p style="font-size:0.86rem; line-height:1.5;">Основана в начале XVIII века в ходе крестьянского освоения новых пашен. Компонент <em>«дор»</em> на коми языке означает «край, берег, селение у воды/леса». Родина прапрабабушки <strong>Павлы Савватеевны Летовой (Туркиной)</strong> (род. 09.08.1908) и её матери <strong>Александры Семеновны Летовой (Ярановой)</strong> (род. 04.05.1874).</p>
         </div>
 
                 <!-- КОКВИЦЫ -->
-        <div style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
+        <div id="geo-kokvitsy" style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="font-weight:700; font-size:1.05rem; color:#2563eb; margin-bottom:0.35rem;">⛰️ Село Коквицы (Коквицкая гора)</div>
           <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.5rem;">Усть-Вымский район • Левый берег Вычегды (Эжвы) • Известно с 1483 года</div>
           <p style="font-size:0.86rem; line-height:1.5;">Знаменитая Коквицкая гора — возвышенность-«полуостров», омываемая Вычегдой, колыбель вычегодских коми (эжватас). Одно из легендарных сакральных мест Коми края со святынями времен Стефана Пермского. <strong>Главный духовный оплот рода Туркиных:</strong> при каменной Христорождественской церкви более 150 лет служили священники о. Степан и о. Иван, диакон о. Алексей, пономари Леонтий и Елисей. Родина прадеда Аркадия Михайловича (1935) и прапрадеда Михаила Николаевича (1906).</p>
         </div>
 
         <!-- ОКВАД -->
-        <div style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
+        <div id="geo-okvad" style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="font-weight:700; font-size:1.05rem; color:#0284c7; margin-bottom:0.35rem;">⛪ Погост Оквад (Катвад)</div>
           <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.5rem;">Оквадская волость • Берег Вычегды • Погост с XVI века</div>
           <p style="font-size:0.86rem; line-height:1.5;">Древнейшая задокументированная родина Туркиных. В писцовой книге 1608 г. здесь жил молодой домохозяин Микитка Туркин, а в переписной книге 1646 г. — архиепископский приказной человек Афанасий Семёнович Туркин с 11-летним сыном Исааком. При местной церкви Введения Пресвятой Богородицы служили церковный дьячок Исаакий Афанасьевич (1678 г.) и священник о. Автоном Лаврентьевич (1731–1736 гг.).</p>
         </div>
 
         <!-- УСТЬ-ВЫМЬ -->
-        <div style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
+        <div id="geo-ust-vym" style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="font-weight:700; font-size:1.05rem; color:#059669; margin-bottom:0.35rem;">🏛️ Село Усть-Вымь (Емдін)</div>
           <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.5rem;">Слияние Выми и Вычегды • Основано св. Стефаном Пермским в 1380 г.</div>
           <p style="font-size:0.86rem; line-height:1.5;">Исторический, административный и кафедральный центр Пермской епархии. В Благовещенской церкви Усть-Выми служил священник о. Пётр Исаакович Туркин (прямой 8-й прадед Николая, зафиксирован в метрической книге 1731 года, ГААО). Волостной центр, к которому в XIX веке относились государственные крестьяне Туркины (8-я ревизия 1834 г., ГАВО).</p>
         </div>
 
         <!-- СЮЛАТУЙСКАЯ -->
-        <div style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
+        <div id="geo-syulatuy" style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="font-weight:700; font-size:1.05rem; color:#2563eb; margin-bottom:0.35rem;">🌲 Деревня Сюлатуйская (Сюлатуй)</div>
           <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.5rem;">Усть-Сысольский уезд • Ыбская волость</div>
           <p style="font-size:0.86rem; line-height:1.5;">Название деревни на коми языке означает: <em>«сюла»</em> (смолистый, кедровый ключ) + <em>«туй»</em> (тропа, дорога) — «путь к смолистому источнику». <strong>Место рождения прапрадеда Николая Алексеевича Туркина</strong> (03.11.1876 г., зафиксировано в метрической книге, ссылка в семейном архиве «с. 267»).</p>
         </div>
 
         <!-- СЫКТЫВКАР -->
-        <div style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
+        <div id="geo-syktyvkar" style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="font-weight:700; font-size:1.05rem; color:#0284c7; margin-bottom:0.35rem;">🏙️ Город Сыктывкар (до 1930 г. — Усть-Сысольск)</div>
           <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.5rem;">Столица Республики Коми • Слияние Сысолы и Вычегды • Город с 1780 года</div>
           <p style="font-size:0.86rem; line-height:1.5;">Главный административный, промышленный и культурный центр Коми края. На коми языке: <em>«Сыктыв»</em> (река Сысола) + <em>«кар»</em> (город) — «город на Сысоле». Родина нескольких поколений семьи XX века: дедушки Михаила Аркадьевича Туркина (род. 1970), бабушки Светланы Евгеньевны Туркиной (род. 1970), отца Вячеслава Михайловича (род. 1991) и дяди Никиты Михайловича (род. 2000).</p>
         </div>
 
         <!-- УЛЬЯНОВО И КУЖБА -->
-        <div style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
+        <div id="geo-ulyanovo" style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="font-weight:700; font-size:1.05rem; color:#4f46e5; margin-bottom:0.35rem;">🌲 Село Ульяново и село Кужба</div>
           <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.5rem;">Усть-Куломский район • Верхняя Вычегда • Основаны в XIV–XVII вв.</div>
           <p style="font-size:0.86rem; line-height:1.5; margin-bottom:0.75rem;">Священные места Верхней Вычегды. В Ульяново расположен Троице-Стефановский мужской монастырь, основанный святителем Стефаном Пермским в 1385 году. Обитель монашеского служения <strong>монаха Виталия (Виталия Ивановича Туркина) (1865–1937)</strong>. В соседнем селе Кужба после закрытия обители он совершал требы на дому вместе с казначеем обители иеромонахом Мелетием (Федюнёвым).</p>
@@ -3914,7 +3961,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </div>
 
         <!-- ЧУМПХОН -->
-        <div style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
+        <div id="geo-chumphon" style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="font-weight:700; font-size:1.05rem; color:#10b981; margin-bottom:0.35rem;">🌴 Город Чумпхон (ชุมพร / Chumphon)</div>
           <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.5rem;">Королевство Таиланд • Побережье Сиамского залива • Перешеек Кра</div>
           <p style="font-size:0.86rem; line-height:1.5;">Древний приморский город и провинция на юге Таиланда, исторически известный как «Ворота Южного Таиланда» (Gateway to the South). В средние века город служил важным военным форпостом защиты столицы Сиама Аюттхаи (название связывают с «Chumnumphon» — место благословения и сбора рати). <strong>Место рождения пробанда рода Николая Вячеславовича Туркина</strong> (2024 г.).</p>
@@ -3929,7 +3976,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
 
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:1rem;">
         <!-- ТУРКИНЫ -->
-        <div style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
+        <div id="sur-turkin" style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
             <strong style="color:#2563eb; font-size:0.98rem;">Туркины</strong>
             <span style="font-size:0.72rem; padding:0.1rem 0.4rem; background:#eff6ff; color:#2563eb; border-radius:4px; font-weight:700;">Поколения I – XVI (с 1608 г., истоки с 1490 г.)</span>
@@ -3938,7 +3985,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </div>
 
         <!-- ЛЕТОВЫ -->
-        <div style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
+        <div id="sur-letov" style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
             <strong style="color:#2563eb; font-size:0.98rem;">Летовы</strong>
             <span style="font-size:0.72rem; padding:0.1rem 0.4rem; background:#eff6ff; color:#2563eb; border-radius:4px; font-weight:700;">д. Пальтыдор (с 1650 г.)</span>
@@ -3947,7 +3994,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </div>
 
         <!-- ЯРАНОВЫ -->
-        <div style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
+        <div id="sur-yaranov" style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
             <strong style="color:#2563eb; font-size:0.98rem;">Ярановы</strong>
             <span style="font-size:0.72rem; padding:0.1rem 0.4rem; background:#eff6ff; color:#2563eb; border-radius:4px; font-weight:700;">Поколения VI – VII</span>
@@ -3956,7 +4003,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </div>
 
         <!-- СИЗЕВЫ -->
-        <div style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
+        <div id="sur-sizev" style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
             <strong style="color:#2563eb; font-size:0.98rem;">Сизевы</strong>
             <span style="font-size:0.72rem; padding:0.1rem 0.4rem; background:#eff6ff; color:#2563eb; border-radius:4px; font-weight:700;">Поколения VI – VII</span>
@@ -3965,7 +4012,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </div>
 
         <!-- СЮТКИНЫ -->
-        <div style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
+        <div id="sur-syutkin" style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
             <strong style="color:#8b5cf6; font-size:0.98rem;">Сюткины</strong>
             <span style="font-size:0.72rem; padding:0.1rem 0.4rem; background:#f5f3ff; color:#8b5cf6; border-radius:4px; font-weight:700;">с. Лойма</span>
@@ -3974,7 +4021,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </div>
 
         <!-- ШЕХОНИНЫ -->
-        <div style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
+        <div id="sur-shekhonin" style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
             <strong style="color:#8b5cf6; font-size:0.98rem;">Шехонины</strong>
             <span style="font-size:0.72rem; padding:0.1rem 0.4rem; background:#f5f3ff; color:#8b5cf6; border-radius:4px; font-weight:700;">Поколения IV – VII</span>
@@ -3983,7 +4030,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </div>
 
         <!-- ШУКТОМОВЫ -->
-        <div style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
+        <div id="sur-shuktomov" style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
             <strong style="color:#d97706; font-size:0.98rem;">Шуктомовы</strong>
             <span style="font-size:0.72rem; padding:0.1rem 0.4rem; background:#fffbeb; color:#d97706; border-radius:4px; font-weight:700;">д. Ероздино</span>
@@ -3992,7 +4039,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </div>
 
         <!-- ПОЛЕЩИКОВЫ -->
-        <div style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
+        <div id="sur-poleshchikov" style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
             <strong style="color:#d97706; font-size:0.98rem;">Полещиковы</strong>
             <span style="font-size:0.72rem; padding:0.1rem 0.4rem; background:#fffbeb; color:#d97706; border-radius:4px; font-weight:700;">д. Ероздино</span>
@@ -4001,7 +4048,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </div>
 
         <!-- ПАСЫНКОВЫ -->
-        <div style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
+        <div id="sur-pasynkov" style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
             <strong style="color:#d97706; font-size:0.98rem;">Пасынковы</strong>
             <span style="font-size:0.72rem; padding:0.1rem 0.4rem; background:#fffbeb; color:#d97706; border-radius:4px; font-weight:700;">с. Ыб • с 1827 г.</span>
@@ -4010,7 +4057,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </div>
 
         <!-- КРУГЛЯКОВЫ -->
-        <div style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
+        <div id="sur-kruglyakov" style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
             <strong style="color:#d97706; font-size:0.98rem;">Кругляковы</strong>
             <span style="font-size:0.72rem; padding:0.1rem 0.4rem; background:#fffbeb; color:#d97706; border-radius:4px; font-weight:700;">Поколения VIII – IX</span>
@@ -4019,7 +4066,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </div>
 
         <!-- ЗИНОВЬЕВЫ -->
-        <div style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
+        <div id="sur-zinoviev" style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
             <strong style="color:#ec4899; font-size:0.98rem;">Зиновьевы</strong>
             <span style="font-size:0.72rem; padding:0.1rem 0.4rem; background:#fff1f2; color:#ec4899; border-radius:4px; font-weight:700;">с. Ыб • с 1890 г.</span>
@@ -4028,7 +4075,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </div>
 
         <!-- ПОЗДЕЕВЫ -->
-        <div style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
+        <div id="sur-pozdeev" style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
             <strong style="color:#ec4899; font-size:0.98rem;">Поздеевы</strong>
             <span style="font-size:0.72rem; padding:0.1rem 0.4rem; background:#fff1f2; color:#ec4899; border-radius:4px; font-weight:700;">д. Ероздино</span>
@@ -4037,7 +4084,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </div>
 
         <!-- КЫЗЪЮРОВЫ -->
-        <div style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
+        <div id="sur-kyzyurov" style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
             <strong style="color:#ec4899; font-size:0.98rem;">Кызъюровы</strong>
             <span style="font-size:0.72rem; padding:0.1rem 0.4rem; background:#fff1f2; color:#ec4899; border-radius:4px; font-weight:700;">д. Мельничный Иб</span>
@@ -4046,7 +4093,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </div>
 
         <!-- АЙБАБИНЫ -->
-        <div style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
+        <div id="sur-aibabin" style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
             <strong style="color:#ec4899; font-size:0.98rem;">Айбабины</strong>
             <span style="font-size:0.72rem; padding:0.1rem 0.4rem; background:#fff1f2; color:#ec4899; border-radius:4px; font-weight:700;">Поколения VI – VII</span>
@@ -4055,7 +4102,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </div>
 
         <!-- КАРАКЧИЕВЫ -->
-        <div style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
+        <div id="sur-karakchiev" style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
             <strong style="color:#ec4899; font-size:0.98rem;">Каракчиевы</strong>
             <span style="font-size:0.72rem; padding:0.1rem 0.4rem; background:#fff1f2; color:#ec4899; border-radius:4px; font-weight:700;">д. Ляли • на Выми</span>
@@ -4064,7 +4111,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </div>
 
         <!-- ПИТАК -->
-        <div style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
+        <div id="sur-pithak" style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
             <strong style="color:#10b981; font-size:0.98rem;">Питак (Pithak, พิทักษ์)</strong>
             <span style="font-size:0.72rem; padding:0.1rem 0.4rem; background:#ecfdf5; color:#10b981; border-radius:4px; font-weight:700;">Таиланд</span>
@@ -4073,7 +4120,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </div>
 
         <!-- ПАМАЙТОНГ -->
-        <div style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
+        <div id="sur-pamaitong" style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
             <strong style="color:#10b981; font-size:0.98rem;">Памайтонг (Pamaitong, ป่าไม้ทอง)</strong>
             <span style="font-size:0.72rem; padding:0.1rem 0.4rem; background:#ecfdf5; color:#10b981; border-radius:4px; font-weight:700;">Таиланд</span>
@@ -4082,7 +4129,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         </div>
 
         <!-- ЧАМНИАНКАН -->
-        <div style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
+        <div id="sur-chamniankan" style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
             <strong style="color:#10b981; font-size:0.98rem;">Чамнианкан (Chamniankan, ชำนาญการ)</strong>
             <span style="font-size:0.72rem; padding:0.1rem 0.4rem; background:#ecfdf5; color:#10b981; border-radius:4px; font-weight:700;">Таиланд</span>
@@ -4917,6 +4964,134 @@ function init() {{
   centerOnRoot();
   setupHashRouting();
 }}
+
+
+  // 🇹🇭 I18N SYSTEM FOR PLACES & ROOTS
+  const THAI_I18N = {{"geo_heading": "🗺️ ภูมิศาสตร์ประวัติศาสตร์: ถิ่นฐานและเมืองของบรรพบุรุษ", "geo_lead": "ถิ่นฐานบ้านเกิดของบรรพบุรุษตั้งอยู่ตามแนวลุ่มน้ำสำคัญทางตอนเหนือของรัสเซีย (แม่น้ำซีโซลา, วิเชกดา, วิม, ลูซา) และชายฝั่งอ่าวไทยทางตอนใต้ของสยาม:", "sur_heading": "🧬 ที่มาของนามสกุลและประวัติสายตระกูล", "sur_lead": "ผลการศึกษาทางนิรุกติศาสตร์และประวัติศาสตร์ของนามสกุลฝ่ายรัสเซีย (โคมิ) และฝ่ายไทยที่หลอมรวมเป็นครอบครัวเดียวกัน:", "nav_places": "🗺️ ถิ่นกำเนิดและสายตระกูล", "pill_overview": {{"full": "เกี่ยวกับครอบครัว", "short": "ครอบครัว"}}, "pill_heroes": {{"full": "วีรบุรุษผู้กล้า", "short": "วีรบุรุษ"}}, "pill_clergy": {{"full": "ศาสนบรรพชน", "short": "อาราม"}}, "pill_service": {{"full": "การรับใช้แผ่นดิน", "short": "รับใช้ชาติ"}}, "pill_geography": {{"full": "ภูมิศาสตร์", "short": "ถิ่นฐาน"}}, "pill_surnames": {{"full": "นามสกุล", "short": "สายตระกูล"}}, "geo": {{"yb": {{"title": "🏛️ หมู่บ้านอึบ (Yb / Melnichny Yb)", "sub": "เขตซิกติฟดินสกี • ลุ่มน้ำซีโซลา • ปรากฏในบันทึกตั้งแต่ปี ค.ศ. 1586", "text": "หนึ่งในศูนย์กลางทางประวัติศาสตร์ วัฒนธรรม และจิตวิญญาณที่เก่าแก่ที่สุดของดินแดนโคมิ ตั้งอยู่บนเนินเขาทั้งเจ็ดทอดยาวตามแนวแม่น้ำซีโซลา คำว่า «อึบ» ในภาษาโคมิหมายถึง «เนินเขาสูง หรือทุ่งกสิกรรมบนเนินดิน» ที่นี่คืออู่กำเนิดของบรรพบุรุษตระกูล <strong>เตอร์คิน (ตูร์กิน), ซีโนเวียฟ, ปาซึนคอฟ, คึซยูรอฟ และไอราบิน</strong> ภายในหมู่บ้านเป็นที่ตั้งของโบสถ์หินศักดิ์สิทธิ์พระเยซูเสด็จขึ้นสู่สวรรค์ (สร้างและสมโภชในปี ค.ศ. 1827–1835) และมีตาน้ำแร่ศักดิ์สิทธิ์รักษาโรคตามธรรมชาติมากกว่า 10 แห่ง"}}, "gorely_yb": {{"title": "🌲 หมู่บ้านโกเรลึย อึบ (Gorely Yb / Goresoit)", "sub": "แขวงเซเรโกโว-กอร์สกายา • ลุ่มน้ำวิม", "text": "ชุมชนโบราณบนเนินเขาเซเรโกโวริมฝั่งแม่น้ำวิม ถิ่นกำเนิดดั้งเดิมของสายตระกูล <strong>คึซยูรอฟ และ ซีโนเวียฟ</strong> ที่นี่เป็นบ้านเกิดของทวดหญิง คลาฟดียา อิลยีนิชนา คึซยูโรวา (เกิด ค.ศ. 1900), วลาดิมีร์ เซเมโนวิช ซีโนเวียฟ วีรบุรุษสงครามผู้บุกตีเบอร์ลิน (เกิด ค.ศ. 1925) และ โยนา อะเลกเซเยวิช คึซยูรอฟ รัฐบุรุษและประธานคณะกรรมการบริหารแคว้นโคมิ (ค.ศ. 1937–1938)"}}, "loyma": {{"title": "🌾 หมู่บ้านลอยมา (Loyma)", "sub": "เขตปรีลุซสกี • ลุ่มน้ำลูซา (เปียร์มแห่งลูซา) • ปรากฏในพงศาวดารตั้งแต่ปี ค.ศ. 1478", "text": "ชุมชนโบราณทางใต้สุดของดินแดนโคมิบนฝั่งขวาของแม่น้ำลูซา มีหลักฐานการอยู่อาศัยย้อนไปถึงสุสานโบราณยุคศตวรรษที่ 9–10 ลอยมามีชื่อเสียงด้านสำเนียงภาษาถิ่นโบราณอันเป็นเอกลักษณ์ และโบสถ์หินแม่พระบรรทม (สร้าง ค.ศ. 1802–1804) พร้อมภาพจิตรกรรมฝาผนังสกุลช่างวาสเนตซอฟอันวิจิตร <strong>ถิ่นกำเนิดของ ย่าทวด มารียา สเตปานอฟนา ซุตกินา (เชโคนินา) (ค.ศ. 1911–1981)</strong>, อะเลกซันดรา น้องสาว, สเตปาน เปโตรวิช ซุตกิน บิดา และ ปิออตร์ ซุตกิน คุณปู่ทวด"}}, "erozdino": {{"title": "🌲 หมู่บ้านเยรอซดิโน (Erozdino / Yorosdin)", "sub": "แขวงเลียลสกายา • ลุ่มน้ำวิม • ปรากฏตั้งแต่ปี ค.ศ. 1608", "text": "ถิ่นกำเนิดของตระกูลชนพื้นเมืองโคมิ <strong>ชุกโตมอฟ, ปอซเดเยฟ และ โปเลชชีคอฟ</strong> ในบันทึกสำมะโนประชากร ค.ศ. 1773 และ 1816 บรรพบุรุษของตระกูลตั้งบ้านเรือนอยู่ริมแม่น้ำวิมอย่างมั่นคง ในช่วงสงครามกู้ชาติปี 1812 ชายฉกรรจ์แห่งตระกูลชุกโตมอฟและปอซเดเยฟได้รับคัดเลือกเป็นทหารกองหนุนออกศึกปกป้องมาตุภูมิ ที่นี่คือบ้านเกิดของ ย่าทวด เซราฟิมา อะฟานาสเยฟนา (เกิด ค.ศ. 1918) และ ทวดชาย เยฟเกนี อะเลกซันโดรวิช ชุกโตมอฟ (เกิด ค.ศ. 1919)"}}, "vogvazdino": {{"title": "🌾 หมู่บ้านวอกวัซดิโน (Vogvazdino / Vogvazdin)", "sub": "เขตอุสต์-วิมสกี • จุดบรรจบแม่น้ำวิมและวิเชกดา", "text": "จุดยุทธศาสตร์สำคัญบริเวณปากแม่น้ำวิมไหลลงสู่แม่น้ำวิเชกดา ประตูเชื่อมสู่เทือกเขาอูราลและเส้นทางสู่ไซบีเรีย บันทึกตั้งแต่ปี ค.ศ. 1586 ใกล้หมู่บ้านมีสถานที่ตั้งค่ายกักกันวอกวัซดากลางป่าดงดิบ ซึ่งเป็นสถานที่มรณภาพของพระภิกษุวิตาลี (เตอร์คิน) ในปี ค.ศ. 1937 จากการถูกกดขี่ข่มเหงในยุคสตาลิน"}}, "lyali": {{"title": "🌲 หมู่บ้านเลียลี (Lyali)", "sub": "แขวงเลียลสกายา • ลุ่มน้ำวิม • ปรากฏตั้งแต่ปี ค.ศ. 1586", "text": "ศูนย์กลางชุมชนโบราณริมแม่น้ำวิม ในอดีตมีโบสถ์ไม้โบราณที่นักบุญสเตฟานแห่งเปียร์มสร้างขึ้น และต่อมาได้สร้างโบสถ์หินเทโวโรหณะอันสง่างาม ที่นี่คือถิ่นกำเนิดของบรรพบุรุษตระกูล <strong>คารัคชีเยฟ และ ชิลิน</strong> โดยคำว่า คารัคชี หมายถึง ทหารยามรักษาด่านตรวจการณ์ทางน้ำในยุคกลาง"}}, "paltydor": {{"title": "🌲 หมู่บ้านปัลตือดอร์ (Paltydor)", "sub": "แขวงแคว้นโคมิ • เขตการปกครองเลโตฟสกี", "text": "ถิ่นกำเนิดดั้งเดิมของบรรพบุรุษ <strong>ตระกูลเลทอฟ (Letov)</strong> ตั้งอยู่ท่ามกลางป่าสนไทกาอันเงียบสงบ ที่นี่เป็นบ้านเกิดของ ย่าทวด พาฟลา ซาฟวาเตียฟนา เลโตวา (เกิด 9 ส.ค. 1908) ผู้แต่งงานเข้ามาในตระกูลเตอร์คินและเป็นคู่ชีวิตของ มิฮาอิล นิโคลาเยวิช ตูร์กิน"}}, "kokvitsy": {{"title": "🏛️ เนินเขาและหมู่บ้านคอควิตซี (Kokvitsy / Kodzpom)", "sub": "แขวงคอควิตสกายา • ริมแม่น้ำวิเชกดา • ปรากฏในบันทึกตั้งแต่ปี ค.ศ. 1483", "text": "แหลมเนินเขาสูงริมคุ้งน้ำวิเชกดา ชุมชนโบราณของชนเผ่าโคมิ-เอจวาตัสที่มีประวัติศาสตร์ยาวนานกว่า 540 ปี หนึ่งในดินแดนศักดิ์สิทธิ์ที่มีรอยหินพระบาทของนักบุญสเตฟานแห่งเปียร์ม <strong>ศูนย์กลางและรังบรรพบุรุษของตระกูลเตอร์คิน (ตูร์กิน) สายตรง</strong> ที่นี่คือบ้านเกิดของ ปู่ทวด อาร์คาดี มิไฮโลวิช ตูร์กิน (เกิด ค.ศ. 1935), ทวดชาย มิฮาอิล นิโคลาเยวิช ตูร์กิน วีรบุรุษสงคราม (เกิด ค.ศ. 1906), นิโคไล อะเลกเซเยวิช (เกิด ค.ศ. 1876) และลูกหลานสืบต่อกันมาถึง 15 ชั่วคนตั้งแต่ต้นศตวรรษที่ 17"}}, "okvad": {{"title": "⛪ หมู่บ้านออควัด (Okvad / Katvad)", "sub": "แขวงออควัดสกายา • ลุ่มน้ำวิเชกดา • รากเหง้าต้นตระกูล (ศตวรรษที่ 15–17)", "text": "แผ่นดินประวัติศาสตร์ที่เป็นจุดเริ่มต้นของตระกูลตูร์กิน: ในพระบรมราชโองการพระราชทานที่ดินของพระเจ้าอีวานที่ 3 มหาราชแห่งมอสโก เมื่อปี <strong>ค.ศ. 1490</strong> ได้บันทึกชื่อ <strong>«ตูร์กา มาลอย» (Turka maloy)</strong> เป็นหัวหน้าครัวเรือนบนเนินเขานี้ ต่อมาในปี <strong>ค.ศ. 1646</strong> อะฟานาซี ตูร์กิน ได้รับแต่งตั้งเป็นผู้ตรวจการและผู้แทนฝ่ายฆราวาสของอัครมุขมณฑลโวลอกดา และบุตรชายคือ อีซาค ตูร์กิน ได้รับเลือกเป็นตุลาการหมู่บ้านแห่งลุ่มน้ำวิเชกดา"}}, "ust_vym": {{"title": "🏛️ หมู่บ้านอุสต์-วิม (Ust-Vym / Yemdin)", "sub": "ราชธานีโบราณแห่งเปียร์มวิเชกดาสกายา • สถาปนา ค.ศ. 1380", "text": "ศูนย์กลางทางประวัติศาสตร์ ศาสนา และวัฒนธรรมที่ยิ่งใหญ่ที่สุดของชนชาติโคมิ ก่อตั้งโดยนักบุญสเตฟานแห่งเปียร์ม ในอดีตเป็นที่ตั้งของสำนักมุขมณฑลเปียร์มและปราการป้องกันแผ่นดิน ที่นี่เป็นศูนย์กลางการปกครองที่บรรพบุรุษตระกูลเตอร์คินเดินทางมาติดต่อราชการ เข้าร่วมการพิจารณาคดีความ และปฏิบัติศาสนกิจมาตั้งแต่ศตวรรษที่ 14"}}, "syulatuy": {{"title": "🌾 หมู่บ้านซูลาตุยสกายา (Syulatuy)", "sub": "แขวงคอควิตสกายา • ริมแม่น้ำวิเชกดา", "text": "หมู่บ้านบริวารของเนินเขาคอควิตซี ถิ่นที่อยู่อาศัยของบรรพบุรุษสายตรงของตระกูลเตอร์คิน ในบันทึกสำมะโนประชากรครั้งที่ 10 เมื่อปี ค.ศ. 1858 บันทึกชื่อ อิวาน อะเลกเซเยวิช ตูร์กิน พร้อมบุตรชายคือ อะเลกซี (วัย 6 ขวบ) ต่อมาในปี 1876 อะเลกซีได้ให้กำเนิด นิโคไล อะเลกเซเยวิช ตูร์กิน ณ หมู่บ้านแห่งนี้"}}, "syktyvkar": {{"title": "🌲 นครซิกติฟคาร์ (Syktyvkar / Ust-Sysolsk)", "sub": "เมืองหลวงแห่งสาธารณรัฐโคมิ • สถาปนา ค.ศ. 1780", "text": "เมืองหลวงและศูนย์กลางการศึกษา วัฒนธรรมของสาธารณรัฐโคมิ ตั้งอยู่ ณ จุดบรรจบของแม่น้ำซีโซลาและวิเชกดา บ้านเกิดของสมาชิกครอบครัวในยุคปัจจุบัน: คุณปู่ มิฮาอิล อาร์คาเดียวิช (เกิด 1970), คุณย่า สเวตลานา เยฟเกเนียฟนา (เกิด 1970), คุณพ่อ วยาเชสลาฟ มิไฮโลวิช (เกิด 1991) และคุณอา นิกิตา มิไฮโลวิช (เกิด 2000)"}}, "ulyanovo": {{"title": "🌲 หมู่บ้านอุลยานอโว และ หมู่บ้านคุจบาร์ (Ulyanovo & Kuzhba)", "sub": "เขตอุสต์-คุลอมสกี • ลุ่มน้ำวิเชกดาตอนบน • ก่อตั้งในศตวรรษที่ 14–17", "text": "ดินแดนศักดิ์สิทธิ์แห่งลุ่มน้ำวิเชกดาตอนบน ณ อุลยานอโว เป็นที่ตั้งของอารามหลวงชายทรอยต์เซ-สเตฟาโนฟสกี ก่อตั้งโดยนักบุญสเตฟานแห่งเปียร์มในปี ค.ศ. 1385 ที่นี่เป็นสถานที่บวชและปฏิบัติธรรมของ <strong>พระภิกษุวิตาลี (วิตาลี อิวาโนวิช ตูร์กิน) (ค.ศ. 1865–1937)</strong> ผู้เป็นน้องชายของเทียด อะเลกซี อิวาโนวิช ตูร์กิน ภายหลังอารามถูกปิดในปี 1923 ท่านได้พำนัก ณ หมู่บ้านคุจบาร์ ปฏิบัติศาสนกิจอย่างลับๆ ร่วมกับพระเพื่อนร่วมอุดมการณ์", "meletiy_title": "🕊️ พระมรณสักขี เมเลตี (เฟดิวเนียฟ) พระเถระผู้ได้รับยกย่องเป็นนักบุญ", "meletiy_body": "พระเถระร่วมคดีเดียวกันคือ <strong>พระไอเอโรมอนัค เมเลตี (เฟดิวเนียฟ)</strong> ผู้ช่วยเจ้าอาวาสและเหรัญญิกของอาราม ถูกประหารชีวิตด้วยการยิงเป้า ณ เมืองซิกติฟคาร์ เมื่อวันที่ <strong>23 ก.ย. 1937</strong> ต่อมาเมื่อวันที่ 6 ต.ค. 2001 มหาเถรสมาคมแห่งศาสนจักรออร์โธดอกซ์รัสเซียมีมติประกาศสถาปนาท่านขึ้นเป็น <em>«นักบุญมรณสักขีแห่งรัสเซียในศตวรรษที่ 20»</em> (ได้รับการกอบกู้เกียรติยศอย่างเป็นทางการ)", "badge_monk": "พระนักบุญมรณสักขี ค.ศ. 1937"}}, "chumphon": {{"title": "🌴 เมืองชุมพร (Chumphon, ประเทศไทย)", "sub": "ราชอาณาจักรไทย • ชายฝั่งอ่าวไทย • ประตูสู่ภาคใต้บนคอคอดกระ", "text": "เมืองประวัติศาสตร์ชายฝั่งทะเลอ่าวไทยทางตอนใต้ของประเทศไทย รู้จักกันในนาม «ประตูสู่ภาคใต้» ในอดีตเป็นเมืองหน้าด่านสำคัญในการปกป้องราชธานีกรุงศรีอยุธยา (นามชุมพรมีความหมายดั้งเดิมถึง ชุมนุมพล หรือสถานที่รวมไพร่พลเพื่อรับพรชัยมงคล) <strong>บ้านเกิดของ ด.ช. นิโคไล วยาเชสลาโววิช เตอร์คิน (Nikolai Turkin)</strong> (เกิด 16 ก.พ. 2024) ผู้เป็นศูนย์รวมสายเลือดสองแผ่นดิน รัสเซีย–ไทย เข้าเป็นหนึ่งเดียว"}}}}, "sur": {{"turkin": {{"name": "เตอร์คิน / ตูร์กิน (Turkin, เตอร์คิน)", "badge": "20 ชั่วคน (ตั้งแต่ ค.ศ. 1490 ถึงปัจจุบัน กว่า 536 ปี)", "text": "นามสกุลหลักสายตรงฝ่ายบิดา ในเอกสารราชการไทยของบุตรชายสะกดอย่างเป็นทางการว่า <strong>«เตอร์คิน»</strong> (ออกเสียงตามสำเนียงรัสเซียดั้งเดิม: ตูร์กิน / Turkin) มีรากศัพท์มาจากฉายานามโบราณ <em>«ตูร์กา» (Turka)</em> หรือ <em>«ตูร์» (Tur)</em> ซึ่งหมายถึง <strong>«กระทิงป่าโบราณขนาดยักษ์»</strong> สัญลักษณ์แห่งพละกำลังอันมหาศาล ความทรหดอดทน และความไม่ยอมแพ้ ปรากฏในพระบรมราชโองการปี ค.ศ. 1490 โดยตูร์กา มาลอย และสืบทอดสายตระกูลมาถึง 20 ชั่วคนจนถึง ด.ช. นิโคไล เตอร์คิน ในปัจจุบัน"}}, "letov": {{"name": "เลทอฟ (Letov)", "badge": "ชั่วคน IV – IX", "text": "นามสกุลโบราณภาคเหนือ มาจากคำว่า <em>«เลโต» (ฤดูร้อน)</em> ใช้เป็นชื่อมงคลตั้งให้แก่เด็กที่เกิดในฤดูร้อนอันอบอุ่น สดใส และอุดมสมบูรณ์ ในสายตระกูลคือ ทวดหญิง พาฟลา ซาฟวาเตียฟนา (เลโตวา) ตูร์กินา (ค.ศ. 1908–1983) และคุณเทียด ซาฟวาตี วาสิลิเยวิช เลทอฟ"}}, "yaranov": {{"name": "ยารานอฟ (Yaranov)", "badge": "ชั่วคน VI – VII • หมู่บ้านปัลตือดอร์", "text": "นามสกุลโบราณของชนเผ่าโคมิ มาจากรากศัพท์ฟินโน-อูกริก <em>«ยารัน»</em> หมายถึง ชาวกวางเรนเดียร์แห่งทุ่งทุนดราทางเหนือ สื่อถึงความแข็งแกร่งและการปรับตัวในสภาพอากาศหนาวจัด ในสายตระกูลคือ คุณเทียดหญิง อะนาสตาซียา กริกอเรียฟนา (ยาราโนวา) เลโตวา (เกิด 1876)"}}, "sizev": {{"name": "ซิเซเยฟ (Sizev)", "badge": "ชั่วคน V – VII • หมู่บ้านคอควิตซี", "text": "นามสกุลภาคเหนือ มาจากคำว่า <em>«ซิซี»</em> (นกเค้าแมว หรือผู้มีสายตาเฉียบคมรอบคอบ) ในสายตระกูลคือ ย่าทวด พาฟลา อิวานอฟนา (ซิเซเยวา) ตูร์กินา (เกิด 1883 ณ คอควิตซี) และ โยนา อิวาโนวิช ซิเซเยฟ คุณเทียด"}}, "syutkin": {{"name": "ซุตกิน (Syutkin)", "badge": "ชั่วคน IV – VII • หมู่บ้านลอยมา", "text": "นามสกุลภาคเหนือแถบลุ่มน้ำลูซา มาจากชื่อเล่น <em>«ซุตโก»</em> หรือ <em>«ซุตกะ»</em> (คนสุภาพ อ่อนโยน มีเมตตา) ในสายตระกูลคือ ทวดหญิง มารียา สเตปานอฟนา (ซุตกินา) เชโคนินา (ค.ศ. 1911–1981) และ สเตปาน เปโตรวิช ซุตกิน"}}, "shekhonin": {{"name": "เชโคนิน (Shekhonin)", "badge": "ชั่วคน IV – VI", "text": "นามสกุลรัสเซียภาคเหนืออันสง่างาม แผลงมาจากแม่น้ำเชคสนา (Sheksna) หรือคำสลาวิกโบราณ <em>«เชโคนยา»</em> (ผู้มีกิริยาคล่องแคล่ว ว่องไว ฉลาดรอบรู้) ในสายตระกูลคือ คุณย่า ซินาอิดา มิไฮลอฟนา (เชโคนินา) ตูร์กินา (เกิด 1940) และคุณทวด มิฮาอิล สเตปาโนวิช เชโคนิน"}}, "shuktomov": {{"name": "ชุกโตมอฟ (Shuktomov)", "badge": "ชั่วคน III – VII (หมู่บ้านเยรอซดิโน)", "text": "นามสกุลโบราณของชนเผ่าโคมิแห่งลุ่มน้ำวิม มีรากศัพท์มาจากภาษาฟินโน-อูกริกโบราณ สื่อถึงความมั่นคง หนักแน่น ประดุจรากไม้ใหญ่ ในสายตระกูลคือ ทวดหญิง เซราฟิมา อะฟานาสเยฟนา (ชุกโตโมวา) เชโคนินา (เกิด 1918) และ ทวดชาย เยฟเกนี อะเลกซันโดรวิช ชุกโตมอฟ (เกิด 1919)"}}, "poleshchikov": {{"name": "โปเลชชีคอฟ (Poleshchikov)", "badge": "หมู่บ้านเยรอซดิโน", "text": "นามสกุลโบราณภาคเหนือ มาจากคำว่า <em>«โปเลชชิค»</em> หมายถึง <strong>«ผู้พิทักษ์ป่าไม้และพงไพร หรือนายพรานผู้ชำนาญการลาดตระเวน»</strong> ในสายตระกูลคือ คลอเดีย เปตรอฟนา (โปเลชชีโควา) ชุกโตโมวา (เกิด 1888) และ เปโตร อิวาโนวิช โปเลชชีคอฟ"}}, "pasynkov": {{"name": "ปาซึนคอฟ (Pasynkov)", "badge": "หมู่บ้านอึบ", "text": "นามสกุลโบราณแถบลุ่มน้ำซีโซลา ปรากฏในบันทึกตั้งแต่ศตวรรษที่ 17 ในสายตระกูลคือ มารียา ปลาโตนอฟนา (ปาซึนโควา) ชุกโตโมวา (เกิด 1877 ณ อึบ), ปลาตอน ฮารลัมปิเยวิช ปาซึนคอฟ (เกิด 1851) และ ฮารลัมปี ยาคอฟเลวิช ปาซึนคอฟ (เกิด 1827)"}}, "kruglyakov": {{"name": "ครูกลยาคอฟ (Kruglyakov)", "badge": "หมู่บ้านอึบ", "text": "นามสกุลสลาวิกโบราณ หมายถึง บุคคลผู้มีอัธยาศัยดี มีความเป็นมิตร โอบอ้อมอารี และสมบูรณ์พร้อม ในสายตระกูลคือ ปาราสเกวา อิวานอฟนา (ครูกลยาโควา) ปาซึนโควา (เกิด 1828) ผู้สมรสในปี 1846"}}, "zinoviev": {{"name": "ซีโนเวียฟ (Zinoviev)", "badge": "ชั่วคน IV – VII", "text": "มาจากชื่อคริสเตียนกรีกโบราณ <em>«ซีโนวิออส» (Zenobios)</em> แปลว่า <strong>«ผู้มีชีวิตอยู่ด้วยความโปรดปรานแห่งพระผู้เป็นเจ้า»</strong> ในสายตระกูลคือ คุณทวดหญิง อัลบีนา เซเมนอฟนา กลาดึเชวา (เกิด 1946) และ เซเมน กริกอเรียวิช ซีโนเวียฟ วีรชนสงครามโลกครั้งที่ 1 และ 2 (เกิด 1890 ณ หมู่บ้านอึบ)"}}, "pozdeev": {{"name": "ปอซเดเยฟ (Pozdeev)", "badge": "หมู่บ้านเยรอซดิโน", "text": "ชื่อโบราณของชาวสลาฟเหนือ <em>«ปอซเดย์»</em> หมายถึง <strong>«บุตรคนสุดท้อง หรือลูกที่พ่อแม่รอคอยมาแสนนาน»</strong> ผู้เป็นดั่งแก้วตาดวงใจและนำความสิริมงคลมาสู่ตระกูล ในสายตระกูลคือ มารียา อิวานอฟนา (ปอซเดเยวา) ซีโนเวียฟ (เกิด 1860) และ อิวาน อิวาโนวิช ปอซเดเยฟ (เกิด 1835)"}}, "kyzyurov": {{"name": "คึซยูรอฟ (Kyzyurov)", "badge": "หมู่บ้านเมลนิชนืย อึบ", "text": "นามสกุลภาษาโคมิแท้ดั้งเดิมอันโดดเด่น: ผสมจากคำว่า <em>«คึซ» (Kyz - ต้นสนสปรูซสูงใหญ่)</em> + <em>«ยูร์» (Yur - ยอด, ศีรษะ, แหลมเนิน)</em> มีความหมายว่า <strong>«ผู้พำนักอยู่บนยอดเขาสน / ยอดสนสูงสง่า»</strong> ในสายตระกูลคือ คลาฟดียา อิลยีนิชนา (คึซยูโรวา) ซีโนเวียฟ (เกิด 1900) และ อิลยา อิวาโนวิช คึซยูรอฟ (เกิด 1865 ณ เมลนิชนืย อึบ)"}}, "aibabin": {{"name": "ไอราบิน (Aibabin)", "badge": "ชั่วคน VI – VII", "text": "นามสกุลโบราณหายากของชนเผ่าโคมิแถบลุ่มน้ำซีโซลา ในสายตระกูลคือ คุณเทียดหญิง เยลิซาเวตา เปตรอฟนา (ไอราบินา) คึซยูโรวา (เกิด 1867) และ ปิออตร์ บอริโซวิช ไอราบิน"}}, "karakchiev": {{"name": "คารัคชีเยฟ (Karakchiev)", "badge": "หมู่บ้านเลียลี ริมแม่น้ำวิม", "text": "สายตระกูลโบราณแห่งลุ่มน้ำวิม คำว่า <em>«คารัคชี»</em> มีความหมายดั้งเดิมคือ <strong>«ทหารยาม กองระวังหน้า หรือผู้พิทักษ์ด่านสัญจรทางน้ำ»</strong> ในสายตระกูลคือ อะนัสตาซียา อันเดรียฟนา คารัคชีเยวา (เกิด 1851) และ ซินคลิทีเคีย โยนิจนา คารัคชีเยวา (เกิด 1841)"}}, "pithak": {{"name": "พิทักษ์ (Pithak, พิทักษ์)", "badge": "ราชอาณาจักรไทย (ฝ่ายมารดา)", "text": "นามสกุลไทยอันทรงเกียรติ มีรากศัพท์มาจากภาษาสันสกฤต มีความหมายมงคลว่า <strong>«ผู้ดูแล ผู้คุ้มครอง ผู้อภิบาลรักษา»</strong> สะท้อนถึงความจงรักภักดี ความรับผิดชอบ และการปกป้องคุ้มครองวงศ์ตระกูลให้อยู่เย็นเป็นสุข ในสายตระกูลคือ มารดา ปาริตา (พิทักษ์) ตูร์กินา (เกิด 1997), ป้า นฤมล พิทักษ์ (เกิด 1993), ลุง นเรศ พิทักษ์ (เกิด 1986) และ คุณตา พวน พิทักษ์"}}, "pamaitong": {{"name": "ป่าไม้ทอง (Pamaitong, ป่าไม้ทอง)", "badge": "ราชอาณาจักรไทย (ฝ่ายยาย)", "text": "นามสกุลไทยอันไพเราะและเปี่ยมความหมาย ก่อร่างจากคำว่า <em>«ป่าไม้»</em> (ผืนพงไพรธรรมชาติ) และ <em>«ทอง»</em> (ทองคำล้ำค่า) หมายถึง <strong>«ผืนป่าอันอุดมสมบูรณ์ล้ำค่าดั่งทองคำ»</strong> สัญลักษณ์แห่งความร่มเย็น ความเจริญงอกงาม และความมั่งคั่ง ในสายตระกูลคือ คุณยาย ดวงเดือน ป่าไม้ทอง (เกิด 1961), ยายทวด สาย ป่าไม้ทอง (เกิด 1919), ตาทวด พวง ป่าไม้ทอง และ น้าชาย ธวัช ป่าไม้ทอง (เกิด 1979)"}}, "chamniankan": {{"name": "ชำนาญการ (Chamniankan, ชำนาญการ)", "badge": "ราชอาณาจักรไทย", "text": "นามสกุลไทยที่มีความหมายว่า <strong>«ผู้มีความเชี่ยวชาญ ผู้ช่ำชองในวิชาชีพ หรือผู้ปฏิบัติหน้าที่ด้วยความสามารถชั้นสูง»</strong> ในสายตระกูลคือ ป้า นงนุช ชำนาญการ (เกิด 1981)"}}}}}};
+  let currentLang = localStorage.getItem('site_lang') || 'ru';
+
+  let RU_CACHE = null;
+  function cacheRuTexts() {{
+    if (RU_CACHE) return;
+    RU_CACHE = {{
+      geo_heading: document.querySelector('#info-geography h2')?.innerHTML || '',
+      geo_lead: document.querySelector('#info-geography > p')?.innerHTML || '',
+      sur_heading: document.querySelector('#info-surnames h2')?.innerHTML || '',
+      sur_lead: document.querySelector('#info-surnames > p')?.innerHTML || '',
+      nav_places: document.querySelector('.nav-tab[onclick*="switchTab(\'info\')"]')?.innerHTML || '',
+      geo: {{}},
+      sur: {{}}
+    }};
+
+    for (let key in THAI_I18N.geo) {{
+      const el = document.getElementById('geo-' + key.replace('_', '-'));
+      if (el) {{
+        const titleEl = el.querySelector('div:first-child');
+        const subEl = el.querySelector('div:nth-child(2)');
+        const pEl = el.querySelector('p');
+        RU_CACHE.geo[key] = {{
+          title: titleEl ? titleEl.innerHTML : '',
+          sub: subEl ? subEl.innerHTML : '',
+          text: pEl ? pEl.innerHTML : ''
+        }};
+      }}
+    }}
+
+    for (let key in THAI_I18N.sur) {{
+      const el = document.getElementById('sur-' + key.replace('_', '-'));
+      if (el) {{
+        const nameEl = el.querySelector('strong');
+        const badgeEl = el.querySelector('span');
+        const pEl = el.querySelector('p');
+        RU_CACHE.sur[key] = {{
+          name: nameEl ? nameEl.innerHTML : '',
+          badge: badgeEl ? badgeEl.innerHTML : '',
+          text: pEl ? pEl.innerHTML : ''
+        }};
+      }}
+    }}
+  }}
+
+  function setLanguage(lang) {{
+    currentLang = lang;
+    localStorage.setItem('site_lang', lang);
+
+    document.querySelectorAll('#btnLangRu, #drawerBtnLangRu').forEach(b => b.classList.toggle('active', lang === 'ru'));
+    document.querySelectorAll('#btnLangTh, #drawerBtnLangTh').forEach(b => b.classList.toggle('active', lang === 'th'));
+
+    applyLanguage();
+  }}
+
+  function applyLanguage() {{
+    cacheRuTexts();
+    const isTh = currentLang === 'th';
+    document.body.setAttribute('data-lang', currentLang);
+
+    // Nav Tab Title
+    const navTab = document.querySelector('.nav-tab[onclick*="switchTab(\'info\')"]');
+    if (navTab) {{
+      navTab.innerHTML = isTh ? THAI_I18N.nav_places : (RU_CACHE.nav_places || '🗺️ Места и роды');
+    }}
+
+    // Section Headings
+    const geoH = document.querySelector('#info-geography h2');
+    const geoP = document.querySelector('#info-geography > p');
+    if (geoH && geoP) {{
+      geoH.innerHTML = isTh ? THAI_I18N.geo_heading : RU_CACHE.geo_heading;
+      geoP.innerHTML = isTh ? THAI_I18N.geo_lead : RU_CACHE.geo_lead;
+    }}
+
+    const surH = document.querySelector('#info-surnames h2');
+    const surP = document.querySelector('#info-surnames > p');
+    if (surH && surP) {{
+      surH.innerHTML = isTh ? THAI_I18N.sur_heading : RU_CACHE.sur_heading;
+      surP.innerHTML = isTh ? THAI_I18N.sur_lead : RU_CACHE.sur_lead;
+    }}
+
+    // Geography Cards
+    for (let key in THAI_I18N.geo) {{
+      const domId = 'geo-' + key.replace('_', '-');
+      const el = document.getElementById(domId);
+      if (!el) continue;
+      const titleEl = el.querySelector('div:first-child');
+      const subEl = el.querySelector('div:nth-child(2)');
+      const pEl = el.querySelector('p');
+      const data = isTh ? THAI_I18N.geo[key] : (RU_CACHE.geo[key] || {{}});
+
+      if (titleEl && data.title) titleEl.innerHTML = data.title;
+      if (subEl && data.sub) subEl.innerHTML = data.sub;
+      if (pEl && data.text) pEl.innerHTML = data.text;
+    }}
+
+    // Meletiy details in Ulyanovo
+    const ulyanovoEl = document.getElementById('geo-ulyanovo');
+    if (ulyanovoEl) {{
+      const meletiyTitle = ulyanovoEl.querySelector('.meletiy-title');
+      const meletiyBody = ulyanovoEl.querySelector('.meletiy-body');
+      if (isTh) {{
+        if (meletiyTitle) meletiyTitle.innerHTML = THAI_I18N.geo.ulyanovo.meletiy_title;
+        if (meletiyBody) meletiyBody.innerHTML = THAI_I18N.geo.ulyanovo.meletiy_body;
+      }} else {{
+        if (meletiyTitle) meletiyTitle.innerHTML = '🕊️ Канонизация соратника по делу 1937 г.:';
+        if (meletiyBody) meletiyBody.innerHTML = 'Фигурант того же дела иеромонах Мелетий (Федюнёв) был расстрелян в Сыктывкаре <strong>23.09.1937 г.</strong><div style="margin-top:0.35rem; background:rgba(124,58,237,0.08); padding:0.4rem 0.55rem; border-radius:5px; border-left:3px solid #7c3aed; font-style:italic;">«Священный Синод Определением от 6.10.2001 г. причислил иеромонаха Мелетия (Федюнева) к лику святых и включил в Собор новомучеников и исповедников Российских (Церкви Русской) ХХ века.»</div><div style="margin-top:0.3rem; font-size:0.75rem; color:var(--text-muted);">Реабилитирован.</div>';
+      }}
+    }}
+
+    // Surnames Cards
+    for (let key in THAI_I18N.sur) {{
+      const domId = 'sur-' + key.replace('_', '-');
+      const el = document.getElementById(domId);
+      if (!el) continue;
+      const nameEl = el.querySelector('strong');
+      const badgeEl = el.querySelector('span');
+      const pEl = el.querySelector('p');
+      const data = isTh ? THAI_I18N.sur[key] : (RU_CACHE.sur[key] || {{}});
+
+      if (nameEl && data.name) nameEl.innerHTML = data.name;
+      if (badgeEl && data.badge) badgeEl.innerHTML = data.badge;
+      if (pEl && data.text) pEl.innerHTML = data.text;
+    }}
+  }}
 
 function switchTab(tabId) {{
   currentTab = tabId;
