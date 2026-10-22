@@ -40,13 +40,13 @@ def get_thai_clergy_html():
         <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #2563eb33; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
-              <h3 style="margin:0; font-size:1.05rem; color:#2563eb;">🏛️ с. Коквицы — วัดพระคริสตสมภพ (Christ the Nativity)</h3>
+              <h3 style="margin:0; font-size:1.05rem; color:#2563eb;">🏛️ หมู่บ้านโคควิทซี — วัดพระคริสตสมภพ (Christ the Nativity)</h3>
               <span style="background:#eff6ff; color:#2563eb; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #bfdbfe;">ศูนย์กลางจิตวิญญาณตระกูล (150+ ปี)</span>
             </div>
             <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">เนินเขาโคควิทสกายา โกรา, แขวงยาเรนสค์ • ชุมชนหลักของตระกูล: เตอร์คิน, เลทอฟ, ยารานอฟ, ซิเซฟ</div>
             
             <div style="display:flex; gap:0.85rem; margin-bottom:0.75rem; align-items:flex-start;">
-              <div onclick="openFullscreenScan('архив_сканы_первоисточников/1773_Коквицы_двор_167_crop.png', 'Христорождественская церковь в с. Коквицы', 'Исповедная роспись 1773 г., двор 167 священника о. Степана Туркина')" title="คลิกเพื่อดูรูปขนาดใหญ่" style="cursor:pointer; flex-shrink:0;">
+              <div onclick="openFullscreenScan('архив_сканы_первоисточников/1773_Коквицы_двор_167_crop.png', 'วัดพระคริสตสมภพ ณ หมู่บ้านโคควิทซี', 'สมุดบันทึกการสารภาพบาป ค.ศ. 1773 ครัวเรือนที่ 167 ของบาทหลวงสเตปาน เตอร์คิน')" title="คลิกเพื่อดูรูปขนาดใหญ่" style="cursor:pointer; flex-shrink:0;">
                 <img src="архив_сканы_первоисточников/1773_Коквицы_двор_167_crop.png" alt="ทะเบียนวัดโคควิทซี 1773" style="width:115px; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 6px rgba(0,0,0,0.1); transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
               </div>
               <div style="font-size:0.82rem; line-height:1.5; color:var(--text-main);">
@@ -77,13 +77,13 @@ def get_thai_clergy_html():
         <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #7c3aed33; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
-              <h3 style="margin:0; font-size:1.05rem; color:#7c3aed;">⛪ г. Лальск — มหาวิหารพระคืนชนม์ (Resurrection Cathedral)</h3>
+              <h3 style="margin:0; font-size:1.05rem; color:#7c3aed;">⛪ เมืองลัลสค์ — มหาวิหารพระคืนชนม์ (Resurrection Cathedral)</h3>
               <span style="background:#f5f3ff; color:#7c3aed; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #ddd6fe;">สังฆานุกรประจำมหาวิหาร (1870–1904)</span>
             </div>
             <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">เมืองลัลสค์ สังฆมณฑลโวล็อกดา (ปัจจุบันคือแคว้นคิรอฟ) • อัญมณีบาโรก ค.ศ. 1698–1715</div>
 
             <div style="display:flex; gap:0.85rem; margin-bottom:0.75rem; align-items:flex-start;">
-              <div onclick="openFullscreenScan('фото_храмов/Лальск_Воскресенский_собор.jpg', 'Воскресенский собор в г. Лальске', 'Каменный собор 1717 г. постройки • Место служения соборного диакона о. Михаила Алексеевича Туркина (1870–1904 гг.)')" title="คลิกเพื่อดูรูปขนาดใหญ่" style="cursor:pointer; flex-shrink:0;">
+              <div onclick="openFullscreenScan('фото_храмов/Лальск_Воскресенский_собор.jpg', 'มหาวิหารพระคืนชนม์ ณ เมืองลัลสค์', 'มหาวิหารหินสร้างเมื่อ ค.ศ. 1717 • สถานที่ปฏิบัติศาสนกิจของสังฆานุกร มิคาอิล อะเลคเซเยวิช เตอร์คิน (1870–1904)')" title="คลิกเพื่อดูรูปขนาดใหญ่" style="cursor:pointer; flex-shrink:0;">
                 <img src="фото_храмов/Лальск_Воскресенский_собор.jpg" alt="มหาวิหารลัลสค์" style="width:115px; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 6px rgba(0,0,0,0.1); transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
               </div>
               <div style="font-size:0.82rem; line-height:1.5; color:var(--text-main);">
@@ -106,13 +106,13 @@ def get_thai_clergy_html():
         <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #9333ea33; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
-              <h3 style="margin:0; font-size:1.05rem; color:#9333ea;">⛪ Кадников, Вологда, Грязовец — Приходы о. Прокопия</h3>
+              <h3 style="margin:0; font-size:1.05rem; color:#9333ea;">⛪ เมืองคัดนิคอฟ, โวล็อกดา, กรียาโซเวตส์ — ชุมชนวัดของบาทหลวงโปรโคปี (Parishes of Fr. Prokopy)</h3>
               <span style="background:#faf5ff; color:#9333ea; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #e9d5ff;">บาทหลวงประจำตำบล (1891–1915+)</span>
             </div>
             <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">สังฆมณฑลโวล็อกดา • แขวงคัดนิคอฟ, โวล็อกดา และเกรียโซเวทส์ • ค.ศ. 1891–1915+</div>
 
             <div style="display:flex; gap:0.85rem; margin-bottom:0.75rem; align-items:flex-start;">
-              <div onclick="openFullscreenScan('фото_храмов/Брусничное_Спасо_Преображенская_церковь.jpg', 'с. Спасское — Спасо-Преображенская церковь', 'Храм построения 1869–1884 гг. • Приход священника о. Прокопия Туркина')" title="คลิกเพื่อดูรูปขนาดใหญ่" style="cursor:pointer; flex-shrink:0;">
+              <div onclick="openFullscreenScan('фото_храмов/Брусничное_Спасо_Преображенская_церковь.jpg', 'หมู่บ้านสปัสสโกเย — วัดการแปรสภาพของพระเยซูเจ้า', 'วิหารหินสร้าง ค.ศ. 1869–1884 • ชุมชนวัดของบาทหลวงโปรโคปี เตอร์คิน')" title="คลิกเพื่อดูรูปขนาดใหญ่" style="cursor:pointer; flex-shrink:0;">
                 <img src="фото_храмов/Брусничное_Спасо_Преображенская_церковь.jpg" alt="วัดบรูสนิชโนเย" style="width:115px; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 6px rgba(0,0,0,0.1); transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
               </div>
               <div style="font-size:0.82rem; line-height:1.5; color:var(--text-main);">
@@ -142,13 +142,13 @@ def get_thai_clergy_html():
         <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #4f46e533; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
-              <h3 style="margin:0; font-size:1.05rem; color:#4f46e5;">⛪ с. Ульяново и с. Кужба — Троице-Стефановский монастырь</h3>
+              <h3 style="margin:0; font-size:1.05rem; color:#4f46e5;">⛪ หมู่บ้านอูลยานอโว และ คุจวา — อารามหลวงตรีเอกภาพ-นักบุญสเตฟาน (Trinity-Stefanovsky Monastery)</h3>
               <span style="background:#eef2ff; color:#4f46e5; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #c7d2fe;">ผู้สละชีพเพื่อศรัทธา ศตวรรษที่ 20</span>
             </div>
             <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">แขวงอุสต์-ซีโซลสค์และอุสต์-คุลอม • ลุ่มแม่น้ำวิเชกดะตอนบน • ค.ศ. 1865–1937</div>
 
             <div style="display:flex; gap:0.85rem; margin-bottom:0.75rem; align-items:flex-start;">
-              <div onclick="openFullscreenScan('фото_храмов/Ульяново_Троице_Стефановский_монастырь.jpg', 'с. Ульяново — Троице-Стефановский мужской монастырь', 'อารามหลวงเซนต์สเตฟานแห่งเปียร์ม • วีรกรรมแห่งศรัทธาของพระภิกษุวิตาลี (เตอร์คิน), ค.ศ. 1937')" title="คลิกเพื่อดูรูปขนาดใหญ่" style="cursor:pointer; flex-shrink:0;">
+              <div onclick="openFullscreenScan('фото_храмов/Ульяново_Троице_Стефановский_монастырь.jpg', 'หมู่บ้านอูลยานอโว — อารามหลวงตรีเอกภาพ-นักบุญสเตฟาน', 'อารามหลวงเซนต์สเตฟานแห่งเปียร์ม • วีรกรรมแห่งศรัทธาของพระภิกษุวิตาลี (เตอร์คิน), ค.ศ. 1937')" title="คลิกเพื่อดูรูปขนาดใหญ่" style="cursor:pointer; flex-shrink:0;">
                 <img src="фото_храмов/Ульяново_Троице_Стефановский_монастырь.jpg" alt="อารามหลวงอูลยานอโว" style="width:115px; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 6px rgba(0,0,0,0.1); transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
               </div>
               <div style="font-size:0.82rem; line-height:1.5; color:var(--text-main);">
@@ -164,7 +164,7 @@ def get_thai_clergy_html():
 
             <!-- ВЫДЕЛЕННЫЙ БЛОК: НОВОМУЧЕНИК МЕЛЕТИЙ -->
             <div style="background:linear-gradient(135deg, rgba(124,58,237,0.06), rgba(217,119,6,0.06)); border:1.5px solid rgba(124,58,237,0.25); border-radius:8px; padding:0.65rem 0.75rem; margin-bottom:0.75rem; display:flex; gap:0.75rem; align-items:flex-start;">
-              <div onclick="openFullscreenScan('архив_сканы_первоисточников/Преподобномученик_Мелетий_Федюнев.jpg', 'Преподобномученик МЕЛЕТИЙ иеромонах', 'พระเหรัญญิกอารามหลวง ผู้ร่วมคดีความปี 1937 เดียวกันกับพระภิกษุวิตาลี เตอร์คิน')" title="คลิกเพื่อดูรูปขนาดใหญ่" style="cursor:pointer; flex:0 0 92px; text-align:center;">
+              <div onclick="openFullscreenScan('архив_сканы_первоисточников/Преподобномученик_Мелетий_Федюнев.jpg', 'พระมรณสักขี เมเลตี (เฟดิวเนียฟ)', 'พระเหรัญญิกอารามหลวง ผู้ร่วมคดีความปี 1937 เดียวกันกับพระภิกษุวิตาลี เตอร์คิน')" title="คลิกเพื่อดูรูปขนาดใหญ่" style="cursor:pointer; flex:0 0 92px; text-align:center;">
                 <img src="архив_сканы_первоисточников/Преподобномученик_Мелетий_Федюнев.jpg" alt="พระมรณสักขี เมเลตี" style="width:92px; height:118px; object-fit:cover; border-radius:6px; border:1.5px solid #7c3aed; box-shadow:0 2px 5px rgba(0,0,0,0.15); display:block; transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
                 <div style="font-size:0.64rem; font-weight:700; color:#6d28d9; margin-top:0.35rem; width:100%; line-height:1.2;">นักบุญเมเลตี<br><span style="font-size:0.60rem; font-weight:600; color:var(--text-muted);">(เฟดิวเนียฟ)</span></div>
               </div>
@@ -190,7 +190,7 @@ def get_thai_clergy_html():
         <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #05966933; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
-              <h3 style="margin:0; font-size:1.05rem; color:#059669;">⛪ с. Ыб — Свято-Вознесенский храм (Holy Ascension)</h3>
+              <h3 style="margin:0; font-size:1.05rem; color:#059669;">⛪ หมู่บ้านอึบ — วัดพระเยซูเสด็จขึ้นสู่สวรรค์ (Holy Ascension)</h3>
               <span style="background:#ecfdf5; color:#059669; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #a7f3d0;">วัดประจำตำบลของบรรพชน (1827–1835)</span>
             </div>
             <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">เนินเขา 7 ลูกริมแม่น้ำซิโซลา, แขวงอุสต์-ซีโซลสค์ • ชุมชนหลักของตระกูล: ซิโนเวียฟ, โปเลชชิคอฟ, ปาซินคอฟ</div>
@@ -215,7 +215,7 @@ def get_thai_clergy_html():
         <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #d9770633; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
-              <h3 style="margin:0; font-size:1.05rem; color:#d97706;">⛪ с. Лойма — วัดแม่พระบรรทม (Dormition of the Theotokos)</h3>
+              <h3 style="margin:0; font-size:1.05rem; color:#d97706;">⛪ หมู่บ้านลอยมา — วัดแม่พระบรรทม (Dormition of the Theotokos)</h3>
               <span style="background:#fffbeb; color:#d97706; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #fde68a;">วัดประจำตำบลของตระกูลซูตคินและเชโคนิน</span>
             </div>
             <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">ลุ่มแม่น้ำลูซาตอนบน, แขวงเวลีโคอุสติยูกและปรีลุซสกี • ค.ศ. 1748–1917+</div>
@@ -239,7 +239,7 @@ def get_thai_clergy_html():
         <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #05966933; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
-              <h3 style="margin:0; font-size:1.05rem; color:#059669;">⛪ с. Усть-Вымь — อารามหลวงอัครเทวทูตมีคาเอลและหมู่วัดประวัติศาสตร์</h3>
+              <h3 style="margin:0; font-size:1.05rem; color:#059669;">⛪ ชุมชนอุสต์-วิม — อารามหลวงอัครเทวทูตมีคาเอลและหมู่วัดประวัติศาสตร์ (Ust-Vym)</h3>
               <span style="background:#ecfdf5; color:#059669; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #a7f3d0;">ศูนย์กลางศาสนาแห่งโคมิ (1380+)</span>
             </div>
             <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">จุดบรรจบแม่น้ำวิมและวิเชกดะ • เมืองหลวงโบราณแห่งเพิร์มดั้งเดิม</div>
@@ -264,7 +264,7 @@ def get_thai_clergy_html():
         <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #db277733; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
-              <h3 style="margin:0; font-size:1.05rem; color:#db2777;">⛪ с. Ляли — วัดสมโภชพระคริสต์แสดงองค์ (Epiphany Church)</h3>
+              <h3 style="margin:0; font-size:1.05rem; color:#db2777;">⛪ หมู่บ้านลยาลี — วัดสมโภชพระคริสต์แสดงองค์ (Epiphany Church)</h3>
               <span style="background:#fdf2f8; color:#db2777; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #fbcfe8;">ชุมชนตระกูลคารัคชีเยฟและชุกโตมอฟ</span>
             </div>
             <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">ลุ่มแม่น้ำวิมตอนบน, แขวงยาเรนสค์ • ปรากฏในบันทึกพงศาวดาร ค.ศ. 1586</div>
@@ -288,7 +288,7 @@ def get_thai_clergy_html():
         <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #0284c733; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
-              <h3 style="margin:0; font-size:1.05rem; color:#0284c7;">⛪ погост Оквад (Катвад) — วัดแม่พระเสด็จเข้าพระวิหาร (Vvedenskaya)</h3>
+              <h3 style="margin:0; font-size:1.05rem; color:#0284c7;">⛪ ชุมชนโบราณอ็อควัด (คัตวัด) — วัดแม่พระเสด็จเข้าพระวิหาร (Vvedenskaya)</h3>
               <span style="background:#f0f9ff; color:#0284c7; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #bae6fd;">อู่กำเนิดตระกูล (ศตวรรษที่ 17)</span>
             </div>
             <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">ตำบลอ็อควัดสกายา, แขวงยาเรนสค์ • คริสต์ศตวรรษที่ 17–18</div>
@@ -314,7 +314,7 @@ def get_thai_clergy_html():
         <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #d9770633; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
-              <h3 style="margin:0; font-size:1.05rem; color:#d97706;">⛪ Палевицы, Серёгово, Яренск</h3>
+              <h3 style="margin:0; font-size:1.05rem; color:#d97706;">⛪ ปาเลวิทซี, เซเรโกโว, ยาเรนสค์ — ศูนย์กลางศาสนจักรลุ่มน้ำวิเชกดา (Palevitsy, Seryogovo, Yarensk)</h3>
               <span style="background:#fffbeb; color:#d97706; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #fde68a;">ชุมชนศาสนจักรลุ่มน้ำวิเชกดะ</span>
             </div>
             <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">ปาเลวิทซี, เซเรโกโว, เคเนียซโปโกสต์ และมหาวิหารแห่งเมืองยาเรนสค์</div>
