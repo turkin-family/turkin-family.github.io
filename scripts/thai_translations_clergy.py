@@ -2,18 +2,19 @@
 # -*- coding: utf-8 -*-
 """
 scripts/thai_translations_clergy.py
-Full Thai translation for the Orthodox Clergy and Parish Churches section (info-clergy).
+Full-length, comprehensive Thai translation for the Orthodox Clergy
+and Parish Churches section (info-clergy). All 10 cards fully articulated.
 """
 
 def get_thai_clergy_html():
-    return """    <!-- ORTHODOX CLERGY & PARISH CHURCHES SECTION (THAI) -->
+    return """    <!-- ORTHODOX CLERGY & PARISH CHURCHES SECTION (THAI - FULL DETAILED) -->
     <div class="info-card" id="info-clergy">
       <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.5rem;">
         <span style="font-size:1.6rem;">⛪</span>
         <h2 style="margin:0;">คณะสงฆ์ออร์โธดอกซ์และศาสนสถานของบรรพบุรุษ (คริสต์ศตวรรษที่ 17–20, ค.ศ. 1646–1937)</h2>
       </div>
       <p style="color:var(--text-muted); font-size:0.88rem; margin-bottom:1.2rem; line-height:1.6;">
-        ตลอดเวลากว่า 300 ปี — ตั้งแต่ทะเบียนราษฎร์ศตวรรษที่ 17 จนถึงศตวรรษที่ 20 — จิตวิญญาณและวิถีชีวิตของบรรพชนทุกชั่วคนผูกพันแนบแน่นกับอารามหลวงและวัดประจำตำบลในแขวงยาเรนสค์, อุสต์-วิม และอุสต์-ซีโซลสค์ แห่งมณฑลโวล็อกดา (ปัจจุบันคือสาธารณรัฐโคมิและแคว้นคิรอฟ). ตระกูลเตอร์คินได้ให้กำเนิดวงศ์วานสงฆ์ชั้นสูง ไวยาวัจกร และนักบวชอารามหลวง ขณะที่ทุกสายตระกูลร่วมสาแหรก (ชุกโตมอฟ, ซิโนเวียฟ, ซูตคิน, โปเลชชิคอฟ, ปาซินคอฟ, คิซยูรอฟ, เลทอฟ, ยารานอฟ) ล้วนประกอบพิธีศีลจุ่ม ศีลสมรส และพิธีปลงศพ ณ อารามศักดิ์สิทธิ์เหล่านี้
+        ตลอดเวลากว่าสามศตวรรษ — ตั้งแต่สมุดทะเบียนราษฎร์ศตวรรษที่ 17 จนถึงศตวรรษที่ 20 — จิตวิญญาณและวิถีชีวิตประจำวันของบรรพชนทุกชั่วคนผูกพันแนบแน่นกับอารามหลวงและวัดประจำตำบลในแขวงยาเรนสค์, อุสต์-วิม และอุสต์-ซีโซลสค์ แห่งมณฑลโวล็อกดา (ปัจจุบันคือสาธารณรัฐโคมิและแคว้นคิรอฟ). ตระกูลเตอร์คินได้ให้กำเนิดวงศ์วานสงฆ์ชั้นสูง สังฆานุกรประจำมหาวิหาร ไวยาวัจกร และพระภิกษุอารามหลวง ขณะที่ทุกสายตระกูลร่วมสาแหรก (ชุกโตมอฟ, ซิโนเวียฟ, ซูตคิน, โปเลชชิคอฟ, ปาซินคอฟ, คิซยูรอฟ, เลทอฟ, ยารานอฟ) ล้วนประกอบพิธีศีลจุ่ม ศีลสมรส และพิธีปลงศพ ณ ศาสนสถานศักดิ์สิทธิ์เหล่านี้
       </p>
 
       <!-- STATS BANNER -->
@@ -39,34 +40,36 @@ def get_thai_clergy_html():
         <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #2563eb33; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
-              <h3 style="margin:0; font-size:1.05rem; color:#2563eb;">🏛️ หมู่บ้านโคควิทซี — วัดพระคริสตสมภพ</h3>
+              <h3 style="margin:0; font-size:1.05rem; color:#2563eb;">🏛️ с. Коквицы — วัดพระคริสตสมภพ (Christ the Nativity)</h3>
               <span style="background:#eff6ff; color:#2563eb; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #bfdbfe;">ศูนย์กลางจิตวิญญาณตระกูล (150+ ปี)</span>
             </div>
-            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">เนินเขาโคควิทสกายา โกรา, แขวงยาเรนสค์ • ชุมชนตระกูล: เตอร์คิน, เลทอฟ, ยารานอฟ, ซิเซฟ</div>
+            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">เนินเขาโคควิทสกายา โกรา, แขวงยาเรนสค์ • ชุมชนหลักของตระกูล: เตอร์คิน, เลทอฟ, ยารานอฟ, ซิเซฟ</div>
             
             <div style="display:flex; gap:0.85rem; margin-bottom:0.75rem; align-items:flex-start;">
               <div onclick="openFullscreenScan('архив_сканы_первоисточников/1773_Коквицы_двор_167_crop.png', 'Христорождественская церковь в с. Коквицы', 'Исповедная роспись 1773 г., двор 167 священника о. Степана Туркина')" title="คลิกเพื่อดูรูปขนาดใหญ่" style="cursor:pointer; flex-shrink:0;">
                 <img src="архив_сканы_первоисточников/1773_Коквицы_двор_167_crop.png" alt="ทะเบียนวัดโคควิทซี 1773" style="width:115px; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 6px rgba(0,0,0,0.1); transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
               </div>
               <div style="font-size:0.82rem; line-height:1.5; color:var(--text-main);">
-                <div>🏛️ วัดหินสองชั้นอันสง่างาม สร้างขึ้นในปี ค.ศ. 1795 แทนวัดไม้เดิม เป็นศูนย์รวมใจของชาวเนินเขาโคควิทซี 20 หมู่บ้าน</div>
-                <div style="margin-top:0.35rem;">📜 บันทึกสำมะโนนักบวชปี ค.ศ. 1773 ยืนยันว่า บาทหลวงสเตฟาน ยาคอฟเลวิช เตอร์คิน และสังฆานุกร ดมิทรี อะเลคเซเยวิช เตอร์คิน เป็นผู้นำคณะสงฆ์ประจำวัดนี้</div>
+                <div>📜 วัดหินสองชั้นอันสง่างาม สร้างขึ้นในปี ค.ศ. 1820–1837 (แทนที่วัดไม้เดิมแห่งศตวรรษที่ 17–18) เป็นศูนย์รวมใจของชาวเนินเขาโคควิทซี 20 หมู่บ้าน</div>
+                <div style="margin-top:0.35rem;">👶 ในสมุดทะเบียนเกิดของวัด มีการบันทึกการถือกำเนิดของคุณทวด <strong>นิโคไล อะเลคเซเยวิช เตอร์คิน</strong> เมื่อวันที่ 3 พฤศจิกายน ค.ศ. 1876 (หมู่บ้านซูลาทุย, บันทึก ณ หน้า 267)</div>
               </div>
             </div>
 
             <p style="font-size:0.83rem; line-height:1.55; margin-bottom:0.65rem;">
-              นักบวชในสายตระกูลที่รับใช้ ณ วัดพระคริสตสมภพแห่งนี้:
+              อู่กำเนิดวงศ์วานสงฆ์และการรับใช้อย่างต่อเนื่องยาวนานหลายชั่วรุ่นของตระกูลเตอร์คิน:
             </p>
 
             <ul style="font-size:0.82rem; line-height:1.6; margin:0 0 0.75rem 0; padding-left:1.15rem;">
-              <li><strong>บาทหลวง สเตฟาน ยาคอฟเลวิช เตอร์คิน</strong> (1705–1782) — เจ้าอาวาสวัดพระคริสตสมภพยาวนานกว่า 40 ปี (คุณทวด 7 ชั่วคน)</li>
-              <li><strong>สังฆานุกร ดมิทรี อะเลคเซเยวิช เตอร์คิน</strong> (1734–1799) — สังฆานุกรประจำวัด (คุณทวด 6 ชั่วคน)</li>
-              <li><strong>ผู้ช่วยพิธีกรรม อะเลคซี สเตฟาโนวิช เตอร์คิน</strong> (1743–1805) — สังกัดคณะสงฆ์วัดโคควิทซี</li>
+              <li><strong>บาทหลวง (Ierey):</strong> บาทหลวงสเตฟาน อิวาโนวิช เตอร์คิน (รับใช้ ค.ศ. 1734–1773, สำมะโนนักบวชปี 1773 บ้านเลขที่ 167 ในวัย 62 ปี ม่าย); บาทหลวงอีวาน เปโตรวิช เตอร์คิน (ผู้ช่วยพิธีกรรม ค.ศ. 1710, บวชเป็นบาทหลวง ค.ศ. 1747)</li>
+              <li><strong>สังฆานุกร (Deacon):</strong> อะเลคซี เยลิเซเยวิช เตอร์คิน (ผู้ช่วยพิธีกรรม ค.ศ. 1818, บวชเป็นสังฆานุกร ค.ศ. 1822, รับใช้ถึง ค.ศ. 1844+)</li>
+              <li><strong>พลสวดและผู้ช่วยพิธีกรรม:</strong> เลออนตี เปโตรวิช (1732–1783); เยลิเซย์ เลออนเตียวิช (บวชปี 1783 โดยมุขนายกโยอันน์, รับใช้ยาวนานกว่า 33 ปี, ภรรยา ทาเทียนา วาซิลเยฟนา โปโนมาเรวา); ปีเตอร์ เปโตรวิช (เกิดราว ค.ศ. 1714)</li>
+              <li><strong>บุตรหลานในคณะสงฆ์:</strong> อีวาน (ผู้ช่วยสวด), มักซิม, กัฟริอิล, ดมิทรี (ตามทะเบียนสำมะโน ค.ศ. 1795 และ 1811)</li>
             </ul>
           </div>
           <div style="display:flex; flex-wrap:wrap; gap:0.35rem; border-top:1px dashed var(--border-color); padding-top:0.5rem;">
-            <button class="pill-btn" onclick="focusPerson('I175'); switchTab('tree');" style="font-size:0.74rem;">🎯 บาทหลวงสเตฟาน</button>
-            <button class="pill-btn" onclick="focusPerson('I176'); switchTab('tree');" style="font-size:0.74rem;">🎯 สังฆานุกรดมิทรี</button>
+            <button class="pill-btn" onclick="focusPerson('I78'); switchTab('tree');" style="font-size:0.74rem;">🎯 บาทหลวงสเตฟาน</button>
+            <button class="pill-btn" onclick="focusPerson('I234'); switchTab('tree');" style="font-size:0.74rem;">🎯 สังฆานุกรอะเลคซี</button>
+            <button class="pill-btn" onclick="focusPerson('I232'); switchTab('tree');" style="font-size:0.74rem;">🎯 เยลิเซย์</button>
           </div>
         </div>
 
@@ -74,28 +77,28 @@ def get_thai_clergy_html():
         <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #7c3aed33; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
-              <h3 style="margin:0; font-size:1.05rem; color:#7c3aed;">⛪ เมืองลัลสค์ — มหาวิหารพระคืนชนม์</h3>
+              <h3 style="margin:0; font-size:1.05rem; color:#7c3aed;">⛪ г. Лальск — มหาวิหารพระคืนชนม์ (Resurrection Cathedral)</h3>
               <span style="background:#f5f3ff; color:#7c3aed; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #ddd6fe;">สังฆานุกรประจำมหาวิหาร (1870–1904)</span>
             </div>
-            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">เมืองการค้าโบราณลัลสค์ ริมแม่น้ำลูซา • แขวงเวลีโคอุสติยูก</div>
+            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">เมืองลัลสค์ สังฆมณฑลโวล็อกดา (ปัจจุบันคือแคว้นคิรอฟ) • อัญมณีบาโรก ค.ศ. 1698–1715</div>
 
             <div style="display:flex; gap:0.85rem; margin-bottom:0.75rem; align-items:flex-start;">
               <div onclick="openFullscreenScan('фото_храмов/Лальск_Воскресенский_собор.jpg', 'Воскресенский собор в г. Лальске', 'Каменный собор 1717 г. постройки • Место служения соборного диакона о. Михаила Алексеевича Туркина (1870–1904 гг.)')" title="คลิกเพื่อดูรูปขนาดใหญ่" style="cursor:pointer; flex-shrink:0;">
                 <img src="фото_храмов/Лальск_Воскресенский_собор.jpg" alt="มหาวิหารลัลสค์" style="width:115px; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 6px rgba(0,0,0,0.1); transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
               </div>
               <div style="font-size:0.82rem; line-height:1.5; color:var(--text-main);">
-                <div>🏛️ มหาวิหารหินศิลปะบาโรกโบราณ สร้างขึ้นในปี ค.ศ. 1717 เป็นศูนย์กลางศาสนาอันยิ่งใหญ่แห่งเมืองวาณิชลัลสค์</div>
-                <div style="margin-top:0.35rem;">📜 สังฆานุกรประจำมหาวิหาร บาทหลวงมิคาอิล อะเลคเซเยวิช เตอร์คิน รับใช้ ณ แท่นบูชานี้อย่างซื่อสัตย์ยาวนานกว่า 34 ปี (ค.ศ. 1870–1904)</div>
+                <div>🏛️ มหาวิหารหินห้ายอดอันสง่างาม พร้อมหอระฆังทรงกระโจมสูงตระหง่าน ศูนย์กลางการค้าและจิตวิญญาณแห่งลุ่มแม่น้ำลูซา</div>
+                <div style="margin-top:0.35rem;">📜 ภาพถ่ายประวัติศาสตร์โดย ส. โลโบวิคอฟ ช่างภาพระดับตำนานแห่งจักรวรรดิรัสเซีย บันทึกภาพไว้ในช่วงที่สังฆานุกรมิคาอิล เตอร์คิน กำลังปฏิบัติศาสนกิจ</div>
               </div>
             </div>
 
             <ul style="font-size:0.82rem; line-height:1.6; margin:0 0 0.75rem 0; padding-left:1.15rem;">
-              <li><strong>สังฆานุกร มิคาอิล อะเลคเซเยวิช เตอร์คิน</strong> (1838–1904) — สังฆานุกรอาวุโสแห่งมหาวิหารลัลสค์ ได้รับพระราชทานเหรียญเกียรติยศและเสื้อคลุมทองคำ</li>
-              <li>สมรสกับ มาเรีย โปรโคเปียฟนา บรึซกาโลวา ธิดาตระกูลคหบดีใหญ่แห่งเมืองโซลวิเชกอดสค์</li>
+              <li><strong>สังฆานุกรประจำมหาวิหาร มิคาอิล อะเลคเซเยวิช เตอร์คิน</strong> (ราว 1839 – 14.06.1904) — บุตรสังฆานุกรอะเลคซีแห่งโคควิทซี สำเร็จการศึกษาจากวิทยาลัยศาสนศาสตร์โวล็อกดา (ค.ศ. 1862). เริ่มรับใช้เป็นผู้ช่วยสวดตั้งแต่ปี 1868, บวชเป็นสังฆานุกรเมื่อวันที่ 20.07.1870, และตั้งแต่ปี 1871 ดำรงตำแหน่งสังฆานุกรประจำมหาวิหารพระคืนชนม์แห่งเมืองลัลสค์ (รับใช้อย่างซื่อสัตย์ยาวนานถึง 34 ปี, กองทุน GAKO หมายเลข 1310). สมรสกับ โซเฟีย โปรโคเปียฟนา บรึซกาโลวา</li>
+              <li><strong>ต้นตระกูลสายสงฆ์แห่งลัลสค์:</strong> อบรมบุตรหลานในธรรมเนียมของชนชั้นนักบวช ให้กำเนิดวงศ์วานสงฆ์รุ่นใหม่แห่งมณฑลโวล็อกดา</li>
             </ul>
           </div>
           <div style="display:flex; flex-wrap:wrap; gap:0.35rem; border-top:1px dashed var(--border-color); padding-top:0.5rem;">
-            <button class="pill-btn" onclick="focusPerson('I236'); switchTab('tree');" style="font-size:0.74rem;">🎯 สังฆานุกรมิคาอิล</button>
+            <button class="pill-btn" onclick="focusPerson('I236'); switchTab('tree');" style="font-size:0.74rem;">🎯 สังฆานุกรมิคาอิลแห่งลัลสค์</button>
           </div>
         </div>
 
@@ -103,28 +106,35 @@ def get_thai_clergy_html():
         <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #9333ea33; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
-              <h3 style="margin:0; font-size:1.05rem; color:#9333ea;">⛪ คัดนิคอฟ, โวล็อกดา, เกรียโซเวทส์ — แขวงศาสนจักรของบาทหลวงโปรโคปี</h3>
+              <h3 style="margin:0; font-size:1.05rem; color:#9333ea;">⛪ Кадников, Вологда, Грязовец — Приходы о. Прокопия</h3>
               <span style="background:#faf5ff; color:#9333ea; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #e9d5ff;">บาทหลวงประจำตำบล (1891–1915+)</span>
             </div>
-            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">มณฑลโวล็อกดาตอนกลาง • ค.ศ. 1891–1915+</div>
+            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">สังฆมณฑลโวล็อกดา • แขวงคัดนิคอฟ, โวล็อกดา และเกรียโซเวทส์ • ค.ศ. 1891–1915+</div>
 
             <div style="display:flex; gap:0.85rem; margin-bottom:0.75rem; align-items:flex-start;">
               <div onclick="openFullscreenScan('фото_храмов/Брусничное_Спасо_Преображенская_церковь.jpg', 'с. Спасское — Спасо-Преображенская церковь', 'Храм построения 1869–1884 гг. • Приход священника о. Прокопия Туркина')" title="คลิกเพื่อดูรูปขนาดใหญ่" style="cursor:pointer; flex-shrink:0;">
                 <img src="фото_храмов/Брусничное_Спасо_Преображенская_церковь.jpg" alt="วัดบรูสนิชโนเย" style="width:115px; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 6px rgba(0,0,0,0.1); transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
               </div>
               <div style="font-size:0.82rem; line-height:1.5; color:var(--text-main);">
-                <div>🏛️ วัดการแปรสภาพของพระเยซูเจ้าบนเขาตาบอร์ ณ บรูสนิชโนเย (Spaso-Preobrazhenskaya) สร้างด้วยหินอันสง่างาม ค.ศ. 1869–1884</div>
-                <div style="margin-top:0.35rem;">📜 บาทหลวงโปรโคปี มิคาอิโลวิช เตอร์คิน (บุตรสังฆานุกรมิคาอิลแห่งลัลสค์) สำเร็จการศึกษาจากวิทยาลัยศาสนศาสตร์โวล็อกดา และรับใช้เป็นเจ้าอาวาสประจำวัดนี้นานกว่า 14 ปี</div>
+                <div>🏛️ วัดการแปรสภาพของพระเยซูเจ้าบนเขาตาบอร์ ณ บรูสนิชโนเย (Spaso-Preobrazhenskaya, สปัสสโคเย แขวงโวล็อกดา) สร้างด้วยหินอันสง่างาม ค.ศ. 1869–1884 ประจำการตั้งแต่วันที่ 13.09.1911</div>
+                <div style="margin-top:0.35rem;">📜 ก่อนหน้านั้น บาทหลวงโปรโคปีรับใช้เป็นเจ้าอาวาสวัดนิโคลาเยฟสกายา ณ ปุสโตรัมยานสกายา (แขวงคัดนิคอฟ) นานถึง 14 ปี และบวชสังฆานุกร ณ วัดอุสเปนสกายา (แขวงเกรียโซเวทส์) ในปี 1891</div>
               </div>
             </div>
 
+            <p style="font-size:0.83rem; line-height:1.55; margin-bottom:0.65rem;">
+              เส้นทางการรับใช้ศาสนาของบุตรสังฆานุกรมิคาอิลแห่งลัลสค์ ในแขวงตอนกลางของมณฑลโวล็อกดา:
+            </p>
+
             <ul style="font-size:0.82rem; line-height:1.6; margin:0 0 0.75rem 0; padding-left:1.15rem;">
-              <li><strong>บาทหลวง โปรโคปี มิคาอิโลวิช เตอร์คิน</strong> (เกิด 1868) — เจ้าอาวาสวัดปุสโตรัมยานสกายา นิโคลาเยฟสกายา และวัดสปัสสกายา</li>
-              <li>อุทิศตนเพื่อการศึกษาของเด็กในชนบทและได้รับรางวัลยกย่องจากสังฆมณฑลโวล็อกดา</li>
+              <li><strong>บาทหลวง โปรโคปี มิคาอิโลวิช เตอร์คิน</strong> (เกิดราว 1868 ณ เมืองลัลสค์) — สำเร็จการศึกษาจากวิทยาลัยศาสนศาสตร์โวล็อกดา ได้รับการตั้งชื่อตามคุณตา โปรโคปี บรึซกาลอฟ คหบดีใหญ่เมืองโซลวิเชกอดสค์</li>
+              <li><strong>วัดอุสเปนสกายา แชร์เน็ตสกายา (แขวงเกรียโซเวทส์):</strong> บวชเป็นสังฆานุกรเมื่อ 30.08.1891 (จดหมายเหตุสังฆมณฑลโวล็อกดา VEB 1891, ฉบับ 20, หน้า 305)</li>
+              <li><strong>วัดนิโคลาเยฟสกายา ปุสโตรัมยานสกายา (แขวงคัดนิคอฟ):</strong> บวชเป็นบาทหลวงในปี 1897 และดำรงตำแหน่งเจ้าอาวาสยาวนานถึง 14 ปี</li>
+              <li><strong>วัดสปัสโซ-เปรออบราเซนสกายา ณ บรูสนิชโนเย (แขวงโวล็อกดา):</strong> เป็นเจ้าอาวาสตั้งแต่วันที่ 13.09.1911 (VEB 1911, ฉบับ 19, หน้า 376; ฐานข้อมูล parishes.ru เลขที่ 7463)</li>
             </ul>
           </div>
           <div style="display:flex; flex-wrap:wrap; gap:0.35rem; border-top:1px dashed var(--border-color); padding-top:0.5rem;">
             <button class="pill-btn" onclick="focusPerson('I260'); switchTab('tree');" style="font-size:0.74rem;">🎯 บาทหลวงโปรโคปี</button>
+            <button class="pill-btn" onclick="focusPerson('I236'); switchTab('tree');" style="font-size:0.74rem;">🎯 บิดา สังฆานุกรมิคาอิล</button>
           </div>
         </div>
 
@@ -132,7 +142,7 @@ def get_thai_clergy_html():
         <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #4f46e533; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
-              <h3 style="margin:0; font-size:1.05rem; color:#4f46e5;">⛪ с. Ульяново и с. Кужба — อารามหลวงตรีเอกภาพเซนต์สเตฟาน</h3>
+              <h3 style="margin:0; font-size:1.05rem; color:#4f46e5;">⛪ с. Ульяново и с. Кужба — Троице-Стефановский монастырь</h3>
               <span style="background:#eef2ff; color:#4f46e5; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #c7d2fe;">ผู้สละชีพเพื่อศรัทธา ศตวรรษที่ 20</span>
             </div>
             <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">แขวงอุสต์-ซีโซลสค์และอุสต์-คุลอม • ลุ่มแม่น้ำวิเชกดะตอนบน • ค.ศ. 1865–1937</div>
@@ -155,7 +165,7 @@ def get_thai_clergy_html():
             <!-- ВЫДЕЛЕННЫЙ БЛОК: НОВОМУЧЕНИК МЕЛЕТИЙ -->
             <div style="background:linear-gradient(135deg, rgba(124,58,237,0.06), rgba(217,119,6,0.06)); border:1.5px solid rgba(124,58,237,0.25); border-radius:8px; padding:0.65rem 0.75rem; margin-bottom:0.75rem; display:flex; gap:0.75rem; align-items:flex-start;">
               <div onclick="openFullscreenScan('архив_сканы_первоисточников/Преподобномученик_Мелетий_Федюнев.jpg', 'Преподобномученик МЕЛЕТИЙ иеромонах', 'พระเหรัญญิกอารามหลวง ผู้ร่วมคดีความปี 1937 เดียวกันกับพระภิกษุวิตาลี เตอร์คิน')" title="คลิกเพื่อดูรูปขนาดใหญ่" style="cursor:pointer; flex:0 0 92px; text-align:center;">
-                <img src="архив_сканы_первоисточников/Преподобномученик_Мелетий_Федюнев.jpg" alt="พระมรณสักขี เมเลตี" style="width:92px; height:118px; object-fit:cover; border-radius:6px; border:1.5px solid #7c3aed; box-shadow:0 2px 5px rgba(0,0,0,0.15); display:block; transition:transform 0.2s; margin:0 auto;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
+                <img src="архив_сканы_первоисточников/Преподобномученик_Мелетий_Федюнев.jpg" alt="พระมรณสักขี เมเลตี" style="width:92px; height:118px; object-fit:cover; border-radius:6px; border:1.5px solid #7c3aed; box-shadow:0 2px 5px rgba(0,0,0,0.15); display:block; transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
                 <div style="font-size:0.64rem; font-weight:700; color:#6d28d9; margin-top:0.35rem; width:100%; line-height:1.2;">นักบุญเมเลตี<br><span style="font-size:0.60rem; font-weight:600; color:var(--text-muted);">(เฟดิวเนียฟ)</span></div>
               </div>
               <div style="font-size:0.79rem; line-height:1.5; color:var(--text-main);">
@@ -180,17 +190,24 @@ def get_thai_clergy_html():
         <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #05966933; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
-              <h3 style="margin:0; font-size:1.05rem; color:#059669;">⛪ หมู่บ้านอึบ — วัดพระเสด็จขึ้นสู่สวรรค์ (Holy Ascension)</h3>
-              <span style="background:#ecfdf5; color:#059669; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #a7f3d0;">ศาสนสถานบรรพชน (1827–1835)</span>
+              <h3 style="margin:0; font-size:1.05rem; color:#059669;">⛪ с. Ыб — Свято-Вознесенский храм (Holy Ascension)</h3>
+              <span style="background:#ecfdf5; color:#059669; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #a7f3d0;">วัดประจำตำบลของบรรพชน (1827–1835)</span>
             </div>
-            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">เนินเขา 7 ลูกริมแม่น้ำซิโซลา • ชุมชนตระกูล: ซิโนเวียฟ, โปเลชชิคอฟ, ปาซินคอฟ</div>
+            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">เนินเขา 7 ลูกริมแม่น้ำซิโซลา, แขวงอุสต์-ซีโซลสค์ • ชุมชนหลักของตระกูล: ซิโนเวียฟ, โปเลชชิคอฟ, ปาซินคอฟ</div>
 
             <div style="font-size:0.83rem; line-height:1.55; color:var(--text-main); margin-bottom:0.65rem;">
-              🏛️ วัดหินสีขาวตระหง่านบนยอดเขา สร้างเสร็จในปี ค.ศ. 1825–1835 เป็นศูนย์รวมพิธีกรรมทางศาสนาของบรรพบุรุษสายตระกูลซิโนเวียฟและโปเลชชิคอฟมาหลายชั่วอายุคน ทั้งการรับศีลจุ่มและการสมรสในทะเบียนประวัติ ค.ศ. 1834
+              🏛️ วัดหินสีขาวตระหง่านบนยอดเขา สร้างเสร็จในปี ค.ศ. 1825–1835 ตามแบบสถาปัตยกรรมคลาสสิกอันสง่างามของมุขมณฑลโวล็อกดา เป็นศูนย์รวมจิตใจและสถานที่ประกอบศีลศักดิ์สิทธิ์ของบรรพชนหลายชั่วรุ่น:
             </div>
+
+            <ul style="font-size:0.82rem; line-height:1.6; margin:0 0 0.75rem 0; padding-left:1.15rem;">
+              <li><strong>สายตระกูลซิโนเวียฟ (Zinoviev) แห่งหมู่บ้านโกเรลึย อึบ:</strong> สเตปัน ซิโนเวียฟ (เกิด 1790), คอนดราตี สเตปาโนวิช (เกิด 1813), กริกอรี คอนดราเตียวิช (เกิด 1860) และคุณทวด เซเมียน กริกอเรียวิช ซิโนเวียฟ (เกิด 27.01.1890 ทหารผ่านศึกสงครามโลกครั้งที่หนึ่ง) ล้วนประกอบพิธีศีลจุ่มและศีลสมรสในวัดนี้ตามบันทึกทะเบียนศาสนจักร ค.ศ. 1834 และ 1912</li>
+              <li><strong>สายตระกูลโปเลชชิคอฟ (Poleshchikov):</strong> แอนนา วาซิลเยฟนา โปเลชชิโควา (คุณทวด 6 ชั่วคน เกิด 1782)</li>
+              <li><strong>สายตระกูลปาซินคอฟ (Pasynkov):</strong> มาเรีย ปาซินโควา (คุณทวด 7 ชั่วคน เกิด 1761)</li>
+            </ul>
           </div>
           <div style="display:flex; flex-wrap:wrap; gap:0.35rem; border-top:1px dashed var(--border-color); padding-top:0.5rem;">
-            <button class="pill-btn" onclick="focusPerson('I50'); switchTab('tree');" style="font-size:0.74rem;">🎯 สายซิโนเวียฟ</button>
+            <button class="pill-btn" onclick="focusPerson('I50'); switchTab('tree');" style="font-size:0.74rem;">🎯 เซเมียน ซิโนเวียฟ</button>
+            <button class="pill-btn" onclick="focusPerson('I51'); switchTab('tree');" style="font-size:0.74rem;">🎯 กริกอรี ซิโนเวียฟ</button>
           </div>
         </div>
 
@@ -198,17 +215,23 @@ def get_thai_clergy_html():
         <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #d9770633; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
-              <h3 style="margin:0; font-size:1.05rem; color:#d97706;">⛪ หมู่บ้านลอยมา — วัดแม่พระบรรทม (Dormition)</h3>
-              <span style="background:#fffbeb; color:#d97706; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #fde68a;">ชุมชนตระกูลซูตคินและเชโคนิน</span>
+              <h3 style="margin:0; font-size:1.05rem; color:#d97706;">⛪ с. Лойма — วัดแม่พระบรรทม (Dormition of the Theotokos)</h3>
+              <span style="background:#fffbeb; color:#d97706; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #fde68a;">วัดประจำตำบลของตระกูลซูตคินและเชโคนิน</span>
             </div>
-            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">ลุ่มแม่น้ำลูซาตอนบน • เขตปรีลุซสกี</div>
+            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">ลุ่มแม่น้ำลูซาตอนบน, แขวงเวลีโคอุสติยูกและปรีลุซสกี • ค.ศ. 1748–1917+</div>
 
             <div style="font-size:0.83rem; line-height:1.55; color:var(--text-main); margin-bottom:0.65rem;">
-              🏛️ วัดประวัติศาสตร์แห่งแขวงลอยมา ศูนย์กลางศรัทธาของตระกูลซูตคินและเชโคนิน ซึ่งปรากฏในทะเบียนสำมะโนศาสนจักรตั้งแต่ ค.ศ. 1748 เป็นต้นมา
+              🏛️ วัดหินหลังใหญ่สร้างเสร็จในปี ค.ศ. 1812 แทนวัดไม้ดั้งเดิมที่ปรากฏในทะเบียนศาสนจักรมาตั้งแต่ปี ค.ศ. 1748 ศูนย์กลางศรัทธาของบรรพบุรุษสายใต้:
             </div>
+
+            <ul style="font-size:0.82rem; line-height:1.6; margin:0 0 0.75rem 0; padding-left:1.15rem;">
+              <li><strong>สายตระกูลซูตคิน (Syutkin):</strong> บรรพบุรุษสายตรง ยาคอฟ มักซีโมวิช ซูตคิน (เกิด 1756), อิวาน ยาคอฟเลวิช (เกิด 1789) และ เปลาเกีย อิวานอฟนา ซูตคินา (เกิด 1817, คุณทวด 5 ชั่วคน) ล้วนได้รับการจดบันทึกในทะเบียนศีลจุ่มและสำมะโนครัวของวัดลอยมาอย่างต่อเนื่อง</li>
+              <li><strong>สายตระกูลเชโคนิน (Shekhonin):</strong> บรรพชนสายคุณยาย เอมิเลีย มิคาอิโลฟนา เชโคนินา และคุณทวด ร้อยตรี มิคาอิล อฟานาซีเยวิช เชโคนิน (เกิด ค.ศ. 1909 วีรชนสงครามโลกครั้งที่สอง)</li>
+            </ul>
           </div>
           <div style="display:flex; flex-wrap:wrap; gap:0.35rem; border-top:1px dashed var(--border-color); padding-top:0.5rem;">
-            <button class="pill-btn" onclick="focusPerson('I21'); switchTab('tree');" style="font-size:0.74rem;">🎯 สายเชโคนิน</button>
+            <button class="pill-btn" onclick="focusPerson('I24'); switchTab('tree');" style="font-size:0.74rem;">🎯 เปลาเกีย ซูตคินา</button>
+            <button class="pill-btn" onclick="focusPerson('I21'); switchTab('tree');" style="font-size:0.74rem;">🎯 มิคาอิล เชโคนิน</button>
           </div>
         </div>
 
@@ -216,17 +239,24 @@ def get_thai_clergy_html():
         <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #05966933; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
-              <h3 style="margin:0; font-size:1.05rem; color:#059669;">⛪ เมืองอุสต์-วิม — อารามหลวงอัครเทวทูตมีคาเอลและหมู่วัดโบราณ</h3>
+              <h3 style="margin:0; font-size:1.05rem; color:#059669;">⛪ с. Усть-Вымь — อารามหลวงอัครเทวทูตมีคาเอลและหมู่วัดประวัติศาสตร์</h3>
               <span style="background:#ecfdf5; color:#059669; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #a7f3d0;">ศูนย์กลางศาสนาแห่งโคมิ (1380+)</span>
             </div>
             <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">จุดบรรจบแม่น้ำวิมและวิเชกดะ • เมืองหลวงโบราณแห่งเพิร์มดั้งเดิม</div>
 
             <div style="font-size:0.83rem; line-height:1.55; color:var(--text-main); margin-bottom:0.65rem;">
-              🏛️ ศูนย์กลางการเผยแผ่ศาสนาคริสต์ในดินแดนเหนือ ก่อตั้งโดยนักบุญสเตฟานแห่งเปียร์ม ในปี ค.ศ. 1380 บรรพบุรุษตระกูลเตอร์คินได้รับแต่งตั้งเป็นเจ้าหน้าที่ผู้แทนฝ่ายคดีและที่ดินของพระสังฆราช (Prikaznoy chelovek) ประจำสำนักสงฆ์อุสต์-วิมมาตั้งแต่ศตวรรษที่ 17
+              🏛️ ดินแดนศักดิ์สิทธิ์ศูนย์กลางการเผยแผ่ศาสนาคริสต์ในดินแดนเหนือ ก่อตั้งโดยนักบุญสเตฟานแห่งเปียร์ม ในปี ค.ศ. 1380 เป็นที่พำนักของสามมุขนายกศักดิ์สิทธิ์แห่งเพิร์ม (เกราซิม, ปิติริม และโยนาห์) บรรพบุรุษตระกูลเตอร์คินมีความผูกพันลึกซึ้ง:
             </div>
+
+            <ul style="font-size:0.82rem; line-height:1.6; margin:0 0 0.75rem 0; padding-left:1.15rem;">
+              <li><strong>ค.ศ. 1646:</strong> อฟานาซี เซเมโนวิช เตอร์คิน ดำรงตำแหน่งข้าราชการผู้แทนพระสังฆราช (Prikaznoy chelovek) ประจำสำนักสงฆ์และตำบลอุสต์-วิม ตามสำมะโนของอีวาน สเกรียบิน</li>
+              <li><strong>ค.ศ. 1688–1698:</strong> อีซาค อฟานาซีเยวิช เตอร์คิน ได้รับเลือกตั้งเป็นผู้พิพากษาประจำตำบลอุสต์-วิม (Vyborny sudya) ทำหน้าที่ตัดสินคดีความ ณ ศาลแขวงอุสต์-วิม</li>
+              <li><strong>ค.ศ. 1731:</strong> อะเลคซี อิวาโนวิช เตอร์คิน บรรพบุรุษสายตรง ได้รับการบันทึกในเอกสารศาสนจักรประจำแขวง</li>
+            </ul>
           </div>
           <div style="display:flex; flex-wrap:wrap; gap:0.35rem; border-top:1px dashed var(--border-color); padding-top:0.5rem;">
-            <button class="pill-btn" onclick="focusPerson('I274'); switchTab('tree');" style="font-size:0.74rem;">🎯 ต้นตระกูล ค.ศ. 1608</button>
+            <button class="pill-btn" onclick="focusPerson('I74'); switchTab('tree');" style="font-size:0.74rem;">🎯 อฟานาซี (1646)</button>
+            <button class="pill-btn" onclick="focusPerson('I75'); switchTab('tree');" style="font-size:0.74rem;">🎯 อีซาค (1688)</button>
           </div>
         </div>
 
@@ -234,17 +264,23 @@ def get_thai_clergy_html():
         <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #db277733; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
-              <h3 style="margin:0; font-size:1.05rem; color:#db2777;">⛪ หมู่บ้านลยาลี — วัดสมโภชพระคริสต์แสดงองค์ (Epiphany)</h3>
-              <span style="background:#fdf2f8; color:#db2777; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #fbcfe8;">ชุมชนตระกูลคารัคชีเยฟ</span>
+              <h3 style="margin:0; font-size:1.05rem; color:#db2777;">⛪ с. Ляли — วัดสมโภชพระคริสต์แสดงองค์ (Epiphany Church)</h3>
+              <span style="background:#fdf2f8; color:#db2777; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #fbcfe8;">ชุมชนตระกูลคารัคชีเยฟและชุกโตมอฟ</span>
             </div>
-            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">ลุ่มแม่น้ำวิมตอนบน • ปรากฏในบันทึก ค.ศ. 1586</div>
+            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">ลุ่มแม่น้ำวิมตอนบน, แขวงยาเรนสค์ • ปรากฏในบันทึกพงศาวดาร ค.ศ. 1586</div>
 
             <div style="font-size:0.83rem; line-height:1.55; color:var(--text-main); margin-bottom:0.65rem;">
-              🏛️ วัดประจำตำบลโบราณแห่งลุ่มแม่น้ำวิม ชุมชนหลักของตระกูลคารัคชีเยฟและสายตระกูลชุกโตมอฟ บรรพชนได้มีส่วนร่วมในการสร้างและทำนุบำรุงวัดไม้และวัดหินของตำบล
+              🏛️ วัดประจำตำบลโบราณแห่งลุ่มแม่น้ำวิม วัดไม้เดิมสร้างขึ้นในศตวรรษที่ 16 และวัดหินสองชั้นหลังใหญ่สร้างเสร็จในปี ค.ศ. 1845 เป็นศูนย์รวมจิตใจของบรรพชน:
             </div>
+
+            <ul style="font-size:0.82rem; line-height:1.6; margin:0 0 0.75rem 0; padding-left:1.15rem;">
+              <li><strong>สายตระกูลคารัคชีเยฟ (Karakchiev):</strong> ปรากฏในสมุดสำมะโน ค.ศ. 1678 และ 1710 ชุมชนบ้านเลขที่ 15 ประจำตำบลลยาลี บรรพบุรุษสายตรงของครอบครัว</li>
+              <li><strong>สายตระกูลชุกโตมอฟ (Shuktomov):</strong> บรรพชนสายคุณยายทวด แอนนา อเล็กซานดรอฟนา ชุกโตโมวา และคุณทวด อเล็กซานเดอร์ มิคาอิโลวิช ชุกโตมอฟ (เกิด 1911) ทหารผ่านศึกสงครามโลกครั้งที่สอง</li>
+            </ul>
           </div>
           <div style="display:flex; flex-wrap:wrap; gap:0.35rem; border-top:1px dashed var(--border-color); padding-top:0.5rem;">
-            <button class="pill-btn" onclick="focusPerson('I23'); switchTab('tree');" style="font-size:0.74rem;">🎯 สายชุกโตมอฟ</button>
+            <button class="pill-btn" onclick="focusPerson('I23'); switchTab('tree');" style="font-size:0.74rem;">🎯 อเล็กซานเดอร์ ชุกโตมอฟ</button>
+            <button class="pill-btn" onclick="focusPerson('I25'); switchTab('tree');" style="font-size:0.74rem;">🎯 สายคารัคชีเยฟ</button>
           </div>
         </div>
 
@@ -252,35 +288,47 @@ def get_thai_clergy_html():
         <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #0284c733; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
-              <h3 style="margin:0; font-size:1.05rem; color:#0284c7;">⛪ ตำบลอ็อควัด (คัตวัด) — วัดแม่พระเสด็จเข้าพระวิหาร</h3>
+              <h3 style="margin:0; font-size:1.05rem; color:#0284c7;">⛪ погост Оквад (Катвад) — วัดแม่พระเสด็จเข้าพระวิหาร (Vvedenskaya)</h3>
               <span style="background:#f0f9ff; color:#0284c7; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #bae6fd;">อู่กำเนิดตระกูล (ศตวรรษที่ 17)</span>
             </div>
-            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">ริมแม่น้ำวิเชกดะ • แขวงอ็อควัดสกายา</div>
+            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">ตำบลอ็อควัดสกายา, แขวงยาเรนสค์ • คริสต์ศตวรรษที่ 17–18</div>
 
-            <div style="font-size:0.83rem; line-height:1.55; color:var(--text-main); margin-bottom:0.65rem;">
-              🏛️ ศาสนสถานประจำชุมชนอ็อควัด แหล่งกำเนิดสาแหรกตระกูลเตอร์คินและคิซยูรอฟก่อนการอพยพตั้งถิ่นฐาน ณ โคควิทซี บรรพชนร่วมถวายที่ดินและเครื่องบูชาแด่วัดตามบันทึกการตรวจราชการ ค.ศ. 1646
-            </div>
+            <p style="font-size:0.83rem; line-height:1.55; color:var(--text-main); margin-bottom:0.65rem;">
+              ถิ่นกำเนิดดั้งเดิมและเก่าแก่ที่สุดของตระกูลเตอร์คินที่มีหลักฐานเป็นลายลักษณ์อักษรริมแม่น้ำวิเชกดะ:
+            </p>
+
+            <ul style="font-size:0.82rem; line-height:1.6; margin:0 0 0.75rem 0; padding-left:1.15rem;">
+              <li><strong>ปฐมบรรพบุรุษผู้สถาปนาวงศ์:</strong> อฟานาซี เซเมโนวิช เตอร์คิน (เกิดราว ค.ศ. 1600) — ข้าราชการผู้แทนฝ่ายอาณาจักรของพระสังฆราช (Prikaznoy chelovek) ตามสำมะโนปี ค.ศ. 1646 (RGADA ฟ. 1209, เล่ม 1080) ดูแลรายได้และที่ดินของพระอัครสังฆราชโวล็อกดาและเวลีโคเปียร์ม</li>
+              <li><strong>ผู้ช่วยพิธีกรรมและไวยาวัจกร:</strong> อีซาค อฟานาซีเยวิช เตอร์คิน (เกิด ค.ศ. 1635, อายุ 11 ปีในปี 1646) — ผู้ช่วยพิธีกรรมประจำวัดเวเดนสกายา (สมุดสำมะโน ค.ศ. 1678) และผู้ช่วยสวด (ค.ศ. 1696/97)</li>
+              <li><strong>บาทหลวง:</strong> บาทหลวง อัฟโตนอม ลาฟเรนเตียวิช เตอร์คิน (เกิดราว ค.ศ. 1690) — เจ้าอาวาสวัดเวเดนสกายา ในปี ค.ศ. 1731 และ 1736 (สมุดทะเบียน GAAF ฟ. 29, บันทึก VUTsA ฟ. 363)</li>
+            </ul>
           </div>
           <div style="display:flex; flex-wrap:wrap; gap:0.35rem; border-top:1px dashed var(--border-color); padding-top:0.5rem;">
-            <button class="pill-btn" onclick="focusPerson('I274'); switchTab('tree');" style="font-size:0.74rem;">🎯 ต้นตระกูล</button>
+            <button class="pill-btn" onclick="focusPerson('I74'); switchTab('tree');" style="font-size:0.74rem;">🎯 อฟานาซี</button>
+            <button class="pill-btn" onclick="focusPerson('I73'); switchTab('tree');" style="font-size:0.74rem;">🎯 อีซาค</button>
+            <button class="pill-btn" onclick="focusPerson('I245'); switchTab('tree');" style="font-size:0.74rem;">🎯 บาทหลวงอัฟโตนอม</button>
           </div>
         </div>
 
-        <!-- 10. ПАЛЕВИЦЫ, СЕРЁГОВО, ЯРЕНСК -->
+        <!-- 10. ПАЛЕВИЦЫ И ДР. -->
         <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #d9770633; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
-              <h3 style="margin:0; font-size:1.05rem; color:#d97706;">⛪ ปาเลวิทซี, เซเรโกโว, ยาเรนสค์</h3>
+              <h3 style="margin:0; font-size:1.05rem; color:#d97706;">⛪ Палевицы, Серёгово, Яренск</h3>
               <span style="background:#fffbeb; color:#d97706; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #fde68a;">ชุมชนศาสนจักรลุ่มน้ำวิเชกดะ</span>
             </div>
-            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">ศูนย์การปกครองและการค้าเกลือโบราณ</div>
+            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">ปาเลวิทซี, เซเรโกโว, เคเนียซโปโกสต์ และมหาวิหารแห่งเมืองยาเรนสค์</div>
 
-            <div style="font-size:0.83rem; line-height:1.55; color:var(--text-main); margin-bottom:0.65rem;">
-              🏛️ หมู่วัดวาอารามแห่งลุ่มน้ำวิเชกดะ ที่ซึ่งบรรพชนประกอบธุรกิจการค้า ขนส่งเกลือ และรับราชการแผ่นดินในฐานะผู้แทนชุมชนและผู้ตรวจราชการศาลศาสนจักร
-            </div>
+            <ul style="font-size:0.82rem; line-height:1.6; margin:0 0 0.75rem 0; padding-left:1.15rem;">
+              <li><strong>หมู่บ้านปาเลวิทซี (วัดโปครอฟสกายา):</strong> บาทหลวง อะเลคซี ติโมเฟเยวิช เตอร์คิน (รับใช้ ค.ศ. 1734–1758, ภรรยา มาโตรนา, บุตร มิคาอิล, อันเดรย์, มาร์ฟา); ผู้ช่วยพิธีกรรม อีวาน เปโตรวิช เตอร์คิน (ค.ศ. 1747)</li>
+              <li><strong>หมู่บ้านเซเรโกโว และ เคเนียซโปโกสต์:</strong> พลสวดและผู้ช่วยพิธีกรรม อีวาน เยลิเซเยวิช เตอร์คิน (ค.ศ. 1802–1815+)</li>
+              <li><strong>เมืองยาเรนสค์ (มหาวิหารสปัสโซ-เปรออบราเซนสกี):</strong> ผู้ดูแลรักษามหาวิหาร มิคาอิล อะเลคเซเยวิช เตอร์คิน (ตั้งแต่ปี 1755, ภรรยา มาร์ฟา คอซมินิชนา อิปาโตวา)</li>
+            </ul>
           </div>
           <div style="display:flex; flex-wrap:wrap; gap:0.35rem; border-top:1px dashed var(--border-color); padding-top:0.5rem;">
-            <button class="pill-btn" onclick="focusPerson('I19'); switchTab('tree');" style="font-size:0.74rem;">🎯 สายเตอร์คิน</button>
+            <button class="pill-btn" onclick="focusPerson('I239'); switchTab('tree');" style="font-size:0.74rem;">🎯 บาทหลวงอะเลคซี</button>
+            <button class="pill-btn" onclick="focusPerson('I238'); switchTab('tree');" style="font-size:0.74rem;">🎯 อีวาน</button>
+            <button class="pill-btn" onclick="focusPerson('I241'); switchTab('tree');" style="font-size:0.74rem;">🎯 มิคาอิล</button>
           </div>
         </div>
 
