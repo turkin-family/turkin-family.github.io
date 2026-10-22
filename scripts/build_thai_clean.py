@@ -2,8 +2,14 @@
 # -*- coding: utf-8 -*-
 """
 scripts/build_thai_clean.py
-Generates thai.html from index.html with idiomatic Thai translation
-for the "Places and Roots" (ถิ่นกำเนิดและสายตระกูล) section.
+Generates thai.html from index.html with complete idiomatic Thai translation
+for the entire "Places and Roots" (ถิ่นกำเนิดและสายตระกูล) section:
+1. About Family (info-overview)
+2. WWII & WWI Heroes (info-heroes)
+3. Orthodox Clergy & Churches (info-clergy)
+4. 17th Century Court Battles & Civil Service (info-court-cases)
+5. Historical Geography of 14 Villages (info-geography)
+6. Onomastics of 18 Surnames (info-surnames)
 """
 
 import sys
@@ -11,12 +17,36 @@ import os
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from scripts.thai_translations_all import THAI_TRANSLATIONS_ALL
+from scripts.thai_translations_heroes import get_thai_heroes_html
+from scripts.thai_translations_clergy import get_thai_clergy_html
+from scripts.thai_translations_court import get_thai_court_html
 
 def build_thai_file():
     with open('index.html', 'r', encoding='utf-8') as f:
         html = f.read()
 
-    # 1. Build Thai Geography Cards
+    # 1. Overview Card
+    thai_overview_card = """    <!-- OVERVIEW -->
+    <div class="info-card" id="info-overview">
+      <h2>🌳 เกี่ยวกับครอบครัวและโครงสร้างสาแหรกตระกูล</h2>
+      <p>สาแหรกตระกูลนี้รวบรวมขึ้นจากเอกสารลายลักษณ์อักษรต้นฉบับโบราณ ทะเบียนประวัติครอบครัว ทะเบียนการเกิด-การสมรส-การเสียชีวิตของศาสนจักร (Metric Books) และสำมะโนประชากรทางการ (Revision Lists) ย้อนรอยตั้งแต่คริสต์ศตวรรษที่ 17 ถึง 20 โดยจุดเริ่มต้นของสาแหรกนี้ (Proband) คือ <strong>ด.ช. นิโคไล วยาเชสลาโววิช เตอร์คิน (Nikolai Turkin)</strong> เกิดเมื่อปี พ.ศ. 2567 ณ อำเภอเมือง จังหวัดชุมพร ประเทศไทย</p>
+      <p>สาแหรกตระกูลนี้เป็นการหลอมรวมสองสายธารประวัติศาสตร์ วัฒนธรรม และภูมิศาสตร์อันยิ่งใหญ่ที่อยู่ห่างไกลกันนับหมื่นกิโลเมตร เข้าเป็นหนึ่งเดียวในครอบครัว:</p>
+      <ul style="line-height:1.7;">
+        <li><strong>สายตระกูลทางฝั่งมารดา (ประเทศไทย แถบชายฝั่งอ่าวไทย):</strong> สายนามสกุลเก่าแก่แห่งเมืองชุมพร ได้แก่ <strong>พิทักษ์ (Pithak)</strong>, <strong>ป่าไม้ทอง (Pamaitong)</strong> และ <strong>ชำนาญการ (Chamniankan)</strong> โดยมีคุณทวดสาย ป่าไม้ทอง (เกิด พ.ศ. 2462), คุณยายดวงเดือน ป่าไม้ทอง (เกิด พ.ศ. 2504) และคุณแม่ปริตา (พิทักษ์) เตอร์คิน (เกิด พ.ศ. 2540)</li>
+        <li><strong>สายตระกูลทางฝั่งบิดา (สาธารณรัฐโคมิ สหพันธรัฐรัสเซีย ดินแดนทางตอนเหนือ):</strong> สายตระกูลดั้งเดิมของชนชาติโคมิ-ซีเรียน (Komi-Zyryan) 4 สายหลักจากลุ่มแม่น้ำวิเชกดะและวิม สายเลือดสายตรงฝ่ายชายของตระกูลเตอร์คินได้รับการยืนยันด้วยเอกสารประวัติศาสตร์ของรัฐรัสเซียอย่างต่อเนื่องยาวนานถึง 15 ชั่วคน ย้อนกลับไปถึงปี ค.ศ. 1608 (พ.ศ. 2151 ในรัชสมัยกรุงศรีอยุธยา รวมกว่า 416 ปีแห่งประวัติศาสตร์ที่มีหลักฐานยืนยัน) พร้อมด้วยสายตระกูลเชโคนิน, ชุกโตมอฟ, ซิโนเวียฟ และเลทอฟ ซึ่งสืบสาวกลับไปได้ถึงคริสต์ศตวรรษที่ 17–18</li>
+      </ul>
+    </div>"""
+
+    # 2. Heroes Card
+    thai_heroes_card = get_thai_heroes_html()
+
+    # 3. Clergy Card
+    thai_clergy_card = get_thai_clergy_html()
+
+    # 4. Court Battles & State Service Card
+    thai_court_card = get_thai_court_html()
+
+    # 5. Build Thai Geography Cards (14 villages)
     geo = THAI_TRANSLATIONS_ALL["geo"]
     geo_keys = [
         'yb', 'gorely_yb', 'loyma', 'erozdino', 'vogvazdino', 'lyali', 'paltydor',
@@ -63,7 +93,17 @@ def build_thai_file():
 
     new_geo_cards_str = '\n\n'.join(new_geo_cards)
 
-    # 2. Build Thai Surnames Cards
+    thai_geography_card = f"""    <!-- GEOGRAPHY SECTION -->
+    <div class="info-card" id="info-geography">
+      <h2>{THAI_TRANSLATIONS_ALL["geo_heading"]}</h2>
+      <p style="color:var(--text-muted); margin-bottom:1.25rem;">{THAI_TRANSLATIONS_ALL["geo_lead"]}</p>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">
+{new_geo_cards_str}
+      </div>
+    </div>"""
+
+    # 6. Build Thai Surnames Cards (18 surnames)
     sur = THAI_TRANSLATIONS_ALL["sur"]
     sur_keys = [
         ('turkin', '#2563eb'), ('letov', '#2563eb'), ('yaranov', '#2563eb'), ('sizev', '#2563eb'),
@@ -87,28 +127,6 @@ def build_thai_file():
 
     new_sur_cards_str = '\n\n'.join(new_sur_cards)
 
-    # 3. Construct entire 100% Thai view-info section
-    thai_overview_card = """    <!-- OVERVIEW -->
-    <div class="info-card" id="info-overview">
-      <h2>🌳 เกี่ยวกับครอบครัวและโครงสร้างสาแหรกตระกูล</h2>
-      <p>สาแหรกตระกูลนี้รวบรวมขึ้นจากเอกสารลายลักษณ์อักษรต้นฉบับโบราณ ทะเบียนประวัติครอบครัว ทะเบียนการเกิด-การสมรส-การเสียชีวิตของศาสนจักร (Metric Books) และสำมะโนประชากรทางการ (Revision Lists) ย้อนรอยตั้งแต่คริสต์ศตวรรษที่ 17 ถึง 20 โดยจุดเริ่มต้นของสาแหรกนี้ (Proband) คือ <strong>ด.ช. นิโคไล วยาเชสลาโววิช เตอร์คิน (Nikolai Turkin)</strong> เกิดเมื่อปี พ.ศ. 2567 ณ อำเภอเมือง จังหวัดชุมพร ประเทศไทย</p>
-      <p>สาแหรกตระกูลนี้เป็นการหลอมรวมสองสายธารประวัติศาสตร์ วัฒนธรรม และภูมิศาสตร์อันยิ่งใหญ่ที่อยู่ห่างไกลกันนับหมื่นกิโลเมตร เข้าเป็นหนึ่งเดียวในครอบครัว:</p>
-      <ul style="line-height:1.7;">
-        <li><strong>สายตระกูลทางฝั่งมารดา (ประเทศไทย แถบชายฝั่งอ่าวไทย):</strong> สายนามสกุลเก่าแก่แห่งเมืองชุมพร ได้แก่ <strong>พิทักษ์ (Pithak)</strong>, <strong>ป่าไม้ทอง (Pamaitong)</strong> และ <strong>ชำนาญการ (Chamniankan)</strong> โดยมีคุณทวดสาย ป่าไม้ทอง (เกิด พ.ศ. 2462), คุณยายดวงเดือน ป่าไม้ทอง (เกิด พ.ศ. 2504) และคุณแม่ปริตา (พิทักษ์) เตอร์คิน (เกิด พ.ศ. 2540)</li>
-        <li><strong>สายตระกูลทางฝั่งบิดา (สาธารณรัฐโคมิ สหพันธรัฐรัสเซีย ดินแดนทางตอนเหนือ):</strong> สายตระกูลดั้งเดิมของชนชาติโคมิ-ซีเรียน (Komi-Zyryan) 4 สายหลักจากลุ่มแม่น้ำวิเชกดะและวิม สายเลือดสายตรงฝ่ายชายของตระกูลเตอร์คินได้รับการยืนยันด้วยเอกสารประวัติศาสตร์ของรัฐรัสเซียอย่างต่อเนื่องยาวนานถึง 15 ชั่วคน ย้อนกลับไปถึงปี ค.ศ. 1608 (พ.ศ. 2151 ในรัชสมัยกรุงศรีอยุธยา รวมกว่า 416 ปีแห่งประวัติศาสตร์ที่มีหลักฐานยืนยัน) พร้อมด้วยสายตระกูลเชโคนิน, ชุกโตมอฟ, ซิโนเวียฟ และเลทอฟ ซึ่งสืบสาวกลับไปได้ถึงคริสต์ศตวรรษที่ 17–18</li>
-      </ul>
-    </div>"""
-
-    thai_geography_card = f"""    <!-- GEOGRAPHY SECTION -->
-    <div class="info-card" id="info-geography">
-      <h2>{THAI_TRANSLATIONS_ALL["geo_heading"]}</h2>
-      <p style="color:var(--text-muted); margin-bottom:1.25rem;">{THAI_TRANSLATIONS_ALL["geo_lead"]}</p>
-
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">
-{new_geo_cards_str}
-      </div>
-    </div>"""
-
     thai_surnames_card = f"""    <!-- ONOMASTICS AND SURNAMES SECTION -->
     <div class="info-card" id="info-surnames">
       <h2>{THAI_TRANSLATIONS_ALL["sur_heading"]}</h2>
@@ -119,23 +137,40 @@ def build_thai_file():
       </div>
     </div>"""
 
-    thai_bottom_bar = """    <!-- BOTTOM ANCHOR NAVIGATION BAR FOR PLACES & ROOTS -->
+    # 7. Complete 6-item Bottom Anchor Bar (Thai)
+    thai_bottom_bar = """    <!-- BOTTOM ANCHOR NAVIGATION BAR FOR PLACES & ROOTS (THAI) -->
     <nav class="info-bottom-bar-container" id="infoBottomBar" aria-label="นำทางในหมวดหมู่">
       <div class="info-bottom-bar">
         <a href="#info-overview" class="info-bottom-pill active" onclick="scrollToAnchor(event, 'info-overview')">
           <span>🌳</span> <span class="pill-lbl-full">เกี่ยวกับตระกูล</span><span class="pill-lbl-short">ตระกูล</span>
         </a>
+        <a href="#info-heroes" class="info-bottom-pill" onclick="scrollToAnchor(event, 'info-heroes')">
+          <span>🎖️</span> <span class="pill-lbl-full">วีรชนสงคราม</span><span class="pill-lbl-short">วีรชน</span>
+        </a>
+        <a href="#info-clergy" class="info-bottom-pill" onclick="scrollToAnchor(event, 'info-clergy')">
+          <span>⛪</span> <span class="pill-lbl-full">คณะสงฆ์</span><span class="pill-lbl-short">วัดวาอาราม</span>
+        </a>
+        <a href="#info-court-cases" class="info-bottom-pill" onclick="scrollToAnchor(event, 'info-court-cases')">
+          <span>⚖️</span> <span class="pill-lbl-full">การรับราชการ</span><span class="pill-lbl-short">ราชการ</span>
+        </a>
         <a href="#info-geography" class="info-bottom-pill" onclick="scrollToAnchor(event, 'info-geography')">
-          <span>🗺️</span> <span class="pill-lbl-full">ถิ่นกำเนิด (14 ดินแดน)</span><span class="pill-lbl-short">ถิ่นกำเนิด</span>
+          <span>🗺️</span> <span class="pill-lbl-full">ถิ่นกำเนิด</span><span class="pill-lbl-short">14 ดินแดน</span>
         </a>
         <a href="#info-surnames" class="info-bottom-pill" onclick="scrollToAnchor(event, 'info-surnames')">
-          <span>🧬</span> <span class="pill-lbl-full">สายตระกูล (18 นามสกุล)</span><span class="pill-lbl-short">นามสกุล</span>
+          <span>🧬</span> <span class="pill-lbl-full">สายตระกูล</span><span class="pill-lbl-short">18 นามสกุล</span>
         </a>
       </div>
     </nav>"""
 
+    # 8. Assemble entire Thai view-info
     new_view_info = f"""<div id="view-info" class="view-section active">
 {thai_overview_card}
+
+{thai_heroes_card}
+
+{thai_clergy_card}
+
+{thai_court_card}
 
 {thai_geography_card}
 
@@ -144,7 +179,7 @@ def build_thai_file():
 {thai_bottom_bar}
   </div>"""
 
-    # 4. Safely replace view-info BEFORE any other string manipulations
+    # 9. Safely replace view-info BEFORE any other string manipulations
     start_tag = '<div id="view-info" class="view-section">'
     end_tag = '<!-- TAB 6: SOURCES AND BIBLIOGRAPHY VIEW -->'
     start_info = html.find(start_tag)
@@ -154,7 +189,7 @@ def build_thai_file():
     # Replace view-info cleanly
     html = html[:start_info] + new_view_info + '\n\n  ' + html[end_info:]
 
-    # 5. Page Title and Google Font Sarabun
+    # 10. Page Title and Google Font Sarabun
     thai_font_links = """  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -174,7 +209,7 @@ def build_thai_file():
         '>ลำดับญาติ 20 ชั่วคน • 332 บุคคล<'
     )
 
-    # 6. Header and Drawer language buttons (switch back to Russian)
+    # 11. Header and Drawer language buttons (switch back to Russian)
     desktop_th_btn = '<a href="thai.html" class="pill-btn" style="text-decoration:none; font-weight:600; font-size:0.78rem; padding:0.25rem 0.6rem; background:rgba(16,185,129,0.08); border-color:#10b981; color:#059669;" title="หน้าภาษาไทย">🇹🇭 ภาษาไทย</a>'
     desktop_ru_btn = '<a href="index.html" class="pill-btn" style="text-decoration:none; font-weight:600; font-size:0.78rem; padding:0.25rem 0.6rem; background:rgba(37,99,235,0.08); border-color:#2563eb; color:#2563eb;" title="กลับไปหน้าภาษารัสเซีย">🇷🇺 Версия на русском</a>'
     html = html.replace(desktop_th_btn, desktop_ru_btn)
@@ -183,7 +218,7 @@ def build_thai_file():
     mobile_ru_btn = '<a href="index.html" class="pill-btn" style="text-decoration:none; font-size:0.78rem; padding:0.3rem 0.7rem; color:#2563eb; border-color:#2563eb; background:rgba(37,99,235,0.08);" title="กลับไปหน้าภาษารัสเซีย">🇷🇺 Русский</a>'
     html = html.replace(mobile_th_btn, mobile_ru_btn)
 
-    # 7. Nav tabs translation & setting default active tab to 'info'
+    # 12. Nav tabs translation & setting default active tab to 'info'
     html = html.replace(
         '<button class="nav-tab active" onclick="switchTab(\'tree\')">🌿 Древо</button>',
         '<button class="nav-tab" onclick="switchTab(\'tree\')">🌿 สาแหรกต้นไม้</button>'
@@ -230,10 +265,10 @@ def build_thai_file():
     html = html.replace('<span>☰</span> <span>Меню</span>', '<span>☰</span> <span>เมนู</span>')
     html = html.replace('placeholder="Поиск персоны..."', 'placeholder="ค้นหาบุคคลในตระกูล..."')
 
-    # 8. Add Thai body font styling
+    # 13. Add Thai body font styling
     html = html.replace('<body>', '<body style="font-family: \'Sarabun\', -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, sans-serif; line-height: 1.6;">')
 
-    # 9. Set default tab to 'info' on load if no specific hash provided
+    # 14. Set default tab to 'info' on load if no specific hash provided
     html = html.replace(
         'setupHashRouting();\n}',
         'setupHashRouting();\n  if (!window.location.hash) switchTab(\'info\');\n}'
@@ -242,7 +277,7 @@ def build_thai_file():
     with open('thai.html', 'w', encoding='utf-8') as f:
         f.write(html)
 
-    print('SUCCESS: thai.html generated with 100% pure Thai content!')
+    print('SUCCESS: thai.html generated with 100% complete Thai version of all 6 sections!')
 
 if __name__ == '__main__':
     build_thai_file()
