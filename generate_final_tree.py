@@ -3422,8 +3422,13 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             <h3 style="margin:0 0 0.5rem 0; font-size:1.02rem; color:var(--text-main); font-weight:700; line-height:1.35;">
               Дело о захвате дворовой земли, побоях и брани: челобитная священника Гавриила Костромина на соседа Степана Ефимьева, Афанасия и Василия Туркиных
             </h3>
-            <div style="font-size:0.77rem; background:rgba(37,99,235,0.06); border-left:3px solid #2563eb; padding:0.4rem 0.6rem; border-radius:0 4px 4px 0; margin-bottom:0.6rem; color:var(--text-main); line-height:1.45;">
-              <strong>⚖️ Стороны дела:</strong> Истец: введенский поп Гавриил Костромин • Ответчики: 1) сосед Степан Ефимьев (завладевший частью дворовой земли священника); 2) Афанасий Туркин и Василий Туркин (бранившие и бившие священника) • Суд: Архиепископ Вологодский Маркелл.
+            <div style="font-size:0.77rem; background:rgba(37,99,235,0.06); border-left:3px solid #2563eb; padding:0.4rem 0.6rem; border-radius:0 4px 4px 0; margin-bottom:0.6rem; color:var(--text-main); line-height:1.5;">
+              <strong>⚖️ Стороны дела:</strong>
+              <div style="margin-top:0.25rem; padding-left:0.2rem; display:flex; flex-direction:column; gap:0.18rem;">
+                <div>• <strong>Истец:</strong> введенский поп Гавриил Костромин</div>
+                <div>• <strong>Ответчики:</strong> 1) сосед Степан Ефимьев (завладевший частью дворовой земли священника); 2) Афанасий Туркин и Василий Туркин (бранившие и бившие священника)</div>
+                <div>• <strong>Суд:</strong> Архиепископ Вологодский Маркелл</div>
+              </div>
             </div>
             <div style="font-size:0.8rem; font-style:italic; background:var(--bg-surface); border:1px dashed #d9770666; padding:0.5rem 0.75rem; border-radius:6px; margin-bottom:0.65rem; color:#b45309; line-height:1.45;">
               «...на соседа Степана Ефимьева, завладевшего частью его дворовой земли, и на Афанасия и Василия Туркиных, которые бранили и били его...»
@@ -3467,8 +3472,13 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             <h3 style="margin:0 0 0.5rem 0; font-size:1.02rem; color:var(--text-main); font-weight:700; line-height:1.35;">
               Волостной мирской долг: иск приказного дьяка Палицына на 75 рублей серебром
             </h3>
-            <div style="font-size:0.77rem; background:rgba(37,99,235,0.06); border-left:3px solid #2563eb; padding:0.4rem 0.6rem; border-radius:0 4px 4px 0; margin-bottom:0.6rem; color:var(--text-main); line-height:1.45;">
-              <strong>⚖️ Стороны дела:</strong> Истец: приказной дьяк Андрей Палицын • Ответчики: Афанасий Туркин, Опара Иванов, Козьма Пономарев и другие усть-вымские и оквадские крестьяне • Суд: Архиепископ Вологодский Маркелл.
+            <div style="font-size:0.77rem; background:rgba(37,99,235,0.06); border-left:3px solid #2563eb; padding:0.4rem 0.6rem; border-radius:0 4px 4px 0; margin-bottom:0.6rem; color:var(--text-main); line-height:1.5;">
+              <strong>⚖️ Стороны дела:</strong>
+              <div style="margin-top:0.25rem; padding-left:0.2rem; display:flex; flex-direction:column; gap:0.18rem;">
+                <div>• <strong>Истец:</strong> приказной дьяк Андрей Палицын</div>
+                <div>• <strong>Ответчики:</strong> Афанасий Туркин, Опара Иванов, Козьма Пономарев и другие усть-вымские и оквадские крестьяне</div>
+                <div>• <strong>Суд:</strong> Архиепископ Вологодский Маркелл</div>
+              </div>
             </div>
             <div style="font-size:0.8rem; font-style:italic; background:var(--bg-surface); border:1px dashed #d9770666; padding:0.5rem 0.75rem; border-radius:6px; margin-bottom:0.65rem; color:#b45309; line-height:1.45;">
               «...доправить с оквадских и усть-вымских крестьян мирского долгу 75 рублев по заемной кабале, занятых на мирские расходы и не отданных в срок...»
@@ -3502,8 +3512,13 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             <h3 style="margin:0 0 0.5rem 0; font-size:1.02rem; color:var(--text-main); font-weight:700; line-height:1.35;">
               Сургутская одиссея Архипа Туркина: сибирский соболиный промысел и кабалы на 347 рублей
             </h3>
-            <div style="font-size:0.77rem; background:rgba(37,99,235,0.06); border-left:3px solid #2563eb; padding:0.4rem 0.6rem; border-radius:0 4px 4px 0; margin-bottom:0.6rem; color:var(--text-main); line-height:1.45;">
-              <strong>⚖️ Стороны дела:</strong> Истец: Архип Афанасьевич Туркин • Ответчик: Афанасий Семёнович Туркин (отец) • Суд: Архиепископ Вологодский и Великопермский Маркелл.
+            <div style="font-size:0.77rem; background:rgba(37,99,235,0.06); border-left:3px solid #2563eb; padding:0.4rem 0.6rem; border-radius:0 4px 4px 0; margin-bottom:0.6rem; color:var(--text-main); line-height:1.5;">
+              <strong>⚖️ Стороны дела:</strong>
+              <div style="margin-top:0.25rem; padding-left:0.2rem; display:flex; flex-direction:column; gap:0.18rem;">
+                <div>• <strong>Истец:</strong> Архип Афанасьевич Туркин</div>
+                <div>• <strong>Ответчик:</strong> Афанасий Семёнович Туркин (отец)</div>
+                <div>• <strong>Суд:</strong> Архиепископ Вологодский и Великопермский Маркелл</div>
+              </div>
             </div>
             <div style="font-size:0.8rem; font-style:italic; background:var(--bg-surface); border:1px dashed #d9770666; padding:0.5rem 0.75rem; border-radius:6px; margin-bottom:0.65rem; color:#b45309; line-height:1.45;">
               «...на Оби в Сургуте на переезде отнял у меня кабалы на триста на сорок на семь рублев... а жену и детей выбил вон и косою хотел срубить...»
@@ -3539,8 +3554,12 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             <h3 style="margin:0 0 0.5rem 0; font-size:1.02rem; color:var(--text-main); font-weight:700; line-height:1.35;">
               «Все ему прощаю»: отпускная отпись на выдел имущества и отказ Архипа кормить отца
             </h3>
-            <div style="font-size:0.77rem; background:rgba(37,99,235,0.06); border-left:3px solid #2563eb; padding:0.4rem 0.6rem; border-radius:0 4px 4px 0; margin-bottom:0.6rem; color:var(--text-main); line-height:1.45;">
-              <strong>⚖️ Стороны дела:</strong> Афанасий Семёнович Туркин и сын Архип Туркин • Орган: Усть-Вымский духовный заказчик Михаил Константинов.
+            <div style="font-size:0.77rem; background:rgba(37,99,235,0.06); border-left:3px solid #2563eb; padding:0.4rem 0.6rem; border-radius:0 4px 4px 0; margin-bottom:0.6rem; color:var(--text-main); line-height:1.5;">
+              <strong>⚖️ Стороны дела:</strong>
+              <div style="margin-top:0.25rem; padding-left:0.2rem; display:flex; flex-direction:column; gap:0.18rem;">
+                <div>• <strong>Стороны:</strong> Афанасий Семёнович Туркин и сын Архип Туркин</div>
+                <div>• <strong>Орган:</strong> Усть-Вымский духовный заказчик Михаил Константинов</div>
+              </div>
             </div>
             <div style="font-size:0.8rem; font-style:italic; background:var(--bg-surface); border:1px dashed #d9770666; padding:0.5rem 0.75rem; border-radius:6px; margin-bottom:0.65rem; color:#b45309; line-height:1.45;">
               «...дал отпись сыну Архипу, благословил жить особо, дал корову, 100 аршин холста и крашенины и 15 руб. денег... а кормить отца отказался и ушел в Сибирь...»
@@ -3575,8 +3594,13 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             <h3 style="margin:0 0 0.5rem 0; font-size:1.02rem; color:var(--text-main); font-weight:700; line-height:1.35;">
               Челобитная патриарха Афанасия: жалоба на крестьянку Фёклу Жужгину (о дворе и земле) и на сыновей Архипа и Исаака (об отказе в кормлении и удержании денег)
             </h3>
-            <div style="font-size:0.77rem; background:rgba(37,99,235,0.06); border-left:3px solid #2563eb; padding:0.4rem 0.6rem; border-radius:0 4px 4px 0; margin-bottom:0.6rem; color:var(--text-main); line-height:1.45;">
-              <strong>⚖️ Стороны дела:</strong> Истец: крестьянин с Оквада Афанасий Туркин (~70 лет) • Ответчики: 1) крестьянка Фёкла М. Жужгина (незаконно владеющая двором и землей); 2) сыновья Архип и Исаак Туркины (которые не кормят отца и взяли у него деньги) • Суд: Архиепископ Вологодский Симон.
+            <div style="font-size:0.77rem; background:rgba(37,99,235,0.06); border-left:3px solid #2563eb; padding:0.4rem 0.6rem; border-radius:0 4px 4px 0; margin-bottom:0.6rem; color:var(--text-main); line-height:1.5;">
+              <strong>⚖️ Стороны дела:</strong>
+              <div style="margin-top:0.25rem; padding-left:0.2rem; display:flex; flex-direction:column; gap:0.18rem;">
+                <div>• <strong>Истец:</strong> крестьянин с Оквада Афанасий Туркин (~70 лет)</div>
+                <div>• <strong>Ответчики:</strong> 1) крестьянка Фёкла М. Жужгина (незаконно владеющая двором и землей); 2) сыновья Архип и Исаак Туркины (которые не кормят отца и взяли у него деньги)</div>
+                <div>• <strong>Суд:</strong> Архиепископ Вологодский Симон</div>
+              </div>
             </div>
             <div style="font-size:0.8rem; font-style:italic; background:var(--bg-surface); border:1px dashed #d9770666; padding:0.5rem 0.75rem; border-radius:6px; margin-bottom:0.65rem; color:#b45309; line-height:1.45;">
               «...на крестьянку Феклу Михайлову дочь Жужгину, незаконно владеющую двором и землей, и на детей его, Архипа и Исака, которые не кормят его и взяли у него деньги...»
@@ -3609,8 +3633,14 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             <h3 style="margin:0 0 0.5rem 0; font-size:1.02rem; color:var(--text-main); font-weight:700; line-height:1.35;">
               Государева служба: конвой боярина Артамона Матвеева в Пустозерск целовальником Кириллом Туркиным
             </h3>
-            <div style="font-size:0.77rem; background:rgba(37,99,235,0.06); border-left:3px solid #2563eb; padding:0.4rem 0.6rem; border-radius:0 4px 4px 0; margin-bottom:0.6rem; color:var(--text-main); line-height:1.45;">
-              <strong>⚖️ Должностное лицо:</strong> Земский целовальник Кирилл Афанасьевич Туркин (Усть-Вымь, Вожема, Шежамка) • Опальные узники: «великий государев ближний боярин» А.С. Матвеев с сыном Андреем • Конвоир: стольник Гавриил Тухачевский • Ямщики: Яков Одинцов, Семён Малафеев.
+            <div style="font-size:0.77rem; background:rgba(37,99,235,0.06); border-left:3px solid #2563eb; padding:0.4rem 0.6rem; border-radius:0 4px 4px 0; margin-bottom:0.6rem; color:var(--text-main); line-height:1.5;">
+              <strong>⚖️ Должностное лицо и участники миссии:</strong>
+              <div style="margin-top:0.25rem; padding-left:0.2rem; display:flex; flex-direction:column; gap:0.18rem;">
+                <div>• <strong>Земский целовальник:</strong> Кирилл Афанасьевич Туркин (Усть-Вымь, Вожема, Шежамка)</div>
+                <div>• <strong>Опальные узники:</strong> «великий государев ближний боярин» А.С. Матвеев с сыном Андреем</div>
+                <div>• <strong>Конвоир:</strong> стольник Гавриил Тухачевский</div>
+                <div>• <strong>Ямщики:</strong> Яков Одинцов, Семён Малафеев</div>
+              </div>
             </div>
             <div style="font-size:0.8rem; font-style:italic; background:var(--bg-surface); border:1px dashed #d9770666; padding:0.5rem 0.75rem; border-radius:6px; margin-bottom:0.65rem; color:#b45309; line-height:1.45;">
               «...для проезду боярина Артамона Сергеевича Матвеева наняли ямских 4 лошади с проводниками до Пустозерского острогу...»
@@ -3645,8 +3675,13 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             <h3 style="margin:0 0 0.5rem 0; font-size:1.02rem; color:var(--text-main); font-weight:700; line-height:1.35;">
               Миссия в Москву: посыльщик Исаак Туркин и доставка военных податей со 144 дворов
             </h3>
-            <div style="font-size:0.77rem; background:rgba(37,99,235,0.06); border-left:3px solid #2563eb; padding:0.4rem 0.6rem; border-radius:0 4px 4px 0; margin-bottom:0.6rem; color:var(--text-main); line-height:1.45;">
-              <strong>⚖️ Посыльщик:</strong> Исаак Туркин • Приемщики в Москве: казенные дьяки Еремей Глызин, Григорий Козлов, Григорий Бутин, Затей Бахматов • Цель: сбор на ратных людей Русско-турецкой войны.
+            <div style="font-size:0.77rem; background:rgba(37,99,235,0.06); border-left:3px solid #2563eb; padding:0.4rem 0.6rem; border-radius:0 4px 4px 0; margin-bottom:0.6rem; color:var(--text-main); line-height:1.5;">
+              <strong>⚖️ Посыльщик и участники миссии:</strong>
+              <div style="margin-top:0.25rem; padding-left:0.2rem; display:flex; flex-direction:column; gap:0.18rem;">
+                <div>• <strong>Посыльщик:</strong> Исаак Туркин</div>
+                <div>• <strong>Приемщики в Москве:</strong> казенные дьяки Еремей Глызин, Григорий Козлов, Григорий Бутин, Затей Бахматов</div>
+                <div>• <strong>Цель:</strong> доставка военных сборов со 144 дворов волости на ратных людей Русско-турецкой войны</div>
+              </div>
             </div>
             <div style="font-size:0.8rem; font-style:italic; background:var(--bg-surface); border:1px dashed #d9770666; padding:0.5rem 0.75rem; border-radius:6px; margin-bottom:0.65rem; color:#b45309; line-height:1.45;">
               «...приняли на Москве с Усть-Выми и Оквада от посыльщика Исаака Туркина со 144 дворов сборные деньги на жалованье ратным людем... да от него ж 14 руб...»
@@ -3680,8 +3715,14 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             <h3 style="margin:0 0 0.5rem 0; font-size:1.02rem; color:var(--text-main); font-weight:700; line-height:1.35;">
               Московское архиерейское подворье: о. Пётр Туркин в судебной защите приходских земель против Устюжской епархии
             </h3>
-            <div style="font-size:0.77rem; background:rgba(37,99,235,0.06); border-left:3px solid #2563eb; padding:0.4rem 0.6rem; border-radius:0 4px 4px 0; margin-bottom:0.6rem; color:var(--text-main); line-height:1.45;">
-              <strong>⚖️ Стороны дела:</strong> Челобитчики: поп Пётр Туркин и крестьянин Гаврило Козлов • Покровитель: архиепископ Вологодский Гавриил • Стряпчий московских дел: Иван Суровцов • Оппонент: архиепископ Великоустюжский Александр.
+            <div style="font-size:0.77rem; background:rgba(37,99,235,0.06); border-left:3px solid #2563eb; padding:0.4rem 0.6rem; border-radius:0 4px 4px 0; margin-bottom:0.6rem; color:var(--text-main); line-height:1.5;">
+              <strong>⚖️ Стороны дела:</strong>
+              <div style="margin-top:0.25rem; padding-left:0.2rem; display:flex; flex-direction:column; gap:0.18rem;">
+                <div>• <strong>Челобитчики:</strong> поп Пётр Туркин и крестьянин Гаврило Козлов</div>
+                <div>• <strong>Покровитель:</strong> архиепископ Вологодский Гавриил</div>
+                <div>• <strong>Стряпчий московских дел:</strong> Иван Суровцов</div>
+                <div>• <strong>Оппонент:</strong> архиепископ Великоустюжский Александр</div>
+              </div>
             </div>
             <div style="font-size:0.8rem; font-style:italic; background:var(--bg-surface); border:1px dashed #d9770666; padding:0.5rem 0.75rem; border-radius:6px; margin-bottom:0.65rem; color:#b45309; line-height:1.45;">
               «...прибывших из Усть-вымской вотчины священника Петра и крестьянина Гаврила Козлова содержать на архиепископском подворье и кормить... оказать помощь в челобитье священнику Петру о земле, в которую вступаетца архиепископ устюжский...»
@@ -3713,8 +3754,12 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
             <h3 style="margin:0 0 0.5rem 0; font-size:1.02rem; color:var(--text-main); font-weight:700; line-height:1.35;">
               Волостной судья Усть-Выми: десятилетие судебной власти Исаака Туркина
             </h3>
-            <div style="font-size:0.77rem; background:rgba(37,99,235,0.06); border-left:3px solid #2563eb; padding:0.4rem 0.6rem; border-radius:0 4px 4px 0; margin-bottom:0.6rem; color:var(--text-main); line-height:1.45;">
-              <strong>⚖️ Выборный судья:</strong> Исаак Афанасьевич Туркин • Инстанция: Усть-Вымский выборный волостной суд и Архиерейский приказ.
+            <div style="font-size:0.77rem; background:rgba(37,99,235,0.06); border-left:3px solid #2563eb; padding:0.4rem 0.6rem; border-radius:0 4px 4px 0; margin-bottom:0.6rem; color:var(--text-main); line-height:1.5;">
+              <strong>⚖️ Выборная должность и судебная инстанция:</strong>
+              <div style="margin-top:0.25rem; padding-left:0.2rem; display:flex; flex-direction:column; gap:0.18rem;">
+                <div>• <strong>Выборный судья:</strong> Исаак Афанасьевич Туркин</div>
+                <div>• <strong>Инстанция:</strong> Усть-Вымский выборный волостной суд и Архиерейский приказ</div>
+              </div>
             </div>
             <div style="font-size:0.8rem; font-style:italic; background:var(--bg-surface); border:1px dashed #d9770666; padding:0.5rem 0.75rem; border-radius:6px; margin-bottom:0.65rem; color:#b45309; line-height:1.45;">
               «...по наказу архиерейского приказа выборному судье Исааку Туркину съехати на реку Ибеж и межи развести по правде безобидно...»
