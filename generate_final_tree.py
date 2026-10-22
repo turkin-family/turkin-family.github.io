@@ -3112,8 +3112,8 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
           <div style="font-size:0.76rem; color:var(--text-muted); margin-top:0.2rem;">служения и исповедничества (1646–1937 гг.)</div>
         </div>
         <div style="background:var(--bg-primary); border:1px solid var(--border-color); border-radius:8px; padding:0.75rem 1rem; text-align:center;">
-          <div style="font-size:1.35rem; font-weight:800; color:#7c3aed;">10 обителей и храмов</div>
-          <div style="font-size:0.76rem; color:var(--text-muted); margin-top:0.2rem;">Коквицы, Усть-Вымь, Лальск, Ульяново, Ыб, Лойма, Ляли, Оквад, Палевицы, Яренск</div>
+          <div style="font-size:1.35rem; font-weight:800; color:#7c3aed;">12+ обителей и храмов</div>
+          <div style="font-size:0.76rem; color:var(--text-muted); margin-top:0.2rem;">Коквицы, Лальск, Кадников, Вологда, Ульяново, Ыб, Лойма, Усть-Вымь, Ляли, Оквад, Палевицы, Яренск</div>
         </div>
         <div style="background:var(--bg-primary); border:1px solid var(--border-color); border-radius:8px; padding:0.75rem 1rem; text-align:center;">
           <div style="font-size:1.35rem; font-weight:800; color:#0284c7;">30+ служителей</div>
@@ -3158,7 +3158,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
           </div>
         </div>
 
-        <!-- ЛАЛЬСК -->
+        <!-- ЛАЛЬСК: О. МИХАИЛ ТУРКИН -->
         <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #8b5cf633; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
@@ -3172,19 +3172,44 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
                 <img src="фото_храмов/Лальск_Воскресенский_собор.jpg" alt="Воскресенский собор г. Лальска" style="width:115px; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 6px rgba(0,0,0,0.1); transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
               </div>
               <div style="font-size:0.82rem; line-height:1.45; color:var(--text-main);">
-                <div>🏛️ Величественный пятиглавый соборный ансамбль с шатровой колокольней.</div>
+                <div>🏛️ Величественный пятиглавый соборный ансамбль с высокой шатровой колокольней.</div>
                 <div style="margin-top:0.35rem;">📜 Снимок сделан выдающимся русским фотографом С. Лобовиковым именно в годы соборного служения о. Михаила Туркина.</div>
               </div>
             </div>
 
             <ul style="font-size:0.82rem; line-height:1.5; margin:0 0 0.75rem 0; padding-left:1.15rem;">
-              <li><strong>Соборный диакон о. Михаил Алексеевич Туркин</strong> (ок. 1839 – 14.06.1904) — сын диакона о. Алексея Коквицкого. Выпускник Вологодской духовной семинарии (1862 г.). С 1868 г. дьячок, 20.07.1870 г. рукоположен во диакона, с 1871 г. — штатный соборный диакон (34 года беспорочного служения, фонд ГАКО № 1310). Супруга София Прокопьевна Брызгалова.</li>
-              <li><strong>Священник о. Прокопий Михайлович Туркин</strong> (род. ок. 1868 г.) — сын диакона о. Михаила Лальского. Выпускник Вологодской духовной семинарии. Рукоположен во диакона 30.08.1891 г. к Успенской Чернецкой церкви Грязовецкого уезда; с 1897 г. — священник Николаевской Пустораменской церкви Кадниковского уезда; с 13.09.1911 г. — священник Спасо-Преображенской церкви на Брусничном Вологодского уезда (ВЕВ 1891, № 20; 1911, № 19; parishes.ru № 7463).</li>
+              <li><strong>Соборный диакон о. Михаил Алексеевич Туркин</strong> (ок. 1839 – 14.06.1904) — сын диакона о. Алексея Коквицкого. Выпускник Вологодской духовной семинарии (1862 г.). С 1868 г. дьячок, 20.07.1870 г. рукоположен во диакона, с 1871 г. — штатный соборный диакон Воскресенского собора г. Лальска (34 года беспорочного служения, фонд ГАКО № 1310). Супруга София Прокопьевна Брызгалова.</li>
+              <li>Родоначальник лальской ветви духовенства: воспитав сыновей в традициях духовного сословия, дал начало новому поколению священнослужителей Вологодской епархии.</li>
             </ul>
           </div>
           <div style="display:flex; flex-wrap:wrap; gap:0.35rem; border-top:1px dashed var(--border-color); padding-top:0.5rem;">
             <button class="pill-btn" onclick="focusPerson('I236'); switchTab('tree');" style="font-size:0.74rem;">🎯 о. Михаил Лальский</button>
+          </div>
+        </div>
+
+        <!-- КАДНИКОВ, ВОЛОГДА И ГРЯЗОВЕЦ: О. ПРОКОПИЙ ТУРКИН -->
+        <div style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #a855f733; padding:1.15rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow);">
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
+              <h3 style="margin:0; font-size:1.05rem; color:#9333ea;">⛪ Кадников, Вологда, Грязовец — Приходы о. Прокопия</h3>
+              <span style="background:#faf5ff; color:#9333ea; font-weight:700; font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; border:1px solid #e9d5ff;">Приходской священник</span>
+            </div>
+            <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.65rem;">Вологодская епархия • Кадниковский, Вологодский и Грязовецкий уезды • 1891–1915+ гг.</div>
+
+            <p style="font-size:0.83rem; line-height:1.5; margin-bottom:0.65rem;">
+              Священническое служение сына лальского соборного диакона о. Михаила Алексеевича Туркина в центральных уездах Вологодской губернии:
+            </p>
+
+            <ul style="font-size:0.82rem; line-height:1.55; margin:0 0 0.75rem 0; padding-left:1.15rem;">
+              <li><strong>Священник о. Прокопий Михайлович Туркин</strong> (род. ок. 1868 г. в г. Лальске) — выпускник Вологодской духовной семинарии. Назван в честь деда по матери, сольвычегодского мещанина Прокопия Брызгалова.</li>
+              <li><strong>Успенская Чернецкая церковь (Грязовецкий уезд):</strong> 30.08.1891 г. рукоположен во диакона (Вологодские епархиальные ведомости, 1891 г., № 20, с. 305).</li>
+              <li><strong>Николаевская Пустораменская церковь (Кадниковский уезд):</strong> в 1897 г. рукоположен во священника и служил настоятелем прихода 14 лет.</li>
+              <li><strong>Спасо-Преображенская церковь на Брусничном (Вологодский уезд):</strong> с 13.09.1911 г. — приходской священник (ВЕВ 1911 г., № 19, с. 376; база данных parishes.ru № 7463).</li>
+            </ul>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:0.35rem; border-top:1px dashed var(--border-color); padding-top:0.5rem;">
             <button class="pill-btn" onclick="focusPerson('I260'); switchTab('tree');" style="font-size:0.74rem;">🎯 о. Прокопий</button>
+            <button class="pill-btn" onclick="focusPerson('I236'); switchTab('tree');" style="font-size:0.74rem;">🎯 отец о. Михаил</button>
           </div>
         </div>
 
