@@ -4017,7 +4017,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
           <span>⛪</span> <span class="pill-lbl-full">Духовенство</span><span class="pill-lbl-short">Храмы</span>
         </a>
         <a href="#info-court-cases" class="info-bottom-pill" onclick="scrollToAnchor(event, 'info-court-cases')">
-          <span>⚖️</span> <span class="pill-lbl-full">Государева Служба</span><span class="pill-lbl-short">Служба</span>
+          <span>⚖️</span> <span>Служба</span>
         </a>
         <a href="#info-geography" class="info-bottom-pill" onclick="scrollToAnchor(event, 'info-geography')">
           <span>🗺️</span> <span class="pill-lbl-full">География</span><span class="pill-lbl-short">Места</span>
