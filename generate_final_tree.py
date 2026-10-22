@@ -6028,7 +6028,7 @@ function openModal(pid) {{
   if (p.notes && p.notes.length > 0) {{
     html += `<div class="detail-group"><h3>Архивные пометки и пояснения</h3>`;
     p.notes.forEach(n => {{
-      html += `<div class="detail-item" style="background:var(--bg-primary); padding:0.55rem 0.75rem; border-radius:6px; border:1px solid var(--border-color); margin-bottom:0.35rem;">📝 ${{escapeHtml(n)}}</div>`;
+      html += `<div class="detail-item" style="background:var(--bg-primary); padding:0.6rem 0.85rem; border-radius:6px; border:1px solid var(--border-color); margin-bottom:0.45rem; white-space:pre-line; line-height:1.5; font-size:0.86rem;">📝 ${{escapeHtml(n)}}</div>`;
     }});
     html += `</div>`;
   }}
