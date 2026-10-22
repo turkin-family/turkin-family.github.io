@@ -8,6 +8,7 @@ for the "Places and Roots" (ถิ่นกำเนิดและสายต�
 
 import sys
 import os
+
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from scripts.thai_translations_all import THAI_TRANSLATIONS_ALL
 
@@ -35,7 +36,7 @@ def build_thai_file():
         '>ลำดับญาติ 20 ชั่วคน • 332 บุคคล<'
     )
 
-    # 2. Header and Drawer language buttons (switch to Russian)
+    # 2. Header and Drawer language buttons (switch back to Russian)
     desktop_th_btn = '<a href="thai.html" class="pill-btn" style="text-decoration:none; font-weight:600; font-size:0.78rem; padding:0.25rem 0.6rem; background:rgba(16,185,129,0.08); border-color:#10b981; color:#059669;" title="หน้าภาษาไทย">🇹🇭 ภาษาไทย</a>'
     desktop_ru_btn = '<a href="index.html" class="pill-btn" style="text-decoration:none; font-weight:600; font-size:0.78rem; padding:0.25rem 0.6rem; background:rgba(37,99,235,0.08); border-color:#2563eb; color:#2563eb;" title="กลับไปหน้าภาษารัสเซีย">🇷🇺 Версия на русском</a>'
     html = html.replace(desktop_th_btn, desktop_ru_btn)
@@ -44,47 +45,54 @@ def build_thai_file():
     mobile_ru_btn = '<a href="index.html" class="pill-btn" style="text-decoration:none; font-size:0.78rem; padding:0.3rem 0.7rem; color:#2563eb; border-color:#2563eb; background:rgba(37,99,235,0.08);" title="กลับไปหน้าภาษารัสเซีย">🇷🇺 Русский</a>'
     html = html.replace(mobile_th_btn, mobile_ru_btn)
 
-    # 3. Nav tabs label
+    # 3. Nav tabs translation
+    html = html.replace(
+        '<button class="nav-tab active" onclick="switchTab(\'tree\')">🌿 Древо</button>',
+        '<button class="nav-tab" onclick="switchTab(\'tree\')">🌿 สาแหรกต้นไม้</button>'
+    )
+    html = html.replace(
+        '<button class="nav-tab" onclick="switchTab(\'list\')">📜 Поколения</button>',
+        '<button class="nav-tab" onclick="switchTab(\'list\')">📜 ลำดับรุ่น</button>'
+    )
+    html = html.replace(
+        '<button class="nav-tab" onclick="switchTab(\'table\')">📋 Таблица</button>',
+        '<button class="nav-tab" onclick="switchTab(\'table\')">📋 สารบัญรายชื่อ</button>'
+    )
+    html = html.replace(
+        '<button class="nav-tab" onclick="switchTab(\'archive\')">🏛️ Архив документов',
+        '<button class="nav-tab" onclick="switchTab(\'archive\')">🏛️ หอจดหมายเหตุ'
+    )
     html = html.replace(
         '<button class="nav-tab" onclick="switchTab(\'info\')">🗺️ Места и роды</button>',
-        '<button class="nav-tab" onclick="switchTab(\'info\')">🗺️ ถิ่นกำเนิดและสายตระกูล</button>'
+        '<button class="nav-tab active" onclick="switchTab(\'info\')">🗺️ ถิ่นกำเนิดและสายตระกูล</button>'
     )
     html = html.replace(
-        '<span class="drawer-nav-icon">🗺️</span>\n        <span>Места и роды</span>',
-        '<span class="drawer-nav-icon">🗺️</span>\n        <span>ถิ่นกำเนิดและสายตระกูล</span>'
+        '<button class="nav-tab" onclick="switchTab(\'sources\')">📚 Источники</button>',
+        '<button class="nav-tab" onclick="switchTab(\'sources\')">📚 เอกสารอ้างอิง</button>'
+    )
+    html = html.replace(
+        '<button class="nav-tab" onclick="switchTab(\'stats\')">📊 Статистика</button>',
+        '<button class="nav-tab" onclick="switchTab(\'stats\')">📊 สถิติตระกูล</button>'
     )
 
-    # 4. Headings in info-geography & info-surnames
-    html = html.replace(
-        '<h2>🗺️ Историческая география селений и городов рода</h2>',
-        f'<h2>{THAI_TRANSLATIONS_ALL["geo_heading"]}</h2>'
-    )
-    html = html.replace(
-        '<p style="color:var(--text-muted); margin-bottom:1.25rem;">Селения расположены в бассейнах великих рек Русского Севера (Сысолы, Вычегды, Выми, Лузы) и на юге Сиама:</p>',
-        f'<p style="color:var(--text-muted); margin-bottom:1.25rem;">{THAI_TRANSLATIONS_ALL["geo_lead"]}</p>'
-    )
-    html = html.replace(
-        '<h2>🧬 Происхождение фамилий и история родов</h2>',
-        f'<h2>{THAI_TRANSLATIONS_ALL["sur_heading"]}</h2>'
-    )
-    html = html.replace(
-        '<p style="color:var(--text-muted); margin-bottom:1.25rem;">Ономастическое исследование коми и тайских родовых имен, вошедших в родословную:</p>',
-        f'<p style="color:var(--text-muted); margin-bottom:1.25rem;">{THAI_TRANSLATIONS_ALL["sur_lead"]}</p>'
-    )
+    # Drawer menu items
+    html = html.replace('<span>Интерактивное древо</span>', '<span>สาแหรกต้นไม้</span>')
+    html = html.replace('<span>Список поколений</span>', '<span>ลำดับรุ่น</span>')
+    html = html.replace('<span>Таблица персон</span>', '<span>สารบัญรายชื่อ</span>')
+    html = html.replace('<span>Архив первоисточников</span>', '<span>หอจดหมายเหตุ</span>')
+    html = html.replace('<span>Места и роды</span>', '<span>ถิ่นกำเนิดและสายตระกูล</span>')
+    html = html.replace('<span>Источники и литература</span>', '<span>เอกสารอ้างอิง</span>')
+    html = html.replace('<span>Статистика рода</span>', '<span>สถิติตระกูล</span>')
+    html = html.replace('<span>☰</span> <span>Меню</span>', '<span>☰</span> <span>เมนู</span>')
+    html = html.replace('placeholder="Поиск персоны..."', 'placeholder="ค้นหาบุคคลในตระกูล..."')
 
-    # 5. Extract and replace Geography section
+    # 4. Build Thai Geography Cards
     geo = THAI_TRANSLATIONS_ALL["geo"]
     geo_keys = [
         'yb', 'gorely_yb', 'loyma', 'erozdino', 'vogvazdino', 'lyali', 'paltydor',
         'kokvitsy', 'okvad', 'ust_vym', 'syulatuy', 'syktyvkar', 'ulyanovo', 'chumphon'
     ]
 
-    # Find geography cards block
-    start_grid = html.find('<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">')
-    end_grid = html.find('</div>\n    </div>\n\n    <!-- ONOMASTICS AND SURNAMES SECTION -->', start_grid)
-    assert start_grid != -1 and end_grid != -1, "Geography grid block not found in index.html!"
-
-    new_geo_cards = []
     colors = {
         'yb': 'var(--accent)', 'gorely_yb': '#ec4899', 'loyma': '#8b5cf6', 'erozdino': '#d97706',
         'vogvazdino': '#059669', 'lyali': '#d97706', 'paltydor': '#2563eb', 'kokvitsy': '#2563eb',
@@ -92,6 +100,7 @@ def build_thai_file():
         'ulyanovo': '#4f46e5', 'chumphon': '#10b981'
     }
 
+    new_geo_cards = []
     for k in geo_keys:
         d = geo[k]
         col = colors.get(k, 'var(--accent)')
@@ -122,10 +131,9 @@ def build_thai_file():
         </div>"""
         new_geo_cards.append(c_html)
 
-    new_geo_grid = '<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">\n' + '\n\n'.join(new_geo_cards) + '\n      '
-    html = html[:start_grid] + new_geo_grid + html[end_grid:]
+    new_geo_cards_str = '\n\n'.join(new_geo_cards)
 
-    # 6. Extract and replace Surnames section
+    # 5. Build Thai Surnames Cards
     sur = THAI_TRANSLATIONS_ALL["sur"]
     sur_keys = [
         ('turkin', '#2563eb'), ('letov', '#2563eb'), ('yaranov', '#2563eb'), ('sizev', '#2563eb'),
@@ -134,10 +142,6 @@ def build_thai_file():
         ('kyzyurov', '#ec4899'), ('aibabin', '#ec4899'), ('karakchiev', '#ec4899'), ('pithak', '#10b981'),
         ('pamaitong', '#10b981'), ('chamniankan', '#10b981')
     ]
-
-    start_sur_grid = html.find('<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:1rem;">')
-    end_sur_grid = html.find('</div>\n    </div>\n\n    <!-- BOTTOM ANCHOR NAVIGATION BAR FOR PLACES & ROOTS -->', start_sur_grid)
-    assert start_sur_grid != -1 and end_sur_grid != -1, "Surnames grid block not found in index.html!"
 
     new_sur_cards = []
     for k, col in sur_keys:
@@ -151,8 +155,74 @@ def build_thai_file():
         </div>"""
         new_sur_cards.append(c_html)
 
-    new_sur_grid = '<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:1rem;">\n' + '\n\n'.join(new_sur_cards) + '\n      '
-    html = html[:start_sur_grid] + new_sur_grid + html[end_sur_grid:]
+    new_sur_cards_str = '\n\n'.join(new_sur_cards)
+
+    # 6. Entire pure Thai view-info section
+    thai_overview_card = """    <!-- OVERVIEW -->
+    <div class="info-card" id="info-overview">
+      <h2>🌳 เกี่ยวกับครอบครัวและโครงสร้างสาแหรกตระกูล</h2>
+      <p>สาแหรกตระกูลนี้รวบรวมขึ้นจากเอกสารลายลักษณ์อักษรต้นฉบับโบราณ ทะเบียนประวัติครอบครัว ทะเบียนการเกิด-การสมรส-การเสียชีวิตของศาสนจักร (Metric Books) และสำมะโนประชากรทางการ (Revision Lists) ย้อนรอยตั้งแต่คริสต์ศตวรรษที่ 17 ถึง 20 โดยจุดเริ่มต้นของสาแหรกนี้ (Proband) คือ <strong>ด.ช. นิโคไล วยาเชสลาโววิช เตอร์คิน (Nikolai Turkin)</strong> เกิดเมื่อปี พ.ศ. 2567 ณ อำเภอเมือง จังหวัดชุมพร ประเทศไทย</p>
+      <p>สาแหรกตระกูลนี้เป็นการหลอมรวมสองสายธารประวัติศาสตร์ วัฒนธรรม และภูมิศาสตร์อันยิ่งใหญ่ที่อยู่ห่างไกลกันนับหมื่นกิโลเมตร เข้าเป็นหนึ่งเดียวในครอบครัว:</p>
+      <ul style="line-height:1.7;">
+        <li><strong>สายตระกูลทางฝั่งมารดา (ประเทศไทย แถบชายฝั่งอ่าวไทย):</strong> สายนามสกุลเก่าแก่แห่งเมืองชุมพร ได้แก่ <strong>พิทักษ์ (Pithak)</strong>, <strong>ป่าไม้ทอง (Pamaitong)</strong> และ <strong>ชำนาญการ (Chamniankan)</strong> โดยมีคุณทวดสาย ป่าไม้ทอง (เกิด พ.ศ. 2462), คุณยายดวงเดือน ป่าไม้ทอง (เกิด พ.ศ. 2504) และคุณแม่ปริตา (พิทักษ์) เตอร์คิน (เกิด พ.ศ. 2540)</li>
+        <li><strong>สายตระกูลทางฝั่งบิดา (สาธารณรัฐโคมิ สหพันธรัฐรัสเซีย ดินแดนทางตอนเหนือ):</strong> สายตระกูลดั้งเดิมของชนชาติโคมิ-ซีเรียน (Komi-Zyryan) 4 สายหลักจากลุ่มแม่น้ำวิเชกดะและวิม สายเลือดสายตรงฝ่ายชายของตระกูลเตอร์คินได้รับการยืนยันด้วยเอกสารประวัติศาสตร์ของรัฐรัสเซียอย่างต่อเนื่องยาวนานถึง 15 ชั่วคน ย้อนกลับไปถึงปี ค.ศ. 1608 (พ.ศ. 2151 ในรัชสมัยกรุงศรีอยุธยา รวมกว่า 416 ปีแห่งประวัติศาสตร์ที่มีหลักฐานยืนยัน) พร้อมด้วยสายตระกูลเชโคนิน, ชุกโตมอฟ, ซิโนเวียฟ และเลทอฟ ซึ่งสืบสาวกลับไปได้ถึงคริสต์ศตวรรษที่ 17–18</li>
+      </ul>
+    </div>"""
+
+    thai_geography_card = f"""    <!-- GEOGRAPHY SECTION -->
+    <div class="info-card" id="info-geography">
+      <h2>{THAI_TRANSLATIONS_ALL["geo_heading"]}</h2>
+      <p style="color:var(--text-muted); margin-bottom:1.25rem;">{THAI_TRANSLATIONS_ALL["geo_lead"]}</p>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">
+{new_geo_cards_str}
+      </div>
+    </div>"""
+
+    thai_surnames_card = f"""    <!-- ONOMASTICS AND SURNAMES SECTION -->
+    <div class="info-card" id="info-surnames">
+      <h2>{THAI_TRANSLATIONS_ALL["sur_heading"]}</h2>
+      <p style="color:var(--text-muted); margin-bottom:1.25rem;">{THAI_TRANSLATIONS_ALL["sur_lead"]}</p>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:1rem;">
+{new_sur_cards_str}
+      </div>
+    </div>"""
+
+    thai_bottom_bar = """    <!-- BOTTOM ANCHOR NAVIGATION BAR FOR PLACES & ROOTS -->
+    <nav class="info-bottom-bar-container" id="infoBottomBar" aria-label="นำทางในหมวดหมู่">
+      <div class="info-bottom-bar">
+        <a href="#info-overview" class="info-bottom-pill active" onclick="scrollToAnchor(event, 'info-overview')">
+          <span>🌳</span> <span class="pill-lbl-full">เกี่ยวกับตระกูล</span><span class="pill-lbl-short">ตระกูล</span>
+        </a>
+        <a href="#info-geography" class="info-bottom-pill" onclick="scrollToAnchor(event, 'info-geography')">
+          <span>🗺️</span> <span class="pill-lbl-full">ถิ่นกำเนิด (14 ดินแดน)</span><span class="pill-lbl-short">ถิ่นกำเนิด</span>
+        </a>
+        <a href="#info-surnames" class="info-bottom-pill" onclick="scrollToAnchor(event, 'info-surnames')">
+          <span>🧬</span> <span class="pill-lbl-full">สายตระกูล (18 นามสกุล)</span><span class="pill-lbl-short">นามสกุล</span>
+        </a>
+      </div>
+    </nav>"""
+
+    new_view_info = f"""<div id="view-info" class="view-section active">
+{thai_overview_card}
+
+{thai_geography_card}
+
+{thai_surnames_card}
+
+{thai_bottom_bar}
+  </div>"""
+
+    # Replace the entire view-info in html
+    start_info = html.find('<div id="view-info" class="view-section">')
+    end_info = html.find('<div id="view-sources" class="view-section">', start_info)
+    assert start_info != -1 and end_info != -1, "view-info section boundary not found!"
+
+    # Also make view-tree inactive by default in thai.html so view-info is the active one!
+    html = html.replace('<div id="view-tree" class="view-section active">', '<div id="view-tree" class="view-section">')
+
+    html = html[:start_info] + new_view_info + '\n\n  <!-- TAB 6: SOURCES AND BIBLIOGRAPHY VIEW -->\n  ' + html[end_info:]
 
     # 7. Add Thai body font styling
     html = html.replace('<body>', '<body style="font-family: \'Sarabun\', -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, sans-serif; line-height: 1.6;">')
@@ -166,7 +236,7 @@ def build_thai_file():
     with open('thai.html', 'w', encoding='utf-8') as f:
         f.write(html)
 
-    print('SUCCESS: thai.html generated with 100% precision!')
+    print('SUCCESS: thai.html generated with 100% pure Thai content!')
 
 if __name__ == '__main__':
     build_thai_file()
