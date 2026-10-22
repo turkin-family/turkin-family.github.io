@@ -3242,9 +3242,25 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
               </div>
             </div>
 
-            <ul style="font-size:0.82rem; line-height:1.5; margin:0 0 0.75rem 0; padding-left:1.15rem;">
-              <li><strong>Монах Виталий (Виталий Иванович Туркин)</strong> (1865, с. Коквицы – 06.11.1937) — родной брат прапрапрадеда Алексея Ивановича Туркина и дядя Николая Алексеевича Туркина. Монах Троице-Стефано-Ульяновского мужского монастыря. После закрытия обители в 1923 г. проживал в с. Кужба вместе с казначеем обители священномучеником иеромонахом Мелетием (Федюнёвым), тайно совершая требы для верующих. Арестован в сентябре 1937 г., приговорён «тройкой» к 10 годам ИТЛ, мученически погиб в Вогваздинском лагпункте Ухтпечлага. Реабилитирован.</li>
+            <ul style="font-size:0.82rem; line-height:1.5; margin:0 0 0.65rem 0; padding-left:1.15rem;">
+              <li><strong>Монах Виталий (Виталий Иванович Туркин)</strong> (1865, с. Коквицы – 06.11.1937) — родной брат прапрапрадеда Алексея Ивановича Туркина и дядя Николая Алексеевича Туркина. Монах Троице-Стефано-Ульяновского мужского монастыря. После закрытия обители в 1923 г. проживал в с. Кужба вместе с казначеем обители иеромонахом Мелетием (Федюнёвым), совершая требы для верующих. Арестован в сентябре 1937 г., приговорён «тройкой» к 10 годам ИТЛ, погиб в Вогваздинском лагпункте Ухтпечлага. Реабилитирован.</li>
             </ul>
+
+            <!-- ВЫДЕЛЕННЫЙ БЛОК: НОВОМУЧЕНИК МЕЛЕТИЙ -->
+            <div style="background:linear-gradient(135deg, rgba(124,58,237,0.06), rgba(217,119,6,0.06)); border:1.5px solid rgba(124,58,237,0.25); border-radius:8px; padding:0.65rem 0.75rem; margin-bottom:0.75rem; display:flex; gap:0.75rem; align-items:flex-start;">
+              <div onclick="openFullscreenScan('архив_сканы_первоисточников/Преподобномученик_Мелетий_Федюнев.jpg', 'Преподобномученик МЕЛЕТИЙ иеромонах', 'Казначей Троице-Стефано-Ульяновского мужского монастыря, фигурант следственного дела 1937 года вместе с монахом Виталием Туркиным')" title="Нажмите для открытия портрета на весь экран" style="cursor:pointer; flex:0 0 92px; text-align:center;">
+                <img src="архив_сканы_первоисточников/Преподобномученик_Мелетий_Федюнев.jpg" alt="Преподобномученик МЕЛЕТИЙ иеромонах" style="width:92px; height:118px; object-fit:cover; border-radius:6px; border:1.5px solid #7c3aed; box-shadow:0 2px 5px rgba(0,0,0,0.15); display:block; transition:transform 0.2s; margin:0 auto;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
+                <div style="font-size:0.64rem; font-weight:700; color:#6d28d9; margin-top:0.35rem; width:100%; line-height:1.2; word-break:normal; hyphens:auto;">Прмч. Мелетий<br><span style="font-size:0.60rem; font-weight:600; color:var(--text-muted);">(иеромонах)</span></div>
+              </div>
+              <div style="font-size:0.79rem; line-height:1.45; color:var(--text-main);">
+                <div style="font-weight:700; color:#6d28d9; margin-bottom:0.2rem; font-size:0.82rem;">🕊️ Канонизация соратника по делу 1937 г.:</div>
+                <div>Фигурант того же дела иеромонах Мелетий (Федюнёв) был расстрелян в Сыктывкаре <strong>23.09.1937 г.</strong></div>
+                <div style="margin-top:0.35rem; background:rgba(124,58,237,0.08); padding:0.4rem 0.55rem; border-radius:5px; border-left:3px solid #7c3aed; font-style:italic;">
+                  «Священный Синод Определением от 6.10.2001 г. причислил иеромонаха Мелетия (Федюнева) к лику святых и включил в Собор новомучеников и исповедников Российских (Церкви Русской) ХХ века.»
+                </div>
+                <div style="margin-top:0.3rem; font-size:0.75rem; color:var(--text-muted);">Реабилитирован.</div>
+              </div>
+            </div>
           </div>
           <div style="display:flex; flex-wrap:wrap; gap:0.35rem; border-top:1px dashed var(--border-color); padding-top:0.5rem;">
             <button class="pill-btn" onclick="focusPerson('I307'); switchTab('tree');" style="font-size:0.74rem;">🎯 монах Виталий</button>
@@ -3793,7 +3809,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">
         <!-- ЫБ -->
         <div style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
-          <div style="font-weight:700; font-size:1.05rem; color:var(--accent); margin-bottom:0.35rem;">🏛️ Село Ыб (Ибы, Малый Ыб)</div>
+          <div style="font-weight:700; font-size:1.05rem; color:var(--accent); margin-bottom:0.35rem;">🏛️ Село Ыб (Ибы, Мельничный Иб)</div>
           <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.5rem;">Сыктывдинский район • Река Сысола • Известно с 1586 года</div>
           <p style="font-size:0.86rem; line-height:1.5;">Один из древнейших культурных и сакральных центров Коми края, расположенный на семи холмах вдоль реки Сысолы. Название происходит от коми слова <em>«ыб»</em> — возвышенность, суходольное поле на холме. Родовое гнездо многих поколений <strong>Туркиных, Зиновьевых, Пасынковых, Кызъюровых и Айбабиных</strong>. В селе действовала каменная Свято-Вознесенская церковь (освящена в 1827–1835 гг., НАРК ф. 130) и более десятка святых целебных источников.</p>
         </div>
@@ -3879,7 +3895,22 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         <div style="background:var(--bg-primary); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="font-weight:700; font-size:1.05rem; color:#4f46e5; margin-bottom:0.35rem;">🌲 Село Ульяново и село Кужба</div>
           <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.5rem;">Усть-Куломский район • Верхняя Вычегда • Основаны в XIV–XVII вв.</div>
-          <p style="font-size:0.86rem; line-height:1.5;">Священные места Верхней Вычегды. В Ульяново расположен Троице-Стефановский мужской монастырь, основанный святителем Стефаном Пермским в 1385 году. Обитель монашеского служения <strong>монаха Виталия (Виталия Ивановича Туркина) (1865–1937)</strong>. В соседнем селе Кужба после закрытия обители он совершал требы на дому вместе со священномучеником иеромонахом Мелетием (Федюнёвым).</p>
+          <p style="font-size:0.86rem; line-height:1.5; margin-bottom:0.75rem;">Священные места Верхней Вычегды. В Ульяново расположен Троице-Стефановский мужской монастырь, основанный святителем Стефаном Пермским в 1385 году. Обитель монашеского служения <strong>монаха Виталия (Виталия Ивановича Туркина) (1865–1937)</strong>. В соседнем селе Кужба после закрытия обители он совершал требы на дому вместе с казначеем обители иеромонахом Мелетием (Федюнёвым).</p>
+
+          <!-- ВЫДЕЛЕННЫЙ БЛОК: НОВОМУЧЕНИК МЕЛЕТИЙ -->
+          <div style="background:linear-gradient(135deg, rgba(124,58,237,0.06), rgba(217,119,6,0.06)); border:1.5px solid rgba(124,58,237,0.25); border-radius:8px; padding:0.65rem 0.75rem; display:flex; gap:0.75rem; align-items:flex-start;">
+            <div onclick="openFullscreenScan('архив_сканы_первоисточников/Преподобномученик_Мелетий_Федюнев.jpg', 'Преподобномученик МЕЛЕТИЙ иеромонах', 'Казначей Троице-Стефано-Ульяновского монастыря, преподобномученик Мелетий (Федюнёв)')" title="Нажмите для открытия портрета на весь экран" style="cursor:pointer; flex:0 0 92px; text-align:center;">
+              <img src="архив_сканы_первоисточников/Преподобномученик_Мелетий_Федюнев.jpg" alt="Преподобномученик МЕЛЕТИЙ иеромонах" style="width:92px; height:118px; object-fit:cover; border-radius:6px; border:1.5px solid #7c3aed; box-shadow:0 2px 5px rgba(0,0,0,0.15); display:block; transition:transform 0.2s; margin:0 auto;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
+              <div style="font-size:0.64rem; font-weight:700; color:#6d28d9; margin-top:0.35rem; width:100%; line-height:1.2; word-break:normal; hyphens:auto;">Прмч. Мелетий<br><span style="font-size:0.60rem; font-weight:600; color:var(--text-muted);">(иеромонах)</span></div>
+            </div>
+            <div style="font-size:0.79rem; line-height:1.45; color:var(--text-main);">
+              <div>Фигурант того же дела иеромонах Мелетий (Федюнёв) был расстрелян в Сыктывкаре <strong>23.09.1937 г.</strong></div>
+              <div style="margin-top:0.35rem; background:rgba(124,58,237,0.08); padding:0.4rem 0.55rem; border-radius:5px; border-left:3px solid #7c3aed; font-style:italic;">
+                «Священный Синод Определением от 6.10.2001 г. причислил иеромонаха Мелетия (Федюнева) к лику святых и включил в Собор новомучеников и исповедников Российских (Церкви Русской) ХХ века.»
+              </div>
+              <div style="margin-top:0.3rem; font-size:0.75rem; color:var(--text-muted);">Реабилитирован.</div>
+            </div>
+          </div>
         </div>
 
         <!-- ЧУМПХОН -->
@@ -4009,7 +4040,7 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         <div style="background:var(--bg-primary); padding:0.9rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
             <strong style="color:#ec4899; font-size:0.98rem;">Кызъюровы</strong>
-            <span style="font-size:0.72rem; padding:0.1rem 0.4rem; background:#fff1f2; color:#ec4899; border-radius:4px; font-weight:700;">с. Малый Ыб</span>
+            <span style="font-size:0.72rem; padding:0.1rem 0.4rem; background:#fff1f2; color:#ec4899; border-radius:4px; font-weight:700;">д. Мельничный Иб</span>
           </div>
           <p style="font-size:0.84rem; line-height:1.45;">Уникальная чисто зырянская фамилия: от коми <em>«кыз»</em> (ель) + <em>«юр»</em> (вершина, голова, мыс) — «вершина ели». В роду: Клавдия Ильинична (Кызъюрова) Зиновьева (род. 1900), Илья Иванович Кызъюров (род. 30.06.1865 в Мелком Ыбе), Иван Григорьевич Кызъюров (род. 1836, венчание 18.01.1859 в 23 года).</p>
         </div>
@@ -6225,6 +6256,36 @@ function openModal(pid) {{
             <div><strong>Боевой путь:</strong> Ленинградский фронт, Карельский перешеек, Прибалтика, Варшава, взятие Берлина.</div>
             <div><strong>Награды:</strong> Орден Красной Звезды (1945), Орден Славы III ст. (1944), Медаль «За отвагу» (1944), Медали «За взятие Берлина» (1945), «За освобождение Варшавы» (1945), «За победу над Германией» (1945).</div>
           `}}
+        </div>
+      </div>
+    `;
+  }}
+
+  if (p.id === 'I307') {{
+    html += `
+      <div class="detail-group" style="background: linear-gradient(135deg, rgba(124,58,237,0.06), rgba(217,119,6,0.06)); border: 1.5px solid rgba(124,58,237,0.25); border-radius:10px; padding:0.85rem; margin-bottom:0.75rem;">
+        <div style="display:flex; align-items:center; gap:0.45rem; margin-bottom:0.6rem;">
+          <span style="font-size:1.2rem;">🕊️</span>
+          <h3 style="margin:0; color:#6d28d9; font-size:0.95rem; font-weight:700;">Духовный соратник и новомученик по делу 1937 года</h3>
+        </div>
+        <div style="display:flex; gap:0.85rem; align-items:flex-start; flex-wrap:wrap;">
+          <div style="flex:0 0 auto; text-align:center;">
+            <img src="архив_сканы_первоисточников/Преподобномученик_Мелетий_Федюнев.jpg" alt="Преподобномученик МЕЛЕТИЙ иеромонах" style="width:110px; height:145px; object-fit:cover; border-radius:8px; border:1.5px solid #7c3aed; box-shadow:0 2px 6px rgba(0,0,0,0.15); display:block; cursor:pointer;" onclick="openFullscreenScan('архив_сканы_первоисточников/Преподобномученик_Мелетий_Федюнев.jpg', 'Преподобномученик МЕЛЕТИЙ иеромонах', 'Казначей Троице-Стефано-Ульяновского монастыря, преподобномученик Мелетий (Федюнёв)')" />
+            <div style="font-size:0.70rem; font-weight:700; color:#6d28d9; margin-top:0.35rem; max-width:110px; line-height:1.2;">Прмч. Мелетий (иеромонах)</div>
+          </div>
+          <div style="flex:1; min-width:200px; font-size:0.83rem; line-height:1.5; color:var(--text-main);">
+            <p style="margin:0 0 0.5rem 0;">
+              <strong>Фигурант того же дела:</strong> иеромонах Мелетий (Федюнёв) был расстрелян в Сыктывкаре <strong>23.09.1937 г.</strong>
+            </p>
+            <p style="margin:0 0 0.5rem 0; background:rgba(124,58,237,0.08); padding:0.5rem 0.65rem; border-radius:6px; border-left:3px solid #7c3aed;">
+              <em>«Священный Синод Определением от 6.10.2001 г. причислил иеромонаха Мелетия (Федюнева) к лику святых и включил в Собор новомучеников и исповедников Российских (Церкви Русской) ХХ века.»</em>
+            </p>
+            <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.4;">
+              • Казначей Троице-Стефано-Ульяновского мужского монастыря.<br>
+              • В 1923–1937 гг. проживал вместе с монахом Виталием Туркиным в с. Кужба, совершая тайные богослужения и требы для верующих крестьян.<br>
+              • Реабилитирован.
+            </div>
+          </div>
         </div>
       </div>
     `;
