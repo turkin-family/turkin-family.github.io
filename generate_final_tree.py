@@ -3971,12 +3971,18 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
           </div>
           <div style="font-size:0.82rem; color:var(--text-muted); margin-bottom:0.6rem;">Государственный архив Вологодской области • <a href="https://gosarchive.gov35.ru/" target="_blank" rel="noopener noreferrer" style="color:#059669;">gosarchive.gov35.ru ↗</a></div>
           <ul style="font-size:0.83rem; line-height:1.55; color:var(--text-main); margin:0 0 0.75rem 1.1rem; padding:0;">
-            <li><strong>Ф. 1260, оп. 1, д. 1392 (1656 г.):</strong> Судебное дело Вологодского архиерейского дома по челобитной Архипа Туркина архиепископу Маркеллу. Поездка отца Афанасия Туркина в г. Сургут на Оби, заёмные кабалы на 347 рублей серебром.</li>
+            <li><strong>Ф. 1260, оп. 1 (1646–1701 гг.):</strong> Комплекс 11 дел Вологодского архиерейского дома по роду Туркиных: судное дело 1646 г. священника Г. Костромина (д. 633); мирской долг Афанасия Туркина 75 руб. (д. 635); сургутский капитал в 347 руб. (д. 1392); отпускная память Архипу Туркину (д. 2347); челобитная Афанасия на сыновей Архипа и Исаака (д. 2913); целовальник Кирилл Туркин и конвой боярина А. С. Матвеева в Пустозерск (д. 5032, 5049); посыльщик Исаак Туркин с казной в Москву со 144 дворов (д. 5260); выборный судья Исаак Туркин (д. 7753, 8267, 10789); священник о. Пётр Туркин на архиерейском подворье в Вологде (д. 7519).</li>
             <li><strong>ВЦА (Вологодский церковный архив), ф. 496:</strong> Исповедная роспись Христорождественской церкви с. Коквицы 1773 года. Двор № 167: прямая семья Туркиных (Стефан Иванович 62 года, дети Алексей, Иван, Василий).</li>
             <li><strong>Клировые ведомости церквей Яренского уезда:</strong> послужные списки священно- и церковнослужителей Туркиных Введенской церкви Оквада и Христорождественской церкви Коквиц.</li>
           </ul>
           <div style="display:flex; gap:0.4rem; flex-wrap:wrap; padding-top:0.5rem; border-top:1px dashed var(--border-color);">
-            <button onclick="openDocViewerById('ancient_1656_gavo_sud_turkin_p1')" class="pill-btn" style="font-size:0.72rem; cursor:pointer;">Суд 1656 г. (Сургут)</button>
+            <button onclick="openDocViewerById('gavo_1646_case633_afanasy_vasily_turkin')" class="pill-btn" style="font-size:0.72rem; cursor:pointer;">Суд 1646 г. (Афанасий и Василий)</button>
+            <button onclick="openDocViewerById('ancient_1656_gavo_sud_turkin_p1')" class="pill-btn" style="font-size:0.72rem; cursor:pointer;">Суд 1656 г. (Сургут 347 руб.)</button>
+            <button onclick="openDocViewerById('gavo_1667_case2913_afanasy_vs_arkhip_isaak')" class="pill-btn" style="font-size:0.72rem; cursor:pointer;">Суд 1667 г. (Исаак и Архип)</button>
+            <button onclick="openDocViewerById('gavo_1678_case5032_kirill_turkin_matveev')" class="pill-btn" style="font-size:0.72rem; cursor:pointer;">1678 г. (Боярин Матвеев)</button>
+            <button onclick="openDocViewerById('gavo_1679_case5260_isaak_turkin_posylshchik')" class="pill-btn" style="font-size:0.72rem; cursor:pointer;">1679 г. (Казна в Москву)</button>
+            <button onclick="openDocViewerById('gavo_1687_case7519_pop_petr_vologda_podvorie')" class="pill-btn" style="font-size:0.72rem; cursor:pointer;">1687 г. (о. Пётр в Вологде)</button>
+            <button onclick="openDocViewerById('gavo_1688_case7753_isaak_vyborny_sudya')" class="pill-btn" style="font-size:0.72rem; cursor:pointer;">1688 г. (Выборный судья Исаак)</button>
             <button onclick="openDocViewerById('1773_ВЦА_Коквицы_Туркины_Исповедная_роспись')" class="pill-btn" style="font-size:0.72rem; cursor:pointer;">Исповедка 1773 г.</button>
           </div>
         </div>
