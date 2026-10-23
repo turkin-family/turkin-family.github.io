@@ -27,4 +27,11 @@ data/backup_pre_1816/
 staging_new_scans/
 staging_delo_*/
 delo_*.html
+архив_сканы_первоисточников/дело_633_1646/
 
+
+
+# Temporary local paleography crops and raw photo downloads
+tmp_crops/
+фото_родственников/
+pdf_документы/1907_Belyaev*

@@ -1015,7 +1015,7 @@ main {{
 /* VETERAN CARDS */
 .veteran-cards-grid {{
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 1.25rem;
 }}
 .veteran-card {{
@@ -1028,10 +1028,68 @@ main {{
 }}
 .veteran-card-header {{
   display: flex;
-  justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 0.6rem;
-  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  gap: 0.85rem;
+}}
+.veteran-header-main {{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.25rem;
+  flex: 1;
+  min-width: 0;
+}}
+.veteran-gen-badge {{
+  display: inline-block;
+  font-weight: 700;
+  font-size: 0.72rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 5px;
+  white-space: nowrap;
+  width: fit-content;
+  margin-bottom: 0.15rem;
+}}
+.veteran-photo-thumb {{
+  width: 82px;
+  height: 105px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid var(--border-color);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}}
+.veteran-photo-thumb:hover {{
+  transform: scale(1.04);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+}}
+.person-modal-photo-block {{
+  display: flex;
+  gap: 1.1rem;
+  align-items: center;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 1rem;
+}}
+.person-modal-photo-img {{
+  width: 110px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid var(--accent);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  flex-shrink: 0;
+  cursor: pointer;
+}}
+.person-modal-photo-info {{
+  flex: 1;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-main);
 }}
 
 .table-container {{
@@ -2778,11 +2836,12 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         <div class="veteran-card" style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #2563eb33; padding:1.25rem; box-shadow:var(--shadow);">
           <div>
             <div class="veteran-card-header">
-              <div>
-                <h3 style="margin:0; font-size:1.15rem; color:#2563eb;">Туркин Михаил Николаевич</h3>
-                <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.2rem;">03.11.1906 – 02.09.1993 • с. Коквицы, Коми АССР</div>
+              <img src="фото_персоналий/I19_Туркин_Михаил_Николаевич.jpg" alt="Туркин Михаил Николаевич" class="veteran-photo-thumb" style="border-color:#2563eb;" onclick="openFullscreenScan('фото_персоналий/I19_Туркин_Михаил_Николаевич.jpg', 'Туркин Михаил Николаевич', 'Гвардии старший сержант, командир расчета 82-мм минометов 18-й гв. мехбригады')" title="Нажмите для полноэкранного просмотра">
+              <div class="veteran-header-main">
+                <span class="veteran-gen-badge" style="background:#eff6ff; color:#2563eb; border:1px solid #bfdbfe;">Поколение V • Прапрадед</span>
+                <h3 style="margin:0; font-size:1.15rem; color:#2563eb; line-height:1.25;">Туркин Михаил Николаевич</h3>
+                <div style="font-size:0.8rem; color:var(--text-muted);">03.11.1906 – 02.09.1993 • с. Коквицы, Коми АССР</div>
               </div>
-              <span style="background:#eff6ff; color:#2563eb; font-weight:700; font-size:0.75rem; padding:0.2rem 0.55rem; border-radius:6px; border:1px solid #bfdbfe; white-space:nowrap;">Поколение V • Прапрадед</span>
             </div>
 
             <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.85rem;">
@@ -2836,11 +2895,11 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         <div class="veteran-card" style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #2563eb33; padding:1.25rem; box-shadow:var(--shadow);">
           <div>
             <div class="veteran-card-header">
-              <div>
-                <h3 style="margin:0; font-size:1.15rem; color:#2563eb;">Туркин Иван Николаевич</h3>
-                <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.2rem;">род. 1918 • д. Сюлатуй (Коквицы), Коми АССР</div>
+              <div class="veteran-header-main">
+                <span class="veteran-gen-badge" style="background:#eff6ff; color:#2563eb; border:1px solid #bfdbfe;">Поколение V • Брат Михаила</span>
+                <h3 style="margin:0; font-size:1.15rem; color:#2563eb; line-height:1.25;">Туркин Иван Николаевич</h3>
+                <div style="font-size:0.8rem; color:var(--text-muted);">род. 1918 • д. Сюлатуй (Коквицы), Коми АССР</div>
               </div>
-              <span style="background:#eff6ff; color:#2563eb; font-weight:700; font-size:0.75rem; padding:0.2rem 0.55rem; border-radius:6px; border:1px solid #bfdbfe; white-space:nowrap;">Поколение V • Брат Михаила</span>
             </div>
 
             <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.85rem;">
@@ -2876,11 +2935,12 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         <div class="veteran-card" style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #ec489933; padding:1.25rem; box-shadow:var(--shadow);">
           <div>
             <div class="veteran-card-header">
-              <div>
-                <h3 style="margin:0; font-size:1.15rem; color:#db2777;">Зиновьев Владимир Семенович</h3>
-                <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.2rem;">род. 1925 • д. Горелый Ыб (с. Горесоит), Коми АССР</div>
+              <img src="фото_персоналий/I67_Зиновьев_Владимир_Семенович.jpg" alt="Зиновьев Владимир Семенович" class="veteran-photo-thumb" style="border-color:#db2777;" onclick="openFullscreenScan('фото_персоналий/I67_Зиновьев_Владимир_Семенович.jpg', 'Зиновьев Владимир Семенович', 'Старший сержант, командир расчета 82-мм минометов 951-го сп 265-й сд, герой штурма Берлина')" title="Нажмите для полноэкранного просмотра">
+              <div class="veteran-header-main">
+                <span class="veteran-gen-badge" style="background:#fff1f2; color:#db2777; border:1px solid #fecdd3;">Поколение IV • Брат Альбины</span>
+                <h3 style="margin:0; font-size:1.15rem; color:#db2777; line-height:1.25;">Зиновьев Владимир Семенович</h3>
+                <div style="font-size:0.8rem; color:var(--text-muted);">род. 1925 • д. Горелый Ыб (с. Горесоит), Коми АССР</div>
               </div>
-              <span style="background:#fff1f2; color:#db2777; font-weight:700; font-size:0.75rem; padding:0.2rem 0.55rem; border-radius:6px; border:1px solid #fecdd3; white-space:nowrap;">Поколение IV • Брат Альбины</span>
             </div>
 
             <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.85rem;">
@@ -2930,11 +2990,12 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         <div class="veteran-card" style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #ec489933; padding:1.25rem; box-shadow:var(--shadow);">
           <div>
             <div class="veteran-card-header">
-              <div>
-                <h3 style="margin:0; font-size:1.15rem; color:#db2777;">Зиновьев Семён Григорьевич</h3>
-                <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.2rem;">27.01.1890 – ? • д. Горелый Ыб (Ибская), Коми АССР</div>
+              <img src="фото_персоналий/I25_Зиновьев_Семен_Григорьевич.jpg" alt="Зиновьев Семён Григорьевич" class="veteran-photo-thumb" style="border-color:#db2777;" onclick="openFullscreenScan('фото_персоналий/I25_Зиновьев_Семен_Григорьевич.jpg', 'Зиновьев Семён Григорьевич', 'Унтер-офицер РИА (ПМВ), старший артиллерист РККА (ВОВ)')" title="Нажмите для полноэкранного просмотра">
+              <div class="veteran-header-main">
+                <span class="veteran-gen-badge" style="background:#fff1f2; color:#db2777; border:1px solid #fecdd3;">Поколение V • Прапрадед</span>
+                <h3 style="margin:0; font-size:1.15rem; color:#db2777; line-height:1.25;">Зиновьев Семён Григорьевич</h3>
+                <div style="font-size:0.8rem; color:var(--text-muted);">27.01.1890 – ? • д. Горелый Ыб (Ибская), Коми АССР</div>
               </div>
-              <span style="background:#fff1f2; color:#db2777; font-weight:700; font-size:0.75rem; padding:0.2rem 0.55rem; border-radius:6px; border:1px solid #fecdd3; white-space:nowrap;">Поколение V • Прапрадед</span>
             </div>
 
             <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.85rem;">
@@ -2988,11 +3049,11 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         <div class="veteran-card" style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #d9770633; padding:1.25rem; box-shadow:var(--shadow);">
           <div>
             <div class="veteran-card-header">
-              <div>
-                <h3 style="margin:0; font-size:1.15rem; color:#b45309;">Шуктомов Александр Михайлович</h3>
-                <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.2rem;">1911 – сентябрь 1970 • д. Ероздино, Коми АССР</div>
+              <div class="veteran-header-main">
+                <span class="veteran-gen-badge" style="background:#fef3c7; color:#b45309; border:1px solid #fde68a;">Поколение V • Прапрадед</span>
+                <h3 style="margin:0; font-size:1.15rem; color:#b45309; line-height:1.25;">Шуктомов Александр Михайлович</h3>
+                <div style="font-size:0.8rem; color:var(--text-muted);">1911 – сентябрь 1970 • д. Ероздино, Коми АССР</div>
               </div>
-              <span style="background:#fef3c7; color:#b45309; font-weight:700; font-size:0.75rem; padding:0.2rem 0.55rem; border-radius:6px; border:1px solid #fde68a; white-space:nowrap;">Поколение V • Прапрадед</span>
             </div>
 
             <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.85rem;">
@@ -3043,11 +3104,12 @@ button, .person-card, .pill-btn, .subbar-btn, .nav-tab, .modal-close {{
         <div class="veteran-card" style="background:var(--bg-primary); border-radius:10px; border:1.5px solid #8b5cf633; padding:1.25rem; box-shadow:var(--shadow);">
           <div>
             <div class="veteran-card-header">
-              <div>
-                <h3 style="margin:0; font-size:1.15rem; color:#7c3aed;">Шехонин Михаил Афанасьевич</h3>
-                <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.2rem;">1909 – ноябрь 1988 • с. Лойма, Коми АССР</div>
+              <img src="фото_персоналий/I21_Шехонин_Михаил_Афанасьевич.jpg" alt="Шехонин Михаил Афанасьевич" class="veteran-photo-thumb" style="border-color:#7c3aed;" onclick="openFullscreenScan('фото_персоналий/I21_Шехонин_Михаил_Афанасьевич.jpg', 'Шехонин Михаил Афанасьевич', 'Младший лейтенант РККА, 995 сп 263 сд, кавалер Ордена Отечественной войны I ст.')" title="Нажмите для полноэкранного просмотра">
+              <div class="veteran-header-main">
+                <span class="veteran-gen-badge" style="background:#f5f3ff; color:#7c3aed; border:1px solid #ddd6fe;">Поколение V • Прапрадед</span>
+                <h3 style="margin:0; font-size:1.15rem; color:#7c3aed; line-height:1.25;">Шехонин Михаил Афанасьевич</h3>
+                <div style="font-size:0.8rem; color:var(--text-muted);">1909 – ноябрь 1988 • с. Лойма, Коми АССР</div>
               </div>
-              <span style="background:#f5f3ff; color:#7c3aed; font-weight:700; font-size:0.75rem; padding:0.2rem 0.55rem; border-radius:6px; border:1px solid #ddd6fe; white-space:nowrap;">Поколение V • Прапрадед</span>
             </div>
 
             <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.85rem;">
@@ -6213,11 +6275,28 @@ function openModal(pid) {{
   const sexText = p.sex === 'M' ? 'Мужской ♂' : 'Женский ♀';
   const dates = p.display_birt ? `${{p.display_birt}}${{p.display_deat ? ' — ' + p.display_deat : ''}}` : (p.display_deat ? `ум. ${{p.display_deat}}` : 'не указано');
 
+  let photoHtml = '';
+  if (p.photo) {{
+    const photoTitle = p.photo_caption || p.clean_name;
+    photoHtml = `
+      <div class="person-modal-photo-block">
+        <img src="${{escapeHtml(p.photo)}}" alt="${{escapeHtml(p.clean_name)}}" class="person-modal-photo-img" onclick="openFullscreenScan('${{escapeHtml(p.photo)}}', '${{escapeHtml(p.clean_name)}}', '${{escapeHtml(photoTitle)}}')" title="Нажмите для полноэкранного просмотра">
+        <div class="person-modal-photo-info">
+          <div style="font-weight:700; color:var(--accent); font-size:0.82rem; margin-bottom:0.25rem;">📷 Семейная фотография:</div>
+          <div>${{escapeHtml(photoTitle)}}</div>
+          <div style="font-size:0.76rem; color:var(--text-muted); margin-top:0.35rem;">🔍 Нажмите на снимок для полноэкранного просмотра</div>
+        </div>
+      </div>
+    `;
+  }}
+
   let html = `
     <div style="display:flex; justify-content:space-between; align-items:center; gap:0.5rem; flex-wrap:wrap; margin-bottom:0.75rem;">
       <button class="pill-btn active" onclick="focusPerson('${{p.id}}'); closeModal();" style="font-size:0.8rem;">🎯 Показать на древе</button>
       ${{docBtn}}
     </div>
+
+    ${{photoHtml}}
 
     <div class="detail-group">
       <h3>Основная информация</h3>
@@ -6738,14 +6817,8 @@ window.onload = init;
 </html>
 '''
 
-with open('tree.html', 'w', encoding='utf-8') as f:
-    f.write(html_content)
-
-with open('родословная.html', 'w', encoding='utf-8') as f:
-    f.write(html_content)
-
 with open('index.html', 'w', encoding='utf-8') as f:
     f.write(html_content)
 
-print("tree.html, родословная.html and index.html regenerated successfully!")
+print("index.html regenerated successfully!")
 

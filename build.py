@@ -10,7 +10,7 @@ build.py - Единый мастер-скрипт сборки, валидаци
     1. Проверку целостности реляционной базы данных data/*.json (data_manager.py)
     2. Проверку отсутствия геометрических коллизий Smart-Layout (layout_engine.py)
     3. Экспорт родословной в международный формат GEDCOM 5.5.1 (build_genealogy.py)
-    4. Генерацию веб-приложения: index.html, tree.html, родословная.html (generate_final_tree.py)
+    4. Генерацию веб-приложения: index.html (generate_final_tree.py)
     5. Контрольный аудит файлов и готовности к деплою
 """
 
@@ -85,7 +85,7 @@ def main():
     print(f"  • Семейных союзов:       {len(families)}")
     print(f"  • Архивных документов:   {len(sources.get('documents', []))}")
     print(f"  • PDF-альбомов и книг:   {len(sources.get('pdf_albums', []))}")
-    print(f"  • Готовых HTML-файлов:   index.html, tree.html, родословная.html, thai.html")
+    print(f"  • Готовых HTML-файлов:   index.html, thai.html")
     print(f"  • Экспорт GEDCOM:        rodoslovnaya_turkin.ged")
     print("-" * 65)
     print("  Для локального запуска выполните:")
