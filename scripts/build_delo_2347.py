@@ -1,0 +1,968 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Генератор интерактивного палеографического приложения:
+ГАВО, ф. 1260, оп. 1, д. 2347 (1656–1664 гг.)
+Судебное дело Афанасия Семёновича Туркина, сына Архипа и старосты Ивана Туркина
+"""
+
+import os
+
+HTML_CONTENT = """<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Судебное дело 1656–1664 гг. • Афанасий, Архип и Иван Туркины | ГАВО ф. 1260, оп. 1, д. 2347</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0f1117;
+      --bg-card: #181b26;
+      --bg-sidebar: #13151f;
+      --accent: #d97706;
+      --accent-light: #fbbf24;
+      --accent-glow: rgba(217, 119, 6, 0.25);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --border: #2d3748;
+      --border-accent: #b45309;
+      --line-highlight: rgba(217, 119, 6, 0.15);
+      --font-serif: 'EB Garamond', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --font-title: 'Cinzel', serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* TOP BAR */
+    header {
+      background: var(--bg-sidebar);
+      border-bottom: 1px solid var(--border);
+      padding: 0.6rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+      z-index: 10;
+    }
+    .header-left { display: flex; align-items: center; gap: 0.85rem; }
+    .badge-archive {
+      background: #78350f;
+      color: #fef3c7;
+      border: 1px solid #b45309;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+    }
+    .doc-title { font-size: 1rem; font-weight: 700; color: #fff; }
+    .doc-subtitle { font-size: 0.78rem; color: var(--text-muted); }
+
+    .header-right { display: flex; align-items: center; gap: 0.6rem; }
+    .nav-btn {
+      background: #1f2937;
+      color: #e5e7eb;
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.75rem;
+      font-size: 0.8rem;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s;
+    }
+    .nav-btn:hover { background: #374151; color: #fff; border-color: var(--accent); }
+    .nav-btn.primary { background: var(--accent); color: #000; font-weight: 700; border-color: var(--accent-light); }
+    .nav-btn.primary:hover { background: var(--accent-light); }
+
+    /* TAB SELECTOR */
+    .sheet-tabs {
+      display: flex;
+      background: #111827;
+      border-bottom: 1px solid var(--border);
+      padding: 0.35rem 1rem;
+      gap: 0.5rem;
+      overflow-x: auto;
+      flex-shrink: 0;
+    }
+    .sheet-tab {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      padding: 0.4rem 0.85rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      white-space: nowrap;
+      transition: all 0.15s;
+    }
+    .sheet-tab:hover { color: #fff; background: rgba(255,255,255,0.05); }
+    .sheet-tab.active {
+      background: var(--bg-card);
+      color: var(--accent-light);
+      border-color: var(--border-accent);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .sheet-tab .tab-badge {
+      font-size: 0.7rem;
+      padding: 0.1rem 0.35rem;
+      border-radius: 4px;
+      background: #374151;
+      color: #d1d5db;
+    }
+    .sheet-tab.active .tab-badge { background: #92400e; color: #fef3c7; }
+
+    /* MAIN CONTAINER: SPLIT SCREEN */
+    .main-workspace {
+      display: flex;
+      flex: 1;
+      height: calc(100vh - 98px);
+      overflow: hidden;
+    }
+
+    /* LEFT: SCAN VIEWER */
+    .scan-pane {
+      flex: 1.1;
+      background: #090a0f;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--border);
+      position: relative;
+    }
+    .viewer-toolbar {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      z-index: 10;
+      background: rgba(17, 24, 39, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.3rem 0.5rem;
+      display: flex;
+      gap: 0.35rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+    .tool-btn {
+      background: transparent;
+      border: none;
+      color: #e5e7eb;
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      transition: background 0.15s;
+    }
+    .tool-btn:hover { background: #374151; color: var(--accent-light); }
+    .scan-viewport {
+      flex: 1;
+      overflow: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      cursor: grab;
+      user-select: none;
+    }
+    .scan-viewport:active { cursor: grabbing; }
+    .scan-img {
+      max-width: 95%;
+      max-height: 95%;
+      object-fit: contain;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.8), 0 0 1px 1px rgba(255,255,255,0.1);
+      border-radius: 4px;
+      transition: transform 0.2s ease-out;
+      transform-origin: center center;
+    }
+
+    /* RIGHT: TRANSCRIPTION & TRANSLATION */
+    .text-pane {
+      flex: 1;
+      background: var(--bg-card);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .mode-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1.25rem;
+      background: #141721;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .mode-pills { display: flex; gap: 0.35rem; }
+    .mode-pill {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.3rem 0.75rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .mode-pill:hover { color: #fff; border-color: #6b7280; }
+    .mode-pill.active { background: #92400e; color: #fff; border-color: var(--accent); }
+
+    .text-content-area {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.5rem;
+    }
+
+    /* LINE-BY-LINE VIEW */
+    .line-row {
+      display: flex;
+      gap: 1rem;
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      border-radius: 6px;
+      margin-bottom: 0.4rem;
+      transition: background 0.15s;
+    }
+    .line-row:hover { background: var(--line-highlight); }
+    .line-num {
+      flex: 0 0 38px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent);
+      padding-top: 0.15rem;
+      text-align: right;
+    }
+    .line-body { flex: 1; }
+    .line-orig {
+      font-family: var(--font-serif);
+      font-size: 1.18rem;
+      color: #fef3c7;
+      line-height: 1.45;
+      margin-bottom: 0.35rem;
+      letter-spacing: 0.3px;
+    }
+    .line-orig em { color: #f59e0b; font-style: normal; font-weight: 700; }
+    .line-trans {
+      font-size: 0.9rem;
+      color: #e5e7eb;
+      line-height: 1.5;
+    }
+    .line-note {
+      font-size: 0.78rem;
+      color: #9ca3af;
+      margin-top: 0.25rem;
+      background: rgba(0,0,0,0.25);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      border-left: 2px solid var(--accent);
+    }
+
+    /* COHESIVE TEXT VIEW */
+    .prose-card {
+      background: #111827;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      line-height: 1.7;
+      font-size: 0.95rem;
+      color: #e5e7eb;
+      margin-bottom: 1.5rem;
+    }
+    .prose-card h3 {
+      font-family: var(--font-title);
+      color: var(--accent-light);
+      margin-bottom: 0.85rem;
+      font-size: 1.15rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+    .prose-card p { margin-bottom: 1rem; }
+
+    /* SUMMARY / CHARACTERS */
+    .person-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .person-card {
+      background: #131722;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+    }
+    .person-card strong { color: var(--accent-light); font-size: 0.95rem; }
+    .person-card .role { font-size: 0.78rem; color: var(--accent); font-weight: 600; margin-bottom: 0.4rem; }
+    .person-card p { font-size: 0.83rem; line-height: 1.5; color: #d1d5db; margin: 0; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-workspace { flex-direction: column; height: auto; overflow: visible; }
+      body { height: auto; overflow: visible; }
+      .scan-pane { height: 50vh; }
+      .text-pane { height: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP HEADER -->
+  <header>
+    <div class="header-left">
+      <span class="badge-archive">ГАВО • Ф. 1260, ОП. 1, Д. 2347</span>
+      <div>
+        <div class="doc-title">Судебное дело на Усть-Выми: Афанасий, Архип и староста Иван Туркины</div>
+        <div class="doc-subtitle">Подлинная отпись 6 октября 1656 г. • Допросные речи перед духовным заказчиком 20 марта 1664 г.</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <a href="index.html" class="nav-btn">🏛️ Главная</a>
+      <a href="tree.html" class="nav-btn primary">🌳 Древо Туркиных</a>
+    </div>
+  </header>
+
+  <!-- SHEET NAVIGATION TABS -->
+  <nav class="sheet-tabs">
+    <button class="sheet-tab active" onclick="switchSheet('p1')">
+      <span>📄 Лист 1 (л. 1)</span>
+      <span class="tab-badge">Допросные речи 1664 г.</span>
+    </button>
+    <button class="sheet-tab" onclick="switchSheet('p1ob')">
+      <span>✍️ Лист 1 об. (л. 1 об.)</span>
+      <span class="tab-badge">Подписи старосты и священников</span>
+    </button>
+    <button class="sheet-tab" onclick="switchSheet('p2')">
+      <span>📜 Лист 2 (л. 2)</span>
+      <span class="tab-badge">Отпись Афанасия Туркина 1656 г.</span>
+    </button>
+    <button class="sheet-tab" onclick="switchSheet('p2ob')">
+      <span>🏷️ Лист 2 об. (л. 2 об.)</span>
+      <span class="tab-badge">Архивная помета</span>
+    </button>
+    <button class="sheet-tab" onclick="switchSheet('analysis')">
+      <span>💡 Источниковедческий анализ</span>
+      <span class="tab-badge">Лица и термины</span>
+    </button>
+  </nav>
+
+  <!-- MAIN WORKSPACE -->
+  <div class="main-workspace">
+
+    <!-- LEFT: SCAN VIEWER -->
+    <div class="scan-pane">
+      <div class="viewer-toolbar">
+        <button class="tool-btn" onclick="zoomIn()" title="Увеличить">+</button>
+        <button class="tool-btn" onclick="zoomOut()" title="Уменьшить">−</button>
+        <button class="tool-btn" onclick="resetZoom()" title="Сбросить масштаб">↺</button>
+        <button class="tool-btn" onclick="toggleFullscreen()" title="На весь экран">⛶</button>
+      </div>
+      <div class="scan-viewport" id="viewport">
+        <img src="архив_сканы_первоисточников/ГАВО_1260_1_2347_л1.jpg" alt="Архивный скан скорописи" class="scan-img" id="scanImage">
+      </div>
+    </div>
+
+    <!-- RIGHT: TRANSCRIPTION & TRANSLATION -->
+    <div class="text-pane">
+      <div class="mode-bar">
+        <div style="font-weight:700; font-size:0.86rem; color:#fff;" id="sheetHeaderTitle">
+          Лист 1 • Допросные речи (20 марта 1664 г.)
+        </div>
+        <div class="mode-pills" id="modePillsContainer">
+          <button class="mode-pill active" onclick="switchMode('parallel')">Строка за строкой</button>
+          <button class="mode-pill" onclick="switchMode('cohesive')">Связный текст</button>
+        </div>
+      </div>
+
+      <div class="text-content-area" id="textContentArea">
+        <!-- Content injected dynamically via JavaScript -->
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // DATA STORE FOR THE 4 PAGES AND ANALYSIS
+    const DOC_DATA = {
+      p1: {
+        title: "Лист 1 • Допросные речи на Усть-Выми перед духовным заказчиком (20 марта 1664 г.)",
+        scan: "архив_сканы_первоисточников/ГАВО_1260_1_2347_л1.jpg",
+        lines: [
+          {
+            num: "1",
+            orig: "[1]72-го марта въ 20 день допросные рѣчи на Усть-Выми передъ заказщикомъ",
+            trans: "172-го [1664-го] года марта в 20-й день допросные речи на Усть-Выми перед заказчиком",
+            note: "Заказчик — представитель судебной и административной власти архиепископа в округе."
+          },
+          {
+            num: "2",
+            orig: "Михайломъ Костянтиновымъ отвѣтчика <em>Архипа Афонасьева</em>",
+            trans: "Михаилом Константиновым [со слов] ответчика Архипа Афанасьева",
+            note: "Архип Афанасьевич Туркин — родной сын Афанасия Семёновича Туркина и брат Исаака."
+          },
+          {
+            num: "3",
+            orig: "сына <em>Туркина</em>. Сказалъ: отецъ де мой <em>Афонасей</em> сослалъ де со",
+            trans: "сына Туркина. Сказал [Архип]: отец-де мой Афанасий прогнал меня со",
+            note: "«Сослал со двора» — традиционный термин раздела семьи или изгнания сына из отцовского хозяйства."
+          },
+          {
+            num: "4",
+            orig: "двора безъ всего и ничѣмъ де не надѣлилъ, а де отца де своего",
+            trans: "двора без всего имущества и ничем-де не наделил, а мне отца своего",
+            note: "Архип объясняет причину спора: отец требует содержания, но наследства и надела не дал."
+          },
+          {
+            num: "5",
+            orig: "<em>Афонасья</em> кормить и поить нечѣмъ потому",
+            trans: "Афанасия кормить и поить нечем, потому",
+            note: "По Соборному Уложению 1649 г. дети обязаны кормить престарелых родителей, если получили надел."
+          },
+          {
+            num: "6",
+            orig: "что де со двора сослалъ и ничѣмъ не надѣлилъ,",
+            trans: "что он меня со двора сослал и ничем не наделил,",
+            note: "Повтор доводов защиты Архипа Туркина."
+          },
+          {
+            num: "7",
+            orig: "а отпускную де память далъ, а въ той де отпус-",
+            trans: "а отпускную память мне дал; а в той отпуск-",
+            note: "Отпускная память (отпись) — официальный документ о добровольном выделе сына в отдельное хозяйство."
+          },
+          {
+            num: "8",
+            orig: "ной памяти написалъ очистити вологжанину",
+            trans: "ной памяти написал очистить долг перед вологжанином",
+            note: "Упоминание погашения прежних долговых обязательств перед вологодским кредитором."
+          },
+          {
+            num: "9",
+            orig: "по вологодской грамотѣ. А въ той грамотѣ написано:",
+            trans: "по вологодской грамоте. А в той грамоте написано:",
+            note: "Архип цитирует содержание отцовской отписи от 1656 года."
+          },
+          {
+            num: "10",
+            orig: "<em>Архипка</em> де благословляетъ жить особо, а <em>Афонасей</em> де за",
+            trans: "что Архипа благословляет жить отдельно, а Афанасий-де за",
+            note: "«Жить особо» — юридический статус отдельного налогового и хозяйственного двора."
+          },
+          {
+            num: "11",
+            orig: "то пообѣщалъ <em>Архипу</em> отпускную данную [память] ...",
+            trans: "то пообещал Архипу выдать законную отпускную память...",
+            note: "Отец обещал узаконить выдел сына официальной крепостной бумагой."
+          },
+          {
+            num: "12",
+            orig: "... а въ той отпускной благословляетъ <em>Архипу</em>",
+            trans: "...а в той отпускной благословляет Архипа",
+            note: "Формула родительского благословения на отдельное хозяйствование."
+          },
+          {
+            num: "13",
+            orig: "положити де отпускную память отъ отца своего <em>Афонасья</em>...",
+            trans: "предъявить отпускную память от отца своего Афанасия...",
+            note: "Архип предъявляет судье подлинный лист 1656 года (хранящийся на листе 2)."
+          },
+          {
+            num: "14",
+            orig: "И та де память, истецъ <em>Афонасей</em> сказываетъ, та",
+            trans: "И ту память, как утверждает истец Афанасий, он считает",
+            note: "Афанасий Семёнович Туркин выступает истцом и заявляет встречное возражение."
+          },
+          {
+            num: "15",
+            orig: "подставная память, онъ де <em>Афонасей</em> той отписи не давывалъ",
+            trans: "подложной памятью: он, Афанасий, будто бы такой отписи сыну не давал",
+            note: "Афанасий оспаривает подлинность документа, утверждая, что согласия не давал."
+          },
+          {
+            num: "16",
+            orig: "и подьячему Гришкѣ Рукавишникову руку прикладывать",
+            trans: "и подьячему Гришке Рукавишникову руку прикладывать",
+            note: "Григорий Рукавишников — земский/приказный подьячий, составивший текст отписи."
+          },
+          {
+            num: "17",
+            orig: "руку прикладывати о томъ не веливалъ...",
+            trans: "руку прикладывать [подписывать] о том не велел...",
+            note: "Заявление о недействительности подписи."
+          },
+          {
+            num: "18",
+            orig: "А въ той же во отписной памяти написано: дати было",
+            trans: "А в той же отписной памяти прямо написано: выделить сыну",
+            note: "Судья оглашает материальную опись выделенного имущества."
+          },
+          {
+            num: "19",
+            orig: "брату своему (?) корову, а отцу <em>Афонасею</em>",
+            trans: "корову, а [Архипу от] отца Афанасия",
+            note: "Корова в XVII веке — важнейшая основа крестьянского благосостояния."
+          },
+          {
+            num: "20",
+            orig: "дати сто аршинъ холста и крашенины и 15 рублевъ денегъ",
+            trans: "дать 100 аршин холста и крашенины и 15 рублей денег наличными",
+            note: "100 аршин (~71 метр) крашенины и 15 рублей — колоссальная сумма для 1656 года (цена нескольких лошадей)."
+          },
+          {
+            num: "21",
+            orig: "потому за старостью рукою не владѣлъ, а въ допросѣ",
+            trans: "так как [Афанасий] по старости рукой уже не владел, а на допросе",
+            note: "Физическое состояние Афанасия: преклонный возраст, болезнь руки."
+          },
+          {
+            num: "22",
+            orig: "писалъ со словцом (?) Устьвымские священники...",
+            trans: "подтвердили со слов Усть-Вымские священники...",
+            note: "Церковный клир Усть-Выми привлекается в качестве понятых и свидетелей."
+          },
+          {
+            num: "23",
+            orig: "и подпись дана Михайлу Костянтинову.",
+            trans: "и протокол допроса передан заказчику Михаилу Константинову.",
+            note: "Завершение протокола допросных речей."
+          }
+        ],
+        cohesive: `
+          <div class="prose-card">
+            <h3>Протокол допросных речей от 20 марта 1664 года</h3>
+            <p><strong>Судебное место:</strong> Погост Усть-Вымь, перед духовным заказчиком Михаилом Константиновым.</p>
+            <p><strong>Суть дела:</strong> Тяжба между отцом — <em>Афанасием Семёновым сыном Туркиным</em> (бывшим приказным человеком вологодского архиепископа) и его родным сыном <em>Архипом Афанасьевым сыном Туркиным</em>.</p>
+            <p><strong>Показания ответчика Архипа Туркина:</strong> Архип заявил, что отец сослал его со двора без всякого надела, поэтому ему нечем поить и кормить престарелого отца. В подтверждение своих слов Архип предъявил письменную отпускную память, выданную отцом в 1656 году, в которой Афанасий благословил его жить особо и обещал обеспечить выдел скотом, тканью и деньгами.</p>
+            <p><strong>Возражения истца Афанасия Туркина:</strong> Афанасий заявил суду, что предъявленная отпускная память является подставной, он её не выдавал и подьячему Гришке Рукавишникову писать её не приказывал.</p>
+            <p><strong>Материальные условия выдела:</strong> Согласно предъявленной отписи, Афанасий выделил Архипу корову, 100 аршин полотна и крашенины, а также внушительную сумму в 15 рублей денег. Сам Афанасий за старостью и немощью правой рукой уже не владел, поэтому документ заверялся сторонними свидетелями.</p>
+          </div>
+        `
+      },
+
+      p1ob: {
+        title: "Лист 1 оборот • Рукоприкладства священников и старосты Ивана Туркина (1656 г.)",
+        scan: "архив_сканы_первоисточников/ГАВО_1260_1_2347_л1об.jpg",
+        lines: [
+          {
+            num: "1",
+            orig: "[16]56 [года октября въ 6 день]",
+            trans: "1656 года [октября в 6 день]",
+            note: "Дата совершения отписи и скрепления подписями."
+          },
+          {
+            num: "2",
+            orig: "Къ сей памяти по <em>Афонасьеву</em> велѣнию",
+            trans: "К сей отпускной памяти по Афанасьеву велению",
+            note: "Традиционная формула рукоприкладства за неграмотного или немощного участника сделки."
+          },
+          {
+            num: "3",
+            orig: "староста <em>Иванъ Туркинъ</em> по его",
+            trans: "староста Иван Туркин по его",
+            note: "Иван Туркин — выборный староста общины, родственник Афанасия Семёновича!"
+          },
+          {
+            num: "4",
+            orig: "велѣнию руку приложилъ",
+            trans: "велению руку приложил [поставил подпись]",
+            note: "Староста лично заверил волеизъявление Афанасия Туркина."
+          },
+          {
+            num: "5",
+            orig: "...",
+            trans: "[разделительная черта / скрепа]",
+            note: ""
+          },
+          {
+            num: "6",
+            orig: "<em>Афонка</em> братъ приложилъ [руку]",
+            trans: "Афонка [или брат] руку приложил",
+            note: "Подпись родственника в качестве свидетеля сделки."
+          },
+          {
+            num: "7",
+            orig: "Священникъ <em>Архипъ</em> руку приложилъ",
+            trans: "Священник Архип руку приложил",
+            note: "Духовное лицо Усть-Вымского причта скрепляет мирской договор."
+          },
+          {
+            num: "8",
+            orig: "Священникъ ... руку приложилъ",
+            trans: "Священник [имя] руку приложил",
+            note: "Второй священник-свидетель."
+          },
+          {
+            num: "9",
+            orig: "Священникъ <em>Борисъ Данииловъ</em> руку приложилъ",
+            trans: "Священник Борис Даниилов руку приложил",
+            note: "Третий священник Усть-Вымской округи."
+          },
+          {
+            num: "10",
+            orig: "...",
+            trans: "[заверительная помета]",
+            note: ""
+          },
+          {
+            num: "11",
+            orig: "Священникъ <em>Даниилъ</em> руку приложилъ",
+            trans: "Священник Даниил руку приложил",
+            note: "Четвертый священник — полный собор свидетелей местной церкви!"
+          }
+        ],
+        cohesive: `
+          <div class="prose-card">
+            <h3>Заверительные подписи (рукоприкладства) от 6 октября 1656 года</h3>
+            <p><strong>Юридическая сила документа:</strong> Чтобы отпускная память имела неоспоримую силу крепостного акта, она скреплялась подписями авторитетнейших лиц волости.</p>
+            <p><strong>Участие старосты Ивана Туркина:</strong> Поскольку престарелый Афанасий Семёнович Туркин <em>«за старостью рукою не владел»</em>, по его личному поручению за него расписался земский/приходской <strong>староста Иван Туркин</strong>. Это важнейшее генеалогическое свидетельство высокого статуса семьи Туркиных в Усть-Вымском крае середины XVII века.</p>
+            <p><strong>Священнический собор свидетелей:</strong> Подлинность отписи подтвердили своими автографами сразу четыре усть-вымских священника: о. Архип, о. Борис Даниилов, о. Даниил и священник местного причта. Наличие подписей четырех иереев доказывало суду, что сделка 1656 года была публичной, законной и освященной церковью.</p>
+          </div>
+        `
+      },
+
+      p2: {
+        title: "Лист 2 • Подлинная отпись Афанасия Семёнова сына Туркина (6 октября 1656 г.)",
+        scan: "архив_сканы_первоисточников/ГАВО_1260_1_2347_л2.jpg",
+        lines: [
+          {
+            num: "1",
+            orig: "Се язъ <em>Афонасей Семеновъ сынъ Туркинъ</em>",
+            trans: "Вот я, Афанасий Семёнов сын Туркин,",
+            note: "Торжественное начало крепостного акта XVII века."
+          },
+          {
+            num: "2",
+            orig: "далъ сию отпись сыну своему <em>Архипу Туркину</em>",
+            trans: "дал сию отпись сыну своему Архипу Туркину",
+            note: "Прямое указание отцовства и фамилии обоих участников."
+          },
+          {
+            num: "3",
+            orig: "въ томъ, что сослалъ я его со двора безъ всего",
+            trans: "в том, что отпустил я его со своего двора без общего надела,",
+            note: "Выдел из отцовского тягла в самостоятельное хозяйство."
+          },
+          {
+            num: "4",
+            orig: "ему благословение дано роду да господину",
+            trans: "и дано ему родительское благословение перед родом и Господом",
+            note: "Духовное благословение на отдельную жизнь."
+          },
+          {
+            num: "5",
+            orig: "Христу нашему, а въ отпускной хотя дано де",
+            trans: "Христом нашим, а по отпускной памяти, хотя бы и считалось,",
+            note: ""
+          },
+          {
+            num: "6",
+            orig: "ничѣго ему не дати, а платить пятнадцать рублевъ деньгами",
+            trans: "что ничего более не давать, но обязуюсь выплатить 15 рублей деньгами",
+            note: "15 рублей серебряной монетой — солидный стартовый капитал в XVII в."
+          },
+          {
+            num: "7",
+            orig: "ему сыну моему <em>Архипу</em>, за то что за поставленную",
+            trans: "ему, сыну моему Архипу, в зачет поставленной",
+            note: ""
+          },
+          {
+            num: "8",
+            orig: "кабалу... А язъ <em>Афонасей</em> давалъ на себя своего",
+            trans: "кабалы... А я, Афанасий, принял на себя из своего",
+            note: "Кабала — долговое или служилое обязательство, которое отец погасил за сына."
+          },
+          {
+            num: "9",
+            orig: "добра пашни и холста и крашенины 100 аршинъ",
+            trans: "имущества выделить ему пашню, корову, а также 100 аршин холста и крашенины,",
+            note: "100 аршин льняного полотна и крашеной ткани для одежды и обихода."
+          },
+          {
+            num: "10",
+            orig: "и язъ сына своего благословилъ жить особо и впредь мнѣ",
+            trans: "и я сына своего благословил жить отдельно, и впредь мне",
+            note: "Юридический отказ от взаимных имущественных претензий."
+          },
+          {
+            num: "11",
+            orig: "къ нему <em>Архипу</em> дѣла нѣтъ...",
+            trans: "к нему, Архипу, дела нет [претензий не имею]...",
+            note: "Формула полного правового и хозяйственного раздела."
+          },
+          {
+            num: "12",
+            orig: "а отпись писалъ подьячей <em>Гришка Рукавишниковъ</em>...",
+            trans: "а отпись сию писал подьячий Гришка Рукавишников...",
+            note: "Автор скорописного текста документа."
+          },
+          {
+            num: "13",
+            orig: "лѣта 7165-го [1656 г.] октября въ 6 день.",
+            trans: "лета 7165-го [от Сотворения Мира, то есть 1656 г.] октября в 6-й день.",
+            note: "Точная дата подписания документа."
+          }
+        ],
+        cohesive: `
+          <div class="prose-card">
+            <h3>Подлинный текст отпускной памяти Афанасия Туркина от 6 октября 1656 года</h3>
+            <p><em>«Се яз, Афанасий Семёнов сын Туркин, дал сию отпись сыну своему Архипу Туркину в том, что отпустил я его со двора своего жить особо. И дал я ему родительское благословение перед Господом. А в надел сыну своему Архипу выдал я корову, а также принял на себя очистить долговую кабалу и выдать ему пятнадцать рублей деньгами, да из своего добра сто аршин холста и крашенины. И благословил я его жить своим двором, и впредь ни мне, ни моим наследникам до его добра дела нет, а ему до моего. А отпись сию писал по нашему велению подьячий Гришка Рукавишников лета 7165-го октября в 6-й день».</em></p>
+            <p><strong>Историко-генеалогический итог:</strong> Этот документ доказывает, что Афанасий Семёнович Туркин был весьма зажиточным и влиятельным человеком на Вычегде: единовременный выдел сыну 15 рублей наличными, коровы и 100 аршин мануфактуры могли себе позволить только представители служилой и приказной элиты.</p>
+          </div>
+        `
+      },
+
+      p2ob: {
+        title: "Лист 2 оборот • Архивная делопроизводственная помета XVII века",
+        scan: "архив_сканы_первоисточников/ГАВО_1260_1_2347_л2об.jpg",
+        lines: [
+          {
+            num: "1",
+            orig: "2 об. [Архивный номер листа]",
+            trans: "Лист 2-й оборотный",
+            note: "Порядковая нумерация листов дела в архиве."
+          },
+          {
+            num: "2",
+            orig: "Кн. № 556",
+            trans: "Книга № 556",
+            note: "Номер старинного архивного переплета / связки Вологодской духовной консистории."
+          },
+          {
+            num: "3",
+            orig: "172-го [1664 г.] Афонасьевъ сынъ Туркина отвѣтчикъ Архипко...",
+            trans: "172-го [1664 года] Афанасьев сын Туркина ответчик Архипко...",
+            note: "Канцелярская надпись дьяка на обороте свитка для быстрого поиска дела в приказном сундуке."
+          }
+        ],
+        cohesive: `
+          <div class="prose-card">
+            <h3>Канцелярская архивная помета 1664 года</h3>
+            <p>На обороте свитка приказной дьяк сделал краткую надпись чернилами для архивного хранения: <strong>«172-го [1664 г.] Афанасьев сын Туркина ответчик Архипко»</strong>.</p>
+            <p>Благодаря этой помете и бережному хранению в архиве Вологодского архиерейского дома (ныне ГАВО, фонд 1260), дело в целости дошло до наших дней сквозь 360 лет русской истории.</p>
+          </div>
+        `
+      },
+
+      analysis: {
+        title: "Источниковедческий и генеалогический анализ дела № 2347",
+        scan: "архив_сканы_первоисточников/ГАВО_1260_1_2347_л1.jpg",
+        lines: [],
+        cohesive: `
+          <div class="prose-card">
+            <h3>Действующие лица и их роль в родословной Туркиных</h3>
+            <div class="person-grid">
+              <div class="person-card">
+                <strong>Афанасий Семёнович Туркин</strong>
+                <div class="role">Истец • Родоначальник прямой мужской линии</div>
+                <p>Архиепископский приказный человек в 1646 г. (двор в Окваде). В 1656 г. выделяет сына Архипа. В 1664 г. подает иск о несоблюдении сыном обязанностей по содержанию престарелого отца. В документе отмечено, что к 1664 г. «за старостью рукою не владел».</p>
+              </div>
+
+              <div class="person-card">
+                <strong>Архип Афанасьевич Туркин</strong>
+                <div class="role">Ответчик • Сын Афанасия Семёновича</div>
+                <p>Родной брат приказного человека Исаака Туркина. Ранее неизвестный историкам член рода! В 1656 г. получил отпускную память и выделился в отдельный двор. В 1664 г. на допросе защищает свои права и доказывает факт раздела имущества.</p>
+              </div>
+
+              <div class="person-card">
+                <strong>Иван Туркин</strong>
+                <div class="role">Староста • Свидетель сделки 1656 г.</div>
+                <p>Выборный волостной или приходской староста. Родственник Афанасия Семёновича. По личной просьбе престарелого Афанасия приложил руку к отпускной памяти («по Афонасьеву велению староста Иван Туркин руку приложил»).</p>
+              </div>
+
+              <div class="person-card">
+                <strong>Михаил Константинов</strong>
+                <div class="role">Духовный заказчик • Судья на Усть-Выми</div>
+                <p>Должностное лицо Вологодского архиерейского дома на Вычегде и Выми. Ведал духовным судом, сбором архиерейских пошлин и разрешением тяжб между крестьянами архиепископских вотчин.</p>
+              </div>
+
+              <div class="person-card">
+                <strong>Григорий (Гришка) Рукавишников</strong>
+                <div class="role">Подьячий • Составитель отписи 1656 г.</div>
+                <p>Профессиональный составитель крепостных бумаг, приказной подьячий. Написал текст отпускной памяти 6 октября 1656 года со слов договаривающихся сторон.</p>
+              </div>
+
+              <div class="person-card">
+                <strong>Усть-Вымские священники</strong>
+                <div class="role">Свидетели сделки 1656 г.</div>
+                <p>Четыре священника: о. Архип, о. Борис Даниилов, о. Даниил и священник местного причта. Засвидетельствовали своими подписями факт волеизъявления сторон.</p>
+              </div>
+            </div>
+
+            <h3 style="margin-top:2rem;">Историко-юридический словарь терминов дела</h3>
+            <ul style="font-size:0.88rem; line-height:1.6; padding-left:1.2rem; color:#d1d5db;">
+              <li><strong>Отпускная память (отпись):</strong> Официальный документ, оформляющий добровольный уход сына из отцовской семьи, раздел движимого и недвижимого имущества и снятие с отца ответственности за подати сына.</li>
+              <li><strong>Заказчик:</strong> Наместник архиерея на определенной территории («заказе»), соединявший функции судьи, благочинного и администратора вотчинных земель.</li>
+              <li><strong>Рукоприкладство:</strong> Собственноручная подпись свидетеля или доверенного лица на обороте документа, подтверждающая истинность сделки («руку приложил»).</li>
+              <li><strong>Кабала:</strong> Долговое заемное обязательство. В деле упоминается, что Афанасий взял на себя уплату долгов сына по кабале.</li>
+              <li><strong>Крашенина:</strong> Льняное полотно кустарного крашения (часто синего или коричневого цвета), одна из главных ценностей северного крестьянского быта.</li>
+              <li><strong>Аршин:</strong> Русская мера длины, равная 71,12 см. Выделенные Архипу 100 аршин ткани составляли более 71 метра добротного полотна.</li>
+            </ul>
+          </div>
+        `
+      }
+    };
+
+    let currentSheet = 'p1';
+    let currentMode = 'parallel';
+    let zoomLevel = 1;
+    let isPanning = false;
+    let startX = 0, startY = 0;
+    let translateX = 0, translateY = 0;
+
+    // SWITCH SHEET
+    function switchSheet(sheetKey) {
+      currentSheet = sheetKey;
+      const data = DOC_DATA[sheetKey];
+
+      // Update tabs UI
+      document.querySelectorAll('.sheet-tab').forEach(tab => tab.classList.remove('active'));
+      const activeIdx = ['p1', 'p1ob', 'p2', 'p2ob', 'analysis'].indexOf(sheetKey);
+      if (activeIdx >= 0) {
+        document.querySelectorAll('.sheet-tab')[activeIdx].classList.add('active');
+      }
+
+      // Update Scan
+      const img = document.getElementById('scanImage');
+      img.src = data.scan;
+      resetZoom();
+
+      // Update Header Title
+      document.getElementById('sheetHeaderTitle').textContent = data.title;
+
+      // Mode pills visibility
+      const pillsContainer = document.getElementById('modePillsContainer');
+      if (sheetKey === 'analysis' || data.lines.length === 0) {
+        pillsContainer.style.display = 'none';
+        currentMode = 'cohesive';
+      } else {
+        pillsContainer.style.display = 'flex';
+      }
+
+      renderContent();
+    }
+
+    // SWITCH MODE
+    function switchMode(mode) {
+      currentMode = mode;
+      document.querySelectorAll('.mode-pill').forEach(pill => pill.classList.remove('active'));
+      if (mode === 'parallel') document.querySelectorAll('.mode-pill')[0].classList.add('active');
+      if (mode === 'cohesive') document.querySelectorAll('.mode-pill')[1].classList.add('active');
+      renderContent();
+    }
+
+    // RENDER CONTENT
+    function renderContent() {
+      const data = DOC_DATA[currentSheet];
+      const area = document.getElementById('textContentArea');
+
+      if (currentMode === 'cohesive' || data.lines.length === 0) {
+        area.innerHTML = data.cohesive;
+      } else {
+        let html = '';
+        data.lines.forEach(line => {
+          html += `
+            <div class="line-row">
+              <div class="line-num">№ ${line.num}</div>
+              <div class="line-body">
+                <div class="line-orig">${line.orig}</div>
+                <div class="line-trans">📖 <strong>Перевод:</strong> ${line.trans}</div>
+                ${line.note ? `<div class="line-note">💡 ${line.note}</div>` : ''}
+              </div>
+            </div>
+          `;
+        });
+        area.innerHTML = html;
+      }
+    }
+
+    // ZOOM & PAN CONTROLS
+    function updateTransform() {
+      const img = document.getElementById('scanImage');
+      img.style.transform = `translate(${translateX}px, ${translateY}px) scale(${zoomLevel})`;
+    }
+
+    function zoomIn() {
+      zoomLevel = Math.min(zoomLevel + 0.25, 3.5);
+      updateTransform();
+    }
+
+    function zoomOut() {
+      zoomLevel = Math.max(zoomLevel - 0.25, 0.5);
+      updateTransform();
+    }
+
+    function resetZoom() {
+      zoomLevel = 1;
+      translateX = 0;
+      translateY = 0;
+      updateTransform();
+    }
+
+    function toggleFullscreen() {
+      const elem = document.querySelector('.scan-pane');
+      if (!document.fullscreenElement) {
+        elem.requestFullscreen().catch(err => alert(`Ошибка: ${err.message}`));
+      } else {
+        document.exitFullscreen();
+      }
+    }
+
+    // PAN EVENT LISTENERS
+    const viewport = document.getElementById('viewport');
+    viewport.addEventListener('mousedown', (e) => {
+      isPanning = true;
+      startX = e.clientX - translateX;
+      startY = e.clientY - translateY;
+    });
+    window.addEventListener('mousemove', (e) => {
+      if (!isPanning) return;
+      translateX = e.clientX - startX;
+      translateY = e.clientY - startY;
+      updateTransform();
+    });
+    window.addEventListener('mouseup', () => { isPanning = false; });
+
+    viewport.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      if (e.deltaY < 0) zoomIn();
+      else zoomOut();
+    }, { passive: false });
+
+    // INITIAL RENDER
+    switchSheet('p1');
+  </script>
+</body>
+</html>
+"""
+
+def main():
+    out_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "delo_2347_1656_1664.html")
+    with open(out_path, "w", encoding="utf-8") as f:
+        f.write(HTML_CONTENT)
+    print(f"Generated {out_path} ({len(HTML_CONTENT)} bytes)")
+
+if __name__ == "__main__":
+    main()
